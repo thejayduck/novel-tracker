@@ -1,0 +1,138 @@
+.searchContainer {
+  position: fixed;
+  top: 10px;
+  width: 90%;
+  padding: 15px;
+  background-color: #105099;
+  border-radius: 10px;
+}
+
+.searchBar input {
+  width: 100%;
+
+  background: 0 0;
+  border: none;
+  outline: 0;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-left: 0;
+  padding: 8px 0;
+  position: relative;
+  text-transform: capitalize;
+  z-index: 2;
+}
+
+.activityFeed {
+  display: grid;
+  /* grid-column-gap: 30px;
+  grid-row-gap: 15px; */
+  gap: 1em;
+  grid-template-columns: 1fr 1fr;
+}
+
+.activityEntry {
+  background-color: #0070f3;
+  border-radius: 10px;
+  padding: 5px;
+  /* min-width: 250px; */
+  height: auto;
+}
+
+.list .cover {
+  border-radius: 10px;
+  display: inline-block;
+  height: 265px;
+  width: auto;
+  object-fit: contain;
+  overflow: hidden;
+  position: relative;
+  z-index: 5;
+}
+
+/* .list {
+  height: 100%;
+  min-height: 110px;
+} */
+
+.list .progress {
+  background-color: #20528a;
+  border-radius: 10px;
+  padding: 5px;
+
+  left: 20px;
+  float: right;
+}
+
+.list .progress .faPlus {
+  padding-right: 1em;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  min-height: 70px;
+  padding: 14px 16px;
+}
+
+.details .title {
+  font-weight: bold;
+}
+
+.newBook {
+  display: block;
+  background-color: #0070f3;
+  border-radius: 10px;
+  padding: 15px;
+
+  -webkit-tap-highlight-color: transparent;
+  bottom: 25px;
+  /* cursor: pointer; */
+  /* font-family: Overpass, -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
+  position: fixed;
+  right: 20px;
+  transition: 0.2s;
+  z-index: 999;
+  font-weight: 700;
+}
+
+.container {
+  min-height: 100vh;
+  padding: 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.main {
+  padding: 5rem 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer {
+  width: 100%;
+  height: 100px;
+  border-top: 1px solid #eaeaea;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer img {
+  margin-left: 0.5rem;
+}
+
+.footer a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

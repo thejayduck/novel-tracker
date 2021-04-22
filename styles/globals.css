@@ -1,3 +1,12 @@
+@import url(https://fonts.googleapis.com/css?family=Kumbh+Sans);
+
+* {
+  scroll-behavior: smooth;
+  font-family: "Kumbh Sans", serif;
+  font-weight: lighter;
+  box-sizing: border-box;
+}
+
 html,
 body {
   padding: 0;
