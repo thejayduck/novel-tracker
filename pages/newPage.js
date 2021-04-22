@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import styles from '../styles/newPage.module.css'
 
-const data = [...Array(5).keys()].map(n => ({
+const data = [...Array(15).keys()].map(n => ({
   title: "Pretty Boy Detective",
   url: "https://i.ibb.co/2dcp1RR/CQO6-Nvu-Uc-AAz-Q1-Y.jpg",
   chapter: 25,
@@ -53,11 +53,12 @@ export default function NewPage() {
             <input type="text" placeholder="Search..." name="search" maxLength="50"/>
           </form>
         </div>
-        <div className={styles.activityFeed}>
-          
-          {data.map(entry => (<NovelCard entry={entry}/>))}
-          
+        <div className={styles.activityContainer}>
+          <div className={styles.activityFeed}>
+            {data.map(entry => (<NovelCard entry={entry}/>))}
+          </div>
         </div>
+
       </main>
       <a className={`${styles.newBook} fas fa-plus ${styles.faPlus}`} href="/newBook"/>
       <footer className={styles.footer}>
