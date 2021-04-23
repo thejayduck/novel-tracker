@@ -30,11 +30,6 @@ function NovelCard({entry}) {
             </div>
 
           </div>
-          {/* <div className={styles.progress}>
-            <a title="Increase Progress" className={`${styles.icon} fas fa-plus ${styles.faPlus}`}></a>
-            <a title="Decrease Progress" className={`${styles.icon} fas fa-minus ${styles.faMinus}`}></a>
-            <a title="Info" className={`${styles.icon} fas fa-info ${styles.faInfo}`}></a>
-          </div> */}
         </div>
 
       </div>
