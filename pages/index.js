@@ -3,7 +3,7 @@ import styles from '../styles/Home.module.css'
 import NewBook from './newBook'
 import jikanjs from 'jikanjs'
 
-const data = [...Array(5).keys()].map(n => ({
+const data = [...Array(1).keys()].map(n => ({
   title: "Pretty Boy Detective",
   coverUrl: "https://i.ibb.co/2dcp1RR/CQO6-Nvu-Uc-AAz-Q1-Y.jpg",
   chapter: 25,
@@ -28,7 +28,7 @@ function NovelCard({ entry }) {
     <div className={styles.activityEntry}>
       <div className={styles.wrap}>
         <div className={styles.list}>
-          <p className={styles.title}>{entry.title}</p>
+          <p title={entry.title} className={styles.title}>{entry.title}</p>
           <img className={styles.cover} src={entry.coverUrl} />
           <div className={styles.details}>
             <div>
