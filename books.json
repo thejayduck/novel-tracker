@@ -1,7 +1,8 @@
 {
 	"Pretty Boy Detective": {
-		"malId": "122943",
-		"chapter": "1",
-		"volume": "5"
+		"malId": 122943,
+		"chapter": 1,
+		"volume": 5,
+		"status": "Dropped"
 	}
 }
