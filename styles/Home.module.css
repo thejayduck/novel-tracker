@@ -154,6 +154,14 @@
   align-items: center;
 }
 
+.container.light {
+  background-color: #ebf1ff;
+}
+
+.container.dark {
+  background-color: black;
+}
+
 .main {
   padding: 5rem 0;
   margin: 20px;

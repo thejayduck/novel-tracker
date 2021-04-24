@@ -2,6 +2,7 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import NewBook from './newBook'
 import jikanjs from 'jikanjs'
+import { useState, useEffect } from 'react'
 
 const data = [...Array(1).keys()].map(n => ({
   title: "Pretty Boy Detective",
@@ -50,9 +51,22 @@ function NovelCard({ entry }) {
   );
 }
 
+function usePersistedState(key, defaultValue) {
+  /*const [state, setState] = useState(
+    () => JSON.parse(localStorage.getItem(key)) || defaultValue
+  );
+  useEffect(() => {
+    localStorage.setItem(key, JSON.stringify(state));
+  }, [key, state]);*/
+  const [state, setState] = useState(defaultValue);
+  return [state, setState];
+}
+
 export default function Home() {
+  const [darkmode, setDarkmode] = usePersistedState("darkmode", true);
+
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} ${darkmode ? styles.dark : styles.light}`}>
       <Head>
         <title>Book Library</title>
         <link rel="icon" href="/favicon.ico" />
@@ -79,6 +93,7 @@ export default function Home() {
       </main>
       <a title="Add New Book" className={`${styles.newBook} fas fa-plus ${styles.faPlus}`} href="/" />
       <footer className={styles.footer}>
+        <button onClick={() => setDarkmode(!darkmode)}>Dark</button>
         <p>Finished Books: x</p>
         <br />
         <p>Total Pages Read: x</p>
