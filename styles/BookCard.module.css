@@ -1,0 +1,89 @@
+.activityEntry {
+  background-color: #9575cd;
+  border-radius: 10px;
+  padding: 5px;
+  /* min-width: 250px; */
+  width: 197.3px;
+  height: auto;
+
+  transition: box-shadow 250ms;
+}
+.activityEntry:hover {
+  box-shadow: 0px 4px 5px black;
+}
+
+.list .cover {
+  border-radius: 10px;
+  overflow: hidden;
+
+  height: 265px;
+  width: auto;
+  object-fit: cover;
+
+  display: inline-block;
+  position: relative;
+}
+
+.list {
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+}
+
+.list:hover .details {
+  opacity: 1;
+}
+
+.details {
+  border-radius: 0 0 10px 10px;
+
+  /* NEW INTERFACE */
+  opacity: 0;
+  background-color: #001631a9;
+  box-shadow: 0px 4px 1px black;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  min-height: 70px;
+  padding: 14px 16px;
+
+  transition: opacity 250ms;
+}
+.details a {
+  padding: 0 1em 0 1em;
+}
+
+.title {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+
+  max-height: 58px;
+
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  font-size: larger;
+  margin: 0%;
+}
+
+.addBook {
+  display: block;
+  background-color: #673ab7;
+  color: white;
+  border-radius: 10px;
+  padding: 15px;
+
+  bottom: 0px;
+
+  position: relative;
+  transition: 0.2s;
+  z-index: 999;
+  font-weight: 700;
+  text-align: center;
+}

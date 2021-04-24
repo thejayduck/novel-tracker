@@ -1,10 +1,11 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
+import cardStyle from '../styles/BookCard.module.css'
 import NewBook from './newBook'
 import jikanjs from 'jikanjs'
 import { useState, useEffect } from 'react'
 
-const data = [...Array(1).keys()].map(n => ({
+const data = [...Array(66).keys()].map(n => ({
   title: "Pretty Boy Detective",
   coverUrl: "https://i.ibb.co/2dcp1RR/CQO6-Nvu-Uc-AAz-Q1-Y.jpg",
   chapter: 25,
@@ -12,36 +13,24 @@ const data = [...Array(1).keys()].map(n => ({
   status: "Reading", //Reading, Paused, Dropped, Planning
 }))
 
-jikanjs.search("manga", "gamer").then(({ results }) => {
-  results.forEach(ln => {
-    data.push({
-      title: ln.title,
-      coverUrl: ln.image_url,
-      chapter: 0,
-      volume: 0,
-      status: "Reading",
-    });
-  });
-});
-
 function NovelCard({ entry }) {
   return (
-    <div className={styles.activityEntry}>
-      <div className={styles.wrap}>
-        <div className={styles.list}>
-          <p title={entry.title} className={styles.title}>{entry.title}</p>
-          <img className={styles.cover} src={entry.coverUrl} />
-          <div className={styles.details}>
+    <div className={cardStyle.activityEntry}>
+      <div className={cardStyle.wrap}>
+        <div className={cardStyle.list}>
+          <p title={entry.title} className={cardStyle.title}>{entry.title}</p>
+          <img className={cardStyle.cover} src={entry.coverUrl} />
+          <div className={cardStyle.details}>
             <div>
-              <span className={styles.status}>Current Chapter: {entry.chapter}</span>
+              <span className={cardStyle.status}>Current Chapter: {entry.chapter}</span>
               <hr />
               {/* <span className={styles.status}>Current Volume: {entry.volume}</span>
               <hr/>
               <span className={styles.status}>Status: {entry.status}</span>
               <hr/> */}
-              <a title="Increase Progress" className={`${styles.icon} fas fa-plus ${styles.faPlus}`}></a>
-              <a title="Decrease Progress" className={`${styles.icon} fas fa-minus ${styles.faMinus}`}></a>
-              <a title="Info" className={`${styles.icon} fas fa-info ${styles.faInfo}`}></a>
+              <a title="Increase Progress" className="fas fa-plus"></a>
+              <a title="Decrease Progress" className="fas fa-minus"></a>
+              <a title="Info" className="fas fa-info"></a>
             </div>
           </div>
         </div>
@@ -64,6 +53,7 @@ function usePersistedState(key, defaultValue) {
 
 export default function Home() {
   const [darkmode, setDarkmode] = usePersistedState("darkmode", true);
+  const [overlay, setOverlay] = useState(false);
 
   return (
     <div className={`${styles.container} ${darkmode ? styles.dark : styles.light}`}>
@@ -91,16 +81,18 @@ export default function Home() {
           </div>
         </div>
       </main>
-      <a title="Add New Book" className={`${styles.newBook} fas fa-plus ${styles.faPlus}`} href="/" />
-      <footer className={styles.footer}>
-        <button onClick={() => setDarkmode(!darkmode)}>Dark</button>
+      <footer className={`${styles.footer} ${darkmode ? styles.dark : styles.light}`}>
+        <button onClick={() => setDarkmode(!darkmode)}>Theme</button>
         <p>Finished Books: x</p>
         <br />
-        <p>Total Pages Read: x</p>
+        <p>Chapters Read: x</p>
         <br />
         <a title="Check Out My Github" href="https://github.com/thejayduck" className="fab fa-github" target="_blank" />
       </footer>
-      {/* <NewBook/> */}
+      {overlay && <NewBook/>}
+      <div className={styles.newBook} onClick={()=> setOverlay(!overlay)}>
+        <a title="Add New Book" className="fas fa-plus"/>
+      </div>
     </div>
   )
 }

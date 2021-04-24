@@ -1,3 +1,42 @@
+.searchContainer {
+  box-shadow: 0px 4px 5px black;
+
+  position: fixed;
+  top: 10px;
+  left: 5%;
+  width: 90%;
+  padding: 10px;
+  background-color: #9575cd;
+  border-radius: 10px;
+  z-index: 999;
+}
+
+.searchBar input {
+  width: 90%;
+
+  background: 0 0;
+  border: none;
+  outline: 0;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-left: 0;
+  padding: 8px 10px;
+  position: relative;
+  text-transform: capitalize;
+}
+.searchBar input::placeholder {
+  color: #ffffff;
+  opacity: 0.75;
+}
+.searchBar .faSearch {
+  font-size: larger;
+  color: #ffffff;
+  opacity: 0.75;
+  padding: 0 5px 0 5px;
+}
+
 .main {
   position: fixed;
   width: 100%;
@@ -13,13 +52,45 @@
 .container {
   border-radius: 10px;
 
-  background-color: #0070f3;
-  width: 50%;
-  height: 75%;
+  background-color: #673ab7;
+  width: 85%;
+  height: 85%;
   position: absolute;
   top: 50%;
   left: 50%;
   color: white;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
+
+  overflow-y: scroll;
+}
+
+.searchResultContainer {
+  /* overflow-y: auto; */
+  /* max-height: 650px; */
+  width: 100%;
+  padding: 10px;
+  margin-top: 100px;
+}
+
+.searchResultFeed {
+  color: white;
+  display: flex;
+  flex-flow: row wrap;
+  align-content: space-between;
+  justify-content: center;
+  gap: 1em;
+}
+
+@media screen and (max-width: 720px) {
+  .searchBar .faSearch {
+    visibility: hidden;
+  }
+  .searchResultContainer {
+    height: 100%;
+    width: 100%;
+  }
+  .searchResultFeed {
+    justify-content: center;
+  }
 }
