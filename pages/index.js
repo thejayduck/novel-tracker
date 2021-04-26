@@ -62,12 +62,12 @@ function usePersistedState(key, defaultValue) {
 export default function Home() {
   const [darkmode, setDarkmode] = usePersistedState("darkmode", true);
   const [overlay, setOverlay] = useState(false);
-  const [data, setData] = useState([...Array(1).keys()].map(n => ({
+  const [data, setData] = useState([...Array(0).keys()].map(n => ({
     title: "Pretty Boy Detective",
     coverUrl: "https://i.ibb.co/2dcp1RR/CQO6-Nvu-Uc-AAz-Q1-Y.jpg",
     chapter: 25,
     volume: 1,
-    status: "Reading", //Reading, Paused, Dropped, Planning
+    status: "Reading", //Reading, Paused, Finished, Dropped(?), Planning(?)
   })));
   const updateElementInData = (index, updateElementCallback) => {
     let new_data = [...data];
@@ -150,7 +150,7 @@ export default function Home() {
         />
       </footer>
       {overlay && (
-        <NewBook onAddClicked={(entry) => setData([...data, entry])} />
+        <NewBook onAddClicked={(entry) => setData([...data, entry])}/>
       )}
       <div className={styles.newBook} onClick={() => setOverlay(!overlay)}>
         <a title="Add New Book" className="fas fa-plus" />

@@ -40,9 +40,9 @@
   /* NEW INTERFACE */
   opacity: 0;
   background-color: #151515c2;
-  box-shadow: 0px 4px 1px black;
+  /* box-shadow: 0px 4px 1px black; */
   position: absolute;
-  bottom: 8px;
+  bottom: 0px;
   width: 100%;
 
   display: flex;
@@ -52,7 +52,7 @@
   min-height: 70px;
   padding: 14px 16px;
 
-  transition: opacity 250ms;
+  transition: 0.2s;
 }
 .details a {
   padding: 0 1em 0 1em;
@@ -74,7 +74,7 @@
 
 .addBook {
   display: block;
-  background-color: #673ab7;
+  background-color: #bc6ff1;
   color: white;
   border-radius: 10px;
   padding: 15px;
