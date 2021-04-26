@@ -4,15 +4,6 @@ import jikanjs from 'jikanjs'
 import { useState, useEffect } from 'react'
 import { CardListWrapper } from './index'
 
-/*const data = [...Array(0).keys()].map(n => ({
-  title: "Pretty Boy Detective",
-  coverUrl: "https://i.ibb.co/2dcp1RR/CQO6-Nvu-Uc-AAz-Q1-Y.jpg",
-  chapter: 25,
-  volume: 1,
-  status: "Reading", //Reading, Paused, Dropped, Planning
-}))*/
-
-
 // jikanjs.search("manga", "get").then(({ results }) => {
 //   results.forEach(ln => {
 //     data.push({

@@ -6,7 +6,7 @@
   left: 5%;
   width: 90%;
   padding: 10px;
-  background-color: #9575cd;
+  background-color: #892cdc;
   border-radius: 10px;
   z-index: 999;
 }
@@ -52,7 +52,7 @@
 .container {
   border-radius: 10px;
 
-  background-color: #673ab7;
+  background-color: #151515;
   width: 85%;
   height: 85%;
   position: absolute;
@@ -63,7 +63,7 @@
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
 
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 @media screen and (max-width: 720px) {

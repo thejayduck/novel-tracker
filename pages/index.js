@@ -2,7 +2,6 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import cardStyle from '../styles/BookCard.module.css'
 import NewBook from './newBook'
-import jikanjs from 'jikanjs'
 import { useState, useEffect } from 'react'
 
 export function CardListWrapper({ data, children }) {
@@ -133,13 +132,10 @@ export default function Home() {
       <footer
         className={`${styles.footer} ${darkmode ? styles.dark : styles.light}`}
       >
-        <button className="fas fa-moon" onClick={() => setDarkmode(!darkmode)}>
-          Theme
-        </button>
+        <button className={`fas fa-moon ${styles.themeToggle}`} onClick={() => setDarkmode(!darkmode)}/>
         <p>Finished Books: x</p>
         <br />
         <p>Chapters Read: x</p>
-        <br />
         <a
           title="Check Out TheJayDuck's Github"
           href="https://github.com/thejayduck"

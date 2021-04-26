@@ -1,5 +1,5 @@
 .activityEntry {
-  background-color: #9575cd;
+  background-color: #892cdc;
   border-radius: 10px;
   padding: 5px;
   /* min-width: 250px; */
@@ -39,7 +39,7 @@
 
   /* NEW INTERFACE */
   opacity: 0;
-  background-color: #001631a9;
+  background-color: #151515c2;
   box-shadow: 0px 4px 1px black;
   position: absolute;
   bottom: 8px;
