@@ -1,0 +1,132 @@
+.main {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.container {
+  border-radius: 10px;
+
+  background-color: #151515;
+  width: 40%;
+  height: auto;
+  padding: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: white;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+
+  overflow-y: auto;
+}
+
+.container .cover {
+  display: flex;
+  margin: 18px;
+  flex-flow: row wrap;
+  align-content: space-between;
+  justify-content: center;
+  gap: 1em;
+}
+
+.container .cover img {
+  border-radius: 10px;
+  overflow: hidden;
+
+  /* margin: 20px; */
+  /* bottom: 100px; */
+  height: 265px;
+  width: auto;
+  object-fit: cover;
+
+  position: relative;
+}
+
+.textContainer {
+  padding: 20px;
+  width: 60%;
+  height: 265px;
+  float: left;
+}
+
+.title {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+
+  max-height: 58px;
+
+  /* padding: 10px; */
+  text-align: center;
+  font-weight: bold;
+  font-size: larger;
+  margin: 0%;
+  display: block;
+}
+
+.synopsis {
+  text-align: center;
+  font-weight: normal;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-height: 200px;
+}
+
+.status {
+  text-align: center;
+  display: flex;
+  flex-flow: row wrap;
+  gap: 1em;
+  justify-content: center;
+}
+
+.status .statusTitle {
+  font-weight: bolder;
+  font-size: 20px;
+}
+
+.status input {
+  border: none;
+  background-color: #892cdc;
+  color: white;
+  border-radius: 10px;
+  padding: 15px;
+
+  font-size: 15px;
+  font-weight: bold;
+  bottom: 0px;
+
+  position: relative;
+  transition: 0.2s;
+  z-index: 999;
+  text-align: center;
+}
+
+@media screen and (max-width: 720px) {
+  .container {
+    width: 95%;
+  }
+  /* .container .cover {
+    flex-flow: column wrap;
+    gap: 1em;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+  }
+  .container .cover img {
+    object-fit: contain;
+  } */
+  .title {
+    font-size: 30px;
+  }
+  .synopsis {
+    font-size: 25px;
+  }
+}

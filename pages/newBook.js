@@ -79,7 +79,7 @@ export default function NewBook({ onAddClicked }) {
                 title: ln.title,
                 coverUrl: ln.image_url,
                 type: ln.type,
-                chapter: 1,
+                chapter: 0,
                 volume: 0,
                 status: "Reading",
               }))

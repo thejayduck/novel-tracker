@@ -2,6 +2,7 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import cardStyle from '../styles/BookCard.module.css'
 import NewBook from './newBook'
+import BookInfo from './bookInfo'
 import { useState, useEffect } from 'react'
 
 export function CardListWrapper({ data, children }) {
@@ -65,7 +66,7 @@ export default function Home() {
   const [data, setData] = useState([...Array(0).keys()].map(n => ({
     title: "Pretty Boy Detective",
     coverUrl: "https://i.ibb.co/2dcp1RR/CQO6-Nvu-Uc-AAz-Q1-Y.jpg",
-    chapter: 25,
+    chapter: 0,
     volume: 1,
     status: "Reading", //Reading, Paused, Finished, Dropped(?), Planning(?)
   })));
@@ -155,6 +156,7 @@ export default function Home() {
       <div className={styles.newBook} onClick={() => setOverlay(!overlay)}>
         <a title="Add New Book" className="fas fa-plus" />
       </div>
+      {/* <BookInfo/> */}
     </div>
   );
 }
