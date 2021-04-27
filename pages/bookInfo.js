@@ -11,7 +11,7 @@ export default function BookInfo() {
             <img src="https://i.ibb.co/2dcp1RR/CQO6-Nvu-Uc-AAz-Q1-Y.jpg"/>
             <div className={styles.textContainer}>
               <p className={styles.title}> Bishounen Series </p>
-              <p className={styles.synopsis}>Mayumi Dojima, a second-year student at the exclusive Yubiwa Academy middle school, has lost something—a star she glimpsed just once, ten long years ago. But help is on the way, in the form of the uno</p>
+              <p className={styles.synopsis}>Mayumi Doujima, a second-year student at the exclusive Yubiwa Academy middle school, has lost something—a star she glimpsed just once, ten long years ago. But help is on the way, in the form of the un...</p>
             </div>
           </div>
           <div className={styles.status}>

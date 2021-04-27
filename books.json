@@ -1,8 +1,14 @@
 {
-	"Pretty Boy Detective": {
-		"malId": 122943,
-		"chapter": 1,
-		"volume": 5,
-		"status": "Dropped"
-	}
+	"Books": [
+		{
+			"Pretty Boy Detective": {
+				"malId": 122943,
+				"title": "Pretty Boy Detective",
+				"Synopsis": "Synopsis",
+				"chapter": 0,
+				"volume": 0,
+				"status": "Reading"
+			}
+		}
+	]
 }

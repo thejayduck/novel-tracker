@@ -18,6 +18,7 @@ import { CardListWrapper } from './index'
 //   });
 // });
 function NovelCard({ entry, onAddClicked }) {
+
   return (
     <>
       <div className={cardStyle.wrap}>
@@ -35,7 +36,10 @@ function NovelCard({ entry, onAddClicked }) {
         title="Add Book to Library"
         className={cardStyle.addBook}
         href="#"
-        onClick={() => onAddClicked(entry)}
+        onClick={() => {
+          onAddClicked(entry)
+          console.log(`Added Book ${entry.title}`)
+        }}
       >
         Add Book
       </a>

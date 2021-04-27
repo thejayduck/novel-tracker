@@ -72,8 +72,6 @@
 }
 
 .synopsis {
-  text-align: center;
-  font-weight: normal;
   text-overflow: ellipsis;
   overflow: hidden;
   max-height: 200px;

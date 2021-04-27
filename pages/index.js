@@ -63,13 +63,17 @@ function usePersistedState(key, defaultValue) {
 export default function Home() {
   const [darkmode, setDarkmode] = usePersistedState("darkmode", true);
   const [overlay, setOverlay] = useState(false);
-  const [data, setData] = useState([...Array(0).keys()].map(n => ({
-    title: "Pretty Boy Detective",
-    coverUrl: "https://i.ibb.co/2dcp1RR/CQO6-Nvu-Uc-AAz-Q1-Y.jpg",
-    chapter: 0,
-    volume: 1,
-    status: "Reading", //Reading, Paused, Finished, Dropped(?), Planning(?)
-  })));
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const localData = localStorage.getItem('books');
+    setData(localData ? JSON.parse(localData) : []);
+  }, [])
+
+  useEffect(()=> {
+    localStorage.setItem('books', JSON.stringify(data))
+  }, [data])
+
   const updateElementInData = (index, updateElementCallback) => {
     let new_data = [...data];
     updateElementCallback(new_data[index]);
@@ -134,9 +138,9 @@ export default function Home() {
         className={`${styles.footer} ${darkmode ? styles.dark : styles.light}`}
       >
         <button className={`fas fa-moon ${styles.themeToggle}`} onClick={() => setDarkmode(!darkmode)}/>
-        <p>Finished Books: x</p>
+        <p>Finished Volumes: {data.reduce((acc, val) => acc+val.volume, 0)}</p>
         <br />
-        <p>Chapters Read: x</p>
+        <p>Chapters Read: {data.reduce((acc, val) => acc+val.chapter, 0)}</p>
         <a
           title="Check Out TheJayDuck's Github"
           href="https://github.com/thejayduck"
@@ -151,7 +155,10 @@ export default function Home() {
         />
       </footer>
       {overlay && (
-        <NewBook onAddClicked={(entry) => setData([...data, entry])}/>
+        <NewBook onAddClicked={(entry) => { 
+          if(!data.includes(entry))
+            setData([...data, entry])} 
+        }/>
       )}
       <div className={styles.newBook} onClick={() => setOverlay(!overlay)}>
         <a title="Add New Book" className="fas fa-plus" />
