@@ -4,6 +4,7 @@ import cardStyle from '../styles/BookCard.module.css'
 import NewBook from './newBook'
 import BookInfo from './bookInfo'
 import { useState, useEffect } from 'react'
+import Fuse from 'fuse.js'
 
 export function CardListWrapper({ data, children }) {
   return (
@@ -65,11 +66,30 @@ export default function Home() {
   const [overlay, setOverlay] = useState(false);
   const [data, setData] = useState([]);
 
+
+//#region Fuse
+  const [query, setQuery] = useState('');
+
+  const fuse = new Fuse(data, {
+    keys: [
+      'title'
+    ],
+  });
+
+  const fuseResults = fuse.search(query);
+  const bookResults = query ? fuseResults.map(result => result.item) : data;
+
+  function onSearch({ currentTarget }) {
+    setQuery(currentTarget.value);
+  }
+//#endregion
+
   useEffect(() => {
     const localData = localStorage.getItem('books');
     setData(localData ? JSON.parse(localData) : []);
   }, [])
 
+  
   useEffect(()=> {
     localStorage.setItem('books', JSON.stringify(data))
   }, [data])
@@ -106,11 +126,13 @@ export default function Home() {
               placeholder="Search..."
               name="search"
               maxLength="50"
+              value={query} 
+              onChange={onSearch}         
             />
           </div>
         </div>
         <CardListWrapper data={data}>
-          {data.map((entry, index) => (
+          {bookResults.map((entry, index) => (
             <li key={entry.mal_id}>
               <div className={cardStyle.activityEntry}>
                   <NovelCard
