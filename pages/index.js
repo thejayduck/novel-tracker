@@ -14,7 +14,7 @@ export function CardListWrapper({ data, children }) {
   );
 }
 
-function NovelCard({ entry, onIncrement, onDecrement, onInfoClick }) {
+function NovelCard({ entry, onIncrement, onDecrement, onInfoClick, onDelete }) {
   return (
     <div className={cardStyle.wrap}>
         <div className={cardStyle.list}>
@@ -36,13 +36,19 @@ function NovelCard({ entry, onIncrement, onDecrement, onInfoClick }) {
                 onClick={onIncrement}
                 title="Increase Progress"
                 className="fas fa-plus"
-              ></a>
+              />
               <a
                 onClick={onDecrement}
                 title="Decrease Progress"
                 className="fas fa-minus"
-              ></a>
-              <a onClick={onInfoClick} title="Info" className="fas fa-info"></a>
+              />
+              <a onClick={onInfoClick} title="Info" className="fas fa-info"/>
+              <a
+                onClick={onDelete}
+                title="Delete Book"
+                style={{color:'#e33131'}}
+                className="fas fa-trash"
+              />
             </div>
           </div>
         </div>
@@ -65,14 +71,17 @@ export default function Home() {
   const [darkmode, setDarkmode] = usePersistedState("darkmode", true);
   const [overlay, setOverlay] = useState(false);
   const [data, setData] = useState([]);
-
+  const removeBook = (id) => {
+    setData(data.filter(target => target.mal_id !== id));
+  };
 
 //#region Fuse
   const [query, setQuery] = useState('');
 
   const fuse = new Fuse(data, {
     keys: [
-      'title'
+      'title',
+      'synopsis'
     ],
   });
 
@@ -84,15 +93,16 @@ export default function Home() {
   }
 //#endregion
 
+//#region Local Storage
   useEffect(() => {
     const localData = localStorage.getItem('books');
     setData(localData ? JSON.parse(localData) : []);
   }, [])
 
-  
   useEffect(()=> {
     localStorage.setItem('books', JSON.stringify(data))
   }, [data])
+//#endregion
 
   const updateElementInData = (index, updateElementCallback) => {
     let new_data = [...data];
@@ -150,6 +160,7 @@ export default function Home() {
                     onInfoClick={() => {
                       console.log("Info");
                     }}
+                    onDelete={()=> removeBook(entry.mal_id)}
                   />
               </div>
             </li>
@@ -160,8 +171,8 @@ export default function Home() {
         className={`${styles.footer} ${darkmode ? styles.dark : styles.light}`}
       >
         <button className={`fas fa-moon ${styles.themeToggle}`} onClick={() => setDarkmode(!darkmode)}/>
-        <p>Finished Volumes: {data.reduce((acc, val) => acc+val.volume, 0)}</p>
-        <br />
+        <p>Books: {data.length}</p>
+        <p>Volumes Read: {data.reduce((acc, val) => acc+val.volume, 0)}</p>
         <p>Chapters Read: {data.reduce((acc, val) => acc+val.chapter, 0)}</p>
         <a
           title="Check Out TheJayDuck's Github"
