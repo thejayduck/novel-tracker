@@ -205,7 +205,7 @@ export default function Home() {
         />
         <input id="importData" style={{display: 'none'}} type="file" accept=".json" onChange={({target}) => {importData(target.files[0]); target.value=null}}/>
         <p>Books: {data.length}</p>
-        <p>Volumes Read: {data.reduce((acc, val) => acc + val.volume, 0)}</p>
+        <p className={styles.volumeCount} >Volumes Read: {data.reduce((acc, val) => acc + val.volume, 0)}</p>
         <p>Chapters Read: {data.reduce((acc, val) => acc + val.chapter, 0)}</p>
         <a
           title="Check Out TheJayDuck's Github"

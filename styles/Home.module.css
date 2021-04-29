@@ -177,6 +177,16 @@
     position: relative;
     bottom: 0;
   }
+
+  .footer a {
+    display: none;
+  }
+  .footer p {
+    padding: 0 5px 0 5px;
+  }
+  .footer .volumeCount {
+    display: none;
+  }
 }
 
 .dark {
