@@ -5,6 +5,7 @@
   /* min-width: 250px; */
   width: 197.3px;
   height: auto;
+  margin: 10px;
 
   transition: box-shadow 250ms;
 }

@@ -50,8 +50,8 @@
   flex-flow: row wrap;
   align-content: space-between;
   justify-content: left;
-  row-gap: 1em;
-  column-gap: 1em;
+  /* gap: 1em; */
+  /* flex-wrap: wrap; */
 }
 
 .cardListFeed li {
