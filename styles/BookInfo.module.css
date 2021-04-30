@@ -51,22 +51,24 @@
 
 .textContainer {
   padding: 20px;
-  width: 60%;
-  height: 265px;
+  width: 80%;
+  height: auto;
+  max-height: 265px;
   float: left;
 }
 
 .title {
   text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
+  /* white-space: nowrap; */
+  /* overflow: hidden; */
+  overflow-wrap: break-word;
 
-  max-height: 58px;
+  max-height: 4em;
 
   /* padding: 10px; */
   text-align: center;
   font-weight: bold;
-  font-size: larger;
+  /* font-size: larger; */
   margin: 0%;
   display: block;
 }
@@ -87,7 +89,7 @@
 
 .status .statusTitle {
   font-weight: bolder;
-  font-size: 20px;
+  /* font-size: 20px; */
 }
 
 .status input {
@@ -97,7 +99,7 @@
   border-radius: 10px;
   padding: 15px;
 
-  font-size: 15px;
+  /* font-size: 15px; */
   font-weight: bold;
   bottom: 0px;
 
@@ -107,9 +109,34 @@
   text-align: center;
 }
 
+.exit {
+  box-shadow: 0px 4px 5px black;
+
+  display: block;
+  background-color: #892cdc;
+  color: white;
+  border-radius: 10px;
+  padding: 15px;
+  font-size: 20px;
+  top: 20px;
+  left: 20px;
+
+  position: fixed;
+  transition: 0.2s;
+  z-index: 999;
+}
+
+.exit:hover {
+  background-color: #673ab7;
+}
+
 @media screen and (max-width: 720px) {
   .container {
     width: 95%;
+  }
+  .textContainer {
+    padding: 0px;
+    width: 100%;
   }
   /* .container .cover {
     flex-flow: column wrap;
@@ -121,10 +148,4 @@
   .container .cover img {
     object-fit: contain;
   } */
-  .title {
-    font-size: 30px;
-  }
-  .synopsis {
-    font-size: 25px;
-  }
 }

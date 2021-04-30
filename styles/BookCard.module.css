@@ -57,6 +57,7 @@
   height: 34px;
   background-color: #892cdc;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 .title {

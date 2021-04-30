@@ -69,12 +69,16 @@ function usePersistedState(key, defaultValue) {
 
 export default function Home() {
   const [darkmode, setDarkmode] = usePersistedState("darkmode", false);
-  const [overlay, setOverlay] = useState(false);
+  const [newBookPanel, setNewBookPanel] = useState(false);
+  const [bookInfoPanel, setBookInfoPanel] = useState(false);
   const [data, setData] = useState([]);
+  const [selectedBookIndex, setSelectedBookIndex] = useState('');
+
   const removeBook = (id) => {
     setData(data.filter(target => target.mal_id !== id));
+    
   };
-
+  
   //#region Fuse
   const [query, setQuery] = useState('');
 
@@ -104,8 +108,6 @@ export default function Home() {
     document.body.removeChild(element);
   }
 
-  const [selectedFile, setSelectedFile] = useState(null); 
-
   const importData = (target) => {
     const reader = new FileReader();
     reader.addEventListener('load', ({target}) => {
@@ -131,8 +133,6 @@ export default function Home() {
     updateElementCallback(new_data[index]);
     setData(new_data);
   };
-
-
 
   return (
     <div
@@ -183,7 +183,8 @@ export default function Home() {
                     )
                   }
                   onInfoClick={() => {
-                    console.log("Info");
+                    setSelectedBookIndex(index);
+                    setBookInfoPanel(!bookInfoPanel);
                   }}
                   onDelete={() => removeBook(entry.mal_id)}
                 />
@@ -220,17 +221,32 @@ export default function Home() {
           target="_blank"
         />
       </footer>
-      {overlay && (
+      {newBookPanel && (
         <NewBook onAddClicked={(entry) => {
           if (!data.includes(entry))
             setData([...data, entry])
         }
         } />
       )}
-      <div className={styles.newBook} onClick={() => setOverlay(!overlay)}>
+      <div className={styles.newBook} onClick={() => setNewBookPanel(!newBookPanel)}>
         <a title="Add New Book" className="fas fa-plus" />
       </div>
-      {/* <BookInfo/> */}
+      
+      {bookInfoPanel && (<BookInfo 
+        book={data[selectedBookIndex]}
+        onChapterChange={
+          ({ target }) => {
+            updateElementInData(selectedBookIndex, (element) => element.chapter = Number.parseInt(target.value))
+          }
+        } 
+        onVolumeChange={
+          ({ target }) => {
+            updateElementInData(selectedBookIndex, (element) => element.volume = Number.parseInt(target.value))
+          }
+        }
+        onExit={() => setBookInfoPanel(!bookInfoPanel)}
+        />
+      )}
     </div>
   );
 }

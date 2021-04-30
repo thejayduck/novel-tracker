@@ -1,34 +1,48 @@
 import styles from '../styles/BookInfo.module.css'
-import jikanjs from 'jikanjs'
-import { useState, useEffect } from 'react'
 
-export default function BookInfo() {
+function cutWord(text){
+  if(text.length > 55)
+    return text.substring(0,55) + "...";
+  else
+    return text;
+}
+
+export default function BookInfo({ book, onChapterChange, onVolumeChange, onExit }) {
   return (
     <div>
       <div className={styles.main}>
         <div className={styles.container}>
           <div className={styles.cover}>
-            <img src="https://i.ibb.co/2dcp1RR/CQO6-Nvu-Uc-AAz-Q1-Y.jpg"/>
+            <img src={book.coverUrl}/>
             <div className={styles.textContainer}>
-              <p className={styles.title}> Bishounen Series </p>
-              <p className={styles.synopsis}>Mayumi Doujima, a second-year student at the exclusive Yubiwa Academy middle school, has lost something—a star she glimpsed just once, ten long years ago. But help is on the way, in the form of the un...</p>
+              <h1 title={book.title} className={styles.title}> {cutWord(book.title)} </h1>
+              <p className={styles.synopsis}>{book.synopsis}</p>
             </div>
           </div>
           <div className={styles.status}>
             <div>
-              <div className={styles.statusTitle}>Chapter</div>
+              <span className={styles.statusTitle}>Chapter</span>
+              <br/>
               <input
                 min="0"
                 type="number"
+                defaultValue={book.chapter}
+                onInput={onChapterChange}
               />
             </div>
             <div>
-              <div className={styles.statusTitle}>Volume</div>
+              <span className={styles.statusTitle}>Volume</span>
+              <br/>
               <input
                 min="0"
                 type="number"
+                defaultValue={book.volume}
+                onInput={onVolumeChange}
               />
             </div>
+          </div>
+          <div className={styles.exit} onClick={onExit}>
+            <a title="Exit" className="fas fa-times" />
           </div>
         </div>
       </div>
