@@ -33,12 +33,12 @@
   flex-flow: row wrap;
   align-content: space-between;
   justify-content: center;
-  gap: 1em;
 }
 
 .container .cover img {
   border-radius: 10px;
   overflow: hidden;
+  margin: 1em;
 
   /* margin: 20px; */
   /* bottom: 100px; */
