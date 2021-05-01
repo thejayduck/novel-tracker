@@ -50,8 +50,8 @@
 }
 
 .textContainer {
-  padding: 20px;
-  width: 80%;
+  padding: 0px;
+  width: 100%;
   height: auto;
   max-height: 265px;
   float: left;
@@ -83,13 +83,17 @@
   text-align: center;
   display: flex;
   flex-flow: row wrap;
-  gap: 1em;
+  /* gap: 1em; */
   justify-content: center;
 }
 
 .status .statusTitle {
   font-weight: bolder;
   /* font-size: 20px; */
+}
+
+.status div {
+  margin: 10px;
 }
 
 .status input {
@@ -99,7 +103,7 @@
   border-radius: 10px;
   padding: 15px;
 
-  /* font-size: 15px; */
+  font-size: 15px;
   font-weight: bold;
   bottom: 0px;
 
@@ -109,8 +113,13 @@
   text-align: center;
 }
 
-.exit {
+.closeInfo {
   box-shadow: 0px 4px 5px black;
+
+  text-align: center;
+
+  width: 52px;
+  height: 52px;
 
   display: block;
   background-color: #892cdc;
@@ -126,7 +135,7 @@
   z-index: 999;
 }
 
-.exit:hover {
+.closeInfo:hover {
   background-color: #673ab7;
 }
 
@@ -134,10 +143,10 @@
   .container {
     width: 95%;
   }
-  .textContainer {
+  /* .textContainer {
     padding: 0px;
     width: 100%;
-  }
+  } */
   /* .container .cover {
     flex-flow: column wrap;
     gap: 1em;

@@ -57,14 +57,16 @@ function NovelCard({ entry, onIncrement, onDecrement, onInfoClick, onDelete }) {
 }
 
 function usePersistedState(key, defaultValue) {
-  /*const [state, setState] = useState(
-    () => JSON.parse(localStorage.getItem(key)) || defaultValue
-  );
-  useEffect(() => {
-    localStorage.setItem(key, JSON.stringify(state));
-  }, [key, state]);*/
+
+  // const [state, setState] = useState(
+  //   (JSON.parse(localStorage.getItem(key)) || defaultValue)
+  // );
+  // useEffect(() => {
+  //   localStorage.setItem(key, JSON.stringify(state));
+  // }, [key, state]);
+
   const [state, setState] = useState(defaultValue);
-  return [state, setState];
+  return ([state, setState]);
 }
 
 export default function Home() {

@@ -25,7 +25,7 @@ export default function BookInfo({ book = data, onChapterChange, onVolumeChange,
             <img src={book.coverUrl}/>
             <div className={styles.textContainer}>
               <h1 title={book.title} className={styles.title}> {cutWord(book.title)} </h1>
-              <p className={styles.synopsis}>{book.synopsis}</p>
+              <h3 className={styles.synopsis}>{book.synopsis}</h3>
             </div>
           </div>
           <div className={styles.status}>
@@ -50,7 +50,7 @@ export default function BookInfo({ book = data, onChapterChange, onVolumeChange,
               />
             </div>
           </div>
-          <div className={styles.exit} onClick={onExit}>
+          <div className={styles.closeInfo} onClick={onExit}>
             <a title="Exit" className="fas fa-times" />
           </div>
         </div>
