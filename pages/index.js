@@ -70,9 +70,9 @@ function usePersistedState(key, defaultValue) {
 export default function Home() {
   const [darkmode, setDarkmode] = usePersistedState("darkmode", false);
   const [newBookPanel, setNewBookPanel] = useState(false);
-  const [bookInfoPanel, setBookInfoPanel] = useState(false);
   const [data, setData] = useState([]);
-  const [selectedBookIndex, setSelectedBookIndex] = useState('');
+  const [bookInfoPanel, setBookInfoPanel] = useState(false);
+  const [selectedBookIndex, setSelectedBookIndex] = useState(0);
 
   const removeBook = (id) => {
     setData(data.filter(target => target.mal_id !== id));
@@ -232,7 +232,8 @@ export default function Home() {
         <a title="Add New Book" className="fas fa-plus" />
       </div>
       
-      {bookInfoPanel && (<BookInfo 
+      {bookInfoPanel && (
+      <BookInfo 
         book={data[selectedBookIndex]}
         onChapterChange={
           ({ target }) => {

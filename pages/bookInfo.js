@@ -7,7 +7,16 @@ function cutWord(text){
     return text;
 }
 
-export default function BookInfo({ book, onChapterChange, onVolumeChange, onExit }) {
+const data = ({
+  title: "title",
+  synopsis: "synopsis",
+  coverUrl: "",
+  chapter: 0,
+  volume: 0,
+  status: "None",
+});
+
+export default function BookInfo({ book = data, onChapterChange, onVolumeChange, onExit }) {
   return (
     <div>
       <div className={styles.main}>
