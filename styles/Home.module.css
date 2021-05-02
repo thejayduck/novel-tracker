@@ -44,12 +44,13 @@
 }
 
 .cardListFeed {
+  padding: 0;
   color: white;
   display: flex;
   margin: 18px;
   flex-flow: row wrap;
   align-content: space-between;
-  justify-content: left;
+  justify-content: center;
   /* gap: 1em; */
   /* flex-wrap: wrap; */
 }
@@ -177,7 +178,6 @@
   }
   .cardListFeed {
     justify-content: center;
-    margin-left: -20px;
   }
   .footer {
     position: relative;
