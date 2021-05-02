@@ -25,7 +25,8 @@ export default function BookInfo({ book = data, onChapterChange, onVolumeChange,
             <img src={book.coverUrl}/>
             <div className={styles.textContainer}>
               <h1 title={book.title} className={styles.title}> {cutWord(book.title)} </h1>
-              <h3 className={styles.synopsis}>{book.synopsis}</h3>
+              <h2>Synopsis</h2>
+              <p className={styles.synopsis}>{book.synopsis}</p>
             </div>
           </div>
           <div className={styles.status}>

@@ -125,10 +125,12 @@
   background-color: #892cdc;
   color: white;
   border-radius: 10px;
-  padding: 15px;
   font-size: 20px;
   top: 20px;
   left: 20px;
+
+  padding: 15px;
+  line-height: 26px;
 
   position: fixed;
   transition: 0.2s;
