@@ -51,13 +51,16 @@
   transition: 0.2s;
 }
 .details a {
-  padding: 10px;
+  /* padding: 10px; */
   margin: 5px;
   width: 34px;
   height: 34px;
   background-color: #892cdc;
   border-radius: 10px;
   cursor: pointer;
+
+  padding: 10px;
+  line-height: 20px;
 }
 
 .title {
@@ -92,7 +95,7 @@
 
 @media screen and (max-width: 720px) {
   .activityEntry {
-    width: 300px;
+    width: 20em;
   }
   .details a {
     width: 40px;
