@@ -159,8 +159,9 @@ export default function Home() {
           ))}
         </CardListWrapper>
       </main>
-      <Footer 
+      <Footer
         data={data}
+        darkmode={darkmode}
         onDarkModeClick={() => setDarkmode(!darkmode)}
         onExportDataClick={exportData}
         onImportDataClick={() => {

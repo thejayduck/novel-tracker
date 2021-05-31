@@ -1,10 +1,9 @@
 import styles from '../styles/Home.module.css'
 
-export default function Footer({ data, onDarkModeClick, onExportDataClick, onImportDataClick }){
+export default function Footer({ data, darkmode, onDarkModeClick, onExportDataClick, onImportDataClick }){
     return(
         <footer
-        // className={`${styles.footer} ${darkmode ? styles.dark : styles.light}`}
-        className={`${styles.footer} ${styles.light}`}
+        className={`${styles.footer} ${darkmode ? styles.dark : styles.light}`}
         >
             <div>
                 <button title="Toggle Theme" className={`fas fa-moon ${styles.themeToggle}`} onClick={onDarkModeClick} />
