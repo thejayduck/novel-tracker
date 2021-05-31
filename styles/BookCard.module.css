@@ -91,9 +91,9 @@
 }
 
 @media screen and (max-width: 720px) {
-  .activityEntry {
+  /* .activityEntry {
     width: 20em;
-  }
+  } */
   .details a {
     padding: 0.625em;
     line-height: 1.25em;

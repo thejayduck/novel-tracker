@@ -1,57 +1,17 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import cardStyle from '../styles/BookCard.module.css'
-import NewBook from './newBook'
-import BookInfo from './bookInfo'
 import { useState, useEffect } from 'react'
 import Fuse from 'fuse.js'
+import BookCard from '../components/bookCard'
+import Footer from '../components/footer'
+import NewBook from './newBook'
+import BookInfo from './bookInfo'
 
 export function CardListWrapper({ data, children }) {
   return (
     <div className={styles.cardListContainer}>
       <ul className={styles.cardListFeed}>{children}</ul>
-    </div>
-  );
-}
-
-function NovelCard({ entry, onIncrement, onDecrement, onInfoClick, onDelete }) {
-  return (
-    <div className={cardStyle.wrap}>
-      <div className={cardStyle.list}>
-        <p title={entry.title} className={cardStyle.title}>
-          {entry.title}
-        </p>
-        <img className={cardStyle.cover} src={entry.coverUrl} />
-        <div className={cardStyle.details}>
-          <div>
-            <span className={cardStyle.status}>
-              Current Chapter: {entry.chapter}
-            </span>
-            <hr />
-            {/* <span className={styles.status}>Current Volume: {entry.volume}</span>
-              <hr/>
-              <span className={styles.status}>Status: {entry.status}</span>
-              <hr/> */}
-            <a
-              onClick={onIncrement}
-              title="Increase Progress"
-              className="fas fa-plus"
-            />
-            <a
-              onClick={onDecrement}
-              title="Decrease Progress"
-              className="fas fa-minus"
-            />
-            <a onClick={onInfoClick} title="Info" className="fas fa-info" />
-            <a
-              onClick={onDelete}
-              title="Delete Book"
-              style={{ color: '#e33131' }}
-              className="fas fa-trash-alt"
-            />
-          </div>
-        </div>
-      </div>
     </div>
   );
 }
@@ -70,6 +30,8 @@ function usePersistedState(key, defaultValue) {
 }
 
 export default function Home() {
+
+  //#region  CONST
   const [darkmode, setDarkmode] = usePersistedState("darkmode", false);
   const [newBookPanel, setNewBookPanel] = useState(false);
   const [data, setData] = useState([]);
@@ -136,6 +98,8 @@ export default function Home() {
     setData(new_data);
   };
 
+  //#endregion
+
   return (
     <div
       className={`${styles.container} ${darkmode ? styles.dark : styles.light}`}
@@ -172,7 +136,7 @@ export default function Home() {
           {bookResults.map((entry, index) => (
             <li key={entry.mal_id}>
               <div className={cardStyle.activityEntry}>
-                <NovelCard
+                <BookCard
                   entry={entry}
                   onIncrement={() =>
                     updateElementInData(index, (element) => element.chapter++)
@@ -195,39 +159,16 @@ export default function Home() {
           ))}
         </CardListWrapper>
       </main>
-      <footer
-        className={`${styles.footer} ${darkmode ? styles.dark : styles.light}`}
-      >
-        <div>
-          <button title="Toggle Theme" className={`fas fa-moon ${styles.themeToggle}`} onClick={() => setDarkmode(!darkmode)} />
-          <button title="Export Data" className={`fas fa-download ${styles.themeToggle}`} onClick={exportData} />
-          <button title="Import Data" className={`fas fa-upload ${styles.themeToggle}`} 
-            onClick={() => {
-              var element = document.getElementById('importData');
-              element.click();
-            }} 
-          />
-        </div>
-        <input id="importData" style={{display: 'none'}} type="file" accept=".json" onChange={({target}) => {importData(target.files[0]); target.value=null}}/>
-        <p>Books: {data.length}</p>
-        <div>
-          <p className={styles.volumeCount} >Volumes Read: {data.reduce((acc, val) => acc + val.volume, 0)}</p>
-          <p>Chapters Read: {data.reduce((acc, val) => acc + val.chapter, 0)}</p>
-        </div>
-
-        <a
-          title="Check Out TheJayDuck's Github"
-          href="https://github.com/thejayduck"
-          className="fab fa-github"
-          target="_blank"
-        />
-        <a
-          title="Check Out nobbele's Github"
-          href="https://github.com/nobbele"
-          className="fab fa-github"
-          target="_blank"
-        />
-      </footer>
+      <Footer 
+        data={data}
+        onDarkModeClick={() => setDarkmode(!darkmode)}
+        onExportDataClick={exportData}
+        onImportDataClick={() => {
+          var element = document.getElementById('importData');
+          element.click();
+        }}
+      />
+      <input id="importData" style={{display: 'none'}} type="file" accept=".json" onChange={({target}) => {importData(target.files[0]); target.value=null}}/>
       {newBookPanel && (
         <NewBook onAddClicked={(entry) => {
           if (!data.includes(entry))

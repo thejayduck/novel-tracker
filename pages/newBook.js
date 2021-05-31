@@ -1,5 +1,6 @@
 import styles from '../styles/NewBook.module.css'
 import cardStyle from '../styles/BookCard.module.css'
+import ResultCard from '../components/resultCard'
 import jikanjs from 'jikanjs'
 import { useState, useEffect } from 'react'
 import { CardListWrapper } from './index'
@@ -17,35 +18,6 @@ import { CardListWrapper } from './index'
 //     });
 //   });
 // });
-function NovelCard({ entry, onAddClicked }) {
-
-  return (
-    <>
-      <div className={cardStyle.wrap}>
-        <div className={cardStyle.list}>
-          <p
-            title={`${entry.title} | ${entry.type}`}
-            className={cardStyle.title}
-          >
-            {entry.title}
-          </p>
-          <img className={cardStyle.cover} src={entry.coverUrl} />
-        </div>
-      </div>
-      <a
-        title="Add Book to Library"
-        className={cardStyle.addBook}
-        href="#"
-        onClick={() => {
-          onAddClicked(entry)
-          console.log(`Added Book ${entry.title}`)
-        }}
-      >
-        Add Book
-      </a>
-    </>
-  );
-}
 
 function SearchBar({ onSearchQueryChange }) {
   return (
@@ -106,7 +78,7 @@ export default function NewBook({ onAddClicked }) {
             {searchResults.map((entry) => (
               <li key={entry.mal_id}>
                 <div className={cardStyle.activityEntry}>
-                  <NovelCard entry={entry} onAddClicked={onAddClicked} />
+                  <ResultCard entry={entry} onAddClicked={onAddClicked} />
                 </div>
               </li>
             ))}
