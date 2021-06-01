@@ -1,10 +1,12 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import cardStyle from '../styles/BookCard.module.css'
+
 import { useState, useEffect } from 'react'
 import Fuse from 'fuse.js'
 import BookCard from '../components/bookCard'
 import Footer from '../components/footer'
+import SearchBar from '../components/searchBar'
 import NewBook from './newBook'
 import BookInfo from './bookInfo'
 
@@ -40,9 +42,9 @@ export default function Home() {
 
   const removeBook = (id) => {
     setData(data.filter(target => target.mal_id !== id));
-    
+
   };
-  
+
   //#region Fuse
   const [query, setQuery] = useState('');
 
@@ -74,7 +76,7 @@ export default function Home() {
 
   const importData = (target) => {
     const reader = new FileReader();
-    reader.addEventListener('load', ({target}) => {
+    reader.addEventListener('load', ({ target }) => {
       console.log(target.result);
       setData(JSON.parse(atob(target.result.replace("data:application/json;base64,", ""))));
       document.getElementById
@@ -105,7 +107,7 @@ export default function Home() {
       className={`${styles.container} ${darkmode ? styles.dark : styles.light}`}
     >
       <Head>
-        <title>Book Library</title>
+        <title>Light Novel Tracker</title>
         <link rel="icon" href="/favicon.ico" />
         <link
           rel="stylesheet"
@@ -119,19 +121,8 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <div className={styles.searchContainer}>
-          <div className={styles.searchBar}>
-            <i className={`${styles.icon} fas fa-search ${styles.faSearch}`} />
-            <input
-              type="text"
-              placeholder="Search..."
-              name="search"
-              maxLength="50"
-              value={query}
-              onChange={onSearch}
-            />
-          </div>
-        </div>
+        {/* Old SearchBar Location */}
+        <SearchBar onInput={onSearch} query={query} />
         <CardListWrapper data={data}>
           {bookResults.map((entry, index) => (
             <li key={entry.mal_id}>
@@ -169,7 +160,7 @@ export default function Home() {
           element.click();
         }}
       />
-      <input id="importData" style={{display: 'none'}} type="file" accept=".json" onChange={({target}) => {importData(target.files[0]); target.value=null}}/>
+      <input id="importData" style={{ display: 'none' }} type="file" accept=".json" onChange={({ target }) => { importData(target.files[0]); target.value = null }} />
       {newBookPanel && (
         <NewBook onAddClicked={(entry) => {
           if (!data.includes(entry))
@@ -180,21 +171,21 @@ export default function Home() {
       <div className={styles.newBook} onClick={() => setNewBookPanel(!newBookPanel)}>
         <a title="Add New Book" className="fas fa-plus" />
       </div>
-      
+
       {bookInfoPanel && (
-      <BookInfo 
-        book={data[selectedBookIndex]}
-        onChapterChange={
-          ({ target }) => {
-            updateElementInData(selectedBookIndex, (element) => element.chapter = Number.parseInt(target.value))
+        <BookInfo
+          book={data[selectedBookIndex]}
+          onChapterChange={
+            ({ target }) => {
+              updateElementInData(selectedBookIndex, (element) => element.chapter = Number.parseInt(target.value))
+            }
           }
-        } 
-        onVolumeChange={
-          ({ target }) => {
-            updateElementInData(selectedBookIndex, (element) => element.volume = Number.parseInt(target.value))
+          onVolumeChange={
+            ({ target }) => {
+              updateElementInData(selectedBookIndex, (element) => element.volume = Number.parseInt(target.value))
+            }
           }
-        }
-        onExit={() => setBookInfoPanel(!bookInfoPanel)}
+          onExit={() => setBookInfoPanel(!bookInfoPanel)}
         />
       )}
     </div>

@@ -1,9 +1,9 @@
 import styles from '../styles/Home.module.css'
 
-export default function Footer({ data, darkmode, onDarkModeClick, onExportDataClick, onImportDataClick }){
-    return(
+export default function Footer({ data, darkmode, onDarkModeClick, onExportDataClick, onImportDataClick }) {
+    return (
         <footer
-        className={`${styles.footer} ${darkmode ? styles.dark : styles.light}`}
+            className={`${styles.footer} ${darkmode ? styles.dark : styles.light}`}
         >
             <div>
                 <button title="Toggle Theme" className={`fas fa-moon ${styles.themeToggle}`} onClick={onDarkModeClick} />
@@ -16,16 +16,16 @@ export default function Footer({ data, darkmode, onDarkModeClick, onExportDataCl
                 <p>Chapters Read: {data.reduce((acc, val) => acc + val.chapter, 0)}</p>
             </div>
             <a
-            title="Check Out TheJayDuck's Github"
-            href="https://github.com/thejayduck"
-            className="fab fa-github"
-            target="_blank"
+                title="Check Out TheJayDuck's Github"
+                href="https://github.com/thejayduck"
+                className="fab fa-github"
+                target="_blank"
             />
             <a
-            title="Check Out nobbele's Github"
-            href="https://github.com/nobbele"
-            className="fab fa-github"
-            target="_blank"
+                title="Check Out nobbele's Github"
+                href="https://github.com/nobbele"
+                className="fab fa-github"
+                target="_blank"
             />
         </footer>
     );
