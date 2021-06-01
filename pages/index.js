@@ -18,23 +18,23 @@ export function CardListWrapper({ data, children }) {
   );
 }
 
-function usePersistedState(key, defaultValue) {
+// function usePersistedState(key, defaultValue) {
 
-  // const [state, setState] = useState(
-  //   (JSON.parse(localStorage.getItem(key)) || defaultValue)
-  // );
-  // useEffect(() => {
-  //   localStorage.setItem(key, JSON.stringify(state));
-  // }, [key, state]);
+//   // const [state, setState] = useState(
+//   //   (JSON.parse(localStorage.getItem(key)) || defaultValue)
+//   // );
+//   // useEffect(() => {
+//   //   localStorage.setItem(key, JSON.stringify(state));
+//   // }, [key, state]);
 
-  const [state, setState] = useState(defaultValue);
-  return ([state, setState]);
-}
+//   const [state, setState] = useState(defaultValue);
+//   return ([state, setState]);
+// }
 
 export default function Home() {
 
   //#region  CONST
-  const [darkmode, setDarkmode] = usePersistedState("darkmode", false);
+  const [darkmode, setDarkmode] = useState(false);
   const [newBookPanel, setNewBookPanel] = useState(false);
   const [data, setData] = useState([]);
   const [bookInfoPanel, setBookInfoPanel] = useState(false);
@@ -93,6 +93,14 @@ export default function Home() {
     localStorage.setItem('books', JSON.stringify(data))
   }, [data])
   //#endregion
+
+  useEffect(() => {
+    const theme = localStorage.getItem('darkmode');
+    setDarkmode(theme ? JSON.parse(theme) : false);
+  }, [])
+  useEffect(() => {
+    localStorage.setItem('darkmode', JSON.stringify(darkmode));
+  }, [darkmode])
 
   const updateElementInData = (index, updateElementCallback) => {
     let new_data = [...data];
