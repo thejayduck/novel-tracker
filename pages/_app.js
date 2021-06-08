@@ -7,6 +7,7 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Light Novel Tracker" />
+        <meta property="og:description" content="Track your Light Novels Locally" />
         <meta property="og:image" content="/book.png" />
         <meta property="og:image:type" content="image/png" />
         <meta property="og:image:width" content="64" />
