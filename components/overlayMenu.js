@@ -8,12 +8,9 @@ export default function OverlayMenu({ children, className }) {
         },
         enabled: {
             opacity: 1,
-            transition: {
-                type: "spring",
-            }
         },
         disabled: {
-            opacity: 0
+            opacity: 0,
         }
     }
 
@@ -26,11 +23,14 @@ export default function OverlayMenu({ children, className }) {
                 animate="enabled"
                 exit="disabled"
             >
-                <div
+                <motion.div
                     className={className}
+                    initial={{ scale: 0.6 }}
+                    animate={{ scale: 1 }}
+                    exit={{ scale: 0.6 }}
                 >
                     {children}
-                </div>
+                </motion.div>
             </motion.div>
         </AnimateSharedLayout>
     );
