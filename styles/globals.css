@@ -1,5 +1,13 @@
 @import url(https://fonts.googleapis.com/css?family=Kumbh+Sans);
 
+:root {
+  --blue-violet: hsla(272, 72%, 52%, 1);
+  --plump-purple: hsla(262, 52%, 47%, 1);
+  --black: hsla(0, 0%, 0%, 1);
+  --magnolia: hsla(222, 100%, 96%, 1);
+  --eerie-black: hsla(0, 0%, 8%, 1);
+}
+
 * {
   font-family: "Kumbh Sans", serif;
   scroll-behavior: smooth;

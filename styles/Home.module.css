@@ -1,8 +1,6 @@
 .cardListContainer {
   overflow-y: auto;
-  /* max-height: 650px; */
   width: 100%;
-  /* margin-top: 100px; */
 }
 
 .cardListFeed {
@@ -13,8 +11,6 @@
   flex-flow: row wrap;
   align-content: space-between;
   justify-content: center;
-  /* gap: 1em; */
-  /* flex-wrap: wrap; */
 }
 
 .cardListFeed li {
@@ -46,6 +42,7 @@
 
 .newBook:hover {
   background-color: #673ab7;
+  cursor: pointer;
 }
 
 .container {
@@ -58,11 +55,11 @@
 }
 
 .container.light {
-  background-color: #ebf1ff;
+  background-color: var(--magnolia);
 }
 
 .container.dark {
-  background-color: black;
+  background-color: var(--black);
 }
 
 .main {
@@ -78,7 +75,7 @@
 
 .themeToggle {
   color: white;
-  background-color: #892cdc;
+  background-color: var(--blue-violet);
   border: none;
   text-decoration: none;
   cursor: pointer;
@@ -107,17 +104,19 @@
 }
 
 .footer.light {
-  background-color: #ebf1ff;
-  color: #000000;
-  border-top: 1px solid #000000;
+  background-color: var(--magnolia);
+  color: var(--black);
+  border-top: 1px solid var(--black);
 }
 .footer.dark {
-  background-color: black;
+  background-color: var(--black);
   color: #ffffff;
   border-top: 1px solid #ffffff;
 }
 
 .footer p {
+  user-select: none;
+
   display: flex;
   float: left;
   font-weight: bold;
@@ -160,9 +159,6 @@
     line-height: 0;
     padding: 0 5px 0 5px;
   }
-  /* .footer .volumeCount {
-    display: none;
-  } */
 }
 
 .dark {

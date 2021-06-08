@@ -9,6 +9,7 @@ import Footer from '../components/footer'
 import SearchBar from '../components/searchBar'
 import NewBook from './newBook'
 import BookInfo from './bookInfo'
+import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion'
 
 export function CardListWrapper({ data, children }) {
   return (
@@ -38,6 +39,7 @@ export default function Home() {
   const [newBookPanel, setNewBookPanel] = useState(false);
   const [data, setData] = useState([]);
   const [bookInfoPanel, setBookInfoPanel] = useState(false);
+
   const [selectedBookIndex, setSelectedBookIndex] = useState(0);
 
   const removeBook = (id) => {
@@ -129,34 +131,40 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        {/* Old SearchBar Location */}
         <SearchBar onInput={onSearch} query={query} />
-        <CardListWrapper data={data}>
-          {bookResults.map((entry, index) => (
-            <li key={entry.mal_id}>
-              <div className={cardStyle.activityEntry}>
-                <BookCard
-                  entry={entry}
-                  onIncrement={() =>
-                    updateElementInData(index, (element) => element.chapter++)
-                  }
-                  onDecrement={() =>
-                    updateElementInData(
-                      index,
-                      (element) =>
-                        (element.chapter = Math.max(0, element.chapter - 1))
-                    )
-                  }
-                  onInfoClick={() => {
-                    setSelectedBookIndex(index);
-                    setBookInfoPanel(!bookInfoPanel);
-                  }}
-                  onDelete={() => removeBook(entry.mal_id)}
-                />
-              </div>
-            </li>
-          ))}
-        </CardListWrapper>
+        <AnimateSharedLayout>
+          <CardListWrapper
+            data={data}
+          >
+            {bookResults.map((entry, index) => (
+              <motion.li
+                layout
+                key={entry.mal_id}>
+                <div className={cardStyle.activityEntry}>
+                  <BookCard
+                    entry={entry}
+                    onIncrement={() =>
+                      updateElementInData(index, (element) => element.chapter++)
+                    }
+                    onDecrement={() =>
+                      updateElementInData(
+                        index,
+                        (element) =>
+                          (element.chapter = Math.max(0, element.chapter - 1))
+                      )
+                    }
+                    onInfoClick={() => {
+                      setSelectedBookIndex(index);
+                      setBookInfoPanel(!bookInfoPanel);
+                    }}
+                    onDelete={() => removeBook(entry.mal_id)}
+                  />
+                </div>
+              </motion.li>
+            ))}
+          </CardListWrapper>
+        </AnimateSharedLayout>
+
       </main>
       <Footer
         data={data}
@@ -169,33 +177,38 @@ export default function Home() {
         }}
       />
       <input id="importData" style={{ display: 'none' }} type="file" accept=".json" onChange={({ target }) => { importData(target.files[0]); target.value = null }} />
-      {newBookPanel && (
-        <NewBook onAddClicked={(entry) => {
-          if (!data.includes(entry))
-            setData([...data, entry])
-        }
-        } />
-      )}
+      <AnimatePresence>
+        {newBookPanel && (
+          <NewBook onAddClicked={(entry) => {
+            if (!data.includes(entry))
+              setData([...data, entry])
+          }
+          } />
+        )}
+      </AnimatePresence>
+
       <div className={styles.newBook} onClick={() => setNewBookPanel(!newBookPanel)}>
         <a title="Add New Book" className="fas fa-plus" />
       </div>
 
-      {bookInfoPanel && (
-        <BookInfo
-          book={data[selectedBookIndex]}
-          onChapterChange={
-            ({ target }) => {
-              updateElementInData(selectedBookIndex, (element) => element.chapter = Number.parseInt(target.value))
+      <AnimatePresence>
+        {bookInfoPanel && (
+          <BookInfo
+            book={data[selectedBookIndex]}
+            onChapterChange={
+              ({ target }) => {
+                updateElementInData(selectedBookIndex, (element) => element.chapter = Number.parseInt(target.value))
+              }
             }
-          }
-          onVolumeChange={
-            ({ target }) => {
-              updateElementInData(selectedBookIndex, (element) => element.volume = Number.parseInt(target.value))
+            onVolumeChange={
+              ({ target }) => {
+                updateElementInData(selectedBookIndex, (element) => element.volume = Number.parseInt(target.value))
+              }
             }
-          }
-          onExit={() => setBookInfoPanel(!bookInfoPanel)}
-        />
-      )}
+            onExit={() => setBookInfoPanel(!bookInfoPanel)}
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 }

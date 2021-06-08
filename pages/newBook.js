@@ -6,6 +6,7 @@ import SearchBar from '../components/searchBar'
 import jikanjs from 'jikanjs'
 import { useState, useEffect } from 'react'
 import { CardListWrapper } from './index'
+import OverlayMenu from '../components/overlayMenu'
 
 // jikanjs.search("manga", "get").then(({ results }) => {
 //   results.forEach(ln => {
@@ -56,20 +57,20 @@ export default function NewBook({ onAddClicked }) {
 
   return (
     <div>
-      <div className={styles.main}>
-        <div className={styles.container}>
-          <SearchBar onInput={(e) => setUserInput(e.target.value)} />
-          <CardListWrapper>
-            {searchResults.map((entry) => (
-              <li key={entry.mal_id}>
-                <div className={cardStyle.activityEntry}>
-                  <ResultCard entry={entry} onAddClicked={onAddClicked} />
-                </div>
-              </li>
-            ))}
-          </CardListWrapper>
-        </div>
-      </div>
+      <OverlayMenu
+        className={styles.container}
+      >
+        <SearchBar onInput={(e) => setUserInput(e.target.value)} />
+        <CardListWrapper>
+          {searchResults.map((entry) => (
+            <li key={entry.mal_id}>
+              <div className={cardStyle.activityEntry}>
+                <ResultCard entry={entry} onAddClicked={onAddClicked} />
+              </div>
+            </li>
+          ))}
+        </CardListWrapper>
+      </OverlayMenu>
     </div>
   );
 }

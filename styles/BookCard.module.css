@@ -1,7 +1,6 @@
 .activityEntry {
-  background-color: #892cdc;
+  background-color: var(--blue-violet);
   border-radius: 10px;
-  /* min-width: 250px; */
   width: 197.3px;
   height: auto;
   padding: 5px;
@@ -33,10 +32,9 @@
 .details {
   border-radius: 0 0 10px 10px;
 
-  /* NEW INTERFACE */
   opacity: 0;
   background-color: #151515c2;
-  /* box-shadow: 0px 4px 1px black; */
+
   position: absolute;
   bottom: 0px;
   width: 100%;
@@ -55,7 +53,7 @@
   margin: 5px;
   width: 34px;
   height: 34px;
-  background-color: #892cdc;
+  background-color: var(--blue-violet);
   border-radius: 10px;
   cursor: pointer;
 }
@@ -91,9 +89,6 @@
 }
 
 @media screen and (max-width: 720px) {
-  /* .activityEntry {
-    width: 20em;
-  } */
   .details a {
     padding: 0.625em;
     line-height: 1.25em;
