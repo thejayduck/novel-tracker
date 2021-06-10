@@ -1,7 +1,9 @@
 import '../styles/globals.css'
 import Head from 'next/head'
+import { AppWrapper } from '../components/appWrapper'
 
-function MyApp({ Component, pageProps }) {
+export default function MyApp({ Component, pageProps }) {
+
   return (
     <>
       <Head>
@@ -14,9 +16,9 @@ function MyApp({ Component, pageProps }) {
         <meta property="og:image:height" content="64" />
       </Head>
 
-      <Component {...pageProps} />
+      <AppWrapper>
+        <Component {...pageProps} />
+      </AppWrapper>
     </>
   )
 }
-
-export default MyApp

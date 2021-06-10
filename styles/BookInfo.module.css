@@ -12,6 +12,15 @@
   color: white;
 }
 
+.dark {
+  color: white;
+  background-color: var(--eerie-black);
+}
+.light {
+  color: black;
+  background-color: var(--magnolia);
+}
+
 .container .cover {
   display: flex;
   margin: 18px;

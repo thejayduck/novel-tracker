@@ -7,6 +7,7 @@ import jikanjs from 'jikanjs'
 import { useState, useEffect } from 'react'
 import { CardListWrapper } from './index'
 import OverlayMenu from '../components/overlayMenu'
+import { useAppContext } from '../components/appWrapper'
 
 // jikanjs.search("manga", "get").then(({ results }) => {
 //   results.forEach(ln => {
@@ -23,6 +24,9 @@ import OverlayMenu from '../components/overlayMenu'
 // });
 
 export default function NewBook({ onAddClicked }) {
+
+  const [state] = useAppContext();
+
 
   const [userInput, setUserInput] = useState("");
   const [searchResults, setSearchResults] = useState([]);
@@ -58,7 +62,7 @@ export default function NewBook({ onAddClicked }) {
   return (
     <div>
       <OverlayMenu
-        className={styles.container}
+        className={`${styles.container} ${state.darkMode ? styles.dark : styles.light}`}
       >
         <SearchBar onInput={(e) => setUserInput(e.target.value)} />
         <CardListWrapper>

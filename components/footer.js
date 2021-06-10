@@ -1,14 +1,19 @@
-import styles from '../styles/Home.module.css'
+import styles from '../styles/components/footer.module.css'
+import { useAppContext } from './appWrapper';
+import DarkModeToggle from './darkModeToggle'
 
-export default function Footer({ data, darkmode, onDarkModeClick, onExportDataClick, onImportDataClick }) {
+export default function Footer({ data, onExportDataClick, onImportDataClick }) {
+
+    const [state] = useAppContext();
+
     return (
         <footer
-            className={`${styles.footer} ${darkmode ? styles.dark : styles.light}`}
+            className={`${styles.footer} ${state.darkMode ? styles.dark : styles.light}`}
         >
             <div>
-                <button title="Toggle Theme" className={`fas fa-moon ${styles.themeToggle}`} onClick={onDarkModeClick} />
-                <button title="Export Data" className={`fas fa-download ${styles.themeToggle}`} onClick={onExportDataClick} />
-                <button title="Import Data" className={`fas fa-upload ${styles.themeToggle}`} onClick={onImportDataClick} />
+                <DarkModeToggle />
+                <button title="Export Data" className={`fas fa-download ${styles.footerButton}`} onClick={onExportDataClick} />
+                <button title="Import Data" className={`fas fa-upload ${styles.footerButton}`} onClick={onImportDataClick} />
             </div>
             <p>Books: {data.length}</p>
             <div>

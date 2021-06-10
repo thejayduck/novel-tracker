@@ -10,6 +10,7 @@ import SearchBar from '../components/searchBar'
 import NewBook from './newBook'
 import BookInfo from './bookInfo'
 import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion'
+import { useAppContext } from '../components/appWrapper'
 
 export function CardListWrapper({ data, children }) {
   return (
@@ -19,23 +20,11 @@ export function CardListWrapper({ data, children }) {
   );
 }
 
-// function usePersistedState(key, defaultValue) {
-
-//   // const [state, setState] = useState(
-//   //   (JSON.parse(localStorage.getItem(key)) || defaultValue)
-//   // );
-//   // useEffect(() => {
-//   //   localStorage.setItem(key, JSON.stringify(state));
-//   // }, [key, state]);
-
-//   const [state, setState] = useState(defaultValue);
-//   return ([state, setState]);
-// }
-
 export default function Home() {
 
+
   //#region  CONST
-  const [darkmode, setDarkmode] = useState(false);
+  const [state] = useAppContext();
   const [newBookPanel, setNewBookPanel] = useState(false);
   const [data, setData] = useState([]);
   const [bookInfoPanel, setBookInfoPanel] = useState(false);
@@ -96,13 +85,6 @@ export default function Home() {
   }, [data])
   //#endregion
 
-  useEffect(() => {
-    const theme = localStorage.getItem('darkmode');
-    setDarkmode(theme ? JSON.parse(theme) : false);
-  }, [])
-  useEffect(() => {
-    localStorage.setItem('darkmode', JSON.stringify(darkmode));
-  }, [darkmode])
 
   const updateElementInData = (index, updateElementCallback) => {
     let new_data = [...data];
@@ -114,7 +96,7 @@ export default function Home() {
 
   return (
     <div
-      className={`${styles.container} ${darkmode ? styles.dark : styles.light}`}
+      className={`${styles.container} ${state.darkMode ? styles.dark : styles.light}`}
     >
       <Head>
         <title>Light Novel Tracker</title>
@@ -168,8 +150,6 @@ export default function Home() {
       </main>
       <Footer
         data={data}
-        darkmode={darkmode}
-        onDarkModeClick={() => setDarkmode(!darkmode)}
         onExportDataClick={exportData}
         onImportDataClick={() => {
           var element = document.getElementById('importData');

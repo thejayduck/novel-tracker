@@ -1,5 +1,6 @@
 import OverlayMenu from '../components/overlayMenu';
 import styles from '../styles/BookInfo.module.css'
+import { useAppContext } from '../components/appWrapper';
 
 function cutWord(text) {
   if (text.length > 55)
@@ -18,10 +19,14 @@ const data = ({
 });
 
 export default function BookInfo({ book = data, onChapterChange, onVolumeChange, onExit }) {
+
+  const [state] = useAppContext();
+
+
   return (
     <div>
       <OverlayMenu
-        className={styles.container}
+        className={`${styles.container} ${state.darkMode ? styles.dark : styles.light}`}
       >
         <div className={styles.cover}>
           <img src={book.coverUrl} />

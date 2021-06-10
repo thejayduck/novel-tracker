@@ -2,6 +2,7 @@ import { AnimateSharedLayout, motion } from 'framer-motion';
 import styles from '../styles/components/overlayMenu.module.css'
 
 export default function OverlayMenu({ children, className }) {
+
     const contentVariant = {
         initial: {
             opacity: 0,
