@@ -1,7 +1,6 @@
 import OverlayMenu from '../components/overlayMenu';
 import styles from '../styles/BookInfo.module.css'
 import { useAppContext } from '../components/appWrapper';
-import { useEffect, useState } from 'react';
 
 function cutWord(text, limit) {
   if (text === null)
@@ -19,26 +18,17 @@ export default function BookInfo({ book, onChapterChange, onVolumeChange, onExit
 
   const [state] = useAppContext();
 
-  const [data, setData] = useState(null);
-
-  useEffect(async () => {
-    const response = await fetch(`/api/get_book?id=${book.id}`);
-    const json = await response.json();
-    console.log(json);
-    setData(json);
-  }, [])
-
   return (
     <div>
       <OverlayMenu
         className={`${styles.container} ${state.darkMode ? styles.dark : styles.light}`}
       >
         <div className={styles.cover}>
-          <img src={data?.cover_url} />
+          <img src={book?.coverUrl} />
           <div className={styles.textContainer}>
-            <h1 title={data?.title} className={styles.title}> {cutWord(data?.title, 55)} </h1>
+            <h1 title={book?.title} className={styles.title}> {cutWord(book?.title, 55)} </h1>
             <h2>Synopsis</h2>
-            <p className={styles.synopsis}>{cutWord(data?.description, 350)}</p>
+            <p className={styles.synopsis}>{book?.synopsis}</p>
           </div>
         </div>
         <div className={styles.status}>

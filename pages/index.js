@@ -39,7 +39,7 @@ export default function Home() {
   const fuse = new Fuse(data, {
     keys: [
       'title',
-      'description'
+      'synopsis'
     ],
   });
 
@@ -114,7 +114,7 @@ export default function Home() {
             {bookResults.map((entry, index) => (
               <motion.li
                 layout
-                key={entry.id}>
+                key={entry.mal_id}>
                 <div className={cardStyle.activityEntry}>
                   <BookCard
                     entry={entry}
@@ -132,7 +132,7 @@ export default function Home() {
                       setSelectedBookIndex(index);
                       setBookInfoPanel(!bookInfoPanel);
                     }}
-                    onDelete={() => removeBook(entry.id)}
+                    onDelete={() => removeBook(entry.mal_id)}
                   />
                 </div>
               </motion.li>
@@ -153,8 +153,8 @@ export default function Home() {
       <AnimatePresence>
         {newBookPanel && (
           <NewBook onAddClicked={(entry) => {
-            if (!data.map(q => q.id).includes(entry.id))
-              setData([...data, { id: entry.id, chapter: 0, volume: 0 }])
+            if (!data.includes(entry))
+              setData([...data, entry])
           }
           } />
         )}

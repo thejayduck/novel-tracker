@@ -33,17 +33,25 @@ export default function NewBook({ onAddClicked }) {
 
   useEffect(() => {
     clearTimeout(queryTimeout);
-    if (userInput !== null) {
-      setQueryTimeout(setTimeout(async () => {
-        const response = await fetch(`/api/search_book?title=${userInput}`);
-        const json = await response.json();
-        console.log(json);
-
-        setSearchResults(json.map(q => ({
-          id: q.id,
-          title: q.title,
-          coverUrl: q.cover_url,
-        })));
+    if (userInput.length >= 3) {
+      setQueryTimeout(setTimeout(() => {
+        jikanjs
+          .search("manga", userInput)
+          .then(({ results }) => {
+            setSearchResults(
+              results.map((ln) => ({
+                mal_id: ln.mal_id,
+                title: ln.title,
+                synopsis: ln.synopsis,
+                coverUrl: ln.image_url,
+                type: ln.type,
+                chapter: 0,
+                volume: 0,
+                status: "Reading",
+              }))
+            );
+          })
+          .catch((e) => console.error(e));
       }, 600));
     } else {
       setSearchResults([]);
