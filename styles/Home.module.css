@@ -66,9 +66,6 @@
 }
 
 @media screen and (max-width: 720px) {
-  .searchBar .faSearch {
-    display: none;
-  }
   .cardListContainer {
     height: 100%;
     width: 100%;

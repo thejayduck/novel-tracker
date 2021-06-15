@@ -1,13 +1,24 @@
+import { useEffect, useState } from 'react';
 import styles from '../styles/BookCard.module.css'
 
 export default function BookCard({ entry, onIncrement, onDecrement, onInfoClick, onDelete }) {
+
+    const [data, setData] = useState(null);
+
+    useEffect(async () => {
+        const response = await fetch(`/api/get_book?id=${entry.id}`);
+        const json = await response.json();
+        console.log(json);
+        setData(json);
+    }, [])
+
     return (
         <div className={styles.wrap}>
             <div className={styles.list}>
-                <p title={entry.title} className={styles.title}>
-                    {entry.title}
+                <p title={data?.title} className={styles.title}>
+                    {data?.title}
                 </p>
-                <img className={styles.cover} src={entry.coverUrl} />
+                <img className={styles.cover} src={data?.cover_url} />
                 <div className={styles.details}>
                     <div>
                         <span className={styles.status}>

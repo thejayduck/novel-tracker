@@ -1,12 +1,15 @@
 import cardStyle from '../styles/BookCard.module.css'
 
 export default function ResultCard({ entry, onAddClicked }) {
+
+  console.log(entry)
+
   return (
     <>
       <div className={cardStyle.wrap}>
         <div className={cardStyle.list}>
           <p
-            title={`${entry.title} | ${entry.type}`}
+            title={`${entry.title}`}
             className={cardStyle.title}
           >
             {entry.title}

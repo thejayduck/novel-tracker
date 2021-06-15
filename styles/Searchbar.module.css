@@ -42,7 +42,7 @@
 }
 
 @media screen and (max-width: 720px) {
-  .searchBar .faSearch {
+  /* .searchBar .faSearch {
     display: none;
-  }
+  } */
 }

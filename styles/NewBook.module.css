@@ -27,8 +27,4 @@
   .container {
     width: 95%;
   }
-
-  .searchBar .faSearch {
-    visibility: hidden;
-  }
 }

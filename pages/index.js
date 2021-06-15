@@ -12,7 +12,7 @@ import BookInfo from './bookInfo'
 import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion'
 import { useAppContext } from '../components/appWrapper'
 
-export function CardListWrapper({ data, children }) {
+export function CardListWrapper({ children }) {
   return (
     <div className={styles.cardListContainer}>
       <ul className={styles.cardListFeed}>{children}</ul>
@@ -22,8 +22,6 @@ export function CardListWrapper({ data, children }) {
 
 export default function Home() {
 
-
-  //#region  CONST
   const [state] = useAppContext();
   const [newBookPanel, setNewBookPanel] = useState(false);
   const [data, setData] = useState([]);
@@ -36,13 +34,12 @@ export default function Home() {
 
   };
 
-  //#region Fuse
   const [query, setQuery] = useState('');
 
   const fuse = new Fuse(data, {
     keys: [
       'title',
-      'synopsis'
+      'description'
     ],
   });
 
@@ -52,9 +49,7 @@ export default function Home() {
   function onSearch({ currentTarget }) {
     setQuery(currentTarget.value);
   }
-  //#endregion
 
-  //#region Local Storage
   const exportData = () => {
     var element = document.createElement('a');
     element.style.display = 'none';
@@ -83,7 +78,6 @@ export default function Home() {
   useEffect(() => {
     localStorage.setItem('books', JSON.stringify(data))
   }, [data])
-  //#endregion
 
 
   const updateElementInData = (index, updateElementCallback) => {
@@ -92,7 +86,6 @@ export default function Home() {
     setData(new_data);
   };
 
-  //#endregion
 
   return (
     <div
@@ -121,7 +114,7 @@ export default function Home() {
             {bookResults.map((entry, index) => (
               <motion.li
                 layout
-                key={entry.mal_id}>
+                key={entry.id}>
                 <div className={cardStyle.activityEntry}>
                   <BookCard
                     entry={entry}
@@ -139,7 +132,7 @@ export default function Home() {
                       setSelectedBookIndex(index);
                       setBookInfoPanel(!bookInfoPanel);
                     }}
-                    onDelete={() => removeBook(entry.mal_id)}
+                    onDelete={() => removeBook(entry.id)}
                   />
                 </div>
               </motion.li>
@@ -160,8 +153,8 @@ export default function Home() {
       <AnimatePresence>
         {newBookPanel && (
           <NewBook onAddClicked={(entry) => {
-            if (!data.includes(entry))
-              setData([...data, entry])
+            if (!data.map(q => q.id).includes(entry.id))
+              setData([...data, { id: entry.id, chapter: 0, volume: 0 }])
           }
           } />
         )}

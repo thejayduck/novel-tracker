@@ -1,27 +1,32 @@
 import OverlayMenu from '../components/overlayMenu';
 import styles from '../styles/BookInfo.module.css'
 import { useAppContext } from '../components/appWrapper';
+import { useEffect, useState } from 'react';
 
-function cutWord(text) {
-  if (text.length > 55)
-    return text.substring(0, 55) + "...";
+function cutWord(text, limit) {
+  if (text === null)
+    return null;
+  if (text === undefined)
+    return undefined;
+
+  if (text.length > limit)
+    return text.substring(0, limit) + "...";
   else
     return text;
 }
 
-const data = ({
-  title: "title",
-  synopsis: "synopsis",
-  coverUrl: "",
-  chapter: 0,
-  volume: 0,
-  status: "None",
-});
-
-export default function BookInfo({ book = data, onChapterChange, onVolumeChange, onExit }) {
+export default function BookInfo({ book, onChapterChange, onVolumeChange, onExit }) {
 
   const [state] = useAppContext();
 
+  const [data, setData] = useState(null);
+
+  useEffect(async () => {
+    const response = await fetch(`/api/get_book?id=${book.id}`);
+    const json = await response.json();
+    console.log(json);
+    setData(json);
+  }, [])
 
   return (
     <div>
@@ -29,11 +34,11 @@ export default function BookInfo({ book = data, onChapterChange, onVolumeChange,
         className={`${styles.container} ${state.darkMode ? styles.dark : styles.light}`}
       >
         <div className={styles.cover}>
-          <img src={book.coverUrl} />
+          <img src={data?.cover_url} />
           <div className={styles.textContainer}>
-            <h1 title={book.title} className={styles.title}> {cutWord(book.title)} </h1>
+            <h1 title={data?.title} className={styles.title}> {cutWord(data?.title, 55)} </h1>
             <h2>Synopsis</h2>
-            <p className={styles.synopsis}>{book.synopsis}</p>
+            <p className={styles.synopsis}>{cutWord(data?.description, 350)}</p>
           </div>
         </div>
         <div className={styles.status}>
