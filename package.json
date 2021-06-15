@@ -8,8 +8,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start -p $PORT",
-    "heroku-postbuild": "npm run build"
+    "start": "next start -p $PORT"
   },
   "dependencies": {
     "framer-motion": "^4.1.17",

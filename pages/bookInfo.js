@@ -48,7 +48,7 @@ export default function BookInfo({ book, onChapterChange, onVolumeChange, onExit
             <input
               min="0"
               type="number"
-              defaultValue={book.chapter}
+              defaultValue={book?.chapter}
               onInput={onChapterChange}
             />
           </div>
@@ -58,7 +58,7 @@ export default function BookInfo({ book, onChapterChange, onVolumeChange, onExit
             <input
               min="0"
               type="number"
-              defaultValue={book.volume}
+              defaultValue={book?.volume}
               onInput={onVolumeChange}
             />
           </div>
