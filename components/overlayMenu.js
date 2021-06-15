@@ -29,7 +29,6 @@ export default function OverlayMenu({ children, className }) {
                     initial={{ scale: 0.6 }}
                     animate={{ scale: 1 }}
                     exit={{ scale: 0.6 }}
-                    transition={{ type: "spring", bounce: 0.25, duration: 0.5 }}
                 >
                     {children}
                 </motion.div>
