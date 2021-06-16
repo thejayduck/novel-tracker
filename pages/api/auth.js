@@ -95,7 +95,7 @@ async function createUserFromGoogleUserId(gui) {
 async function findOrCreateUserFromGoogleUserId(gui) {
     let new_account = false;
 
-    const user_id = await findUserIdFromGoogle(gui);
+    let user_id = await findUserIdFromGoogle(gui);
     if (user_id == null) {
         new_account = true;
         await createUserFromGoogleUserId(gui);

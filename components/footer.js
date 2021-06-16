@@ -1,10 +1,14 @@
 import styles from '../styles/components/footer.module.css'
 import { useAppContext } from './appWrapper';
 import DarkModeToggle from './darkModeToggle'
+import { useAuthContext } from '../components/authWrapper'
+import LoginGoogle from './loginGoogle'
+import LogoutButton from './logoutButton'
 
 export default function Footer({ data, onExportDataClick, onImportDataClick }) {
 
     const [state] = useAppContext();
+    const token = useAuthContext();
 
     return (
         <footer
@@ -32,6 +36,7 @@ export default function Footer({ data, onExportDataClick, onImportDataClick }) {
                 className="fab fa-github"
                 target="_blank"
             />
+            {token ? <LogoutButton /> : <LoginGoogle />}
         </footer>
     );
 }
