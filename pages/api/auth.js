@@ -1,5 +1,6 @@
 import { randomBytes } from 'crypto';
 import { serialize } from 'cookie';
+import { env } from 'process';
 const { Pool } = require('pg');
 const pool = new Pool();
 
@@ -19,7 +20,7 @@ async function acessTokenRequest(code) {
     const body = toUrlEncoded({
         code: code,
         client_id: "524679525288-o6gbij04v72f2i5ub4f83974mfocrc05.apps.googleusercontent.com",
-        client_secret: "YEbLVrA8hkmrYVHtucczNEA2",
+        client_secret: process.env.LNLDB_GOOGLE_CLIENT_SECRET,
         redirect_uri: "http://localhost:3000/api/auth",
         grant_type: 'authorization_code',
     });
