@@ -1,6 +1,7 @@
 import '../styles/globals.css'
 import Head from 'next/head'
 import { AppWrapper } from '../components/appWrapper'
+import { AuthWrapper } from '../components/authWrapper'
 
 export default function MyApp({ Component, pageProps }) {
 
@@ -17,7 +18,9 @@ export default function MyApp({ Component, pageProps }) {
       </Head>
 
       <AppWrapper>
-        <Component {...pageProps} />
+        <AuthWrapper>
+          <Component {...pageProps} />
+        </AuthWrapper>
       </AppWrapper>
     </>
   )

@@ -11,6 +11,7 @@ import NewBook from './newBook'
 import BookInfo from './bookInfo'
 import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion'
 import { useAppContext } from '../components/appWrapper'
+import { useAuthContext } from '../components/authWrapper'
 
 export function CardListWrapper({ children }) {
   return (
