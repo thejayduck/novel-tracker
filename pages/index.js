@@ -30,7 +30,7 @@ export default function Home() {
   const [selectedBookIndex, setSelectedBookIndex] = useState(0);
 
   const removeBook = (id) => {
-    setData(data.filter(target => target.mal_id !== id));
+    setData(data.filter(target => target.id !== id));
 
   };
 

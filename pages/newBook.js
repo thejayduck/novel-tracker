@@ -58,7 +58,7 @@ export default function NewBook({ onAddClicked }) {
         <SearchBar onInput={(e) => setUserInput(e.target.value)} />
         <CardListWrapper>
           {searchResults.map((entry) => (
-            <li key={entry.mal_id}>
+            <li key={entry.id}>
               <div className={cardStyle.activityEntry}>
                 <ResultCard entry={entry} onAddClicked={onAddClicked} />
               </div>
