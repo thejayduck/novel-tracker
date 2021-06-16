@@ -12,7 +12,7 @@ export function AuthWrapper({ children }) {
         const response = await fetch("/api/me/user_id");
         const json = await response.json();
         if (json.user_id == null) { // Invalid Token
-            Cookies.remove("token", { path: "/", httpOnly: false, secure: true });
+            Cookies.remove("token", { path: "/", httpOnly: false, sameSite: "strict" });
         } else { // Valid Token
             setToken(token);
         }

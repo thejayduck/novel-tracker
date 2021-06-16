@@ -131,7 +131,7 @@ export default async function Auth(req, res) {
             };
         })
         .then(result => {
-            res.setHeader('Set-Cookie', serialize('token', result.session_token, { path: "/", httpOnly: false, secure: true }));
+            res.setHeader('Set-Cookie', serialize('token', result.session_token, { path: "/", httpOnly: false, sameSite: "strict" }));
 
             if (result.action == "setup_account") {
                 res.status(200).redirect("/setupAccount");
