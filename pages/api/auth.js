@@ -16,12 +16,12 @@ function toUrlEncoded(obj) {
     return formBody;
 }
 
-async function acessTokenRequest(code) {
+async function acessTokenRequest(code, redirect_uri) {
     const body = toUrlEncoded({
         code: code,
         client_id: "524679525288-o6gbij04v72f2i5ub4f83974mfocrc05.apps.googleusercontent.com",
         client_secret: process.env.LNLDB_GOOGLE_CLIENT_SECRET,
-        redirect_uri: "http://localhost:3000/api/auth",
+        redirect_uri: redirect_uri,
         grant_type: 'authorization_code',
     });
 
@@ -114,10 +114,10 @@ async function createSession(user_id) {
     return session_token;
 }
 
-export default async function Auth({ query }, res) {
-    const { code } = query;
+export default async function Auth(req, res) {
+    const { code } = req.query;
 
-    return acessTokenRequest(code)
+    return acessTokenRequest(code, `http://${req.headers.host}/api/auth`) // TODO check http vs https
         .then(access_token => getUserInfo(access_token))
         .then(userinfo => userinfo.id)
         .then(async (google_user_id) => {
