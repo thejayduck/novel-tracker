@@ -15,7 +15,7 @@ export default function LogoutButton() {
             }}
         >
             Logout
-            <i class="fab fa-google"></i>
+            <i className="fab fa-google"></i>
         </a>
     );
 }
