@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import AdminPanelContainer, { FormSection, DescriptionSection, VolumeFormSection } from '../components/adminPanelContainer';
 import { useAppContext } from '../components/appWrapper';
 import styles from '../styles/AdminPanel.module.css'
