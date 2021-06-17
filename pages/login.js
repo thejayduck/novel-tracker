@@ -1,7 +1,7 @@
 import { parse } from 'cookie';
 import { useAppContext } from '../components/appWrapper';
-import LoginGoogle from '../components/loginGoogle';
 import { getUserInfoFromToken } from '../lib/db';
+import LoginGoogle from '../components/loginGoogle';
 import styles from '../styles/Login.module.css'
 
 export async function getServerSideProps(context) {
