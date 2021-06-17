@@ -1,9 +1,5 @@
-<<<<<<< HEAD
 import Button from "../components/ui/button";
 import { parse } from "cookie";
-=======
-import { parse } from "cookie";
->>>>>>> 3ab6524eb137d7cb6ce41eb4314bb12c9ed49763
 import { useAppContext } from "../components/appWrapper";
 import { getUserInfoFromId, withUserId } from "../lib/db";
 import styles from "../styles/SetupAccount.module.css"
@@ -81,16 +77,7 @@ export default function SetupAccount() {
                     <h3>Please Enter Your Username to Finish Setting Up Your "Light Novel Tracker" Account </h3>
                     <input type="text" placeholder="Username..." autoComplete="off" min="0" onChange={({ target }) => setUsernameInput(target.value)} />
                 </div>
-<<<<<<< HEAD
-            <Button title="Complete Account!" icon="fas fa-user-alt" />
-=======
-                <div className={styles.submit} onClick={onCompleteClick}>
-                <a>
-                    Complete Account!
-                </a>
-                <i className="fas fa-user-alt" />
-            </div>
->>>>>>> 3ab6524eb137d7cb6ce41eb4314bb12c9ed49763
+                <Button title="Complete Account!" icon="fas fa-user-alt" />
             </div>
         </main >
     );
