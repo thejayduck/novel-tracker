@@ -1,6 +1,6 @@
-import OverlayMenu from '../components/overlayMenu';
+import OverlayMenu from './overlayMenu';
 import styles from '../styles/BookInfo.module.css'
-import { useAppContext } from '../components/appWrapper';
+import { useAppContext } from './appWrapper';
 import { useEffect, useState } from 'react';
 
 function cutWord(text, limit) {

@@ -7,15 +7,17 @@ import { useState, useEffect } from 'react'
 import { CardListWrapper } from './index'
 import OverlayMenu from '../components/overlayMenu'
 import { useAppContext } from '../components/appWrapper'
-import { AnimateSharedLayout, motion } from 'framer-motion'
+import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion'
+import BookDetails from '../components/bookDetails'
 
 export default function NewBook({ onAddClicked }) {
-
   const [state] = useAppContext();
 
   const [userInput, setUserInput] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [queryTimeout, setQueryTimeout] = useState(null);
+
+  const [detailedBook, setDetailedBook] = useState(null);
 
   useEffect(() => {
     clearTimeout(queryTimeout);
@@ -23,7 +25,6 @@ export default function NewBook({ onAddClicked }) {
       setQueryTimeout(setTimeout(async () => {
         const response = await fetch(`/api/search_book?title=${userInput}`);
         const json = await response.json();
-        console.log(json);
 
         setSearchResults(json.map(q => ({
           id: q.id,
@@ -44,7 +45,7 @@ export default function NewBook({ onAddClicked }) {
         <SearchBar onInput={(e) => setUserInput(e.target.value)} />
         <AnimateSharedLayout>
           <CardListWrapper>
-            {searchResults.map((entry, idx) => (
+            {searchResults.map(entry => (
               <motion.li
                 initial={{
                   opacity: 0,
@@ -56,13 +57,22 @@ export default function NewBook({ onAddClicked }) {
                 key={entry.id}
               >
                 <div className={cardStyle.activityEntry}>
-                  <ResultCard entry={entry} onAddClicked={onAddClicked} />
+                  <ResultCard entry={entry} onAddClicked={onAddClicked} onDetailsClicked={entry => setDetailedBook(entry)} />
                 </div>
               </motion.li>
             ))}
           </CardListWrapper>
         </AnimateSharedLayout>
       </OverlayMenu>
+
+      <AnimatePresence>
+        {detailedBook && (
+          <BookDetails
+            book={detailedBook}
+            onExit={() => setDetailedBook(null)}
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 }
