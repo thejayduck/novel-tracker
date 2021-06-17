@@ -10,7 +10,7 @@ import NewBook from './newBook'
 import BookDetails from '../components/bookDetails'
 import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion'
 import { useAppContext } from '../components/appWrapper'
-import Button from '../components/button'
+import Button from '../components/ui/button'
 import { parse } from 'cookie'
 import { getUserInfoFromToken } from '../lib/db'
 
@@ -170,6 +170,8 @@ export default function Home({ user_info }) {
           } />
         )}
       </AnimatePresence>
+
+      {/* <Button icon="fas fa-plus" onClick={() => setNewBookPanel(!newBookPanel)} /> */}
 
       <div className={styles.newBook} onClick={() => setNewBookPanel(!newBookPanel)}>
         <a title="Add New Book" className="fas fa-plus" />

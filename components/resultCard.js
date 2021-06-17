@@ -30,7 +30,7 @@ export default function ResultCard({ entry, onAddClicked, onDetailsClicked }) {
       >
         <a href="#" title="View Details">
           View Details
-              </a>
+        </a>
       </div>
     </>
   );

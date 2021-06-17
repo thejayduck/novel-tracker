@@ -1,7 +1,6 @@
 import styles from '../styles/components/footer.module.css'
 import { useAppContext } from './appWrapper';
-import LogoutButton from './logoutButton'
-import FooterButton from './footerButton';
+import FooterButton from './ui/footerButton';
 
 export default function Footer({ data, showModButtons, onExportDataClick, onImportDataClick }) {
     const [state, setState] = useAppContext();
@@ -11,7 +10,7 @@ export default function Footer({ data, showModButtons, onExportDataClick, onImpo
             className={`${styles.footer} ${state.darkMode ? styles.dark : styles.light}`}
         >
             <div>
-                <LogoutButton />
+                <FooterButton title="Sign Out" icon="fas fa-user-alt-slash" href="/api/me/logout" />
 
                 {showModButtons && <FooterButton
                     title="Submit Book"
