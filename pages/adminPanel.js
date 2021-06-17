@@ -1,7 +1,46 @@
-import Head from 'next/head';
-import AdminPanelContainer, { FormSection, DescriptionSection, VolumeFormSection } from '../components/adminPanelContainer';
+import AdminPanelContainer, { FormSection, DescriptionSection } from '../components/adminPanelContainer';
 import { useAppContext } from '../components/appWrapper';
-import styles from '../styles/AdminPanel.module.css'
+import styles from '../styles/AdminPanel.module.css';
+import { parse } from 'cookie';
+import { getUserInfoFromToken } from '../lib/db';
+
+export async function getServerSideProps(context) {
+    const cookie_header = context.req.headers.cookie;
+    if (!cookie_header) {
+        return {
+            redirect: {
+                permanent: false,
+                destination: '/error?reason=must_login',
+            },
+        }
+    }
+
+    const cookies = parse(cookie_header);
+    const token = cookies.token;
+    const info = await getUserInfoFromToken(token);
+    if (info == null) {
+        return {
+            redirect: {
+                permanent: false,
+                destination: '/error?reason=must_login',
+            },
+        }
+    }
+    if (info.moderation_level < 2) {
+        return {
+            redirect: {
+                permanent: false,
+                destination: '/error?reason=mod_only',
+            },
+        }
+    }
+
+    return {
+        props: {
+            user_info: info,
+        },
+    };
+}
 
 export default function AdminPanel() {
     const [state] = useAppContext();

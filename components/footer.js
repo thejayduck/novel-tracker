@@ -1,13 +1,9 @@
 import styles from '../styles/components/footer.module.css'
 import { useAppContext } from './appWrapper';
-import { useAuthContext } from '../components/authWrapper'
-import LoginGoogle from './loginGoogle'
 import LogoutButton from './logoutButton'
 import FooterButton from './footerButton';
 
 export default function Footer({ data, onExportDataClick, onImportDataClick }) {
-    const token = useAuthContext();
-
     const [state, setState] = useAppContext();
 
     return (
@@ -15,7 +11,7 @@ export default function Footer({ data, onExportDataClick, onImportDataClick }) {
             className={`${styles.footer} ${state.darkMode ? styles.dark : styles.light}`}
         >
             <div>
-                {token ? <LogoutButton /> : <LoginGoogle />}
+                {<LogoutButton />}
 
                 <FooterButton
                     title="Toggle Theme"

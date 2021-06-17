@@ -11,6 +11,8 @@ import BookInfo from './bookInfo'
 import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion'
 import { useAppContext } from '../components/appWrapper'
 import Button from '../components/button'
+import { parse } from 'cookie'
+import { getUserInfoFromToken } from '../lib/db'
 
 
 export function CardListWrapper({ children }) {
@@ -19,6 +21,36 @@ export function CardListWrapper({ children }) {
       <ul className={styles.cardListFeed}>{children}</ul>
     </div>
   );
+}
+
+export async function getServerSideProps(context) {
+  const cookie_header = context.req.headers.cookie;
+  if (!cookie_header) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: '/login',
+      },
+    }
+  }
+
+  const cookies = parse(context.req.headers.cookie);
+  const token = cookies.token;
+  const info = await getUserInfoFromToken(token);
+  if (info == null) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: '/login',
+      },
+    }
+  }
+
+  return {
+    props: {
+      user_info: info,
+    },
+  };
 }
 
 export default function Home() {
@@ -64,7 +96,6 @@ export default function Home() {
   const importData = (target) => {
     const reader = new FileReader();
     reader.addEventListener('load', ({ target }) => {
-      console.log(target.result);
       setData(JSON.parse(atob(target.result.replace("data:application/json;base64,", ""))));
     });
     reader.readAsDataURL(target);

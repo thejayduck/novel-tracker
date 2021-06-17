@@ -5,21 +5,35 @@ const AuthContext = createContext();
 
 export function AuthWrapper({ children }) {
 
-    let [token, setToken] = useState(null);
+    let [user, setUser] = useState({
+        logged_in: false,
+        loading: true,
+    });
 
     useEffect(async () => {
-        const token = Cookies.get("token");
-        const response = await fetch("/api/me/user_id");
-        const json = await response.json();
-        if (json.user_id == null) { // Invalid Token
-            Cookies.remove("token", { path: "/", httpOnly: false, sameSite: "strict" });
-        } else { // Valid Token
-            setToken(token);
+        let info = null;
+        if (Cookies.get("token") != null) {
+            const response = await fetch("/api/me/info");
+            const json = await response.json();
+            if (json.status == "Error") {
+                if (json.code == "no_user") {
+                    Cookies.remove("token", { path: "/", httpOnly: false, sameSite: "lax" });
+                } else {
+                    throw json;
+                }
+            } else {
+                info = json.info;
+            }
+        }
+        if (info == null) { // Invalid User
+            setUser({ logged_in: false, loading: false });
+        } else { // Valid User
+            setUser({ ...info, logged_in: true, loading: false });
         }
     }, [])
 
     return (
-        <AuthContext.Provider value={token}>
+        <AuthContext.Provider value={user}>
             {children}
         </AuthContext.Provider>
     );
