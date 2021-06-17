@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import cardStyle from '../styles/components/BookCard.module.css'
 
@@ -11,6 +10,8 @@ import NewBook from './newBook'
 import BookInfo from './bookInfo'
 import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion'
 import { useAppContext } from '../components/appWrapper'
+import Button from '../components/button'
+
 
 export function CardListWrapper({ children }) {
   return (
@@ -65,7 +66,6 @@ export default function Home() {
     reader.addEventListener('load', ({ target }) => {
       console.log(target.result);
       setData(JSON.parse(atob(target.result.replace("data:application/json;base64,", ""))));
-      document.getElementById
     });
     reader.readAsDataURL(target);
   }
@@ -91,20 +91,6 @@ export default function Home() {
     <div
       className={`${styles.container} ${state.darkMode ? styles.dark : styles.light}`}
     >
-      <Head>
-        <title>Light Novel Tracker</title>
-        <link rel="icon" href="/favicon.ico" />
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
-        />
-        <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-
-        <meta name="msapplication-TileColor" content="#ffffff" />
-        <meta name="msapplication-TileImage" content="public/favicon.ico" />
-      </Head>
-
       <main className={styles.main}>
         <SearchBar onInput={onSearch} query={query} />
         <AnimateSharedLayout>
