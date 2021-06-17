@@ -77,7 +77,7 @@ export default function SetupAccount() {
                     <h3>Please Enter Your Username to Finish Setting Up Your "Light Novel Tracker" Account </h3>
                     <input type="text" placeholder="Username..." autoComplete="off" min="0" onChange={({ target }) => setUsernameInput(target.value)} />
                 </div>
-                <Button title="Complete Account!" icon="fas fa-user-alt" />
+                <Button title="Complete Account!" icon="fas fa-user-alt" onClick={onCompleteClick} />
             </div>
         </main >
     );
