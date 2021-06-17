@@ -7,7 +7,7 @@ import BookCard from '../components/bookCard'
 import Footer from '../components/footer'
 import SearchBar from '../components/searchBar'
 import NewBook from './newBook'
-import BookInfo from './bookDetails'
+import BookDetails from '../components/bookDetails'
 import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion'
 import { useAppContext } from '../components/appWrapper'
 import Button from '../components/button'
@@ -58,9 +58,6 @@ export default function Home() {
   const [state] = useAppContext();
   const [newBookPanel, setNewBookPanel] = useState(false);
   const [data, setData] = useState([]);
-  const [bookInfoPanel, setBookInfoPanel] = useState(false);
-
-  const [selectedBookIndex, setSelectedBookIndex] = useState(0);
 
   const removeBook = (id) => {
     setData(data.filter(target => target.id !== id));
@@ -145,10 +142,6 @@ export default function Home() {
                           (element.chapter = Math.max(0, element.chapter - 1))
                       )
                     }
-                    onInfoClick={() => {
-                      setSelectedBookIndex(index);
-                      setBookInfoPanel(!bookInfoPanel);
-                    }}
                     onDelete={() => removeBook(entry.id)}
                   />
                 </div>
@@ -180,25 +173,6 @@ export default function Home() {
       <div className={styles.newBook} onClick={() => setNewBookPanel(!newBookPanel)}>
         <a title="Add New Book" className="fas fa-plus" />
       </div>
-
-      <AnimatePresence>
-        {bookInfoPanel && (
-          <BookInfo
-            book={data[selectedBookIndex]}
-            onChapterChange={
-              ({ target }) => {
-                updateElementInData(selectedBookIndex, (element) => element.chapter = Number.parseInt(target.value))
-              }
-            }
-            onVolumeChange={
-              ({ target }) => {
-                updateElementInData(selectedBookIndex, (element) => element.volume = Number.parseInt(target.value))
-              }
-            }
-            onExit={() => setBookInfoPanel(!bookInfoPanel)}
-          />
-        )}
-      </AnimatePresence>
     </div>
   );
 }

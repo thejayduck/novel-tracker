@@ -1,6 +1,6 @@
 import styles from '../styles/components/BookCard.module.css'
 
-export default function ResultCard({ entry, onAddClicked }) {
+export default function ResultCard({ entry, onAddClicked, onDetailsClicked }) {
   return (
     <>
       <div className={styles.wrap}>
@@ -14,17 +14,23 @@ export default function ResultCard({ entry, onAddClicked }) {
           <img className={styles.cover} src={entry.coverUrl} />
         </div>
       </div>
-      <div
+      {/*<div
         className={styles.addBook}
-        onClick={() => {
-          onAddClicked(entry)
-        }}
+        onClick={() => onAddClicked(entry)}
       >
         <a
           title="Add Book to Library"
         >
           Add Book
         </a>
+      </div>*/}
+      <div
+        className={styles.addBook}
+        onClick={() => onDetailsClicked(entry)}
+      >
+        <a href="#" title="View Details">
+          View Details
+              </a>
       </div>
     </>
   );

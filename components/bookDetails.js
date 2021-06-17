@@ -1,9 +1,9 @@
 import styles from '../styles/BookDetails.module.css'
-import OverlayMenu from '../components/overlayMenu';
-import { useAppContext } from '../components/appWrapper';
+import OverlayMenu from './overlayMenu';
+import { useAppContext } from './appWrapper';
 import { useEffect, useState } from 'react';
 
-export default function BookDetails({ book, onChapterChange, onVolumeChange, onExit }) {
+export default function BookDetails({ book, onExit }) {
     const [state] = useAppContext();
 
     const [data, setData] = useState(null);
@@ -11,7 +11,6 @@ export default function BookDetails({ book, onChapterChange, onVolumeChange, onE
     useEffect(async () => {
         const response = await fetch(`/api/get_book?id=${book.id}`);
         const json = await response.json();
-        console.log(json);
         setData(json);
     }, [])
 
@@ -36,6 +35,7 @@ export default function BookDetails({ book, onChapterChange, onVolumeChange, onE
                             <li><a>Total Volumes: 10</a></li>
                             <li><a>Total Chapters: 10</a></li>
                             <li><a>Author: Nobbele Chousaki</a></li>
+                            <a href="#" onClick={() => onExit()}>Exit</a>
                         </ul>
                     </div>
                 </div>
@@ -45,31 +45,6 @@ export default function BookDetails({ book, onChapterChange, onVolumeChange, onE
                         <p className={styles.description}>{data?.description}</p>
                     </div> : <></>
                 }
-
-                <div className={styles.status}>
-                    <div>
-                        <span className={styles.statusTitle}>Chapter</span>
-                        <br />
-                        <input
-                            min="0"
-                            type="number"
-                            defaultValue={book?.chapter}
-                            max="99999"
-                            onInput={onChapterChange}
-                        />
-                    </div>
-                    <div>
-                        <span className={styles.statusTitle}>Volume</span>
-                        <br />
-                        <input
-                            min="0"
-                            type="number"
-                            defaultValue={book?.volume}
-                            max="9999"
-                            onInput={onVolumeChange}
-                        />
-                    </div>
-                </div>
             </OverlayMenu>
         </div>
     );

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import styles from '../styles/components/BookCard.module.css'
 
-export default function BookCard({ entry, onIncrement, onDecrement, onInfoClick, onDelete }) {
+export default function BookCard({ entry, onIncrement, onDecrement, onDelete }) {
 
     const [data, setData] = useState(null);
 
@@ -25,7 +25,6 @@ export default function BookCard({ entry, onIncrement, onDecrement, onInfoClick,
                         </span>
                         <hr />
                         <div className={styles.quickEdit}>
-                            <QuickButton title="Book Info" icon="fas fa-info" onClick={onInfoClick} />
                             <QuickButton title="Delete Book" icon="fas fa-trash-alt" onClick={onDelete} />
                             <div>
                                 <QuickButton title="Decrease Progress" icon="fas fa-minus" onClick={onDecrement} />
