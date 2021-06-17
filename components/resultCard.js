@@ -1,9 +1,6 @@
 import styles from '../styles/components/BookCard.module.css'
 
 export default function ResultCard({ entry, onAddClicked }) {
-
-  console.log(entry)
-
   return (
     <>
       <div className={styles.wrap}>
@@ -21,7 +18,6 @@ export default function ResultCard({ entry, onAddClicked }) {
         className={styles.addBook}
         onClick={() => {
           onAddClicked(entry)
-          console.log(`Added Book ${entry.title}`)
         }}
       >
         <a

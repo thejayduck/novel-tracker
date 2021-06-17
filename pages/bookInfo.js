@@ -24,7 +24,6 @@ export default function BookInfo({ book, onChapterChange, onVolumeChange, onExit
   useEffect(async () => {
     const response = await fetch(`/api/get_book?id=${book.id}`);
     const json = await response.json();
-    console.log(json);
     setData(json);
   }, [])
 

@@ -8,7 +8,6 @@ export default function BookCard({ entry, onIncrement, onDecrement, onInfoClick,
     useEffect(async () => {
         const response = await fetch(`/api/get_book?id=${entry.id}`);
         const json = await response.json();
-        console.log(json);
         setData(json);
     }, [])
 

@@ -1,6 +1,5 @@
 import { randomBytes } from 'crypto';
 import { serialize } from 'cookie';
-import { env } from 'process';
 const { Pool } = require('pg');
 const pool = new Pool();
 
@@ -73,7 +72,7 @@ async function findUserIdFromGoogle(gui) {
     const result = await pool.query("SELECT user_id FROM users WHERE google_user_id = $1", [gui]);
 
     if (result.rowCount > 1) {
-        throw new {
+        throw {
             message: "More than one account associated with this google user id??",
         };
     }
@@ -87,7 +86,7 @@ async function findUserIdFromGoogle(gui) {
 async function createUserFromGoogleUserId(gui) {
     const create_result = await pool.query("INSERT INTO users (google_user_id) VALUES ($1)", [gui]);
     if (create_result.rowCount == 0) {
-        throw new {
+        throw {
             message: "Unable to create user",
         };
     };
@@ -117,7 +116,11 @@ async function createSession(user_id) {
 export default async function Auth(req, res) {
     const { code } = req.query;
 
-    return acessTokenRequest(code, `http://${req.headers.host}/api/auth`) // TODO check http vs https
+    const proto = req.headers["x-forwarded-proto"] == "https" || req.connection.encrypted
+        ? "https:"
+        : "http:";
+
+    return acessTokenRequest(code, `${proto}//${req.headers.host}/api/auth`) // TODO check http vs https
         .then(access_token => getUserInfo(access_token))
         .then(userinfo => userinfo.id)
         .then(async (google_user_id) => {
@@ -131,14 +134,14 @@ export default async function Auth(req, res) {
             };
         })
         .then(result => {
-            res.setHeader('Set-Cookie', serialize('token', result.session_token, { path: "/", httpOnly: false, sameSite: "strict" }));
+            res.setHeader('Set-Cookie', serialize('token', result.session_token, { path: "/", httpOnly: false, sameSite: "lax" }));
 
             if (result.action == "setup_account") {
                 res.status(200).redirect("/setupAccount");
             } else if (result.action == "logged_in") {
                 res.status(200).redirect("/");
             } else {
-                throw new {
+                throw {
                     message: "Unknown action",
                 };
             }
