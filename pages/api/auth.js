@@ -1,7 +1,5 @@
-import { randomBytes } from 'crypto';
 import { serialize } from 'cookie';
-const { Pool } = require('pg');
-const pool = new Pool();
+import { createSession, findUserIdFromGoogle, createUserFromGoogleUserId } from '../../lib/db';
 
 function toUrlEncoded(obj) {
     let formBody = [];
@@ -68,30 +66,6 @@ async function getUserInfo(access_token) {
     return json;
 }
 
-async function findUserIdFromGoogle(gui) {
-    const result = await pool.query("SELECT user_id FROM users WHERE google_user_id = $1", [gui]);
-
-    if (result.rowCount > 1) {
-        throw {
-            message: "More than one account associated with this google user id??",
-        };
-    }
-    if (result.rowCount == 0) {
-        return null;
-    }
-
-    return result.rows[0].user_id;
-}
-
-async function createUserFromGoogleUserId(gui) {
-    const create_result = await pool.query("INSERT INTO users (google_user_id) VALUES ($1)", [gui]);
-    if (create_result.rowCount == 0) {
-        throw {
-            message: "Unable to create user",
-        };
-    };
-}
-
 async function findOrCreateUserFromGoogleUserId(gui) {
     let new_account = false;
 
@@ -103,14 +77,6 @@ async function findOrCreateUserFromGoogleUserId(gui) {
     }
 
     return { user_id, new_account };
-}
-
-async function createSession(user_id) {
-    const session_token = randomBytes(32).toString('hex');
-
-    await pool.query("INSERT INTO sessions (user_id, session_token) VALUES ($1, $2)", [user_id, session_token]);
-
-    return session_token;
 }
 
 export default async function Auth(req, res) {

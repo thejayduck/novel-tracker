@@ -12,7 +12,7 @@ import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion'
 import { useAppContext } from '../components/appWrapper'
 import Button from '../components/ui/button'
 import { parse } from 'cookie'
-import { getUserInfoFromToken } from '../lib/db'
+import { getUserInfoFromId, withUserId } from '../lib/db'
 
 
 export function CardListWrapper({ children }) {
@@ -36,7 +36,7 @@ export async function getServerSideProps(context) {
 
   const cookies = parse(context.req.headers.cookie);
   const token = cookies.token;
-  const info = await getUserInfoFromToken(token);
+  const info = await withUserId(token, async (user_id) => await getUserInfoFromId(user_id));
   if (info == null) {
     return {
       redirect: {
