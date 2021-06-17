@@ -47,7 +47,7 @@ function QuickButton({ title, icon, onClick }) {
                 onClick={onClick}
                 title={title}
             >
-                <i class={icon} />
+                <i className={icon} />
             </a>
         </>
     );

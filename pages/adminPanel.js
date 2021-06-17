@@ -20,7 +20,7 @@ export default function AdminPanel() {
             </Head>
 
             <div className={styles.pageContent}>
-                <h2 className={styles.containerTitle} > Admin Panel - Submit Book <i class="fas fa-book" /> </h2>
+                <h2 className={styles.containerTitle} > Admin Panel - Submit Book <i className="fas fa-book" /> </h2>
 
                 <AdminPanelContainer title="Titles">
                     <FormSection title="Title* (Licensed)" inputType="text" placeHolder="Licensed English Title" />
@@ -61,7 +61,7 @@ export default function AdminPanel() {
                     <a>
                         Submit
                     </a>
-                    <i class="fas fa-cloud-upload-alt" />
+                    <i className="fas fa-cloud-upload-alt" />
                 </div>
                 <br />
             </div>
