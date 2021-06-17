@@ -1,12 +1,25 @@
 @import url(https://fonts.googleapis.com/css?family=Kumbh+Sans);
 
 :root {
-  --blue-violet: hsla(272, 72%, 52%, 1);
+  --border: 0.3em;
+  --blur-amount: 10px;
+  --button-scale: 1.06;
+
+  --blur-background: hsla(0, 0%, 0%, 0.5);
+  --french-violet: hsla(264, 71%, 47%, 1);
   --spanish-violet: hsla(262, 52%, 28%);
-  --plump-purple: hsla(262, 52%, 47%, 1);
+  --rich-black-fogra-39: hsl(0, 0%, 2%);
+  --maximum-blue-purple: hsla(227, 100%, 80%, 1);
+  --light-steel-blue: hsla(218, 100%, 87%, 1);
+  --light-cyan: hsla(184, 100%, 94%, 1);
   --black: hsla(0, 0%, 0%, 1);
-  --magnolia: hsla(222, 100%, 96%, 1);
   --eerie-black: hsla(0, 0%, 8%, 1);
+
+  /* --rich-black-fogra-39: hsla(0, 0%, 6%, 1); */
+
+  /* --blue-violet: hsla(272, 72%, 52%, 1); */
+  /* --plump-purple: hsla(262, 52%, 47%, 1); */
+  /* --magnolia: hsla(222, 100%, 96%, 1); */
 }
 
 * {

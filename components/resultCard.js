@@ -1,4 +1,4 @@
-import cardStyle from '../styles/BookCard.module.css'
+import styles from '../styles/components/BookCard.module.css'
 
 export default function ResultCard({ entry, onAddClicked }) {
 
@@ -6,28 +6,30 @@ export default function ResultCard({ entry, onAddClicked }) {
 
   return (
     <>
-      <div className={cardStyle.wrap}>
-        <div className={cardStyle.list}>
+      <div className={styles.wrap}>
+        <div className={styles.list}>
           <p
             title={`${entry.title}`}
-            className={cardStyle.title}
+            className={styles.title}
           >
             {entry.title}
           </p>
-          <img className={cardStyle.cover} src={entry.coverUrl} />
+          <img className={styles.cover} src={entry.coverUrl} />
         </div>
       </div>
-      <a
-        title="Add Book to Library"
-        className={cardStyle.addBook}
-        href="#"
+      <div
+        className={styles.addBook}
         onClick={() => {
           onAddClicked(entry)
           console.log(`Added Book ${entry.title}`)
         }}
       >
-        Add Book
-      </a>
+        <a
+          title="Add Book to Library"
+        >
+          Add Book
+        </a>
+      </div>
     </>
   );
 }

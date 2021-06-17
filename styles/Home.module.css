@@ -7,8 +7,10 @@
   padding: 0;
   color: white;
   display: flex;
-  margin: 18px;
+  /* margin: 18px; */
   flex-flow: row wrap;
+  flex-wrap: wrap;
+  align-items: center;
   align-content: space-between;
   justify-content: center;
 }
@@ -26,9 +28,9 @@
   height: 52px;
 
   display: block;
-  background-color: #892cdc;
+  background-color: var(--french-violet);
   color: white;
-  border-radius: 10px;
+  border-radius: var(--border);
   font-size: 20px;
   bottom: 3.5em;
   right: 1em;
@@ -41,7 +43,8 @@
 }
 
 .newBook:hover {
-  background-color: #673ab7;
+  transform: scale(var(--button-scale));
+  background-color: var(--spanish-violet);
   cursor: pointer;
 }
 
@@ -56,7 +59,7 @@
 
 .main {
   padding: 5rem 0;
-  margin: 20px;
+  /* margin: 20px; */
 
   flex: 1;
   display: flex;
@@ -66,20 +69,20 @@
 }
 
 @media screen and (max-width: 720px) {
+  .container {
+    padding: 0;
+  }
   .cardListContainer {
     height: 100%;
     width: 100%;
   }
-  .cardListFeed {
-    justify-content: center;
-  }
 }
 
 .dark {
-  background-color: var(--black);
+  background-color: var(--eerie-black);
   transition: 0.2s;
 }
 .light {
-  background-color: var(--magnolia);
+  background-color: var(--light-cyan);
   transition: 0.2s;
 }

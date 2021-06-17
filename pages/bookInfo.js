@@ -49,6 +49,7 @@ export default function BookInfo({ book, onChapterChange, onVolumeChange, onExit
               min="0"
               type="number"
               defaultValue={book?.chapter}
+              max="100000000"
               onInput={onChapterChange}
             />
           </div>
@@ -59,9 +60,20 @@ export default function BookInfo({ book, onChapterChange, onVolumeChange, onExit
               min="0"
               type="number"
               defaultValue={book?.volume}
+              max="999"
               onInput={onVolumeChange}
             />
           </div>
+          {/* <div>
+            <span className={styles.statusTitle}>Status</span>
+            <br />
+            <select>
+              <option value="reading">Reading</option>
+              <option value="finished">Finished</option>
+              <option value="planning">Planning</option>
+              <option value="dropped">Dropped</option>
+            </select>
+          </div> */}
         </div>
         <div className={styles.closeInfo} onClick={onExit}>
           <a title="Exit" className="fas fa-times" />

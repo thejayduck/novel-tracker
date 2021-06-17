@@ -1,42 +1,40 @@
 import styles from '../styles/components/footer.module.css'
 import { useAppContext } from './appWrapper';
-import DarkModeToggle from './darkModeToggle'
 import { useAuthContext } from '../components/authWrapper'
 import LoginGoogle from './loginGoogle'
 import LogoutButton from './logoutButton'
+import FooterButton from './footerButton';
 
 export default function Footer({ data, onExportDataClick, onImportDataClick }) {
-
-    const [state] = useAppContext();
     const token = useAuthContext();
+
+    const [state, setState] = useAppContext();
 
     return (
         <footer
             className={`${styles.footer} ${state.darkMode ? styles.dark : styles.light}`}
         >
             <div>
-                <DarkModeToggle />
-                <button title="Export Data" className={`fas fa-download ${styles.footerButton}`} onClick={onExportDataClick} />
-                <button title="Import Data" className={`fas fa-upload ${styles.footerButton}`} onClick={onImportDataClick} />
+                {token ? <LogoutButton /> : <LoginGoogle />}
+
+                <FooterButton
+                    title="Toggle Theme"
+                    icon={`${state.darkMode ? `fas fa-sun` : `fas fa-moon`}`}
+                    onClick={() => setState({ ...state, darkMode: !state.darkMode })}
+                />
+                <FooterButton title="Export Data" icon="fas fa-download" onClick={onExportDataClick} />
+                <FooterButton title="Import Data" icon="fas fa-upload" onClick={onImportDataClick} />
+
             </div>
             <p>Books: {data.length}</p>
             <div>
                 <p className={styles.volumeCount} >Volumes Read: {data.reduce((acc, val) => acc + val.volume, 0)}</p>
                 <p>Chapters Read: {data.reduce((acc, val) => acc + val.chapter, 0)}</p>
             </div>
-            <a
-                title="Check Out TheJayDuck's Github"
-                href="https://github.com/thejayduck"
-                className="fab fa-github"
-                target="_blank"
-            />
-            <a
-                title="Check Out nobbele's Github"
-                href="https://github.com/nobbele"
-                className="fab fa-github"
-                target="_blank"
-            />
-            {token ? <LogoutButton /> : <LoginGoogle />}
+            <div>
+                <FooterButton title="TheJayDuck's Github" icon="fab fa-github" href="https://github.com/thejayduck" />
+                <FooterButton title="nobbele's Github" icon="fab fa-github" href="https://github.com/nobbele" />
+            </div>
         </footer>
     );
 }

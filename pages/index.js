@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
-import cardStyle from '../styles/BookCard.module.css'
+import cardStyle from '../styles/components/BookCard.module.css'
 
 import { useState, useEffect } from 'react'
 import Fuse from 'fuse.js'

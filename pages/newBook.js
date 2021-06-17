@@ -1,27 +1,13 @@
 import styles from '../styles/NewBook.module.css'
-import cardStyle from '../styles/BookCard.module.css'
+import cardStyle from '../styles/components/BookCard.module.css'
 
 import ResultCard from '../components/resultCard'
 import SearchBar from '../components/searchBar'
-import jikanjs from 'jikanjs'
 import { useState, useEffect } from 'react'
 import { CardListWrapper } from './index'
 import OverlayMenu from '../components/overlayMenu'
 import { useAppContext } from '../components/appWrapper'
-
-// jikanjs.search("manga", "get").then(({ results }) => {
-//   results.forEach(ln => {
-//     data.push({
-//       mal_id: ln.mal_id,
-//       title: ln.title,
-//       coverUrl: ln.image_url,
-//       type: ln.type,
-//       chapter: 1,
-//       volume: 0,
-//       status: "Reading",
-//     });
-//   });
-// });
+import { AnimateSharedLayout, motion } from 'framer-motion'
 
 export default function NewBook({ onAddClicked }) {
 
@@ -56,15 +42,26 @@ export default function NewBook({ onAddClicked }) {
         className={`${styles.container} ${state.darkMode ? styles.dark : styles.light}`}
       >
         <SearchBar onInput={(e) => setUserInput(e.target.value)} />
-        <CardListWrapper>
-          {searchResults.map((entry) => (
-            <li key={entry.id}>
-              <div className={cardStyle.activityEntry}>
-                <ResultCard entry={entry} onAddClicked={onAddClicked} />
-              </div>
-            </li>
-          ))}
-        </CardListWrapper>
+        <AnimateSharedLayout>
+          <CardListWrapper>
+            {searchResults.map((entry, idx) => (
+              <motion.li
+                initial={{
+                  opacity: 0,
+                }}
+                animate={{
+                  opacity: 1,
+                }}
+                layout
+                key={entry.id}
+              >
+                <div className={cardStyle.activityEntry}>
+                  <ResultCard entry={entry} onAddClicked={onAddClicked} />
+                </div>
+              </motion.li>
+            ))}
+          </CardListWrapper>
+        </AnimateSharedLayout>
       </OverlayMenu>
     </div>
   );

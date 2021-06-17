@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import styles from '../styles/BookCard.module.css'
+import styles from '../styles/components/BookCard.module.css'
 
 export default function BookCard({ entry, onIncrement, onDecrement, onInfoClick, onDelete }) {
 
@@ -26,27 +26,29 @@ export default function BookCard({ entry, onIncrement, onDecrement, onInfoClick,
                         </span>
                         <hr />
                         <div className={styles.quickEdit}>
-                            <a
-                                onClick={onIncrement}
-                                title="Increase Progress"
-                                className="fas fa-plus"
-                            />
-                            <a
-                                onClick={onDecrement}
-                                title="Decrease Progress"
-                                className="fas fa-minus"
-                            />
-                            <a onClick={onInfoClick} title="Info" className="fas fa-info" />
-                            <a
-                                onClick={onDelete}
-                                title="Delete Book"
-                                style={{ color: '#e33131' }}
-                                className="fas fa-trash-alt"
-                            />
+                            <QuickButton title="Book Info" icon="fas fa-info" onClick={onInfoClick} />
+                            <QuickButton title="Delete Book" icon="fas fa-trash-alt" onClick={onDelete} />
+                            <div>
+                                <QuickButton title="Decrease Progress" icon="fas fa-minus" onClick={onDecrement} />
+                                <QuickButton title="Increase Progress" icon="fas fa-plus" onClick={onIncrement} />
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    );
+}
+
+function QuickButton({ title, icon, onClick }) {
+    return (
+        <>
+            <a
+                onClick={onClick}
+                title={title}
+            >
+                <i class={icon} />
+            </a>
+        </>
     );
 }

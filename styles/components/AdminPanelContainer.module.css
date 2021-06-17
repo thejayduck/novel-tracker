@@ -5,11 +5,11 @@
 }
 
 .container {
-  background-color: var(--plump-purple);
+  background-color: var(--french-violet);
   color: white;
   /* background-color: hsla(0, 0%, 39%, 0.5); */
   padding: 10px;
-  border-radius: 10px;
+  border-radius: var(--border);
   width: 80%;
 
   display: flex;
@@ -21,7 +21,7 @@
 
 .volumeSection {
   background-color: var(--spanish-violet);
-  border-radius: 10px;
+  border-radius: var(--border);
   padding: 10px;
   margin: 5px;
 
@@ -46,7 +46,7 @@
   font-family: inherit;
   padding: 0.25em 0.5em;
   background-color: #fff;
-  border-radius: 10px;
+  border-radius: var(--border);
 }
 
 @media screen and (max-width: 720px) {

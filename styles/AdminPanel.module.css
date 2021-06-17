@@ -32,9 +32,9 @@
 
   position: fixed;
 
-  background-color: var(--plump-purple);
+  background-color: var(--french-violet);
   color: white;
-  border-radius: 10px;
+  border-radius: var(--border);
 
   user-select: none;
   z-index: 999;
@@ -47,15 +47,16 @@
 
 .submit:hover {
   background-color: var(--spanish-violet);
+  transform: scale(var(--button-scale));
 
   cursor: pointer;
 }
 
 .dark {
   color: white;
-  background-color: var(--black);
+  background-color: var(--eerie-black);
 }
 .light {
   color: black;
-  background-color: var(--magnolia);
+  background-color: var(--light-cyan);
 }

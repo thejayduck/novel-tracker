@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
 
-  border-radius: 10px;
+  border-radius: var(--border);
 
   background-color: var(--eerie-black);
   width: 40%;
@@ -10,15 +10,6 @@
   padding: 20px;
   position: absolute;
   color: white;
-}
-
-.dark {
-  color: white;
-  background-color: var(--eerie-black);
-}
-.light {
-  color: black;
-  background-color: var(--magnolia);
 }
 
 .container .cover {
@@ -30,7 +21,7 @@
 }
 
 .container .cover img {
-  border-radius: 10px;
+  border-radius: var(--border);
   overflow: hidden;
   margin: 1em;
 
@@ -66,14 +57,41 @@
   text-overflow: ellipsis;
   overflow: hidden;
   max-height: 200px;
+  padding-bottom: 50px;
 }
 
 .status {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  width: auto;
+
   text-align: center;
   display: flex;
   flex-flow: row wrap;
 
   justify-content: center;
+}
+
+.status select {
+  width: 100%;
+  min-width: 5ch;
+  max-width: 10ch;
+  border: none;
+  border-radius: var(--border);
+  padding: 0.25em 0.5em;
+  font-size: 1.25rem;
+  cursor: pointer;
+  line-height: 1.1;
+  background-color: var(--french-violet);
+  color: white;
+  background-image: linear-gradient(
+    to top,
+    var(--french-violet),
+    var(--plump-purple) 33%
+  );
 }
 
 .status .statusTitle {
@@ -86,9 +104,9 @@
 
 .status input {
   border: none;
-  background-color: var(--blue-violet);
+  background-color: var(--french-violet);
   color: white;
-  border-radius: 10px;
+  border-radius: var(--border);
   padding: 15px;
 
   font-size: 15px;
@@ -99,6 +117,12 @@
   transition: 0.2s;
   z-index: 999;
   text-align: center;
+
+  font-size: 18px;
+
+  /* font-size: max(32px, 1em); */
+  font-family: inherit;
+  border-radius: var(--border);
 }
 
 .closeInfo {
@@ -110,9 +134,9 @@
   height: 52px;
 
   display: block;
-  background-color: var(--blue-violet);
+  background-color: var(--french-violet);
   color: white;
-  border-radius: 10px;
+  border-radius: var(--border);
   font-size: 20px;
 
   padding: 15px;
@@ -121,14 +145,27 @@
   position: fixed;
   transition: 0.2s;
   z-index: 999;
+
+  cursor: pointer;
 }
 
 .closeInfo:hover {
-  background-color: var(--plump-purple);
+  background-color: var(--spanish-violet);
+  transform: scale(var(--button-scale));
 }
 
 @media screen and (max-width: 720px) {
   .container {
-    width: 95%;
+    width: 100%;
+    height: 90%;
   }
+}
+
+.dark {
+  color: white;
+  background-color: var(--eerie-black);
+}
+.light {
+  color: black;
+  background-color: var(--light-cyan);
 }
