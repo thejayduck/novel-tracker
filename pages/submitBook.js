@@ -2,7 +2,7 @@ import AdminPanelContainer, { FormSection, DescriptionSection, VolumeFormSection
 import { useAppContext } from '../components/appWrapper';
 import styles from '../styles/AdminPanel.module.css';
 import { parse } from 'cookie';
-import { getUserInfoFromToken } from '../lib/db';
+import { getUserInfoFromId, withUserId } from '../lib/db';
 
 export async function getServerSideProps(context) {
     const cookie_header = context.req.headers.cookie;
@@ -17,7 +17,7 @@ export async function getServerSideProps(context) {
 
     const cookies = parse(cookie_header);
     const token = cookies.token;
-    const info = await getUserInfoFromToken(token);
+    const info = await withUserId(token, async (user_id) => await getUserInfoFromId(user_id));
     if (info == null) {
         return {
             redirect: {

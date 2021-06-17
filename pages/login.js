@@ -1,6 +1,6 @@
 import { parse } from 'cookie';
 import { useAppContext } from '../components/appWrapper';
-import { getUserInfoFromToken } from '../lib/db';
+import { getUserInfoFromId, withUserId } from '../lib/db';
 import LoginGoogle from '../components/loginGoogle';
 import styles from '../styles/Login.module.css'
 
@@ -9,7 +9,7 @@ export async function getServerSideProps(context) {
     if (cookie_header) {
         const cookies = parse(context.req.headers.cookie);
         const token = cookies.token;
-        const info = await getUserInfoFromToken(token);
+        const info = await withUserId(token, async (user_id) => await getUserInfoFromId(user_id));
 
         if (info) {
             return {
