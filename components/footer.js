@@ -15,8 +15,8 @@ export default function Footer({ data, onExportDataClick, onImportDataClick }) {
 
                 <FooterButton
                     title="Submit Book"
-                    icon={`fas fa-feather-alt`}
-                    onClick={console.log("added book")}
+                    icon="fas fa-feather-alt"
+                    href="/submitBook"
                 />
 
                 <FooterButton
