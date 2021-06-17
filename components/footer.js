@@ -11,7 +11,13 @@ export default function Footer({ data, onExportDataClick, onImportDataClick }) {
             className={`${styles.footer} ${state.darkMode ? styles.dark : styles.light}`}
         >
             <div>
-                {<LogoutButton />}
+                <LogoutButton />
+
+                <FooterButton
+                    title="Submit Book"
+                    icon={`fas fa-feather-alt`}
+                    onClick={console.log("added book")}
+                />
 
                 <FooterButton
                     title="Toggle Theme"
