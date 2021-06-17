@@ -117,7 +117,11 @@ async function createSession(user_id) {
 export default async function Auth(req, res) {
     const { code } = req.query;
 
-    return acessTokenRequest(code, `http://${req.headers.host}/api/auth`) // TODO check http vs https
+    const proto = req.headers["x-forwarded-proto"] || req.connection.encrypted
+        ? "https:"
+        : "http:";
+
+    return acessTokenRequest(code, `${proto}//${req.headers.host}/api/auth`) // TODO check http vs https
         .then(access_token => getUserInfo(access_token))
         .then(userinfo => userinfo.id)
         .then(async (google_user_id) => {
