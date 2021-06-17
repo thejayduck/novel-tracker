@@ -39,11 +39,11 @@ export default function BookDetails({ book, onExit }) {
                         </ul>
                     </div>
                 </div>
-                {data?.description ?
+                {data?.description &&
                     <div className={styles.descriptionWrapper}>
                         <h2>Description</h2>
                         <p className={styles.description}>{data?.description}</p>
-                    </div> : <></>
+                    </div>
                 }
             </OverlayMenu>
         </div>

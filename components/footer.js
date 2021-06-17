@@ -3,7 +3,7 @@ import { useAppContext } from './appWrapper';
 import LogoutButton from './logoutButton'
 import FooterButton from './footerButton';
 
-export default function Footer({ data, onExportDataClick, onImportDataClick }) {
+export default function Footer({ data, showModButtons, onExportDataClick, onImportDataClick }) {
     const [state, setState] = useAppContext();
 
     return (
@@ -13,11 +13,11 @@ export default function Footer({ data, onExportDataClick, onImportDataClick }) {
             <div>
                 <LogoutButton />
 
-                <FooterButton
+                {showModButtons && <FooterButton
                     title="Submit Book"
                     icon="fas fa-feather-alt"
                     href="/submitBook"
-                />
+                />}
 
                 <FooterButton
                     title="Toggle Theme"

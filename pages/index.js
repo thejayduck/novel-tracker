@@ -53,7 +53,7 @@ export async function getServerSideProps(context) {
   };
 }
 
-export default function Home() {
+export default function Home({ user_info }) {
 
   const [state] = useAppContext();
   const [newBookPanel, setNewBookPanel] = useState(false);
@@ -153,6 +153,7 @@ export default function Home() {
       </main>
       <Footer
         data={data}
+        showModButtons={user_info.moderation_level >= 2}
         onExportDataClick={exportData}
         onImportDataClick={() => {
           var element = document.getElementById('importData');
