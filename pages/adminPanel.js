@@ -1,4 +1,4 @@
-import AdminPanelContainer, { FormSection, DescriptionSection } from '../components/adminPanelContainer';
+import AdminPanelContainer, { FormSection, DescriptionSection, VolumeFormSection } from '../components/adminPanelContainer';
 import { useAppContext } from '../components/appWrapper';
 import styles from '../styles/AdminPanel.module.css';
 import { parse } from 'cookie';
