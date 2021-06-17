@@ -117,7 +117,7 @@ async function createSession(user_id) {
 export default async function Auth(req, res) {
     const { code } = req.query;
 
-    const proto = req.headers["x-forwarded-proto"] || req.connection.encrypted
+    const proto = req.headers["x-forwarded-proto"] == "https" || req.connection.encrypted
         ? "https:"
         : "http:";
 
