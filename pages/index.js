@@ -117,6 +117,11 @@ export default function Home({ user_info }) {
       <SearchBar onInput={onSearch} query={query} />
       <div style={{
         padding: "5rem 0",
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
       }}>
         <AnimateSharedLayout>
           <CardListWrapper
