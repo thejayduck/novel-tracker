@@ -45,7 +45,7 @@ export default function NewBook({ onAddClicked }) {
         <AnimateSharedLayout>
           <CardListWrapper>
             {searchResults.map(entry => (
-              <ResultCard entry={entry} onAddClick={onAddClicked} onClick={entry => setDetailedBook(entry)} />
+              <ResultCard key={entry?.id} entry={entry} onAddClick={onAddClicked} onClick={entry => setDetailedBook(entry)} />
             ))}
           </CardListWrapper>
         </AnimateSharedLayout>

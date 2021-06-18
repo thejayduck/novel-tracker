@@ -124,7 +124,7 @@ export default function Home({ user_info }) {
           >
             {bookResults.map((entry, index) => (
               <LibraryCard
-                key={entry.id}
+                key={entry?.id}
                 entry={entry}
                 onIncrement={() =>
                   updateElementInData(index, (element) => element.chapter++)
@@ -136,7 +136,7 @@ export default function Home({ user_info }) {
                       (element.chapter = Math.max(0, element.chapter - 1))
                   )
                 }
-                onDelete={() => removeBook(entry.id)}
+                onDelete={() => removeBook(entry?.id)}
               />
             ))}
           </CardListWrapper>

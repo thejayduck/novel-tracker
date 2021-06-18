@@ -42,7 +42,8 @@ export default function BookDetails({ book, onExit, onAddClicked }) {
                 </div>
                 {data?.description &&
                     <div className={styles.descriptionWrapper}>
-                        <p className={styles.description}><h2>Description</h2> {data?.description}</p>
+                        <h2>Description</h2>
+                        <p className={styles.description}>{data?.description}</p>
                     </div>
                 }
                 <Button title="Exit" onClick={() => onExit()} />

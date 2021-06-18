@@ -1,5 +1,6 @@
 import styles from '../styles/components/CardElement.module.css'
 import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
 
 export default function CardElement({ entry, children }) {
     return (
@@ -11,7 +12,6 @@ export default function CardElement({ entry, children }) {
             animate={{
                 opacity: 1,
             }}
-            key={entry.id}
         >
             <div className={styles.activityEntry}>
                 <div className={styles.wrap}>
@@ -22,7 +22,6 @@ export default function CardElement({ entry, children }) {
                         >
                             {entry?.title}
                         </p>
-                        <img className={styles.cover} src={entry?.coverUrl} />
                         {children}
                     </div>
                 </div>
@@ -36,6 +35,7 @@ export function ResultCard({ entry, onClick, onAddClick }) {
     return (
         <>
             <CardElement entry={entry}>
+                <img className={styles.cover} src={entry?.coverUrl} />
                 <div
                     className={styles.viewDetails}
                     onClick={() => onClick(entry)}
@@ -51,9 +51,18 @@ export function ResultCard({ entry, onClick, onAddClick }) {
 }
 
 export function LibraryCard({ entry, onIncrement, onDecrement, onDelete }) {
-    return (
-        <CardElement entry={entry}>
 
+    const [data, setData] = useState(null);
+
+    useEffect(async () => {
+        const response = await fetch(`/api/get_book?id=${entry.id}`);
+        const json = await response.json();
+        setData(json);
+    }, [])
+
+    return (
+        <CardElement entry={data}>
+            <img className={styles.cover} src={data?.cover_url} />
             <div className={styles.details}>
                 <div>
                     <span className={styles.status}>

@@ -22,6 +22,10 @@
 }
 
 .descriptionWrapper {
+  background-color: var(--maximum-blue-purple);
+  border-radius: var(--border);
+  margin: 10px;
+
   user-select: none;
 
   padding: 15px;
@@ -31,11 +35,7 @@
 }
 
 .description {
-  background-color: var(--maximum-blue-purple);
-  border-radius: var(--border);
-
   color: black;
-  padding: 10px;
   margin: 0;
   max-height: 100%;
 
