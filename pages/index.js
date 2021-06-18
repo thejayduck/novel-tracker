@@ -115,30 +115,33 @@ export default function Home({ user_info }) {
   return (
     <PageBase>
       <SearchBar onInput={onSearch} query={query} />
-      <AnimateSharedLayout>
-        <CardListWrapper
-          data={data}
-        >
-          {bookResults.map((entry, index) => (
-            <LibraryCard
-              key={entry.id}
-              entry={entry}
-              onIncrement={() =>
-                updateElementInData(index, (element) => element.chapter++)
-              }
-              onDecrement={() =>
-                updateElementInData(
-                  index,
-                  (element) =>
-                    (element.chapter = Math.max(0, element.chapter - 1))
-                )
-              }
-              onDelete={() => removeBook(entry.id)}
-            />
-          ))}
-        </CardListWrapper>
-      </AnimateSharedLayout>
-
+      <div style={{
+        padding: "5rem 0",
+      }}>
+        <AnimateSharedLayout>
+          <CardListWrapper
+            data={data}
+          >
+            {bookResults.map((entry, index) => (
+              <LibraryCard
+                key={entry.id}
+                entry={entry}
+                onIncrement={() =>
+                  updateElementInData(index, (element) => element.chapter++)
+                }
+                onDecrement={() =>
+                  updateElementInData(
+                    index,
+                    (element) =>
+                      (element.chapter = Math.max(0, element.chapter - 1))
+                  )
+                }
+                onDelete={() => removeBook(entry.id)}
+              />
+            ))}
+          </CardListWrapper>
+        </AnimateSharedLayout>
+      </div>
       <Footer
         data={data}
         showModButtons={user_info.moderation_level >= 2}
