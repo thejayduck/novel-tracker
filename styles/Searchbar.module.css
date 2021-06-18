@@ -8,7 +8,7 @@
   padding: 10px;
   background-color: var(--french-violet);
   border-radius: var(--border);
-  z-index: 999;
+  z-index: 5;
 }
 
 .searchBar {

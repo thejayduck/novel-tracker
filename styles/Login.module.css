@@ -1,4 +1,4 @@
-.main {
+/* .main {
   width: 100%;
   height: 100%;
 
@@ -10,7 +10,14 @@
   justify-content: center;
   text-align: center;
   align-items: center;
+} */
+
+.logo {
+  width: 150px;
+  height: 150px;
+  margin: 10px;
 }
+
 .google {
   font-family: "Roboto", sans-serif;
 }
@@ -30,13 +37,4 @@
   border: thin solid #888;
   box-shadow: 1px 1px 1px grey;
   white-space: nowrap;
-}
-
-.dark {
-  color: white;
-  background-color: var(--eerie-black);
-}
-.light {
-  color: black;
-  background-color: var(--light-cyan);
 }

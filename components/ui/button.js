@@ -12,3 +12,11 @@ export default function Button({ title, icon, onClick }) {
     );
 
 }
+
+export function FloatingButton({ title, icon, onClick }) {
+    return (
+        <div className={styles.floatingButton} onClick={onClick}>
+            <a title={title} className={icon} />
+        </div>
+    );
+}

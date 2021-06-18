@@ -1,8 +1,9 @@
-import Button from "../components/ui/button";
-import { parse } from "cookie";
-import { useAppContext } from "../components/appWrapper";
-import { getUserInfoFromId, withUserId } from "../lib/db";
 import styles from "../styles/SetupAccount.module.css"
+import Button from "../components/ui/button";
+import PageBase from "./pageBase";
+
+import { parse } from "cookie";
+import { getUserInfoFromId, withUserId } from "../lib/db";
 import { useRouter } from 'next/router';
 import { useState } from "react";
 
@@ -47,7 +48,6 @@ export async function getServerSideProps(context) {
 
 
 export default function SetupAccount() {
-    const [state] = useAppContext();
     const router = useRouter();
 
     const [usernameInput, setUsernameInput] = useState("");
@@ -70,15 +70,16 @@ export default function SetupAccount() {
     }
 
     return (
-        <main className={`${styles.main} ${state.darkMode ? styles.dark : styles.light}`} >
-            <div>
+        <PageBase>
+            <div style={{ textAlign: "center" }}>
                 <img className={styles.logo} src='../book.svg' />
-                <div className={styles.formSection} >
+                <div className={styles.formSection}>
                     <h3>Please Enter Your Username to Finish Setting Up Your "Light Novel Tracker" Account </h3>
                     <input type="text" placeholder="Username..." autoComplete="off" min="0" onChange={({ target }) => setUsernameInput(target.value)} />
                 </div>
                 <Button title="Complete Account!" icon="fas fa-user-alt" onClick={onCompleteClick} />
             </div>
-        </main >
+        </PageBase>
+
     );
 }

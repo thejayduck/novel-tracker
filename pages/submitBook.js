@@ -1,8 +1,8 @@
-import AdminPanelContainer, { FormSection, DescriptionSection, VolumeFormSection } from '../components/adminPanelContainer';
-import { useAppContext } from '../components/appWrapper';
-import styles from '../styles/AdminPanel.module.css';
+import styles from '../styles/SubmitBook.module.css';
+import SubmitBookContainer, { FormSection, DescriptionSection, VolumeFormSection } from '../components/submitBookContainer';
 import { parse } from 'cookie';
 import { getUserInfoFromId, withUserId } from '../lib/db';
+import PageBase from './pageBase';
 
 export async function getServerSideProps(context) {
     const cookie_header = context.req.headers.cookie;
@@ -43,22 +43,20 @@ export async function getServerSideProps(context) {
 }
 
 export default function SubmitBook() {
-    const [state] = useAppContext();
-
     return (
-        <main className={`${styles.main} ${state.darkMode ? styles.dark : styles.light}`} >
+        <PageBase>
             <div className={styles.pageContent}>
-                <h2 className={styles.containerTitle} > Admin Panel - Submit Book <i className="fas fa-book" /> </h2>
+                <h2 className={styles.containerTitle} >Submit Book <i className="fas fa-feather-alt" /></h2>
 
-                <AdminPanelContainer title="Titles">
+                <SubmitBookContainer title="Titles">
                     <FormSection title="Title* (Licensed)" inputType="text" placeHolder="Licensed English Title" />
                     <FormSection title="Title Romanized" inputType="text" placeHolder="Romaji Title" />
                     <FormSection title="Title Native" inputType="text" placeHolder="Native Title" />
-                </AdminPanelContainer>
+                </SubmitBookContainer>
 
                 <DescriptionSection />
 
-                <AdminPanelContainer title="Lengths">
+                <SubmitBookContainer title="Lengths">
                     <div>
                         <FormSection title="Volumes" inputType="number" defaultValue="0" maxValue="200" />
                         <div style={{
@@ -69,20 +67,20 @@ export default function SubmitBook() {
                             {/* <VolumeFormSection index="Volume [1]" /> */}
                         </div>
                     </div>
-                </AdminPanelContainer>
+                </SubmitBookContainer>
 
-                <AdminPanelContainer title="Publication Date">
+                <SubmitBookContainer title="Publication Date">
                     <FormSection title="Start Date" inputType="date" />
                     <FormSection title="End Date" inputType="date" />
-                </AdminPanelContainer>
+                </SubmitBookContainer>
 
-                <AdminPanelContainer title="Other">
+                <SubmitBookContainer title="Other">
                     <FormSection title="Author*" inputType="text" />
                     <FormSection title="Cover Url" inputType="url" />
                     <FormSection title="Banner Url" inputType="text" />
                     <FormSection title="Anilist ID" inputType="number" maxValue="1000000" />
                     <FormSection title="MAL ID" inputType="number" maxValue="1000000" />
-                </AdminPanelContainer>
+                </SubmitBookContainer>
 
                 <br />
                 <div className={styles.submit}>
@@ -93,6 +91,6 @@ export default function SubmitBook() {
                 </div>
                 <br />
             </div>
-        </main>
+        </PageBase>
     );
 }

@@ -115,7 +115,7 @@
 
   position: relative;
   transition: 0.2s;
-  z-index: 999;
+  z-index: 5;
   text-align: center;
 
   font-size: 18px;
@@ -144,7 +144,7 @@
 
   position: fixed;
   transition: 0.2s;
-  z-index: 999;
+  z-index: 5;
 
   cursor: pointer;
 }

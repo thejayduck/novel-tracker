@@ -1,16 +1,15 @@
 import styles from '../styles/Home.module.css'
-import cardStyle from '../styles/components/BookCard.module.css'
+import PageBase from './pageBase';
 
 import { useState, useEffect } from 'react'
 import Fuse from 'fuse.js'
-import BookCard from '../components/bookCard'
+import { LibraryCard } from '../components/cardElement'
 import Footer from '../components/footer'
 import SearchBar from '../components/searchBar'
 import NewBook from './newBook'
 import BookDetails from '../components/bookDetails'
-import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion'
-import { useAppContext } from '../components/appWrapper'
-import Button from '../components/ui/button'
+import { AnimatePresence, AnimateSharedLayout } from 'framer-motion'
+import { FloatingButton } from '../components/ui/button'
 import { parse } from 'cookie'
 import { getUserInfoFromId, withUserId } from '../lib/db'
 
@@ -54,8 +53,6 @@ export async function getServerSideProps(context) {
 }
 
 export default function Home({ user_info }) {
-
-  const [state] = useAppContext();
   const [newBookPanel, setNewBookPanel] = useState(false);
   const [data, setData] = useState([]);
 
@@ -116,41 +113,32 @@ export default function Home({ user_info }) {
 
 
   return (
-    <div
-      className={`${styles.container} ${state.darkMode ? styles.dark : styles.light}`}
-    >
-      <main className={styles.main}>
-        <SearchBar onInput={onSearch} query={query} />
-        <AnimateSharedLayout>
-          <CardListWrapper
-            data={data}
-          >
-            {bookResults.map((entry, index) => (
-              <motion.li
-                layout
-                key={entry.id}>
-                <div className={cardStyle.activityEntry}>
-                  <BookCard
-                    entry={entry}
-                    onIncrement={() =>
-                      updateElementInData(index, (element) => element.chapter++)
-                    }
-                    onDecrement={() =>
-                      updateElementInData(
-                        index,
-                        (element) =>
-                          (element.chapter = Math.max(0, element.chapter - 1))
-                      )
-                    }
-                    onDelete={() => removeBook(entry.id)}
-                  />
-                </div>
-              </motion.li>
-            ))}
-          </CardListWrapper>
-        </AnimateSharedLayout>
+    <PageBase>
+      <SearchBar onInput={onSearch} query={query} />
+      <AnimateSharedLayout>
+        <CardListWrapper
+          data={data}
+        >
+          {bookResults.map((entry, index) => (
+            <LibraryCard
+              key={entry.id}
+              entry={entry}
+              onIncrement={() =>
+                updateElementInData(index, (element) => element.chapter++)
+              }
+              onDecrement={() =>
+                updateElementInData(
+                  index,
+                  (element) =>
+                    (element.chapter = Math.max(0, element.chapter - 1))
+                )
+              }
+              onDelete={() => removeBook(entry.id)}
+            />
+          ))}
+        </CardListWrapper>
+      </AnimateSharedLayout>
 
-      </main>
       <Footer
         data={data}
         showModButtons={user_info.moderation_level >= 2}
@@ -170,12 +158,8 @@ export default function Home({ user_info }) {
           } />
         )}
       </AnimatePresence>
+      <FloatingButton title="Add New Book" icon="fas fa-plus" onClick={() => setNewBookPanel(!newBookPanel)} />
 
-      {/* <Button icon="fas fa-plus" onClick={() => setNewBookPanel(!newBookPanel)} /> */}
-
-      <div className={styles.newBook} onClick={() => setNewBookPanel(!newBookPanel)}>
-        <a title="Add New Book" className="fas fa-plus" />
-      </div>
-    </div>
+    </PageBase>
   );
 }

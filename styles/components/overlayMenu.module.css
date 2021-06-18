@@ -12,5 +12,6 @@
   bottom: 0;
   background-color: var(--blur-background);
   backdrop-filter: blur(var(--blur-amount));
-  z-index: 999;
+
+  z-index: 5;
 }

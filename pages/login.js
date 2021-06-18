@@ -1,7 +1,8 @@
-import { parse } from 'cookie';
-import { useAppContext } from '../components/appWrapper';
-import { getUserInfoFromId, withUserId } from '../lib/db';
 import styles from '../styles/Login.module.css'
+import PageBase from './pageBase';
+
+import { parse } from 'cookie';
+import { getUserInfoFromId, withUserId } from '../lib/db';
 import { useEffect, useState } from 'react';
 
 export async function getServerSideProps(context) {
@@ -27,8 +28,6 @@ export async function getServerSideProps(context) {
 }
 
 export default function Login() {
-    const [state] = useAppContext();
-
     const [url, setUrl] = useState(null);
 
     useEffect(() => {
@@ -36,15 +35,16 @@ export default function Login() {
         setUrl(`https://accounts.google.com/o/oauth2/v2/auth?scope=email%20profile&access_type=offline&response_type=code&client_id=524679525288-o6gbij04v72f2i5ub4f83974mfocrc05.apps.googleusercontent.com&redirect_uri=${domain}/api/auth&state=434595.10145617445`);
     })
     return url && (
-        <main className={`${styles.main} ${state.darkMode ? styles.dark : styles.light}`} >
-            <div>
-                <a
-                    href={url}
-                    className={`${styles.google} ${styles.btn}`}
-                >
-                    <i className="fab fa-google"> </i> Login with Google
-                </a>
+        <PageBase>
+            <div style={{ textAlign: "center" }}>
+                <img className={styles.logo} src='../book.svg' />
+                <div >
+                    <h1>Welcome to Light Novel Tracker! </h1>
+                    <a href={url} className={`${styles.google} ${styles.btn}`}>
+                        <i className="fab fa-google"> </i> Login with Google
+                    </a>
+                </div>
             </div>
-        </main >
+        </PageBase >
     );
 }

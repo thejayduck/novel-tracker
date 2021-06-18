@@ -1,6 +1,9 @@
+import PageBase from "./pageBase"
+import Button from "../components/ui/button"
+
 const reason_messages = {
-    must_login: "This page requires the user to be logged in.",
-    mod_only: "This page can only be accessed by users with Moderator status"
+    must_login: "This page requires the user to be logged in!",
+    mod_only: "This page can only be accessed by users with 'Moderator' status!"
 }
 
 export async function getServerSideProps({ query }) {
@@ -11,11 +14,13 @@ export async function getServerSideProps({ query }) {
     }
 }
 
-
 export default function Error({ message }) {
     return (
-        <p style={{ color: "red" }}>
-            {message}
-        </p>
+        <PageBase>
+            <div>
+                <h1 style={{ textTransform: "capitalize" }}>{message}</h1>
+                <Button title="Go Back" onClick={() => location.href = "/"} />
+            </div>
+        </PageBase>
     )
 }

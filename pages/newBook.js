@@ -1,13 +1,12 @@
 import styles from '../styles/NewBook.module.css'
-import cardStyle from '../styles/components/BookCard.module.css'
 
-import ResultCard from '../components/resultCard'
+import { ResultCard } from '../components/cardElement'
 import SearchBar from '../components/searchBar'
 import { useState, useEffect } from 'react'
 import { CardListWrapper } from './index'
 import OverlayMenu from '../components/overlayMenu'
 import { useAppContext } from '../components/appWrapper'
-import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion'
+import { AnimatePresence, AnimateSharedLayout } from 'framer-motion'
 import BookDetails from '../components/bookDetails'
 
 export default function NewBook({ onAddClicked }) {
@@ -46,20 +45,7 @@ export default function NewBook({ onAddClicked }) {
         <AnimateSharedLayout>
           <CardListWrapper>
             {searchResults.map(entry => (
-              <motion.li
-                initial={{
-                  opacity: 0,
-                }}
-                animate={{
-                  opacity: 1,
-                }}
-                layout
-                key={entry.id}
-              >
-                <div className={cardStyle.activityEntry}>
-                  <ResultCard entry={entry} onAddClicked={onAddClicked} onDetailsClicked={entry => setDetailedBook(entry)} />
-                </div>
-              </motion.li>
+              <ResultCard entry={entry} onAddClick={onAddClicked} onClick={entry => setDetailedBook(entry)} />
             ))}
           </CardListWrapper>
         </AnimateSharedLayout>
