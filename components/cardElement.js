@@ -1,4 +1,7 @@
 import styles from '../styles/components/CardElement.module.css'
+import InputField from './ui/inputField';
+import Button from './ui/button';
+
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
@@ -71,7 +74,9 @@ export function ResultCard({ entry, onClick, onAddClick }) {
     );
 }
 
-export function LibraryCard({ entry, onIncrement, onDecrement, onDelete }) {
+export function LibraryCard({ entry, onIncrement, onDecrement, onValueChange, onChapterChange, onVolumeChange, onDelete }) {
+
+    const [editPanel, setEditPanel] = useState(false);
 
     const [data, setData] = useState(null);
 
@@ -84,21 +89,40 @@ export function LibraryCard({ entry, onIncrement, onDecrement, onDelete }) {
     return (
         <CardElement entry={data}>
             <img className={styles.cover} src={data?.cover_url} />
-            <div className={styles.details}>
-                <div>
-                    <span className={styles.status}>
-                        Current Chapter: {entry?.chapter}
-                    </span>
-                    <hr />
-                    <div className={styles.quickEdit}>
-                        <QuickButton title="Delete Book" icon="fas fa-trash-alt" onClick={onDelete} />
-                        <div>
-                            <QuickButton title="Decrease Progress" icon="fas fa-minus" onClick={onDecrement} />
-                            <QuickButton title="Increase Progress" icon="fas fa-plus" onClick={onIncrement} />
+            {!editPanel &&
+                <div className={styles.details}>
+                    <div>
+                        <span className={styles.status}>
+                            Current Chapter: {entry?.chapter}
+                        </span>
+                        <hr />
+                        <div className={styles.quickEdit}>
+                            <div>
+                                <QuickButton title="Edit Progress" icon="fas fa-feather-alt" onClick={() => setEditPanel(true)} />
+                                <QuickButton title="Delete Book" icon="fas fa-trash-alt" onClick={onDelete} />
+                            </div>
+                            <div>
+                                <QuickButton title="Decrease Progress" icon="fas fa-minus" onClick={onDecrement} />
+                                <QuickButton title="Increase Progress" icon="fas fa-plus" onClick={onIncrement} />
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            }
+            {editPanel &&
+                <div
+                    className={styles.editProgress}
+                >
+                    <a href="#" title="View Details">
+                        <div className={styles.formSection}>
+                            <InputField title="Volumes" inputType="number" defaultValue={entry?.volume} onChange={onVolumeChange} maxValue="200" />
+                            <InputField title="Chapters" inputType="number" defaultValue={entry?.chapter} onChange={onChapterChange} maxValue="10000" />
+                            <br />
+                            <Button title="Close" onClick={() => setEditPanel(false)} />
+                        </div>
+                    </a>
+                </div>
+            }
         </CardElement>
     );
 }

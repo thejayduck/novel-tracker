@@ -10,33 +10,6 @@
   padding: 0.25em 0.5em;
 }
 
-.submit {
-  box-shadow: 0px 4px 5px black;
-
-  text-align: center;
-
-  display: block;
-  font-size: 20px;
-  bottom: 3.5em;
-  right: 1em;
-  padding: 15px;
-  line-height: 26px;
-
-  position: fixed;
-
-  background-color: var(--french-violet);
-  color: white;
-  border-radius: var(--border);
-
-  user-select: none;
-  z-index: 5;
-  transition: 0.2s;
-}
-
-.submit i {
-  margin-left: 10px;
-}
-
 .submit:hover {
   background-color: var(--spanish-violet);
   transform: scale(var(--button-scale));

@@ -21,15 +21,6 @@ export function VolumeFormSection({ index }) {
     );
 }
 
-export function FormSection({ inputType, title, placeHolder, defaultValue, maxValue }) {
-    return (
-        <div className={styles.formSection}>
-            <h3>{title}</h3>
-            <input type={inputType} placeholder={placeHolder} autoComplete="off" min="0" max={maxValue} defaultValue={defaultValue} />
-        </div>
-    );
-}
-
 export function DescriptionSection() {
     return (
         <>

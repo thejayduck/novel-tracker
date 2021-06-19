@@ -17,7 +17,6 @@ export default function BookDetails({ book, onExit, onAddClicked }) {
     }, [])
 
     return (
-
         <div>
             <OverlayMenu
                 className={`${styles.container} ${state.darkMode ? styles.dark : styles.light}`}
@@ -28,7 +27,9 @@ export default function BookDetails({ book, onExit, onAddClicked }) {
                     </div>
                     <div className={styles.coverWrapper}>
                         <img className={styles.cover} src={data?.cover_url} />
-                        <Button title="Add Book" onClick={() => onAddClicked()} />
+                        <Button title="Add Book" onClick={() => { window.alert("Add Book") }} />
+                        <br />
+                        <Button title="Edit Book" onClick={() => { window.alert("Edit Book") }} />
                     </div>
                     <div className={styles.info}>
                         <h1 title={data?.title} className={styles.title}> {data?.title} </h1>

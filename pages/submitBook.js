@@ -1,5 +1,6 @@
 import styles from '../styles/SubmitBook.module.css';
-import SubmitBookContainer, { FormSection, DescriptionSection, VolumeFormSection } from '../components/submitBookContainer';
+import InputField from '../components/ui/inputField';
+import SubmitBookContainer, { DescriptionSection, VolumeFormSection } from '../components/submitBookContainer';
 import { parse } from 'cookie';
 import { getUserInfoFromId, withUserId } from '../lib/db';
 import { FloatingButton } from '../components/ui/button';
@@ -50,16 +51,16 @@ export default function SubmitBook() {
                 <h2 className={styles.containerTitle} >Submit Book <i className="fas fa-feather-alt" /></h2>
 
                 <SubmitBookContainer title="Titles">
-                    <FormSection title="Title (Licensed*)" inputType="text" placeHolder="Licensed English Title" />
-                    <FormSection title="Title Romanized" inputType="text" placeHolder="Romaji Title" />
-                    <FormSection title="Title Native" inputType="text" placeHolder="Native Title" />
+                    <InputField title="Title (Licensed*)" inputType="text" placeHolder="Licensed English Title" />
+                    <InputField title="Title Romanized" inputType="text" placeHolder="Romaji Title" />
+                    <InputField title="Title Native" inputType="text" placeHolder="Native Title" />
                 </SubmitBookContainer>
 
                 <DescriptionSection />
 
                 <SubmitBookContainer title="Lengths">
                     <div>
-                        <FormSection title="Volumes" inputType="number" defaultValue="0" maxValue="200" />
+                        <InputField title="Volumes" inputType="number" defaultValue="0" maxValue="200" />
                         <div style={{
                             display: "flex",
                             flexFlow: "row wrap",
@@ -71,16 +72,16 @@ export default function SubmitBook() {
                 </SubmitBookContainer>
 
                 <SubmitBookContainer title="Publication Date">
-                    <FormSection title="Start Date" inputType="date" />
-                    <FormSection title="End Date" inputType="date" />
+                    <InputField title="Start Date" inputType="date" />
+                    <InputField title="End Date" inputType="date" />
                 </SubmitBookContainer>
 
                 <SubmitBookContainer title="Other">
-                    <FormSection title="Author*" inputType="text" />
-                    <FormSection title="Cover Url" inputType="url" />
-                    <FormSection title="Banner Url" inputType="text" />
-                    <FormSection title="AniList ID" inputType="number" maxValue="1000000" />
-                    <FormSection title="MAL ID" inputType="number" maxValue="1000000" />
+                    <InputField title="Author*" inputType="text" />
+                    <InputField title="Cover Url" inputType="url" />
+                    <InputField title="Banner Url" inputType="text" />
+                    <InputField title="AniList ID" inputType="number" maxValue="1000000" />
+                    <InputField title="MAL ID" inputType="number" maxValue="1000000" />
                 </SubmitBookContainer>
 
                 <br />

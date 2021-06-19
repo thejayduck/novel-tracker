@@ -25,8 +25,9 @@ export function FloatingButton({ hoverTitle, title, icon, onClick }) {
 
             className={styles.floatingButton}
             onClick={onClick}
+            title={hoverTitle}
         >
-            <a title={hoverTitle}><i className={icon} /> {title}</a>
+            <a><i className={icon} /> {title}</a>
         </motion.div>
     );
 }

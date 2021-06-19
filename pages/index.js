@@ -137,6 +137,16 @@ export default function Home({ user_info }) {
                       (element.chapter = Math.max(0, element.chapter - 1))
                   )
                 }
+                onChapterChange={
+                  ({ target }) => {
+                    updateElementInData(index, (element) => element.chapter = Number.parseInt(target.value))
+                  }
+                }
+                onVolumeChange={
+                  ({ target }) => {
+                    updateElementInData(index, (element) => element.volume = Number.parseInt(target.value))
+                  }
+                }
                 onDelete={() => removeBook(entry?.id)}
               />
             ))}

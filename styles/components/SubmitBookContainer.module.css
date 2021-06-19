@@ -28,27 +28,6 @@
   text-align: center;
 }
 
-.container .formSection {
-  padding: 10px;
-  /* flex-basis: 33.333333%; */
-  text-align: center;
-}
-
-.container .formSection > h3 {
-  margin: 0;
-  user-select: none;
-}
-
-.container .formSection > input {
-  font-size: 24px;
-
-  /* font-size: max(32px, 1em); */
-  font-family: inherit;
-  padding: 0.25em 0.5em;
-  background-color: #fff;
-  border-radius: var(--border);
-}
-
 @media screen and (max-width: 720px) {
   .container {
     width: 95%;
