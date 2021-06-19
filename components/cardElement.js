@@ -2,7 +2,7 @@ import styles from '../styles/components/CardElement.module.css'
 import InputField from './ui/inputField';
 import Button from './ui/button';
 
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
 export default function CardListWrapper({ children }) {
@@ -64,7 +64,7 @@ export function ResultCard({ entry, onClick, onAddClick }) {
                     className={styles.viewDetails}
                     onClick={() => onClick(entry)}
                 >
-                    <a href="#" title="View Details">
+                    <a title="View Details">
                         View Details
                     </a>
                 </div>
@@ -74,10 +74,9 @@ export function ResultCard({ entry, onClick, onAddClick }) {
     );
 }
 
-export function LibraryCard({ entry, onIncrement, onDecrement, onValueChange, onChapterChange, onVolumeChange, onDelete }) {
+export function LibraryCard({ entry, onIncrement, onDecrement, onChapterChange, onVolumeChange, onDelete }) {
 
     const [editPanel, setEditPanel] = useState(false);
-
     const [data, setData] = useState(null);
 
     useEffect(async () => {
@@ -109,20 +108,26 @@ export function LibraryCard({ entry, onIncrement, onDecrement, onValueChange, on
                     </div>
                 </div>
             }
-            {editPanel &&
-                <div
-                    className={styles.editProgress}
-                >
-                    <a href="#" title="View Details">
-                        <div className={styles.formSection}>
-                            <InputField title="Volumes" inputType="number" defaultValue={entry?.volume} onChange={onVolumeChange} maxValue="200" />
-                            <InputField title="Chapters" inputType="number" defaultValue={entry?.chapter} onChange={onChapterChange} maxValue="10000" />
-                            <br />
-                            <Button title="Close" onClick={() => setEditPanel(false)} />
-                        </div>
-                    </a>
-                </div>
-            }
+            <AnimatePresence>
+                {editPanel &&
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+
+                        className={styles.editProgress}
+                    >
+                        <a title="Edit Progress">
+                            <div className={styles.formSection}>
+                                <InputField title="Volumes" inputType="number" defaultValue={entry?.volume} onChange={onVolumeChange} maxValue="200" />
+                                <InputField title="Chapters" inputType="number" defaultValue={entry?.chapter} onChange={onChapterChange} maxValue="10000" />
+                                <br />
+                                <Button title="Close" onClick={() => setEditPanel(false)} />
+                            </div>
+                        </a>
+                    </motion.div>
+                }
+            </AnimatePresence>
         </CardElement>
     );
 }
