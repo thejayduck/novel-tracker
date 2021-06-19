@@ -178,6 +178,9 @@ div:hover > .viewDetails {
 }
 
 @media screen and (max-width: 720px) {
+  .list .cover {
+    user-select: none;
+  }
   .activityEntry {
     margin: 1px;
     margin-bottom: 1em;
