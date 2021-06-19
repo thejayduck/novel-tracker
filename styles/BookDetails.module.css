@@ -13,6 +13,8 @@
 
   overflow: hidden auto;
 
+  padding: 10px;
+
   z-index: 999;
 }
 
@@ -22,7 +24,8 @@
 }
 
 .descriptionWrapper {
-  background-color: var(--maximum-blue-purple);
+  color: white;
+  background-color: var(--french-violet);
   border-radius: var(--border);
   margin: 10px;
 
@@ -35,7 +38,6 @@
 }
 
 .description {
-  color: black;
   margin: 0;
   max-height: 100%;
 
@@ -84,14 +86,6 @@
 
 .banner {
   background: hsl(271, 100%, 65%);
-  /* background: radial-gradient(
-    circle,
-    rgba(135, 44, 219, 1) 4%,
-    rgba(146, 36, 219, 1) 57%,
-    rgba(137, 45, 220, 1) 73%,
-    rgba(138, 44, 219, 1) 80%,
-    rgba(0, 0, 0, 1) 100%
-  ); */
 
   margin: 0;
   padding: 0;
@@ -108,14 +102,17 @@
 
 .infoWrapper .info {
   margin-left: 5px;
+  flex: 0.5;
 
   z-index: 1;
 }
 
 .info .title {
-  padding: 10px;
-  border-radius: var(--border);
   background-color: black;
+  border-radius: var(--border);
+  text-align: center;
+
+  padding: 10px;
   color: white;
 }
 
@@ -124,14 +121,22 @@
   padding: 0;
   margin: 0;
   font-size: larger;
+
+  padding: 5px;
+  border-radius: var(--border);
+
+  color: white;
+  background-color: var(--french-violet);
+  /* background-color: var(--maximum-blue-purple); */
 }
 
 .container ul li {
   margin: 5px;
-  padding: 5px;
-  border-radius: var(--border);
+}
 
-  background-color: var(--maximum-blue-purple);
+.container ul li hr {
+  height: 5px;
+  background-color: white;
 }
 
 @media screen and (max-width: 720px) {

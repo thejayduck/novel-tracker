@@ -17,6 +17,7 @@ export default function BookDetails({ book, onExit, onAddClicked }) {
     }, [])
 
     return (
+
         <div>
             <OverlayMenu
                 className={`${styles.container} ${state.darkMode ? styles.dark : styles.light}`}
@@ -32,14 +33,15 @@ export default function BookDetails({ book, onExit, onAddClicked }) {
                     <div className={styles.info}>
                         <h1 title={data?.title} className={styles.title}> {data?.title} </h1>
                         <ul>
-                            <li><a>Title (Romanized): {data?.title_romanized}</a></li>
-                            <li><a>Title (Native): {data?.title_native}</a></li>
+                            <li><a>Title (Romanized): {data?.title_romanized}</a><hr /></li>
+                            <li><a>Title (Native): {data?.title_native}<hr /></a></li>
+                            <li><a>Author: {data?.author}<hr /></a></li>
                             <li><a>Total Volumes: 10</a></li>
                             <li><a>Total Chapters: 10</a></li>
-                            <li><a>Author: {data?.author}</a></li>
                         </ul>
                     </div>
                 </div>
+                <br />
                 {data?.description &&
                     <div className={styles.descriptionWrapper}>
                         <h2>Description</h2>
@@ -47,7 +49,6 @@ export default function BookDetails({ book, onExit, onAddClicked }) {
                     </div>
                 }
                 <Button title="Exit" onClick={() => onExit()} />
-                <br />
             </OverlayMenu>
         </div>
     );

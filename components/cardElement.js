@@ -2,7 +2,18 @@ import styles from '../styles/components/CardElement.module.css'
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
-export default function CardElement({ entry, children }) {
+export default function CardListWrapper({ children }) {
+    return (
+        <div className={styles.cardListContainer}>
+            <ul className={styles.cardListFeed}>
+                {children}
+            </ul>
+        </div>
+    );
+}
+
+export function CardElement({ entry, children }) {
+
     return (
         <motion.li
             layout
@@ -11,6 +22,16 @@ export default function CardElement({ entry, children }) {
             }}
             animate={{
                 opacity: 1,
+            }}
+            whileTap={{
+                scale: 0.98,
+            }}
+            whileHover={{
+                scale: 1.05,
+            }}
+            transition={{
+                type: "spring",
+                duration: 0.5,
             }}
         >
             <div className={styles.activityEntry}>

@@ -65,7 +65,7 @@
   font-size: 25px;
 }
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 800px) {
   .footer {
     position: relative;
     bottom: 0;

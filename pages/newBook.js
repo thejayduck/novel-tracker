@@ -1,9 +1,8 @@
 import styles from '../styles/NewBook.module.css'
 
-import { ResultCard } from '../components/cardElement'
+import CardListWrapper, { ResultCard } from '../components/cardElement'
 import SearchBar from '../components/searchBar'
 import { useState, useEffect } from 'react'
-import { CardListWrapper } from './index'
 import OverlayMenu from '../components/overlayMenu'
 import { useAppContext } from '../components/appWrapper'
 import { AnimatePresence, AnimateSharedLayout } from 'framer-motion'

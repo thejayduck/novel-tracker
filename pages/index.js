@@ -1,26 +1,22 @@
 import styles from '../styles/Home.module.css'
 import PageBase from './pageBase';
-
-import { useState, useEffect } from 'react'
-import Fuse from 'fuse.js'
-import { LibraryCard } from '../components/cardElement'
-import Footer from '../components/footer'
-import SearchBar from '../components/searchBar'
 import NewBook from './newBook'
+
+/* Components */
+import QuickAlert from '../components/quickAlert';
 import BookDetails from '../components/bookDetails'
-import { AnimatePresence, AnimateSharedLayout } from 'framer-motion'
+import SearchBar from '../components/searchBar'
+import CardListWrapper, { LibraryCard } from '../components/cardElement'
 import { FloatingButton } from '../components/ui/button'
+import Footer from '../components/footer'
+
+/* Other Imports */
+import Fuse from 'fuse.js'
+import { useState, useEffect } from 'react'
+import { AnimatePresence, AnimateSharedLayout } from 'framer-motion'
 import { parse } from 'cookie'
 import { getUserInfoFromId, withUserId } from '../lib/db'
 
-
-export function CardListWrapper({ children }) {
-  return (
-    <div className={styles.cardListContainer}>
-      <ul className={styles.cardListFeed}>{children}</ul>
-    </div>
-  );
-}
 
 export async function getServerSideProps(context) {
   const cookie_header = context.req.headers.cookie;
@@ -166,7 +162,9 @@ export default function Home({ user_info }) {
           } />
         )}
       </AnimatePresence>
-      <FloatingButton title="Add New Book" icon="fas fa-plus" onClick={() => setNewBookPanel(!newBookPanel)} />
+      <FloatingButton hoverTitle="Add New Book" icon="fas fa-plus" onClick={() => setNewBookPanel(!newBookPanel)} />
+
+      {/* <QuickAlert title="test" message="A New Book Has Been Added!" icon="fas fa-check-circle" /> */}
 
     </PageBase>
   );

@@ -25,7 +25,7 @@
 * {
   font-family: "Kumbh Sans", serif;
   scroll-behavior: smooth;
-  font-weight: normal;
+  /* font-weight: normal; */
   box-sizing: border-box;
 }
 

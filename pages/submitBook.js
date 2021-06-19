@@ -2,6 +2,7 @@ import styles from '../styles/SubmitBook.module.css';
 import SubmitBookContainer, { FormSection, DescriptionSection, VolumeFormSection } from '../components/submitBookContainer';
 import { parse } from 'cookie';
 import { getUserInfoFromId, withUserId } from '../lib/db';
+import { FloatingButton } from '../components/ui/button';
 import PageBase from './pageBase';
 
 export async function getServerSideProps(context) {
@@ -49,7 +50,7 @@ export default function SubmitBook() {
                 <h2 className={styles.containerTitle} >Submit Book <i className="fas fa-feather-alt" /></h2>
 
                 <SubmitBookContainer title="Titles">
-                    <FormSection title="Title* (Licensed)" inputType="text" placeHolder="Licensed English Title" />
+                    <FormSection title="Title (Licensed*)" inputType="text" placeHolder="Licensed English Title" />
                     <FormSection title="Title Romanized" inputType="text" placeHolder="Romaji Title" />
                     <FormSection title="Title Native" inputType="text" placeHolder="Native Title" />
                 </SubmitBookContainer>
@@ -78,17 +79,17 @@ export default function SubmitBook() {
                     <FormSection title="Author*" inputType="text" />
                     <FormSection title="Cover Url" inputType="url" />
                     <FormSection title="Banner Url" inputType="text" />
-                    <FormSection title="Anilist ID" inputType="number" maxValue="1000000" />
+                    <FormSection title="AniList ID" inputType="number" maxValue="1000000" />
                     <FormSection title="MAL ID" inputType="number" maxValue="1000000" />
                 </SubmitBookContainer>
 
                 <br />
-                <div className={styles.submit}>
-                    <a>
-                        Submit
-                    </a>
-                    <i className="fas fa-cloud-upload-alt" />
-                </div>
+
+                <FloatingButton
+                    title="Submit"
+                    icon="fas fa-cloud-upload-alt"
+                    onClick={() => { window.alert("Book Submitted") }}
+                />
                 <br />
             </div>
         </PageBase>

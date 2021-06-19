@@ -1,3 +1,25 @@
+.cardListContainer {
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+.cardListFeed {
+  padding: 0;
+  color: white;
+  display: flex;
+  /* margin: 18px; */
+  flex-flow: row wrap;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: space-between;
+  justify-content: center;
+}
+
+.cardListFeed li {
+  list-style: none;
+}
+
 .activityEntry {
   background-color: var(--french-violet);
   border-radius: var(--border);
@@ -159,5 +181,9 @@ div:hover > .viewDetails {
   .activityEntry {
     margin: 1px;
     margin-bottom: 1em;
+  }
+  .cardListContainer {
+    height: 100%;
+    width: 100%;
   }
 }
