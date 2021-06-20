@@ -3,7 +3,11 @@ import styles from '../styles/components/SubmitBookContainer.module.css'
 export default function SubmitBookContainer({ title, children }) {
     return (
         <>
-            <h2 className={styles.containerTitle} > {title} </h2>
+            <div className={styles.aboutWrapper}>
+                {/* <div className={styles.aboutContainer}>Haha about go brrr</div> */}
+                <h2 className={styles.containerTitle}> {title} </h2>
+                {/* <i class="far fa-question-circle" /> */}
+            </div>
             <div className={styles.container}>
                 {children}
             </div>

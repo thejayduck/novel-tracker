@@ -1,7 +1,7 @@
 import styles from '../styles/components/QuickAlert.module.css'
 import { motion } from 'framer-motion';
 
-export default function QuickAlert({ title, message, icon }) {
+export default function QuickAlert({ message, icon }) {
 
     return (
         <motion.div
@@ -16,7 +16,7 @@ export default function QuickAlert({ title, message, icon }) {
         >
             <div>
                 <i className={icon} />
-                <a>{message}</a>
+                <a className={styles.message} title={message}>{message}</a>
             </div>
         </motion.div>
     );

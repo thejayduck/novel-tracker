@@ -2,8 +2,6 @@
   background-color: var(--color-primary);
   border: 2px solid white;
   border-radius: var(--border);
-  backdrop-filter: blur(var(--blur-amount));
-  text-align: center;
   color: white;
 
   width: 400px;
@@ -20,22 +18,20 @@
 
 .container i {
   padding: 5px;
-  /* position: absolute; */
+  position: absolute;
   font-size: 50px;
-  /* transform: translateY(-50%);
-  left: 0; */
-  /* top: 50%; */
+  transform: translateY(-50%);
+  left: 10px;
+  top: 50%;
 }
 
-.container div {
-  font-size: 20px;
+.container .message {
+  position: absolute;
+  text-align: center;
+  margin: auto;
+  margin-left: 80px;
+  transform: translateY(-50%);
+  top: 50%;
 
-  width: 100%;
-  height: 100%;
-
-  display: flex;
-  flex-direction: row wrap;
-
-  align-items: center;
-  justify-content: space-evenly;
+  width: 80%;
 }

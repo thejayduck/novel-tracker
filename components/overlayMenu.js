@@ -25,6 +25,7 @@ export default function OverlayMenu({ children, className, close }) {
                 exit="disabled"
                 onClick={() => { close() }}
             >
+                <a className={styles.inform}>Click Outside to Exit</a>
                 <motion.div
                     className={className}
                     initial={{ scale: 0.6 }}

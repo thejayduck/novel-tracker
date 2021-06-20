@@ -35,11 +35,11 @@ export default function BookDetails({ book, onExit, onAddClicked, onOutsideClick
                     <div className={styles.info}>
                         <h1 title={data?.title} className={styles.title}> {data?.title} </h1>
                         <ul>
-                            <li><a>Title (Romanized): {data?.title_romanized}</a><hr /></li>
+                            <li><a>Title (Romanized): {data?.title_romanized}</a></li>
                             <li><a>Title (Native): {data?.title_native}<hr /></a></li>
-                            <li><a>Author: {data?.author}<hr /></a></li>
                             <li><a>Total Volumes: 10</a></li>
-                            <li><a>Total Chapters: 10</a></li>
+                            <li><a>Total Chapters: 10<hr /></a></li>
+                            <li><a>Author: {data?.author}</a></li>
                         </ul>
                     </div>
                 </div>
