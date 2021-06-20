@@ -38,3 +38,43 @@
   box-shadow: 1px 1px 1px grey;
   white-space: nowrap;
 }
+
+.about {
+  overflow: hidden;
+
+  user-select: none;
+
+  background-color: var(--color-primary);
+  border-radius: var(--border);
+  color: white;
+  margin: 20px;
+  padding: 20px;
+
+  width: fit-content;
+}
+
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+
+  max-width: 900px;
+}
+
+.features div {
+  background-color: var(--color-primaryDark);
+  border-radius: var(--border);
+
+  flex: 45%;
+  padding: 5px;
+  margin: 10px;
+}
+.features h3 {
+  margin: 5px;
+}
+
+@media screen and (max-width: 720px) {
+  .features {
+    flex-direction: column;
+  }
+}
