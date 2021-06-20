@@ -7,6 +7,7 @@
 
   /* Colors */
   --color-primary: hsla(264, 71%, 47%, 1);
+  /* --color-primary: hsla(266, 94%, 51%, 1); */
   --color-primaryDark: hsl(264, 71%, 34%);
   --backgroundColor-themeLight: hsla(184, 100%, 94%, 1);
   --backgroundColor-themeDark: hsla(0, 0%, 8%, 1);
