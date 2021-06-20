@@ -1,13 +1,14 @@
 import styles from '../styles/components/SubmitBookContainer.module.css'
+import InputField from './ui/inputField';
+import ToolTip from './ui/toolTip';
 
-export default function SubmitBookContainer({ title, children }) {
+export default function SubmitBookContainer({ title, children, toolTip }) {
     return (
         <>
-            <div className={styles.aboutWrapper}>
-                {/* <div className={styles.aboutContainer}>Haha about go brrr</div> */}
+            <ToolTip toolTip={toolTip}>
                 <h2 className={styles.containerTitle}> {title} </h2>
-                {/* <i class="far fa-question-circle" /> */}
-            </div>
+            </ToolTip>
+
             <div className={styles.container}>
                 {children}
             </div>
@@ -19,8 +20,8 @@ export function VolumeFormSection({ index }) {
     return (
         <div className={styles.volumeSection}>
             <h3>{index}</h3>
-            <FormSection title="Chapters" inputType="number" defaultValue="0" />
-            <FormSection title="Extra Chapters" inputType="number" defaultValue="0" />
+            <InputField title="Chapters" inputType="number" defaultValue="0" />
+            <InputField title="Extra Chapters" inputType="number" defaultValue="0" />
         </div>
     );
 }

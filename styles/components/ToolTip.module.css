@@ -1,0 +1,27 @@
+.toolTip {
+  position: relative;
+  display: inline-block;
+  user-select: none;
+}
+
+.toolTip .toolTipText {
+  opacity: 0;
+  width: max-content;
+  max-width: 500px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 10px;
+
+  position: absolute;
+  z-index: 1;
+  top: 25%;
+  left: 105%;
+
+  transition: 0.2s;
+}
+
+.toolTip:hover .toolTipText {
+  opacity: 1;
+}

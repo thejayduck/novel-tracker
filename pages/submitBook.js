@@ -50,7 +50,7 @@ export default function SubmitBook() {
             <div className={styles.pageContent}>
                 <h2 className={styles.containerTitle} >Submit Book <i className="fas fa-feather-alt" /></h2>
 
-                <SubmitBookContainer title="Titles">
+                <SubmitBookContainer title="Titles" toolTip="Please Enter *Official* Titles of the Book.">
                     <InputField title="Title (Licensed*)" inputType="text" placeHolder="Licensed English Title" />
                     <InputField title="Title Romanized" inputType="text" placeHolder="Romaji Title" />
                     <InputField title="Title Native" inputType="text" placeHolder="Native Title" />
