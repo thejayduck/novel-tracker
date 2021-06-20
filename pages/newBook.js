@@ -8,7 +8,7 @@ import { useAppContext } from '../components/appWrapper'
 import { AnimatePresence, AnimateSharedLayout } from 'framer-motion'
 import BookDetails from '../components/bookDetails'
 
-export default function NewBook({ onAddClicked }) {
+export default function NewBook({ onAddClicked, onOutsideClicked }) {
   const [state] = useAppContext();
 
   const [userInput, setUserInput] = useState("");
@@ -39,6 +39,7 @@ export default function NewBook({ onAddClicked }) {
     <div>
       <OverlayMenu
         className={`${styles.container} ${state.darkMode ? styles.dark : styles.light}`}
+        close={onOutsideClicked}
       >
         <SearchBar onInput={(e) => setUserInput(e.target.value)} />
         <AnimateSharedLayout>
@@ -55,6 +56,7 @@ export default function NewBook({ onAddClicked }) {
           <BookDetails
             book={detailedBook}
             onExit={() => setDetailedBook(null)}
+            onOutsideClicked={() => setDetailedBook(false)}
           />
         )}
       </AnimatePresence>

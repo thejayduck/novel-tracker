@@ -165,11 +165,13 @@ export default function Home({ user_info }) {
       <input id="importData" style={{ display: 'none' }} type="file" accept=".json" onChange={({ target }) => { importData(target.files[0]); target.value = null }} />
       <AnimatePresence>
         {newBookPanel && (
-          <NewBook onAddClicked={(entry) => {
-            if (!data.map(q => q.id).includes(entry.id))
-              setData([...data, { id: entry.id, chapter: 0, volume: 0 }])
-          }
-          } />
+          <NewBook
+            onAddClicked={(entry) => {
+              if (!data.map(q => q.id).includes(entry.id))
+                setData([...data, { id: entry.id, chapter: 0, volume: 0 }])
+            }}
+            onOutsideClicked={() => setNewBookPanel(false)}
+          />
         )}
       </AnimatePresence>
       <FloatingButton hoverTitle="Add New Book" icon="fas fa-plus" onClick={() => setNewBookPanel(!newBookPanel)} />

@@ -1,7 +1,7 @@
 import { AnimateSharedLayout, motion } from 'framer-motion';
 import styles from '../styles/components/overlayMenu.module.css'
 
-export default function OverlayMenu({ children, className }) {
+export default function OverlayMenu({ children, className, close }) {
 
     const contentVariant = {
         initial: {
@@ -23,6 +23,7 @@ export default function OverlayMenu({ children, className }) {
                 initial="initial"
                 animate="enabled"
                 exit="disabled"
+                onClick={() => { close() }}
             >
                 <motion.div
                     className={className}
@@ -30,6 +31,9 @@ export default function OverlayMenu({ children, className }) {
                     animate={{ scale: 1 }}
                     exit={{ scale: 0.6 }}
                     transition={{ type: "spring", bounce: 0.25, duration: 0.5 }}
+                    onClick={e => {
+                        e.stopPropagation();
+                    }}
                 >
                     {children}
                 </motion.div>

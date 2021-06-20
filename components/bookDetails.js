@@ -5,7 +5,7 @@ import Button from './ui/button';
 import { useAppContext } from './appWrapper';
 import { useEffect, useState } from 'react';
 
-export default function BookDetails({ book, onExit, onAddClicked }) {
+export default function BookDetails({ book, onExit, onAddClicked, onOutsideClicked }) {
     const [state] = useAppContext();
 
     const [data, setData] = useState(null);
@@ -20,6 +20,7 @@ export default function BookDetails({ book, onExit, onAddClicked }) {
         <div>
             <OverlayMenu
                 className={`${styles.container} ${state.darkMode ? styles.dark : styles.light}`}
+                close={onOutsideClicked}
             >
                 <div className={styles.infoWrapper}>
                     <div className={styles.banner}>
