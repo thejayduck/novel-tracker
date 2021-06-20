@@ -1,21 +1,30 @@
-.inputField {
+.inputField,
+.optionSelect {
   padding: 10px;
   /* flex-basis: 33.333333%; */
-  text-align: center;
 }
 
-.inputField > h3 {
+.title {
   margin: 0;
+  text-align: center;
   user-select: none;
 }
 
 .inputField > input {
   font-size: 24px;
   /* font-size: max(32px, 1em); */
-  font-family: inherit;
   padding: 0.25em 0.5em;
   background-color: #fff;
   border-radius: var(--border);
+}
+
+.customSelect > select {
+  font-size: 24px;
+  padding: 0.25em 0.5em;
+
+  width: 100%;
+  border-radius: var(--border);
+  line-height: 1.1;
 }
 
 @-moz-document url-prefix() {

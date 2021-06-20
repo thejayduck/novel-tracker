@@ -17,27 +17,28 @@ export default function CardListWrapper({ children }) {
 
 export function CardElement({ entry, children }) {
 
+    const [isHovering, setIsHovering] = useState(false);
+
     return (
-        <motion.li
-            layout
-            initial={{
-                opacity: 0,
-            }}
-            animate={{
-                opacity: 1,
-            }}
-            whileTap={{
-                scale: 0.98,
-            }}
-            whileHover={{
-                scale: 1.05,
-            }}
-            transition={{
-                type: "spring",
-                duration: 0.5,
-            }}
-        >
-            <div className={styles.activityEntry}>
+        <li>
+            <motion.div
+                style={{
+                    boxShadow: isHovering ? "0px 10px 10px black" : "none",
+                }}
+                layout
+                initial={{ opacity: 0, }}
+                animate={{ opacity: 1, }}
+                whileTap={{ scale: 0.98, }}
+                whileHover={{ scale: 1.05, }}
+                transition={{
+                    type: "spring",
+                    duration: 0.5,
+                }}
+                onHoverStart={() => setIsHovering(true)}
+                onHoverEnd={() => setIsHovering(false)}
+
+                className={styles.activityEntry}
+            >
                 <div className={styles.wrap}>
                     <div className={styles.list}>
                         <p
@@ -49,9 +50,8 @@ export function CardElement({ entry, children }) {
                         {children}
                     </div>
                 </div>
-            </div>
-
-        </motion.li>
+            </motion.div>
+        </li>
     );
 }
 

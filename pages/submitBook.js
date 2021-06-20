@@ -1,5 +1,5 @@
 import styles from '../styles/SubmitBook.module.css';
-import InputField from '../components/ui/inputField';
+import InputField, { OptionSelect } from '../components/ui/inputField';
 import SubmitBookContainer, { DescriptionSection, VolumeFormSection } from '../components/submitBookContainer';
 import { parse } from 'cookie';
 import { getUserInfoFromId, withUserId } from '../lib/db';
@@ -74,6 +74,7 @@ export default function SubmitBook() {
                 <SubmitBookContainer title="Publication Date">
                     <InputField title="Start Date" inputType="date" />
                     <InputField title="End Date" inputType="date" />
+                    <OptionSelect title="Release Status" options={['Finished', 'Releasing', 'Cancelled', 'Hiatus']} />
                 </SubmitBookContainer>
 
                 <SubmitBookContainer title="Other">

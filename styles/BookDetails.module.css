@@ -46,7 +46,7 @@
 }
 
 .container .infoWrapper {
-  padding: 15px;
+  padding: 20px;
 
   width: 100%;
   display: flex;
@@ -101,7 +101,7 @@
 }
 
 .infoWrapper .info {
-  margin-left: 5px;
+  margin-left: 20px;
   flex: 0.5;
 
   z-index: 1;
