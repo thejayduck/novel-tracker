@@ -12,7 +12,7 @@
   padding: 15px;
   line-height: 26px;
 
-  background-color: var(--french-violet);
+  background-color: var(--color-primary);
   color: white;
   border-radius: var(--border);
 
@@ -27,8 +27,7 @@
 }
 
 .button:hover {
-  background-color: var(--spanish-violet);
-  /* transform: scale(var(--button-scale)); */
+  background-color: var(--color-primaryDark);
 
   cursor: pointer;
 }
@@ -43,7 +42,7 @@
   height: 52px;
 
   display: block;
-  background-color: var(--french-violet);
+  background-color: var(--color-primary);
   color: white;
   border-radius: var(--border);
   font-size: 20px;
@@ -54,10 +53,9 @@
 
   position: fixed;
   transition: 0.2s;
-  z-index: 5;
+  /* z-index: 5; */
 }
 .floatingButton:hover {
-  /* transform: scale(var(--button-scale)); */
-  background-color: var(--spanish-violet);
+  background-color: var(--color-primaryDark);
   cursor: pointer;
 }

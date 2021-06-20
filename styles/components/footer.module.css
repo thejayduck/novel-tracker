@@ -8,7 +8,7 @@
   text-align: center;
 
   color: white;
-  background-color: var(--french-violet);
+  background-color: var(--color-primary);
 
   border-radius: var(--border);
   border: none;
@@ -29,7 +29,7 @@
 }
 
 .footerButton:hover {
-  background-color: var(--spanish-violet);
+  background-color: var(--color-primaryDark);
 }
 
 .footer {
@@ -82,16 +82,16 @@
 }
 
 .dark {
-  background-color: var(--eerie-black);
+  background-color: var(--backgroundColor-themeDark);
   color: #ffffff;
   border-top: 1px solid #000000;
 
   transition: 0.2s;
 }
 .light {
-  background-color: var(--light-cyan);
-  color: var(--black);
-  border-top: 1px solid var(--black);
+  background-color: var(--backgroundColor-themeLight);
+  color: black;
+  border-top: 1px solid black;
 
   transition: 0.2s;
 }

@@ -5,10 +5,10 @@
 }
 
 .dark {
-  background-color: var(--eerie-black);
+  background-color: var(--backgroundColor-themeDark);
   transition: 0.2s;
 }
 .light {
-  background-color: var(--light-cyan);
+  background-color: var(--backgroundColor-themeLight);
   transition: 0.2s;
 }

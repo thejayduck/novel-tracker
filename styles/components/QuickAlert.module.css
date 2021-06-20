@@ -1,5 +1,5 @@
 .container {
-  background-color: var(--french-violet);
+  background-color: var(--color-primary);
   border: 2px solid white;
   border-radius: var(--border);
   backdrop-filter: blur(var(--blur-amount));

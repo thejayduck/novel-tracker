@@ -21,7 +21,7 @@
 }
 
 .activityEntry {
-  background-color: var(--french-violet);
+  background-color: var(--color-primary);
   border-radius: var(--border);
   width: 197.3px;
   height: auto;
@@ -85,7 +85,7 @@
   padding: 5px;
   width: 95%;
   height: 60px;
-  background-color: var(--french-violet);
+  background-color: var(--color-primary);
   border-radius: var(--border);
   cursor: pointer;
 
@@ -140,6 +140,7 @@
   padding: 10px;
   vertical-align: middle;
 
+  border-radius: var(--border);
   background-color: var(--blur-background);
   backdrop-filter: blur(var(--blur-amount));
   -webkit-backdrop-filter: blur(10px);
@@ -149,13 +150,11 @@
 .viewDetails {
   user-select: none;
 
-  opacity: 0;
-
   display: flex;
-
   justify-content: center;
   align-items: center;
 
+  opacity: 0;
   background-color: var(--blur-background);
   backdrop-filter: blur(var(--blur-amount));
   -webkit-backdrop-filter: blur(10px);

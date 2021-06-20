@@ -6,7 +6,7 @@
   left: 5%;
   width: 90%;
   padding: 10px;
-  background-color: var(--french-violet);
+  background-color: var(--color-primary);
   border-radius: var(--border);
   z-index: 5;
 }

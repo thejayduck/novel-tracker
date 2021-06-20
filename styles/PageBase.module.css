@@ -27,9 +27,9 @@
 
 .dark {
   color: white;
-  background-color: var(--eerie-black);
+  background-color: var(--backgroundColor-themeDark);
 }
 .light {
   color: black;
-  background-color: var(--light-cyan);
+  background-color: var(--backgroundColor-themeLight);
 }
