@@ -1,5 +1,6 @@
 import styles from '../styles/Login.module.css'
 import PageBase from './pageBase';
+import { motion } from 'framer-motion';
 
 import { parse } from 'cookie';
 import { getUserInfoFromId, withUserId } from '../lib/db';
@@ -39,12 +40,43 @@ export default function Login() {
             <div style={{ textAlign: "center" }}>
                 <img className={styles.logo} src='../book.svg' />
                 <div >
-                    <h1>Welcome to Light Novel Tracker! </h1>
-                    <a href={url} className={`${styles.google} ${styles.btn}`}>
-                        <i className="fab fa-google"> </i> Login with Google
-                    </a>
+                    <h1>Welcome to Novel Tracker! </h1>
+                    <motion.div
+                        className={styles.about}
+
+                        initial={{ height: "100px" }}
+                        animate={{ height: "auto" }}
+                        transition={{ type: "spring", delay: 0.5 }}
+                    >
+                        <h1> Novel Tracking Made Easy! </h1>
+                        <div className={styles.features}>
+                            <FeatureItem
+                                title="Automatic Chapter-Volume Conversion"
+                                description="Keep track of your novels easier with automatic chapter-volume conversion."
+                                icon="fas fa-calculator"
+                            />
+                            <FeatureItem
+                                title="Mobile App Capable"
+                                description="You can add 'Novel Tracker' straight to your homepage."
+                                icon="fas fa-mobile-alt"
+                            />
+                        </div>
+                        <a href={url} className={`${styles.google} ${styles.btn}`}>
+                            <i className="fab fa-google"> </i> Login with Google
+                        </a>
+                    </motion.div>
+
                 </div>
             </div>
         </PageBase >
+    );
+}
+
+function FeatureItem({ title, description, icon }) {
+    return (
+        <div>
+            <h3><i className={`${icon}`} /> {title}</h3>
+            <p> {description} </p>
+        </div>
     );
 }
