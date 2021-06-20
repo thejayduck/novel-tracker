@@ -9,15 +9,15 @@ export default function InputField({ inputType, title, placeHolder, defaultValue
     );
 }
 
-export function OptionSelect({ title, options }) {
+export function OptionSelect({ title, options, onChange }) {
     return (
         <div>
             <h3 className={styles.title}>{title}</h3>
             <div className={styles.customSelect} >
-                <select>
+                <select onChange={onChange}>
                     {
                         options.map((q, idx) => (
-                            <option value={idx}>{q}</option>
+                            <option key={idx} value={q}>{q}</option>
                         ))
                     }
                 </select>

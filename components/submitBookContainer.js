@@ -26,7 +26,7 @@ export function VolumeFormSection({ index }) {
     );
 }
 
-export function DescriptionSection() {
+export function DescriptionSection({ onChange }) {
     return (
         <>
             <h2 className={styles.containerTitle} > Description </h2>
@@ -34,6 +34,7 @@ export function DescriptionSection() {
                 className={styles.container}
                 autoComplete="off"
                 spellCheck="off"
+                onChange={onChange}
             >
             </textarea>
         </>

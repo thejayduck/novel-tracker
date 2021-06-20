@@ -1,7 +1,7 @@
 import styles from '../../styles/components/Button.module.css'
 import { motion } from 'framer-motion';
 
-export default function Button({ title, icon, onClick }) {
+export default function Button({ title, icon, onClick, href }) {
     return (
         <motion.div
             whileHover={{ scale: 1.05 }}
@@ -10,7 +10,7 @@ export default function Button({ title, icon, onClick }) {
             className={styles.button}
             onClick={onClick}
         >
-            {title && <a> {title} </a>}
+            {title && <a href={href}> {title} </a>}
             {icon && <i className={icon} />}
         </motion.div>
     );

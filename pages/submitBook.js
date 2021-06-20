@@ -5,6 +5,8 @@ import { parse } from 'cookie';
 import { getUserInfoFromId, withUserId } from '../lib/db';
 import { FloatingButton } from '../components/ui/button';
 import PageBase from './pageBase';
+import { useState } from 'react';
+import { useRouter } from 'next/router';
 
 export async function getServerSideProps(context) {
     const cookie_header = context.req.headers.cookie;
@@ -37,26 +39,69 @@ export async function getServerSideProps(context) {
         }
     }
 
+    let existing_book = null;
+    if (context.query.id) {
+        // TODO
+        throw {
+            message: "Unimplemented"
+        }
+    }
+
     return {
         props: {
             user_info: info,
+            existing_book,
         },
     };
 }
 
-export default function SubmitBook() {
+export default function SubmitBook({ existing_book }) {
+    // TODO get via id or something instead of having a state
+    // TODO must be done so that the default values actually apply
+    const [bookDetails, setBookDetails] = useState(existing_book || {
+        cover_url: null,
+        title: null,
+        title_romanized: null,
+        title_native: null,
+        description: null,
+        author: null,
+        start_date: null,
+        end_date: null,
+        banner_url: null,
+        release_status: null,
+    });
+
+    const router = useRouter();
+
+    async function onSubmit() {
+        const response = await fetch("/api/create_or_edit_book", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                book_details: bookDetails,
+            }),
+        });
+        const json = await response.json();
+        if (json.status != "OK") {
+            throw json;
+        }
+        //router.push('/');
+    }
+
     return (
         <PageBase>
             <div className={styles.pageContent}>
                 <h2 className={styles.containerTitle} >Submit Book <i className="fas fa-feather-alt" /></h2>
 
                 <SubmitBookContainer title="Titles" toolTip="Please Enter *Official* Titles of the Book.">
-                    <InputField title="Title (Licensed*)" inputType="text" placeHolder="Licensed English Title" />
-                    <InputField title="Title Romanized" inputType="text" placeHolder="Romaji Title" />
-                    <InputField title="Title Native" inputType="text" placeHolder="Native Title" />
+                    <InputField title="Title (Licensed*)" inputType="text" placeHolder="Licensed English Title" onChange={({ target }) => setBookDetails({ ...bookDetails, title: target.value })} />
+                    <InputField title="Title Romanized" inputType="text" placeHolder="Romanized Title" onChange={({ target }) => setBookDetails({ ...bookDetails, title_romanized: target.value })} />
+                    <InputField title="Title Native" inputType="text" placeHolder="Native Title" onChange={({ target }) => setBookDetails({ ...bookDetails, title_native: target.value })} />
                 </SubmitBookContainer>
 
-                <DescriptionSection />
+                <DescriptionSection onChange={({ target }) => setBookDetails({ ...bookDetails, description: target.value })} />
 
                 <SubmitBookContainer title="Lengths">
                     <div>
@@ -72,17 +117,15 @@ export default function SubmitBook() {
                 </SubmitBookContainer>
 
                 <SubmitBookContainer title="Publication Date">
-                    <InputField title="Start Date" inputType="date" />
-                    <InputField title="End Date" inputType="date" />
-                    <OptionSelect title="Release Status" options={['Finished', 'Releasing', 'Cancelled', 'Hiatus']} />
+                    <InputField title="Start Date" inputType="date" onChange={({ target }) => setBookDetails({ ...bookDetails, start_date: target.value })} />
+                    <InputField title="End Date" inputType="date" onChange={({ target }) => setBookDetails({ ...bookDetails, end_date: target.value })} />
+                    <OptionSelect title="Release Status" options={['Finished', 'Releasing', 'Cancelled', 'Hiatus']} onChange={({ target }) => setBookDetails({ ...bookDetails, release_status: target.value })} />
                 </SubmitBookContainer>
 
                 <SubmitBookContainer title="Other">
-                    <InputField title="Author*" inputType="text" />
-                    <InputField title="Cover Url" inputType="url" />
-                    <InputField title="Banner Url" inputType="text" />
-                    <InputField title="AniList ID" inputType="number" maxValue="1000000" />
-                    <InputField title="MAL ID" inputType="number" maxValue="1000000" />
+                    <InputField title="Author*" inputType="text" onChange={({ target }) => setBookDetails({ ...bookDetails, author: target.value })} />
+                    <InputField title="Cover Url" inputType="url" onChange={({ target }) => setBookDetails({ ...bookDetails, cover_url: target.value })} />
+                    <InputField title="Banner Url" inputType="text" onChange={({ target }) => setBookDetails({ ...bookDetails, banner_url: target.value })} />
                 </SubmitBookContainer>
 
                 <br />
@@ -90,7 +133,7 @@ export default function SubmitBook() {
                 <FloatingButton
                     title="Submit"
                     icon="fas fa-cloud-upload-alt"
-                    onClick={() => { window.alert("Book Submitted") }}
+                    onClick={onSubmit}
                 />
                 <br />
             </div>
