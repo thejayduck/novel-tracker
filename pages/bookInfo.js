@@ -31,11 +31,11 @@ export default function BookInfo({ book, onExit, onAddClicked, onOutsideClicked 
                             <li><a>Start Date: 2015</a></li>
                             <li><a>End Date: 2017</a></li>
                             <li><a>Release Status: Releasing<hr /></a></li>
-                            <li><a>Author: Coom</a></li>
+                            <li><a>Author: John Doe</a></li>
                         </ul>
                     </div>
                     <div className={styles.info}>
-                        <h1 title="Coom" className={styles.title}> Ascendance of a Bookworm: Part 3 </h1>
+                        <h1 title="Title Here" className={styles.title}> Ascendance of a Bookworm: Part 3 </h1>
                         <div className={styles.descriptionWrapper}>
                             <h2>Description</h2>
                             <p className={styles.description}>
