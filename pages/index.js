@@ -52,17 +52,11 @@ export default function Home({ user_info }) {
   const [newBookPanel, setNewBookPanel] = useState(false);
   const [data, setData] = useState([]);
 
-  const removeBook = (id) => {
-    setData(data.filter(target => target.id !== id));
-
-  };
-
   const [query, setQuery] = useState('');
 
   const fuse = new Fuse(data, {
     keys: [
       'title',
-      'description'
     ],
   });
 
@@ -74,38 +68,41 @@ export default function Home({ user_info }) {
   }
 
   const exportData = () => {
-    var element = document.createElement('a');
+    throw {
+      message: "Unimplemented"
+    }
+    /*var element = document.createElement('a');
     element.style.display = 'none';
     element.setAttribute('href', 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(data)));
     element.setAttribute('download', 'data.json');
     document.body.appendChild(element);
     element.click();
-    document.body.removeChild(element);
+    document.body.removeChild(element);*/
   }
 
   const importData = (target) => {
-    const reader = new FileReader();
+    throw {
+      message: "Unimplemented"
+    }
+    /*const reader = new FileReader();
     reader.addEventListener('load', ({ target }) => {
       setData(JSON.parse(atob(target.result.replace("data:application/json;base64,", ""))));
     });
-    reader.readAsDataURL(target);
+    reader.readAsDataURL(target);*/
   }
 
-  useEffect(() => {
-    const localData = localStorage.getItem('books');
-    setData(localData ? JSON.parse(localData) : []);
-  }, [])
+  async function updateData() {
+    console.log("Updating data");
+    const response = await fetch("/api/me/get_book_infos");
+    const json = await response.json();
+    if (json.status != "OK") {
+      throw json;
+    }
+    const infos = json.info;
+    setData(infos)
+  }
 
-  useEffect(() => {
-    localStorage.setItem('books', JSON.stringify(data))
-  }, [data])
-
-
-  const updateElementInData = (index, updateElementCallback) => {
-    let new_data = [...data];
-    updateElementCallback(new_data[index]);
-    setData(new_data);
-  };
+  useEffect(updateData, [])
 
 
   return (
@@ -123,31 +120,11 @@ export default function Home({ user_info }) {
           <CardListWrapper
             data={data}
           >
-            {bookResults.map((entry, index) => (
+            {bookResults.map(entry => (
               <LibraryCard
-                key={entry?.id}
+                key={entry.book_id}
                 entry={entry}
-                onIncrement={() =>
-                  updateElementInData(index, (element) => element.chapter++)
-                }
-                onDecrement={() =>
-                  updateElementInData(
-                    index,
-                    (element) =>
-                      (element.chapter = Math.max(0, element.chapter - 1))
-                  )
-                }
-                onChapterChange={
-                  ({ target }) => {
-                    updateElementInData(index, (element) => element.chapter = Number.parseInt(target.value))
-                  }
-                }
-                onVolumeChange={
-                  ({ target }) => {
-                    updateElementInData(index, (element) => element.volume = Number.parseInt(target.value))
-                  }
-                }
-                onDelete={() => removeBook(entry?.id)}
+                onDelete={() => updateData()}
               />
             ))}
           </CardListWrapper>
@@ -166,10 +143,7 @@ export default function Home({ user_info }) {
       <AnimatePresence>
         {newBookPanel && (
           <NewBook
-            onAddClicked={(entry) => {
-              if (!data.map(q => q.id).includes(entry.id))
-                setData([...data, { id: entry.id, chapter: 0, volume: 0 }])
-            }}
+            onAddClicked={() => updateData()}
             onOutsideClicked={() => setNewBookPanel(false)}
           />
         )}

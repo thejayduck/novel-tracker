@@ -1,4 +1,4 @@
-import { getUserInfo, withUserId } from "../../../lib/db";
+import { addUserBooks, getUserBooks, withUserId } from "../../../lib/db";
 
 export default async function setUsername({ cookies, body }, res) {
     const token = cookies.token;
@@ -8,20 +8,21 @@ export default async function setUsername({ cookies, body }, res) {
                 message: "No POST body"
             }
         };
-        const new_name = body.new_name;
-        if (!new_name) {
+        const book_id = body.book_id;
+        if (!book_id) {
             throw {
-                message: "Invalid username."
+                message: "Invalid book id.",
+                book_id,
             }
         }
         await withUserId(token, async (user_id) => {
-            const info = await getUserInfo(user_id);
-            if (info.username) {
+            const userBooks = await getUserBooks(user_id);
+            if (userBooks.map(v => v.book_id).includes(book_id)) {
                 throw {
-                    message: "We do not support changing your username right now."
+                    message: "Books already exists in library"
                 }
             }
-            await setUsername(user_id, new_name);
+            await addUserBooks(user_id, book_id);
         });
         res.status(200).json({ status: "OK" });
     } catch (error) {

@@ -1,4 +1,4 @@
-import { getUserInfo, getUserInfoFromId, withUserId } from "../../../lib/db";
+import { getUserInfo, withUserId } from "../../../lib/db";
 
 export default async function Info({ cookies }, res) {
     const token = cookies.token;

@@ -25,7 +25,7 @@ export default function NewBook({ onAddClicked, onOutsideClicked }) {
         const json = await response.json();
 
         setSearchResults(json.map(q => ({
-          id: q.id,
+          book_id: q.book_id,
           title: q.title,
           coverUrl: q.cover_url,
         })));
@@ -34,6 +34,12 @@ export default function NewBook({ onAddClicked, onOutsideClicked }) {
       setSearchResults([]);
     }
   }, [userInput]);
+
+  async function onDetailsClick(entry) {
+    const response = await fetch(`/api/get_book?id=${entry.book_id}`);
+    const json = await response.json();
+    setDetailedBook(json)
+  }
 
   return (
     <div>
@@ -45,7 +51,7 @@ export default function NewBook({ onAddClicked, onOutsideClicked }) {
         <AnimateSharedLayout>
           <CardListWrapper>
             {searchResults.map(entry => (
-              <ResultCard key={entry?.id} entry={entry} onAddClick={onAddClicked} onClick={entry => setDetailedBook(entry)} />
+              <ResultCard key={entry.book_id} entry={entry} onAddClick={onAddClicked} onClick={entry => onDetailsClick(entry)} />
             ))}
           </CardListWrapper>
         </AnimateSharedLayout>
@@ -57,6 +63,7 @@ export default function NewBook({ onAddClicked, onOutsideClicked }) {
             book={detailedBook}
             onExit={() => setDetailedBook(null)}
             onOutsideClicked={() => setDetailedBook(false)}
+            onAddClicked={() => onAddClicked()}
           />
         )}
       </AnimatePresence>
