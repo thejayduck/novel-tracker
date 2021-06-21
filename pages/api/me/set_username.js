@@ -1,4 +1,4 @@
-import { getUserInfoFromId, setUsernameForId, withUserId } from "../../../lib/db";
+import { getUserInfo, getUserInfoFromId, setUsernameForId, withUserId } from "../../../lib/db";
 
 export default async function setUsername({ cookies, body }, res) {
     const token = cookies.token;
@@ -15,13 +15,13 @@ export default async function setUsername({ cookies, body }, res) {
             }
         }
         await withUserId(token, async (user_id) => {
-            const info = await getUserInfoFromId(user_id);
+            const info = await getUserInfo(user_id);
             if (info.username) {
                 throw {
                     message: "We do not support changing your username right now."
                 }
             }
-            await setUsernameForId(user_id, new_name);
+            await setUsername(user_id, new_name);
         });
         res.status(200).json({ status: "OK" });
     } catch (error) {

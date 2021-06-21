@@ -1,6 +1,6 @@
 import styles from '../styles/Home.module.css'
 import PageBase from './pageBase';
-import NewBook from './newBook'
+import NewBook from '../components/newBook'
 
 /* Components */
 import QuickAlert from '../components/quickAlert';
@@ -15,7 +15,7 @@ import Fuse from 'fuse.js'
 import { useState, useEffect } from 'react'
 import { AnimatePresence, AnimateSharedLayout } from 'framer-motion'
 import { parse } from 'cookie'
-import { getUserInfoFromId, withUserId } from '../lib/db'
+import { getUserInfo, withUserId } from '../lib/db'
 
 
 export async function getServerSideProps(context) {
@@ -31,7 +31,7 @@ export async function getServerSideProps(context) {
 
   const cookies = parse(context.req.headers.cookie);
   const token = cookies.token;
-  const info = await withUserId(token, async (user_id) => await getUserInfoFromId(user_id));
+  const info = await withUserId(token, async (user_id) => await getUserInfo(user_id));
   if (info == null) {
     return {
       redirect: {

@@ -1,9 +1,9 @@
-import { createBook, getUserInfoFromId, withUserId } from "../../lib/db";
+import { createBook, getUserInfo, withUserId } from "../../lib/db";
 
 export default async function handler({ cookies, body }, res) {
     const token = cookies.token;
     try {
-        const info = await withUserId(token, async (user_id) => await getUserInfoFromId(user_id));
+        const info = await withUserId(token, async (user_id) => await getUserInfo(user_id));
         if (info.moderation_level < 3) {
             throw {
                 message: "Unauthorized",
@@ -37,8 +37,8 @@ export default async function handler({ cookies, body }, res) {
             }
         })
 
-        await createBook(body.book_details);
-        res.status(200).json({ status: "OK" });
+        const id = await createBook(body.book_details);
+        res.status(200).json({ status: "OK", id });
     } catch (error) {
         console.log(error);
         res.status(500).json({ status: "Error", error })

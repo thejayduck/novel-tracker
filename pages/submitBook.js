@@ -2,7 +2,7 @@ import styles from '../styles/SubmitBook.module.css';
 import InputField, { OptionSelect } from '../components/ui/inputField';
 import SubmitBookContainer, { DescriptionSection, VolumeFormSection } from '../components/submitBookContainer';
 import { parse } from 'cookie';
-import { getUserInfoFromId, withUserId } from '../lib/db';
+import { getUserInfo, withUserId } from '../lib/db';
 import { FloatingButton } from '../components/ui/button';
 import PageBase from './pageBase';
 import { useState } from 'react';
@@ -21,7 +21,7 @@ export async function getServerSideProps(context) {
 
     const cookies = parse(cookie_header);
     const token = cookies.token;
-    const info = await withUserId(token, async (user_id) => await getUserInfoFromId(user_id));
+    const info = await withUserId(token, async (user_id) => await getUserInfo(user_id));
     if (info == null) {
         return {
             redirect: {
@@ -87,7 +87,7 @@ export default function SubmitBook({ existing_book }) {
         if (json.status != "OK") {
             throw json;
         }
-        //router.push('/');
+        router.push(`/bookInfo?id=${json.id}`);
     }
 
     return (

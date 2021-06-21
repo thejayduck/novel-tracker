@@ -1,12 +1,12 @@
 import styles from '../styles/NewBook.module.css'
 
-import CardListWrapper, { ResultCard } from '../components/cardElement'
-import SearchBar from '../components/searchBar'
+import CardListWrapper, { ResultCard } from './cardElement'
+import SearchBar from './searchBar'
 import { useState, useEffect } from 'react'
-import OverlayMenu from '../components/overlayMenu'
-import { useAppContext } from '../components/appWrapper'
+import OverlayMenu from './overlayMenu'
+import { useAppContext } from './appWrapper'
 import { AnimatePresence, AnimateSharedLayout } from 'framer-motion'
-import BookDetails from '../components/bookDetails'
+import BookDetails from './bookDetails'
 
 export default function NewBook({ onAddClicked, onOutsideClicked }) {
   const [state] = useAppContext();

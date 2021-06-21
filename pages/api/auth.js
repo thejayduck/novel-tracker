@@ -1,5 +1,5 @@
 import { serialize } from 'cookie';
-import { createSession, findUserIdFromGoogle, createUserFromGoogleUserId } from '../../lib/db';
+import { createSession, findUserIdFromGoogle, createUserFromGoogle } from '../../lib/db';
 
 function toUrlEncoded(obj) {
     let formBody = [];
@@ -72,7 +72,7 @@ async function findOrCreateUserFromGoogleUserId(gui) {
     let user_id = await findUserIdFromGoogle(gui);
     if (user_id == null) {
         new_account = true;
-        await createUserFromGoogleUserId(gui);
+        await createUserFromGoogle(gui);
         user_id = await findUserIdFromGoogle(gui); // Find it again
     }
 
