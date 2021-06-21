@@ -1,0 +1,180 @@
+/* BANNER */
+.bannerWrapper {
+  background: hsl(271, 100%, 65%);
+
+  margin: 0;
+  padding: 0;
+  top: 0;
+  left: 0;
+
+  overflow: hidden;
+
+  z-index: 0;
+  width: 100%;
+  height: auto;
+  position: absolute;
+}
+
+.bannerWrapper img {
+  /* backdrop-filter: blur(2px); */
+  filter: blur(var(--blur-amount)) brightness(50%);
+
+  width: 100%;
+  height: 450px;
+  transform: scale(1.1);
+
+  object-fit: cover;
+  -webkit-object-fit: cover;
+  -moz-object-fit: cover;
+  -o-object-fit: cover;
+}
+
+/* INFO WRAPPER */
+
+.infoWrapper {
+  padding: 20px;
+
+  width: 100%;
+  display: flex;
+
+  z-index: 1;
+}
+
+.coverWrapper {
+  z-index: 10;
+}
+
+.infoWrapper .cover {
+  z-index: 10;
+  object-fit: cover;
+
+  border-radius: var(--border);
+
+  width: 300px;
+  height: 350px;
+  margin: 5px;
+}
+
+.infoWrapper ul {
+  text-align: center;
+  min-width: 100%;
+  width: min-content;
+
+  list-style: none;
+  padding: 0;
+  margin: 20px auto auto auto;
+  font-size: larger;
+
+  padding: 5px;
+  border-radius: var(--border);
+
+  color: white;
+  background-color: var(--color-primary);
+}
+
+/* INFO */
+
+.infoWrapper .info {
+  margin-left: 20px;
+  /* flex: 0.5; */
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  z-index: 1;
+  width: 100%;
+}
+
+.info .title {
+  width: 100%;
+  background-color: black;
+  border-radius: var(--border);
+  text-align: center;
+
+  padding: 10px;
+  color: white;
+}
+
+.infoWrapper ul li {
+  margin: 5px;
+}
+
+.infoWrapper ul li hr {
+  height: 5px;
+  background-color: white;
+}
+
+.descriptionWrapper {
+  color: white;
+  background-color: var(--color-primary);
+  border-radius: var(--border);
+  margin: 10px;
+  width: 100%;
+
+  user-select: none;
+
+  padding: 15px;
+  z-index: 1;
+
+  position: relative;
+}
+
+.descriptionWrapper h2 {
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+
+.description {
+  margin: 0;
+  max-height: 100%;
+
+  font-size: large;
+  overflow: hidden auto;
+}
+
+/* VOLUME WRAPPER */
+
+.volumeWrapper {
+  color: white;
+  background-color: var(--color-primary);
+  border-radius: var(--border);
+  width: max-content;
+  width: 100%;
+
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+}
+
+.volumeList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex-direction: row;
+}
+
+.volumeList div {
+  background-color: var(--color-primaryDark);
+  border-radius: var(--border);
+  padding: 10px;
+  margin: 5px;
+
+  text-align: center;
+}
+
+@media screen and (max-width: 720px) {
+  .infoWrapper .info {
+    margin-left: 0;
+  }
+
+  .infoWrapper {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .infoWrapper {
+    flex-direction: column;
+  }
+}

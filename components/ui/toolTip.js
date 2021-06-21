@@ -9,8 +9,10 @@ export default function ToolTip({ children, toolTip }) {
             {toolTip == undefined
                 ? children :
                 <div className={styles.toolTip}>
-                    {child}
-                    <i className="far fa-question-circle" />
+                    <div>
+                        {child}
+                        <i className="far fa-question-circle" />
+                    </div>
                     <span className={styles.toolTipText}>{toolTip}</span>
                 </div>
             }

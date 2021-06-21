@@ -98,7 +98,6 @@ export function LibraryCard({ entry, onIncrement, onDecrement, onChapterChange, 
                         <div className={styles.quickEdit}>
                             <div>
                                 <QuickButton title="Edit Progress" icon="fas fa-feather-alt" onClick={() => setEditPanel(true)} />
-                                <QuickButton title="Delete Book" icon="fas fa-trash-alt" onClick={onDelete} />
                             </div>
                             <div>
                                 <QuickButton title="Decrease Progress" icon="fas fa-minus" onClick={onDecrement} />
@@ -115,16 +114,20 @@ export function LibraryCard({ entry, onIncrement, onDecrement, onChapterChange, 
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
 
-                        className={styles.editProgress}
+                        className={styles.details}
+                        style={{ height: "88%", opacity: 1 }}
                     >
-                        <a title="Edit Progress">
-                            <div className={styles.formSection}>
-                                <InputField title="Volumes" inputType="number" defaultValue={entry?.volume} onChange={onVolumeChange} maxValue="200" />
-                                <InputField title="Chapters" inputType="number" defaultValue={entry?.chapter} onChange={onChapterChange} maxValue="10000" />
-                                <br />
-                                <Button title="Close" onClick={() => setEditPanel(false)} />
+                        <div>
+                            <InputField title="Volumes" inputType="number" defaultValue={entry?.volume} onChange={onVolumeChange} maxValue="200" />
+                            <InputField title="Chapters" inputType="number" defaultValue={entry?.chapter} onChange={onChapterChange} maxValue="10000" />
+                            <hr />
+                            <div className={styles.quickEdit}>
+                                <div>
+                                    <QuickButton title="Close Editing" icon="fas fa-angle-left" onClick={() => setEditPanel(false)} />
+                                    <QuickButton title="Delete Book" icon="fas fa-trash-alt" onClick={onDelete} />
+                                </div>
                             </div>
-                        </a>
+                        </div>
                     </motion.div>
                 }
             </AnimatePresence>
@@ -136,6 +139,7 @@ function QuickButton({ title, icon, onClick }) {
     return (
         <>
             <a
+                className={styles.quickButton}
                 onClick={onClick}
                 title={title}
             >

@@ -10,8 +10,7 @@ export default function Button({ title, icon, onClick, href }) {
             className={styles.button}
             onClick={onClick}
         >
-            {title && <a href={href}> {title} </a>}
-            {icon && <i className={icon} />}
+            {title && <a href={href}> {title} {icon && <i className={icon} />}</a>}
         </motion.div>
     );
 
