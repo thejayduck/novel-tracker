@@ -1,80 +1,12 @@
-import styles from '../styles/components/CardElement.module.css'
-import InputField, { InputFieldNonManaged } from './ui/inputField';
-import Button from './ui/button';
+import styles from '../../styles/components/CardElement.module.css'
+import { InputFieldNonManaged } from '../ui/inputField';
 
 import { AnimatePresence, motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import CardElement from './cardElement';
+import QuickButton from '../quickButton';
 
-export default function CardListWrapper({ children }) {
-    return (
-        <div className={styles.cardListContainer}>
-            <ul className={styles.cardListFeed}>
-                {children}
-            </ul>
-        </div>
-    );
-}
-
-export function CardElement({ entry, children }) {
-
-    const [isHovering, setIsHovering] = useState(false);
-
-    return (
-        <li>
-            <motion.div
-                style={{
-                    boxShadow: isHovering ? "0px 10px 10px black" : "none",
-                }}
-                layout
-                initial={{ opacity: 0, }}
-                animate={{ opacity: 1, }}
-                whileTap={{ scale: 0.98, }}
-                whileHover={{ scale: 1.05, }}
-                transition={{
-                    type: "spring",
-                    duration: 0.5,
-                }}
-                onHoverStart={() => setIsHovering(true)}
-                onHoverEnd={() => setIsHovering(false)}
-
-                className={styles.activityEntry}
-            >
-                <div className={styles.wrap}>
-                    <div className={styles.list}>
-                        <p
-                            title={`${entry?.title}`}
-                            className={styles.title}
-                        >
-                            {entry?.title}
-                        </p>
-                        {children}
-                    </div>
-                </div>
-            </motion.div>
-        </li>
-    );
-}
-
-export function ResultCard({ entry, onClick }) {
-    return (
-        <>
-            <CardElement entry={entry}>
-                <img className={styles.cover} src={entry?.coverUrl} />
-                <div
-                    className={styles.viewDetails}
-                    onClick={() => onClick(entry)}
-                >
-                    <a title="View Details">
-                        View Details
-                    </a>
-                </div>
-            </CardElement>
-
-        </>
-    );
-}
-
-export function LibraryCard({ entry: _entry, onDelete: _onDelete }) {
+export default function LibraryCard({ entry: _entry, onDelete: _onDelete }) {
 
     const [editPanel, setEditPanel] = useState(false);
     const [entry, setEntry] = useState(_entry);
@@ -172,19 +104,5 @@ export function LibraryCard({ entry: _entry, onDelete: _onDelete }) {
                 }
             </AnimatePresence>
         </CardElement>
-    );
-}
-
-function QuickButton({ title, icon, onClick }) {
-    return (
-        <>
-            <a
-                className={styles.quickButton}
-                onClick={onClick}
-                title={title}
-            >
-                <i className={icon} />
-            </a>
-        </>
     );
 }

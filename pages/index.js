@@ -3,12 +3,11 @@ import PageBase from './pageBase';
 import NewBook from '../components/newBook'
 
 /* Components */
-import QuickAlert from '../components/quickAlert';
-import BookDetails from '../components/bookDetails'
 import SearchBar from '../components/searchBar'
-import CardListWrapper, { LibraryCard } from '../components/cardElement'
 import { FloatingButton } from '../components/ui/button'
 import Footer from '../components/footer'
+import CardListWrapper from '../components/cards/cardListWrapper';
+import LibraryCard from '../components/cards/libraryCard';
 
 /* Other Imports */
 import Fuse from 'fuse.js'
