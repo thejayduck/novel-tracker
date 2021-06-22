@@ -54,19 +54,18 @@ export default function Home({ user_info }) {
 
   const [query, setQuery] = useDelayedState('', 250);
 
-  const fuse = new Fuse(data, {
-    keys: [
-      'title',
-      'title_romanized'
-    ],
-  });
+  const [bookResults, setBookResults] = useState([]);
 
-  const fuseResults = fuse.search(query);
-  const bookResults = query ? fuseResults.map(result => result.item) : data;
-
-  function onSearch(query) {
-    setQuery(query);
-  }
+  useEffect(() => {
+    const fuse = new Fuse(data, {
+      keys: [
+        'title',
+        'title_romanized'
+      ],
+    });
+    const fuseResults = fuse.search(query);
+    setBookResults(query ? fuseResults.map(result => result.item) : data);
+  }, [query, data]);
 
   async function updateData() {
     console.log("Updating data");
@@ -84,7 +83,7 @@ export default function Home({ user_info }) {
 
   return (
     <PageBase>
-      <SearchBar onInput={onSearch} />
+      <SearchBar onInput={setQuery} />
       <div className={styles.container}>
         <AnimateSharedLayout>
           <CardListWrapper

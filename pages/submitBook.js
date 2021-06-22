@@ -1,11 +1,11 @@
 import styles from '../styles/SubmitBook.module.css';
-import InputField, { OptionSelect } from '../components/ui/inputField';
+import { InputField, OptionSelect } from '../components/ui/inputField';
 import SubmitBookContainer, { DescriptionSection, VolumeFormSection } from '../components/submitBookContainer';
 import { parse } from 'cookie';
 import { getUserInfo, withUserId } from '../lib/db';
 import { FloatingButton } from '../components/ui/button';
 import PageBase from './pageBase';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 
 export async function getServerSideProps(context) {
@@ -56,38 +56,43 @@ export async function getServerSideProps(context) {
 }
 
 export default function SubmitBook({ existing_book }) {
-    // TODO get via id or something instead of having a state
-    // TODO must be done so that the default values actually apply
-    const [bookDetails, setBookDetails] = useState(existing_book || {
-        cover_url: null,
-        title: null,
-        title_romanized: null,
-        title_native: null,
-        description: null,
-        author: null,
-        start_date: null,
-        end_date: null,
-        banner_url: null,
-        release_status: null,
-    });
+    const detailRefs = {
+        title: useRef(null),
+        title_romanized: useRef(null),
+        title_native: useRef(null),
+
+        description: useRef(null),
+
+        start_date: useRef(null),
+        end_date: useRef(null),
+        release_status: useRef(null),
+
+        author: useRef(null),
+        cover_url: useRef(null),
+        banner_url: useRef(null),
+    }
 
     const router = useRouter();
 
     async function onSubmit() {
+        const book_details = Object.fromEntries(Object.entries(detailRefs).map(([k, v]) => {
+            const val = v.current.value;
+            return [k, val === "" ? null : val];
+        }));
         const response = await fetch("/api/create_book", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                book_details: bookDetails,
+                book_details: book_details,
             }),
         });
         const json = await response.json();
         if (json.status != "OK") {
             throw json;
         }
-        router.push(`/bookInfo?id=${json.id}`);
+        router.push(`/book?id=${json.id}`);
     }
 
     return (
@@ -96,12 +101,29 @@ export default function SubmitBook({ existing_book }) {
                 <h2 className={styles.containerTitle} >Submit Book <i className="fas fa-feather-alt" /></h2>
 
                 <SubmitBookContainer title="Titles" toolTip="Please Enter *Official* Titles of the Book.">
-                    <InputField title="Title (Licensed*)" inputType="text" placeHolder="Licensed English Title" onChange={({ target }) => setBookDetails({ ...bookDetails, title: target.value })} />
-                    <InputField title="Title Romanized" inputType="text" placeHolder="Romanized Title" onChange={({ target }) => setBookDetails({ ...bookDetails, title_romanized: target.value })} />
-                    <InputField title="Title Native" inputType="text" placeHolder="Native Title" onChange={({ target }) => setBookDetails({ ...bookDetails, title_native: target.value })} />
+                    <InputField
+                        ref={detailRefs.title}
+                        title="Title (Licensed*)"
+                        inputType="text"
+                        placeHolder="Licensed English Title"
+                    />
+                    <InputField
+                        ref={detailRefs.title_romanized}
+                        title="Title Romanized"
+                        inputType="text"
+                        placeHolder="Romanized Title"
+                    />
+                    <InputField
+                        ref={detailRefs.title_native}
+                        title="Title Native"
+                        inputType="text"
+                        placeHolder="Native Title"
+                    />
                 </SubmitBookContainer>
 
-                <DescriptionSection onChange={({ target }) => setBookDetails({ ...bookDetails, description: target.value })} />
+                <DescriptionSection
+                    ref={detailRefs.description}
+                />
 
                 <SubmitBookContainer title="Lengths">
                     <div>
@@ -117,15 +139,39 @@ export default function SubmitBook({ existing_book }) {
                 </SubmitBookContainer>
 
                 <SubmitBookContainer title="Publication Date">
-                    <InputField title="Start Date" inputType="date" onChange={({ target }) => setBookDetails({ ...bookDetails, start_date: target.value })} />
-                    <InputField title="End Date" inputType="date" onChange={({ target }) => setBookDetails({ ...bookDetails, end_date: target.value })} />
-                    <OptionSelect title="Release Status" options={['Finished', 'Releasing', 'Cancelled', 'Hiatus']} onChange={({ target }) => setBookDetails({ ...bookDetails, release_status: target.value })} />
+                    <InputField
+                        ref={detailRefs.start_date}
+                        title="Start Date"
+                        inputType="date"
+                    />
+                    <InputField
+                        ref={detailRefs.end_date}
+                        title="End Date"
+                        inputType="date"
+                    />
+                    <OptionSelect
+                        ref={detailRefs.release_status}
+                        title="Release Status"
+                        options={['Finished', 'Releasing', 'Cancelled', 'Hiatus']}
+                    />
                 </SubmitBookContainer>
 
                 <SubmitBookContainer title="Other">
-                    <InputField title="Author*" inputType="text" onChange={({ target }) => setBookDetails({ ...bookDetails, author: target.value })} />
-                    <InputField title="Cover Url" inputType="url" onChange={({ target }) => setBookDetails({ ...bookDetails, cover_url: target.value })} />
-                    <InputField title="Banner Url" inputType="text" onChange={({ target }) => setBookDetails({ ...bookDetails, banner_url: target.value })} />
+                    <InputField
+                        ref={detailRefs.author}
+                        title="Author*"
+                        inputType="text"
+                    />
+                    <InputField
+                        ref={detailRefs.cover_url}
+                        title="Cover Url"
+                        inputType="url"
+                    />
+                    <InputField
+                        ref={detailRefs.banner_url}
+                        title="Banner Url"
+                        inputType="text"
+                    />
                 </SubmitBookContainer>
 
                 <br />

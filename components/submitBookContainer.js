@@ -1,3 +1,4 @@
+import { forwardRef } from 'react';
 import styles from '../styles/components/SubmitBookContainer.module.css'
 import InputField from './ui/inputField';
 import ToolTip from './ui/toolTip';
@@ -26,12 +27,13 @@ export function VolumeFormSection({ index }) {
     );
 }
 
-export function DescriptionSection({ onChange }) {
+export const DescriptionSection = forwardRef(({ onChange }, ref) => {
     return (
         <>
             <h2 className={styles.containerTitle} > Description </h2>
             <div className={styles.container}>
                 <textarea
+                    ref={ref}
                     autoComplete="off"
                     spellCheck="off"
                     onChange={onChange}
@@ -40,4 +42,4 @@ export function DescriptionSection({ onChange }) {
             </div>
         </>
     );
-}
+})
