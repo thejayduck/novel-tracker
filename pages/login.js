@@ -41,15 +41,14 @@ export default function Login() {
                 <img className={styles.logo} src='../book.svg' />
                 <div >
                     <h1>Welcome to Novel Tracker! </h1>
-                    <motion.div
-                        className={styles.about}
-
-                        initial={{ height: "100px" }}
-                        animate={{ height: "auto" }}
-                        transition={{ type: "spring", delay: 0.5 }}
-                    >
+                    <div className={styles.about}>
                         <h1> Novel Tracking Made Easy! </h1>
-                        <div className={styles.features}>
+                        <motion.div
+                            className={styles.features}
+                            initial={{ height: "0", opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            transition={{ type: "spring", delay: 0.5 }}
+                        >
                             <FeatureItem
                                 title="Automatic Chapter-Volume Conversion"
                                 icon="fas fa-calculator"
@@ -66,19 +65,25 @@ export default function Login() {
                                 title="Account Syncing"
                                 icon="fas fa-sync-alt"
                             >
-                                Bring your progress everywhere you go.
+                                Bring your novel progress everywhere you go.
                             </FeatureItem>
                             <FeatureItem
                                 title="Socialize"
-                                icon="fas fa-user-friends"
+                                icon="fas fa-user"
                             >
                                 Follow your friends progress.
                             </FeatureItem>
-                        </div>
+                            <FeatureItem
+                                title="Community Managed"
+                                icon="fas fa-user-friends"
+                            >
+                                Our library grows with every moderators contribution in the community.
+                            </FeatureItem>
+                        </motion.div>
                         <a href={url} className={`${styles.google} ${styles.btn}`}>
                             <i className="fab fa-google"> </i> Login with Google
                         </a>
-                    </motion.div>
+                    </div>
 
                 </div>
             </div>

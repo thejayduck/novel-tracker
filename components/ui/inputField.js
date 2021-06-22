@@ -1,10 +1,10 @@
 import styles from '../../styles/components/InputField.module.css'
 
-export default function InputField({ inputType, title, placeHolder, defaultValue, maxValue, onChange }) {
+export default function InputField({ inputType, title, placeHolder, defaultValue, maxValue, maxLength, onChange }) {
     return (
         <div className={styles.inputField}>
             <h3 className={styles.title}>{title}</h3>
-            <input type={inputType} placeholder={placeHolder} autoComplete="off" min="0" max={maxValue} defaultValue={defaultValue} onInput={onChange} />
+            <input type={inputType} placeholder={placeHolder} autoComplete="off" min="0" max={maxValue} maxLength={maxLength} defaultValue={defaultValue} onInput={onChange} />
         </div>
     );
 }

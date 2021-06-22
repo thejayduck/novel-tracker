@@ -85,9 +85,8 @@ export default function LibraryCard({ entry: _entry, onDelete: _onDelete }) {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        transition={{ duration: 0.05 }}
-                        className={styles.details}
-                        style={{ height: "88%", opacity: 1 }}
+                        transition={{ duration: 0.2 }}
+                        className={`${styles.details} ${styles.editPanel}`}
                     >
                         <div>
                             <InputFieldNonManaged title="Volumes" inputType="number" value={entry.volumes_read} onChange={({ target }) => onVolumeChange(target.value)} maxValue="200" />
