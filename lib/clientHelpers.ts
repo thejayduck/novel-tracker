@@ -8,7 +8,7 @@ export function useDelayedState<T>(initialState: T, delay: number) {
         const timeout = setTimeout(async () => {
             setDelayedState(internalState);
         }, delay);
-        return () => { console.log("cleanup"); clearTimeout(timeout) };
+        return () => clearTimeout(timeout);
     }, [internalState]);
 
     return [delayedState, setInternalState, internalState]
