@@ -11,7 +11,7 @@ import LibraryCard from '../components/cards/libraryCard';
 
 /* Other Imports */
 import Fuse from 'fuse.js'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { AnimatePresence, AnimateSharedLayout } from 'framer-motion'
 import { parse } from 'cookie'
 import { getUserInfo, withUserId } from '../lib/db'
@@ -54,9 +54,10 @@ export default function Home({ user_info }) {
 
   const [query, setQuery] = useDelayedState('', 250);
 
-  const [bookResults, setBookResults] = useState([]);
-
-  useEffect(() => {
+  const bookResults = useMemo(() => {
+    if (!query) {
+      return data;
+    }
     const fuse = new Fuse(data, {
       keys: [
         'title',
@@ -64,7 +65,7 @@ export default function Home({ user_info }) {
       ],
     });
     const fuseResults = fuse.search(query);
-    setBookResults(query ? fuseResults.map(result => result.item) : data);
+    return fuseResults.map(result => result.item);;
   }, [query, data]);
 
   async function updateData() {
