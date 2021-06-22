@@ -4,6 +4,7 @@ import Button from "../components/ui/button";
 import { getBook } from "../lib/db";
 import { motion } from "framer-motion";
 import Head from "next/dist/next-server/lib/head";
+import { createBookInfo } from "../lib/types";
 
 export async function getServerSideProps(context) {
     if (!context.query.id) {
@@ -21,7 +22,17 @@ export async function getServerSideProps(context) {
     };
 }
 
-export default function Book({ book }) {
+export default function Book({ book: _book }) {
+    const book = createBookInfo(_book);
+
+    function convertDate(date) {
+        if (date) {
+            return date.toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' })
+        } else {
+            return "Unknown";
+        }
+    }
+
     return (
         <PageBase>
             <Head>
@@ -55,14 +66,14 @@ export default function Book({ book }) {
                         <br />
                         <Button title="Back to Library" href="/" />
                         <ul>
-                            <li><a>Title (Romanized):<br /> Honzuki no Gekokujou: Shisho ni Naru Tame ni wa Shudan wo Erandeiraremasen Dai 3-bu - Ryoushu no Youjo</a></li><br />
-                            <li><a>Title (Native):<br /> 本好きの下剋上~司書になるためには手段を選んでいられません~第三部「領主の養女」<hr /></a></li>
+                            <li><a>Title (Romanized):<br />{book.title_romanized}</a></li><br />
+                            <li><a>Title (Native):<br />{book.title_native}<hr /></a></li>
                             <li><a>Total Volumes: 10</a></li>
                             <li><a>Total Chapters: 10</a></li><br />
-                            <li><a>Start Date: 2015</a></li>
-                            <li><a>End Date: 2017</a></li>
-                            <li><a>Release Status: Releasing<hr /></a></li>
-                            <li><a>Author: John Doe</a></li>
+                            <li><a>Start Date: {convertDate(book.start_date)}</a></li>
+                            <li><a>End Date: {convertDate(book.end_date)}</a></li>
+                            <li><a>Release Status: {book.release_status}<hr /></a></li>
+                            <li><a>Author: {book.author}</a></li>
                         </ul>
                     </div>
                     <div className={styles.info}>
