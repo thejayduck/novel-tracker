@@ -1,4 +1,4 @@
-import styles from '../styles/components/CardElement.module.css'
+import styles from '../../styles/components/CardElement.module.css'
 
 export default function QuickButton({ title, icon, onClick }) {
     return (

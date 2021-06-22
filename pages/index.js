@@ -15,6 +15,7 @@ import { useState, useEffect } from 'react'
 import { AnimatePresence, AnimateSharedLayout } from 'framer-motion'
 import { parse } from 'cookie'
 import { getUserInfo, withUserId } from '../lib/db'
+import { useDelayedState } from '../lib/clientHelpers';
 
 
 export async function getServerSideProps(context) {
@@ -51,19 +52,20 @@ export default function Home({ user_info }) {
   const [newBookPanel, setNewBookPanel] = useState(false);
   const [data, setData] = useState([]);
 
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useDelayedState('', 250);
 
   const fuse = new Fuse(data, {
     keys: [
       'title',
+      'title_romanized'
     ],
   });
 
   const fuseResults = fuse.search(query);
   const bookResults = query ? fuseResults.map(result => result.item) : data;
 
-  function onSearch({ currentTarget }) {
-    setQuery(currentTarget.value);
+  function onSearch(query) {
+    setQuery(query);
   }
 
   async function updateData() {
@@ -82,7 +84,7 @@ export default function Home({ user_info }) {
 
   return (
     <PageBase>
-      <SearchBar onInput={onSearch} query={query} />
+      <SearchBar onInput={onSearch} />
       <div className={styles.container}>
         <AnimateSharedLayout>
           <CardListWrapper

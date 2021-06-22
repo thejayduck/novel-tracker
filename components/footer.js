@@ -1,6 +1,6 @@
 import styles from '../styles/components/footer.module.css'
 import { useAppContext } from './appWrapper';
-import FooterButton from './ui/footerButton';
+import { FooterButton } from './ui/button';
 
 export default function Footer({ data, showModButtons }) {
     const [state, setState] = useAppContext();

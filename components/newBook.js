@@ -8,32 +8,26 @@ import { AnimatePresence, AnimateSharedLayout } from 'framer-motion'
 import BookDetails from './bookDetails'
 import CardListWrapper from './cards/cardListWrapper'
 import ResultCard from './cards/resultCard'
+import { useDelayedState } from '../lib/clientHelpers';
 
 export default function NewBook({ onAddClicked, onOutsideClicked }) {
   const [state] = useAppContext();
 
-  const [userInput, setUserInput] = useState("");
+  const [userInput, setUserInput] = useDelayedState("", 250);
   const [searchResults, setSearchResults] = useState([]);
-  const [queryTimeout, setQueryTimeout] = useState(null);
 
   const [detailedBook, setDetailedBook] = useState(null);
 
-  useEffect(() => {
-    clearTimeout(queryTimeout);
-    if (userInput !== null) {
-      setQueryTimeout(setTimeout(async () => {
-        const response = await fetch(`/api/search_book?title=${userInput}`);
-        const json = await response.json();
 
-        setSearchResults(json.map(q => ({
-          book_id: q.book_id,
-          title: q.title,
-          coverUrl: q.cover_url,
-        })));
-      }, 600));
-    } else {
-      setSearchResults([]);
-    }
+  useEffect(async () => {
+    const response = await fetch(`/api/search_book?title=${userInput}`);
+    const json = await response.json();
+
+    setSearchResults(json.map(q => ({
+      book_id: q.book_id,
+      title: q.title,
+      coverUrl: q.cover_url,
+    })));
   }, [userInput]);
 
   async function onDetailsClick(entry) {
@@ -48,7 +42,7 @@ export default function NewBook({ onAddClicked, onOutsideClicked }) {
         className={`${styles.container} ${state.darkMode ? styles.dark : styles.light}`}
         close={onOutsideClicked}
       >
-        <SearchBar onInput={(e) => setUserInput(e.target.value)} />
+        <SearchBar onInput={setUserInput} />
         <AnimateSharedLayout>
           <CardListWrapper>
             {searchResults.map(entry => (
@@ -63,7 +57,7 @@ export default function NewBook({ onAddClicked, onOutsideClicked }) {
           <BookDetails
             book={detailedBook}
             onExit={() => setDetailedBook(null)}
-            onOutsideClicked={() => setDetailedBook(false)}
+            onOutsideClicked={() => setDetailedBook(null)}
             onAddClicked={() => onAddClicked()}
           />
         )}

@@ -1,6 +1,10 @@
 import styles from '../styles/components/Searchbar.module.css'
 
-export default function SearchBar({ onInput, query }) {
+interface SearchBarProps {
+    onInput: (query: string) => void,
+}
+
+export default function SearchBar({ onInput }: SearchBarProps) {
     return (
         <div className={styles.searchContainer}>
             <div className={styles.searchBar}>
@@ -9,9 +13,8 @@ export default function SearchBar({ onInput, query }) {
                     type="text"
                     placeholder="Search..."
                     name="search"
-                    maxLength="50"
-                    value={query}
-                    onChange={onInput}
+                    maxLength={50}
+                    onChange={e => onInput(e.target.value)}
                 />
             </div>
         </div>
