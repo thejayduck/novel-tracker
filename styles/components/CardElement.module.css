@@ -64,7 +64,7 @@
 
 .list:hover .details {
   opacity: 1;
-  height: 65%;
+  height: 50%;
 }
 
 .details {
@@ -98,7 +98,6 @@
   margin: 5px;
   padding: 5px;
   width: 95%;
-  height: 60px;
 
   cursor: pointer;
   transition: 0.2s;
@@ -181,6 +180,12 @@ div:hover > .viewDetails {
 @media screen and (max-width: 720px) {
   .list .cover {
     user-select: none;
+  }
+  .list:hover .details {
+    height: 65%;
+  }
+  .quickButton {
+    height: 60px;
   }
   .activityEntry {
     margin: 1px;

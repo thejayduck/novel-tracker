@@ -3,7 +3,7 @@ import styles from '../../styles/components/CardElement.module.css'
 
 export default function CardListWrapper({ children }) {
     return (
-        <motion.div layout className={styles.cardListContainer}>
+        <motion.div layout="position" className={styles.cardListContainer}>
             <ul className={styles.cardListFeed}>
                 {children}
             </ul>

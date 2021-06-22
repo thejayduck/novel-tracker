@@ -3,7 +3,6 @@ import OverlayMenu from './overlayMenu';
 import Button from './ui/button';
 
 import { useAppContext } from './appWrapper';
-import { useEffect, useState } from 'react';
 
 export default function BookDetails({ book, onExit, onAddClicked, onOutsideClicked }) {
     const [state] = useAppContext();

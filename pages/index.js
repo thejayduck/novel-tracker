@@ -110,6 +110,8 @@ export default function Home({ user_info }) {
       <div style={{
         padding: "5rem 0",
         minHeight: "100vh",
+        height: "100%",
+        width: "100%",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
