@@ -1,6 +1,6 @@
-import { getUserInfo, withUserId } from "../../../lib/db";
+import { getUserInfo, setUsername, withUserId } from "../../../lib/db";
 
-export default async function setUsername({ cookies, body }, res) {
+export default async function handler({ cookies, body }, res) {
     const token = cookies.token;
     try {
         if (!body) {
