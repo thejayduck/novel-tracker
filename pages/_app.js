@@ -8,7 +8,7 @@ export default function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>Light Novel Tracker</title>
+        <title>Novel Tracker</title>
         <link rel="icon" href="/favicon.ico" />
         <link
           rel="stylesheet"
@@ -27,6 +27,8 @@ export default function MyApp({ Component, pageProps }) {
         <meta property="og:image:type" content="image/png" />
         <meta property="og:image:width" content="64" />
         <meta property="og:image:height" content="64" />
+        <meta name="twitter:creator" content="Novel Tracker" />
+
       </Head>
 
       <AppWrapper>

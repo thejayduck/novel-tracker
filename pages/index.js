@@ -66,30 +66,6 @@ export default function Home({ user_info }) {
     setQuery(currentTarget.value);
   }
 
-  const exportData = () => {
-    throw {
-      message: "Unimplemented"
-    }
-    /*var element = document.createElement('a');
-    element.style.display = 'none';
-    element.setAttribute('href', 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(data)));
-    element.setAttribute('download', 'data.json');
-    document.body.appendChild(element);
-    element.click();
-    document.body.removeChild(element);*/
-  }
-
-  const importData = (target) => {
-    throw {
-      message: "Unimplemented"
-    }
-    /*const reader = new FileReader();
-    reader.addEventListener('load', ({ target }) => {
-      setData(JSON.parse(atob(target.result.replace("data:application/json;base64,", ""))));
-    });
-    reader.readAsDataURL(target);*/
-  }
-
   async function updateData() {
     console.log("Updating data");
     const response = await fetch("/api/me/get_book_infos");
@@ -107,16 +83,7 @@ export default function Home({ user_info }) {
   return (
     <PageBase>
       <SearchBar onInput={onSearch} query={query} />
-      <div style={{
-        padding: "5rem 0",
-        minHeight: "100vh",
-        height: "100%",
-        width: "100%",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-      }}>
+      <div className={styles.container}>
         <AnimateSharedLayout>
           <CardListWrapper
             data={data}
@@ -131,16 +98,11 @@ export default function Home({ user_info }) {
           </CardListWrapper>
         </AnimateSharedLayout>
       </div>
+
       <Footer
         data={data}
         showModButtons={user_info.moderation_level >= 2}
-        onExportDataClick={exportData}
-        onImportDataClick={() => {
-          var element = document.getElementById('importData');
-          element.click();
-        }}
       />
-      <input id="importData" style={{ display: 'none' }} type="file" accept=".json" onChange={({ target }) => { importData(target.files[0]); target.value = null }} />
       <AnimatePresence>
         {newBookPanel && (
           <NewBook

@@ -2,7 +2,7 @@ import styles from '../styles/components/footer.module.css'
 import { useAppContext } from './appWrapper';
 import FooterButton from './ui/footerButton';
 
-export default function Footer({ data, showModButtons, onExportDataClick, onImportDataClick }) {
+export default function Footer({ data, showModButtons }) {
     const [state, setState] = useAppContext();
 
     return (
@@ -23,8 +23,6 @@ export default function Footer({ data, showModButtons, onExportDataClick, onImpo
                     icon={`${state.darkMode ? `fas fa-sun` : `fas fa-moon`}`}
                     onClick={() => setState({ ...state, darkMode: !state.darkMode })}
                 />
-                <FooterButton title="Export Data" icon="fas fa-download" onClick={onExportDataClick} />
-                <FooterButton title="Import Data" icon="fas fa-upload" onClick={onImportDataClick} />
 
             </div>
             <p>Books: {data.length}</p>

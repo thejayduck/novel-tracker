@@ -85,7 +85,7 @@ export default function LibraryCard({ entry: _entry, onDelete: _onDelete }) {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-
+                        transition={{ duration: 0.05 }}
                         className={styles.details}
                         style={{ height: "88%", opacity: 1 }}
                     >
