@@ -60,6 +60,16 @@ export default function Login() {
                                 description="You can add 'Novel Tracker' straight to your homepage."
                                 icon="fas fa-mobile-alt"
                             />
+                            <FeatureItem
+                                title="Account Syncing"
+                                description="Bring your progress everywhere you go."
+                                icon="fas fa-sync-alt"
+                            />
+                            <FeatureItem
+                                title="Socialize"
+                                description="Follow your friends progress."
+                                icon="fas fa-user-friends"
+                            />
                         </div>
                         <a href={url} className={`${styles.google} ${styles.btn}`}>
                             <i className="fab fa-google"> </i> Login with Google

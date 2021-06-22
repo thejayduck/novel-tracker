@@ -5,23 +5,26 @@
 }
 
 .container {
+  /* Colors */
   background-color: var(--color-primary);
   color: white;
-  /* background-color: hsla(0, 0%, 39%, 0.5); */
-  padding: 10px;
   border-radius: var(--border);
-  width: 80%;
 
+  /* Alignment */
   display: flex;
   flex-flow: row wrap;
-
   justify-content: center;
   align-items: center;
+  padding: 10px;
+  width: 80%;
 }
 
 .volumeSection {
+  /* Colors */
   background-color: var(--color-primaryDark);
   border-radius: var(--border);
+
+  /* Alignment */
   padding: 10px;
   margin: 5px;
 

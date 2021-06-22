@@ -1,4 +1,4 @@
-import styles from '../styles/Searchbar.module.css'
+import styles from '../styles/components/Searchbar.module.css'
 
 export default function SearchBar({ onInput, query }) {
     return (

@@ -1,20 +1,18 @@
 .container {
-  display: flex;
-  flex-direction: column;
-
+  /* Colors */
+  background-color: var(--backgroundColor-themeDark);
+  color: white;
   border-radius: var(--border);
 
-  background-color: var(--backgroundColor-themeDark);
+  /* Alignment */
+  display: flex;
+  flex-direction: column;
+  position: absolute;
   max-width: 90%;
   height: auto;
-  /* padding: 15px; */
-  position: absolute;
-  color: white;
-
-  overflow: hidden auto;
-
   padding: 10px;
 
+  overflow: hidden auto;
   z-index: 999;
 }
 
@@ -24,20 +22,22 @@
 }
 
 .descriptionWrapper {
-  color: white;
+  /* Colors */
   background-color: var(--color-primary);
+  color: white;
   border-radius: var(--border);
+
+  /* Alignment */
   margin: 10px;
+  padding: 15px;
 
   user-select: none;
-
-  padding: 15px;
   z-index: 1;
-
   position: relative;
 }
 
 .description {
+  /* Alignment */
   margin: 0;
   max-height: 100%;
 
@@ -46,24 +46,23 @@
 }
 
 .container .infoWrapper {
+  /* Alignment */
+  display: flex;
+  width: 100%;
   padding: 20px;
 
-  width: 100%;
-  display: flex;
-
   z-index: 1;
-
-  /* color: white; */
 }
 
 .infoWrapper .cover {
-  z-index: 1;
-
   border-radius: var(--border);
 
+  /* Alignment */
   width: 120px;
   height: 170px;
   margin: 5px;
+
+  z-index: 1;
 }
 
 .infoWrapper .coverWrapper {
@@ -71,9 +70,9 @@
 }
 
 .banner img {
-  /* backdrop-filter: blur(2px); */
   filter: blur(var(--blur-amount)) brightness(50%);
 
+  /* Alignment */
   width: 100%;
   height: 280px;
   transform: scale(1.1);
@@ -87,46 +86,49 @@
 .banner {
   background: hsl(271, 100%, 65%);
 
+  /* Alignment */
+  position: absolute;
+  width: 100%;
+  height: auto;
   margin: 0;
   padding: 0;
   top: 0;
   left: 0;
 
   overflow: hidden;
-
   z-index: 0;
-  width: 100%;
-  height: auto;
-  position: absolute;
 }
 
 .infoWrapper .info {
-  margin-left: 20px;
   flex: 0.5;
+  margin-left: 20px;
 
   z-index: 1;
 }
 
 .info .title {
+  /* Colors */
   background-color: black;
-  border-radius: var(--border);
-  text-align: center;
-
-  padding: 10px;
   color: white;
+  border-radius: var(--border);
+
+  /* Alignment */
+  padding: 10px;
+  text-align: center;
 }
 
 .container ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  font-size: larger;
-
-  padding: 5px;
+  /* Colors */
+  background-color: var(--color-primary);
+  color: white;
   border-radius: var(--border);
 
-  color: white;
-  background-color: var(--color-primary);
+  /* Alignment */
+  padding: 5px;
+  margin: 0;
+
+  font-size: larger;
+  list-style: none;
 }
 
 .container ul li {
@@ -134,8 +136,9 @@
 }
 
 .container ul li hr {
-  height: 5px;
   background-color: white;
+
+  height: 5px;
 }
 
 @media screen and (max-width: 720px) {

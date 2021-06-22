@@ -15,14 +15,13 @@
 
 /* NEEDS TO OVERWRITE SPECIFIED PAGES */
 #index {
-  padding: 5rem 0;
-  /* margin: 20px; */
-
-  flex: 1;
+  /* Alignment */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  flex: 1;
+  padding: 5rem 0;
 }
 
 .dark {

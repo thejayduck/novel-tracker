@@ -1,8 +1,12 @@
 .main {
+  /* Colors */
+  background-color: var(--blur-background);
+  backdrop-filter: blur(var(--blur-amount));
+
+  /* Alignment */
   display: flex;
   align-items: center;
   justify-content: center;
-
   position: fixed;
   width: 100%;
   height: 100%;
@@ -10,15 +14,17 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: var(--blur-background);
-  backdrop-filter: blur(var(--blur-amount));
 
   z-index: 5;
 }
 
 .main .inform {
+  /* Colors */
+  color: white;
+
+  /* Alignment */
   position: absolute;
   top: 10px;
+
   user-select: none;
-  color: white;
 }

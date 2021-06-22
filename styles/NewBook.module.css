@@ -1,13 +1,15 @@
 .container {
+  /* Colors */
+  color: white;
+  border-radius: var(--border);
+
+  /* Alignment */
   display: flex;
   flex-direction: column;
-
-  border-radius: var(--border);
+  position: absolute;
   width: 85%;
   height: 85%;
-  position: absolute;
   padding-top: 50px;
-  color: white;
 
   overflow-y: auto;
   z-index: 10;

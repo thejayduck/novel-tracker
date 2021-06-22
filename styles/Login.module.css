@@ -21,54 +21,61 @@
 .google {
   font-family: "Roboto", sans-serif;
 }
+
 .btn {
+  /* Colors */
+  background: white;
+  color: #444;
+  border: thin solid #888;
+  box-shadow: 1px 1px 1px grey;
+
+  /* Alignment */
+  display: inline-block;
+  width: 190px;
   padding: 12px;
   margin: 5px 0;
   opacity: 0.85;
-  display: inline-block;
   font-size: 17px;
   line-height: 20px;
-  text-decoration: none;
 
-  background: white;
-  color: #444;
-  width: 190px;
+  text-decoration: none;
   border-radius: 5px;
-  border: thin solid #888;
-  box-shadow: 1px 1px 1px grey;
   white-space: nowrap;
 }
 
 .about {
-  overflow: hidden;
-
-  user-select: none;
-
+  /* Colors */
   background-color: var(--color-primary);
   border-radius: var(--border);
   color: white;
+
+  /* Alignment */
   margin: 20px;
   padding: 20px;
-
   width: fit-content;
+
+  overflow: hidden;
+  user-select: none;
 }
 
 .features {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-
   max-width: 900px;
 }
 
 .features div {
-  background-color: var(--color-primaryDark);
+  /* Colors */
+  background-color: var(--color-primaryLight);
   border-radius: var(--border);
 
+  /* Alignment */
   flex: 45%;
   padding: 5px;
   margin: 10px;
 }
+
 .features h3 {
   margin: 5px;
 }

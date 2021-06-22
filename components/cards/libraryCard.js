@@ -72,7 +72,7 @@ export default function LibraryCard({ entry: _entry, onDelete: _onDelete }) {
                                 <QuickButton title="Edit Progress" icon="fas fa-feather-alt" onClick={() => setEditPanel(true)} />
                             </div>
                             <div>
-                                <QuickButton title="Decrease Progress" icon="fas fa-minus" onClick={() => onChapterChange(entry.chapters_read - 1)} />
+                                <QuickButton title="Decrease Progress" icon="fas fa-minus" onClick={() => onChapterChange(entry.chapters_read = Math.max(0, entry.chapters_read - 1))} />
                                 <QuickButton title="Increase Progress" icon="fas fa-plus" onClick={() => onChapterChange(entry.chapters_read + 1)} />
                             </div>
                         </div>

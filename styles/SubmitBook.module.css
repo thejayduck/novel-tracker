@@ -8,4 +8,7 @@
 .pageContent textArea {
   font-size: 24px;
   padding: 0.25em 0.5em;
+  width: 100%;
+  min-width: 100%;
+  border-radius: var(--border);
 }

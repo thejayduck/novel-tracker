@@ -1,32 +1,36 @@
 .inputField,
 .customSelect {
-  padding: 10px;
-  /* flex-basis: 33.333333%; */
-
+  /* Alignment */
   display: flex;
   flex-direction: column;
+  padding: 10px;
 }
 
 .title {
   margin: 0;
+
   text-align: center;
   user-select: none;
 }
 
 .inputField > input {
-  font-size: 24px;
-  /* font-size: max(32px, 1em); */
-  padding: 0.25em 0.5em;
+  /* Colors */
   background-color: #fff;
   border-radius: var(--border);
+
+  padding: 0.25em 0.5em;
+
+  font-size: 24px;
+  /* font-size: max(32px, 1em); */
 }
 
 .customSelect > select {
-  font-size: 24px;
-  padding: 0.25em 0.5em;
+  border-radius: var(--border);
 
   width: 100%;
-  border-radius: var(--border);
+  padding: 0.25em 0.5em;
+
+  font-size: 24px;
   line-height: 1.1;
 }
 

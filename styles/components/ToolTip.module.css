@@ -1,27 +1,33 @@
 .toolTip {
-  position: relative;
   display: inline-block;
+  position: relative;
+
   user-select: none;
 }
 
 .toolTip div {
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .toolTip .toolTipText {
-  opacity: 0;
+  /* Colors */
+  background-color: black;
+  border-radius: var(--border);
+  color: #fff;
+
+  /* Alignment */
+  position: absolute;
   width: max-content;
   max-width: 500px;
-  background-color: black;
-  color: #fff;
   text-align: center;
-  border-radius: 6px;
   padding: 10px;
-
-  position: absolute;
-  z-index: 1;
   top: 25%;
   left: 105%;
+
+  z-index: 1;
+  opacity: 0;
 
   transition: 0.2s;
 }

@@ -1,13 +1,16 @@
 .searchContainer {
+  /* Colors */
+  background-color: var(--color-primary);
   box-shadow: 0px 4px 5px black;
+  border-radius: var(--border);
 
+  /* Alignment */
   position: absolute;
   top: 10px;
   left: 5%;
   width: 90%;
   padding: 10px;
-  background-color: var(--color-primary);
-  border-radius: var(--border);
+
   z-index: 5;
 }
 
@@ -16,33 +19,32 @@
 }
 
 .searchBar input {
-  width: 90%;
+  /* Colors */
+  color: white;
 
+  /* Alignment */
+  width: 90%;
   background: 0 0;
   border: none;
   outline: 0;
-  color: white;
+  margin-left: 0;
+  position: relative;
+
+  text-transform: capitalize;
   font-size: 1.5rem;
   font-weight: 600;
   letter-spacing: -0.01em;
-  margin-left: 0;
-  /* padding: 8px 10px; */
-  position: relative;
-  text-transform: capitalize;
 }
 .searchBar input::placeholder {
   color: #ffffff;
+
   opacity: 0.75;
 }
 .searchBar .faSearch {
-  font-size: larger;
   color: #ffffff;
-  opacity: 0.75;
-  padding: 0 5px 0 5px;
-}
 
-@media screen and (max-width: 720px) {
-  /* .searchBar .faSearch {
-    display: none;
-  } */
+  padding: 0 5px 0 5px;
+
+  font-size: larger;
+  opacity: 0.75;
 }

@@ -11,7 +11,7 @@ export default function ToolTip({ children, toolTip }) {
                 <div className={styles.toolTip}>
                     <div>
                         {child}
-                        <i className="far fa-question-circle" />
+                        <i className="fas fa-question" />
                     </div>
                     <span className={styles.toolTipText}>{toolTip}</span>
                 </div>
