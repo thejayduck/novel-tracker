@@ -22,7 +22,6 @@
         "next-env.d.ts",
         "**/*.ts",
         "**/*.tsx",
-        "pages/api/me/add_book.js"
     ],
     "exclude": [
         "node_modules"

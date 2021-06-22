@@ -1,3 +1,4 @@
+import { withInfoHelperGet } from "../../../lib/apiHelpers";
 import { getUserBooks, getVolumeForChapters } from "../../../lib/db";
 
 export default withInfoHelperGet([], async (_token, _params, user_info) => {
