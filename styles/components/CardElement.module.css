@@ -62,11 +62,6 @@
   overflow: hidden;
 }
 
-.list:hover .details {
-  opacity: 1;
-  height: 50%;
-}
-
 .details {
   /* Colors */
   background-color: var(--blur-background);
@@ -85,6 +80,18 @@
   opacity: 0;
   user-select: none;
   transition: 0.2s;
+}
+
+.list:hover .details:not(.editPanel) {
+  opacity: 1;
+  height: 50%;
+}
+
+.editPanel {
+  height: 88%;
+
+  transition: none;
+  opacity: 1;
 }
 
 .details a {

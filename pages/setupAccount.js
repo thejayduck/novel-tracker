@@ -1,11 +1,13 @@
 import styles from "../styles/SetupAccount.module.css"
 import Button from "../components/ui/button";
 import PageBase from "./pageBase";
+import InputField from "../components/ui/inputField.js"
 
 import { parse } from "cookie";
 import { getUserInfo, withUserId } from "../lib/db";
 import { useRouter } from 'next/router';
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 export async function getServerSideProps(context) {
     const cookie_header = context.req.headers.cookie;
@@ -69,17 +71,30 @@ export default function SetupAccount() {
         router.push('/');
     }
 
+    const [animEnd, setAnimEnd] = useState(false);
     return (
-        <PageBase>
-            <div style={{ textAlign: "center" }}>
-                <img className={styles.logo} src='../book.svg' />
-                <div className={styles.formSection}>
-                    <h3>Please Enter Your Username to Finish Setting Up Your "Light Novel Tracker" Account </h3>
-                    <input type="text" placeholder="Username..." autoComplete="off" min="0" onChange={({ target }) => setUsernameInput(target.value)} />
-                </div>
-                <Button title="Complete Account!" icon="fas fa-user-alt" onClick={onCompleteClick} />
-            </div>
-        </PageBase>
 
+        <PageBase>
+            <motion.div
+                animate={{ height: "150px", width: "150px" }}
+                onAnimationComplete={definition => {
+                    console.log('Completed animating', definition)
+                }}
+                transition={{ delay: 2 }}
+            >
+                <img className={styles.logo} src='../book.svg' />
+            </motion.div>
+            <h3>Please Enter a Username to Finish Setting Up Your "Novel Tracker" Account </h3>
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 4 }}
+            >
+                <div className={styles.content}>
+                    <InputField inputType="text" placeHolder="(Max 32 Characters)" maxLength="32" onChange={({ target }) => setUsernameInput(target.value)} />
+                    <Button title="Complete Account!" icon="fas fa-user-alt" onClick={onCompleteClick} />
+                </div>
+            </motion.div>
+        </PageBase>
     );
 }
