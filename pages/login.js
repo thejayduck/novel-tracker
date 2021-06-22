@@ -52,24 +52,28 @@ export default function Login() {
                         <div className={styles.features}>
                             <FeatureItem
                                 title="Automatic Chapter-Volume Conversion"
-                                description="Keep track of your novels easier with automatic chapter-volume conversion."
                                 icon="fas fa-calculator"
-                            />
+                            >
+                                Keep track of your novels easier with automatic chapter-volume conversion.
+                            </FeatureItem>
                             <FeatureItem
-                                title="Mobile App Capable"
-                                description="You can add 'Novel Tracker' straight to your homepage."
+                                title="Mobile-App Capable"
                                 icon="fas fa-mobile-alt"
-                            />
+                            >
+                                Our website is mobile-app capable, offering you a smooth and elegant experience.
+                            </FeatureItem>
                             <FeatureItem
                                 title="Account Syncing"
-                                description="Bring your progress everywhere you go."
                                 icon="fas fa-sync-alt"
-                            />
+                            >
+                                Bring your progress everywhere you go.
+                            </FeatureItem>
                             <FeatureItem
                                 title="Socialize"
-                                description="Follow your friends progress."
                                 icon="fas fa-user-friends"
-                            />
+                            >
+                                Follow your friends progress.
+                            </FeatureItem>
                         </div>
                         <a href={url} className={`${styles.google} ${styles.btn}`}>
                             <i className="fab fa-google"> </i> Login with Google
@@ -82,11 +86,11 @@ export default function Login() {
     );
 }
 
-function FeatureItem({ title, description, icon }) {
+function FeatureItem({ title, children, icon }) {
     return (
         <div>
             <h3><i className={`${icon}`} /> {title}</h3>
-            <p> {description} </p>
+            <p> {children} </p>
         </div>
     );
 }

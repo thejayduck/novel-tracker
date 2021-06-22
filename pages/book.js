@@ -25,15 +25,11 @@ export default function Book({ book }) {
     return (
         <PageBase>
             <Head>
-                <title>Light Novel Tracker - {book.title}</title>
+                <title>Novel Tracker - {book.title}</title>
 
-                <meta property="og:type" content="website" />
-                <meta property="og:title" content={book.title} />
-                <meta property="og:description" content={book.description} />
-                <meta property="og:image" content={book.cover_url} />
-                <meta property="og:image:type" content="image/png" />
-                <meta property="og:image:width" content="64" />
-                <meta property="og:image:height" content="64" />
+                <meta key='title' property="og:title" content={book.title} />
+                <meta key='description' property="og:description" content={book.description} />
+                <meta key='image' property="og:image" content={book.banner_url} />
             </Head>
 
             <div
