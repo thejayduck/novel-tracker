@@ -1,12 +1,3 @@
-import { getUserIdFromToken } from "../../../lib/db";
+import { withInfoHelperGet } from "../../../lib/apiHelpers";
 
-export default async function UserId({ cookies }, res) {
-    const token = cookies.token;
-    try {
-        const user_id = await getUserIdFromToken(token);
-        res.status(200).json({ status: "OK", user_id });
-    } catch (error) {
-        console.log(error);
-        res.status(500).json({ status: "Error", error })
-    }
-}
+export default withInfoHelperGet([], async (_token, _params, user_info) => user_info.user_id);

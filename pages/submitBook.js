@@ -74,7 +74,7 @@ export default function SubmitBook({ existing_book }) {
     const router = useRouter();
 
     async function onSubmit() {
-        const response = await fetch("/api/create_or_edit_book", {
+        const response = await fetch("/api/create_book", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

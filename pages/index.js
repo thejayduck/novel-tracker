@@ -73,7 +73,7 @@ export default function Home({ user_info }) {
     if (json.status != "OK") {
       throw json;
     }
-    const infos = json.info;
+    const infos = json.data;
     setData(infos)
   }
 

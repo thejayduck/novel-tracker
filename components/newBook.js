@@ -39,7 +39,7 @@ export default function NewBook({ onAddClicked, onOutsideClicked }) {
   async function onDetailsClick(entry) {
     const response = await fetch(`/api/get_book?id=${entry.book_id}`);
     const json = await response.json();
-    setDetailedBook(json)
+    setDetailedBook(json.data)
   }
 
   return (

@@ -22,7 +22,7 @@ export function AuthWrapper({ children }) {
                     throw json;
                 }
             } else {
-                info = json.info;
+                info = json.data;
             }
         }
         if (info == null) { // Invalid User

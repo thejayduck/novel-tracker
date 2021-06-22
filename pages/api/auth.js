@@ -73,8 +73,7 @@ async function findOrCreateUserFromGoogleUserId(gui) {
     let user_id = await findUserIdFromGoogle(gui);
     if (user_id == null) {
         new_account = true;
-        await createUserFromGoogle(gui);
-        user_id = await findUserIdFromGoogle(gui); // Find it again
+        user_id = await createUserFromGoogle(gui);
     }
 
     return { user_id, new_account };

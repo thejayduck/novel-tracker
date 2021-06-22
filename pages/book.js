@@ -111,7 +111,7 @@ function VolumeItem() {
                 <a>Chapters: 100</a>
                 <br />
                 <a>Extra Chapters: 100</a>
-                <Button title="Start From" href="/" />
+                <Button title="Start From" />
             </div>
         </ motion.li>
     );

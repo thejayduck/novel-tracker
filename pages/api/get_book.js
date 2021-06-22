@@ -1,6 +1,8 @@
 import { getBook } from '../../lib/db';
+import { withHelperBareGet } from '../../lib/apiHelpers';
+import { parseID } from '../../lib/types';
 
-export default async function handler({ query }, res) {
-    const book = await getBook(query.id);
-    res.status(200).json(book);
-}
+export default withHelperBareGet(["id"], async (_, params) => {
+    const id = parseID(params.id);
+    return await getBook(id)
+});
