@@ -1,15 +1,13 @@
-import { getUserBooks, getVolumeForChapters, withUserId } from "../../../lib/db";
+import { getUserBooks, getVolumeForChapters } from "../../../lib/db";
 
-export default async function handler({ cookies }, res) {
-    const token = cookies.token;
-    try {
-        const info = await withUserId(token, async (user_id) => await getUserBooks(user_id).then(info => Promise.all(info.map(async (v) => ({
-            ...v,
-            volumes_read: await getVolumeForChapters(v.book_id, v.chapters_read),
-        })))));
-        res.status(200).json({ status: "OK", info });
-    } catch (error) {
-        console.log(error);
-        res.status(500).json({ status: "Error", error })
-    }
-}
+export default withInfoHelperGet([], async (_token, _params, user_info) => {
+    const user_books = await getUserBooks(user_info.user_id);
+    const fixed_user_books = await Promise.all(user_books.map(async (book) => {
+        const volumes_read = await getVolumeForChapters(book.book_id, book.chapters_read);
+        return {
+            ...book,
+            volumes_read,
+        }
+    }));
+    return fixed_user_books;
+});

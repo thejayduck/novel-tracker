@@ -1,21 +1,23 @@
 import { randomBytes } from 'crypto';
 import { Pool } from 'pg';
-import { BookInfo, createSerializableBookInfo, SerializableBookInfo } from './types';
+import { BookInfo, createSerializableBookInfo, SerializableBookInfo, UserBookInfo, UserInfo } from './types';
 const pool = new Pool();
 
 // TODO database functions?
 
-export async function createUserFromGoogle(gui) {
-    const create_result = await pool.query("INSERT INTO users (google_user_id) VALUES ($1)", [gui]);
+export async function createUserFromGoogle(gui: number) {
+    const create_result = await pool.query<{ user_id: number }>("INSERT INTO users (google_user_id) VALUES ($1) RETURNING user_id", [gui]);
     if (create_result.rowCount == 0) {
         throw {
             message: "Unable to create user",
         };
     };
+
+    return create_result.rows[0].user_id;
 }
 
-export async function findUserIdFromGoogle(gui) {
-    const result = await pool.query("SELECT user_id FROM users WHERE google_user_id = $1", [gui]);
+export async function findUserIdFromGoogle(gui: number) {
+    const result = await pool.query<{ user_id: number }>("SELECT user_id FROM users WHERE google_user_id = $1", [gui]);
 
     if (result.rowCount > 1) {
         throw {
@@ -41,8 +43,8 @@ export async function deleteSession(token: string) {
     await pool.query("DELETE FROM sessions WHERE session_token = $1", [token]);
 }
 
-export async function getUserIdFromstring(token: string) {
-    const result = await pool.query("SELECT user_id FROM sessions WHERE session_token = $1", [token]);
+export async function getUserId(token: string) {
+    const result = await pool.query<{ user_id: number }>("SELECT user_id FROM sessions WHERE session_token = $1", [token]);
 
     if (result.rowCount > 1) {
         throw {
@@ -58,7 +60,7 @@ export async function getUserIdFromstring(token: string) {
 
 
 export async function getUserInfo(user_id: number) {
-    const result = await pool.query("SELECT user_id, moderation_level, username FROM users WHERE user_id = $1", [user_id]);
+    const result = await pool.query<UserInfo>("SELECT user_id, moderation_level, username FROM users WHERE user_id = $1", [user_id]);
 
     if (result.rowCount > 1) {
         throw {
@@ -76,7 +78,7 @@ export async function getUserInfo(user_id: number) {
     return result.rows[0];
 }
 
-export async function setUsername(user_id: number, username) {
+export async function setUsername(user_id: number, username: string) {
     const result = await pool.query("UPDATE users SET username = $2 WHERE user_id = $1", [user_id, username]);
 
     if (result.rowCount > 1) {
@@ -135,13 +137,13 @@ export async function getBook(book_id: number) {
 }
 
 export async function getUserBookInfos(user_id: number) {
-    const result = await pool.query<BookInfo>("SELECT * FROM user_books INNER JOIN books USING(book_id) WHERE user_id = $1::integer", [user_id]);
+    const result = await pool.query<BookInfo & UserBookInfo>("SELECT * FROM user_books INNER JOIN books USING(book_id) WHERE user_id = $1::integer", [user_id]);
 
     return result.rows;
 }
 
 export async function getUserBooks(user_id: number) {
-    const result = await pool.query("SELECT * FROM user_books WHERE user_id = $1::integer", [user_id]);
+    const result = await pool.query<{ user_id: number, book_id: number, chapters_read: number }>("SELECT * FROM user_books WHERE user_id = $1::integer", [user_id]);
 
     return result.rows;
 }
@@ -178,9 +180,9 @@ export async function updateUserBookChaptersRead(user_id: number, book_id: numbe
 }
 
 export async function getVolumeForChapters(book_id: number, chapters_read: number) {
-    const result = await pool.query("SELECT volume_number, chapter_count FROM volumes WHERE book_id = $1 ORDER BY volume_number", [book_id]);
+    const result = await pool.query<{ volume_number: number, chapter_count: number }>("SELECT volume_number, chapter_count FROM volumes WHERE book_id = $1 ORDER BY volume_number", [book_id]);
     const [volumes] = result.rows
-        .reduce((acc, current, idx) => {
+        .reduce<[number, number][]>((acc, current, idx) => {
             const [, prev_total_chapters] = idx > 0 ? acc[idx - 1] : [0, 0];
             acc.push([current.volume_number, prev_total_chapters + current.chapter_count]);
             return acc;
@@ -192,7 +194,7 @@ export async function getVolumeForChapters(book_id: number, chapters_read: numbe
 }
 
 export async function withUserId<T>(token: string, callback: (user_id: number) => Promise<T>) {
-    const user_id = await getUserIdFromstring(token);
+    const user_id = await getUserId(token);
     if (user_id == null) {
         return null
     }

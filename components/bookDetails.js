@@ -39,7 +39,7 @@ export default function BookDetails({ book, onExit, onAddClicked, onOutsideClick
                         <img className={styles.cover} src={book.cover_url} />
                         <Button title="Add Book" onClick={() => addBook()} />
                         <br />
-                        <Button title="Edit Book" href={`/submitBook?id=${book.id}`} />
+                        <Button title="Edit Book" href={`/submitBook?id=${book.book_id}`} />
                     </div>
                     <div className={styles.info}>
                         <h1 title={book.title} className={styles.title}> {book.title} </h1>

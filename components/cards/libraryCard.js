@@ -36,7 +36,7 @@ export default function LibraryCard({ entry: _entry, onDelete: _onDelete }) {
         if (json.status != "OK") {
             throw json;
         }
-        setEntry({ ...entry, chapters_read: Number.parseInt(json.info.chapters_read), volumes_read: Number.parseInt(json.info.volumes_read) });
+        setEntry({ ...entry, chapters_read: Number.parseInt(json.data.chapters_read), volumes_read: Number.parseInt(json.data.volumes_read) });
     }
 
     async function onDelete() {
