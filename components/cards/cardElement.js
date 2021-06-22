@@ -11,12 +11,12 @@ export default function CardElement({ entry, children }) {
         <li>
             <motion.div
                 style={{
-                    boxShadow: isHovering ? "0px 10px 10px black" : "none",
+                    boxShadow: isHovering ? "0px 10px 20px black" : "none",
                 }}
                 layout
                 initial={{ opacity: 0, }}
                 animate={{ opacity: 1, }}
-                whileTap={{ scale: 0.98, }}
+                whileTap={{ scale: 1.05, }}
                 whileHover={{ scale: 1.05, }}
                 transition={{
                     type: "spring",
