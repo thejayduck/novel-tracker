@@ -112,7 +112,7 @@ export default function Home({ user_info }) {
           />
         )}
       </AnimatePresence>
-      <FloatingButton hoverTitle="Add New Book" icon="fas fa-plus" onClick={() => setNewBookPanel(!newBookPanel)} />
+      <FloatingButton hoverTitle="Add New Book" icon="fas fa-plus" onClick={() => setNewBookPanel(prev => !prev)} />
 
       {/* <QuickAlert message="A New Book Has Been Added!" icon="fas fa-check" /> */}
 

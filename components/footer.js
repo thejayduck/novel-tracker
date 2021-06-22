@@ -21,7 +21,7 @@ export default function Footer({ data, showModButtons }) {
                 <FooterButton
                     title="Toggle Theme"
                     icon={`${state.darkMode ? `fas fa-sun` : `fas fa-moon`}`}
-                    onClick={() => setState({ ...state, darkMode: !state.darkMode })}
+                    onClick={() => setState(state => ({ ...state, darkMode: !state.darkMode }))}
                 />
 
             </div>

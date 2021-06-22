@@ -34,7 +34,7 @@ export default function LibraryCard({ entry: _entry, onDelete: _onDelete }) {
         if (json.status != "OK") {
             throw json;
         }
-        setEntry({ ...entry, chapters_read: Number.parseInt(json.data.chapters_read), volumes_read: Number.parseInt(json.data.volumes_read) });
+        setEntry(entry => ({ ...entry, chapters_read: Number.parseInt(json.data.chapters_read), volumes_read: Number.parseInt(json.data.volumes_read) }));
     }, [chaptersRead]);
 
     useEffect(async () => {
