@@ -1,76 +1,68 @@
 import styles from '../styles/Book.module.css'
 import PageBase from "../components/pageBase";
 import Button from "../components/ui/button";
-import { getBook } from "../lib/db";
 import { motion } from "framer-motion";
 import Head from "next/dist/next-server/lib/head";
 import { createBookInfo } from "../lib/types";
+import { useEffect, useState } from 'react';
+import { useQueryParams } from '../lib/clientHelpers';
 
-export async function getServerSideProps(context) {
-    if (!context.query.id) {
-        throw {
-            message: "No book id was passed"
+export default function Book() {
+    const query = useQueryParams();
+    const [book, setBook] = useState(null);
+
+    useEffect(async () => {
+        if (query != null) {
+            const response = await fetch(`/api/get_book?id=${query.id}`);
+            const json = await response.json();
+            const data = createBookInfo(json.data);
+            setBook(data);
         }
-    }
+    }, [query]);
 
-    const book = await getBook(context.query.id);
-
-    return {
-        props: {
-            book,
-        },
-    };
-}
-
-export default function Book({ book: _book }) {
-    const book = createBookInfo(_book);
 
     function convertDate(date) {
-        if (date) {
-            return date.toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' })
-        } else {
-            return "Unknown";
-        }
+        return date.toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' })
     }
 
     return (
         <PageBase>
             <Head>
-                <title>Novel Tracker - {book.title}</title>
+                <title>Novel Tracker - {book ? book.title : "Loading"}</title>
 
-                <meta key='title' property="og:title" content={book.title} />
-                <meta key='description' property="og:description" content={book.description} />
-                <meta key='image' property="og:image" content={book.banner_url} />
+                <meta key='title' property="og:title" content={book ? book.title : "Loading"} />
+                <meta key='description' property="og:description" content={book ? book.description : "Loading"} />
+                <meta key='image' property="og:image" content={book?.banner_url} />
             </Head>
 
             <div className={styles.pageWrapper}>
                 <div className={styles.bannerWrapper}>
-                    <img src={book.banner_url} />
+                    <img src={book?.banner_url} />
                 </div>
                 <div className={styles.infoWrapper}>
                     <div className={styles.coverWrapper}>
-                        <img className={styles.cover} src={book.cover_url} />
+                        <img className={styles.cover} src={book?.cover_url} />
                         <Button title="Add Book" onClick={() => { window.alert("Add") }} />
                         <br />
                         <Button title="Edit Information" onClick={() => { window.alert("Edit") }} />
                         <br />
                         <Button title="Back to Library" href="/" />
                         <ul>
-                            <li><a>Title (Romanized):<br />{book.title_romanized}</a></li><br />
-                            <li><a>Title (Native):<br />{book.title_native}<hr /></a></li>
+                            <li><a>Title (Romanized):<br />{book ? book.title_romanized : "Loading"}</a></li><br />
+                            <li><a>Title (Native):<br />{book ? book.title_native : "Loading"}<hr /></a></li>
                             <li><a>Total Volumes: 10</a></li>
                             <li><a>Total Chapters: 10</a></li><br />
-                            <li><a>Start Date: {convertDate(book.start_date)}</a></li>
-                            <li><a>End Date: {convertDate(book.end_date)}</a></li>
-                            <li><a>Release Status: {book.release_status}<hr /></a></li>
-                            <li><a>Author: {book.author}</a></li>
+                            <li><a>Start Date: {book ? convertDate(book.start_date) : "Loading"}</a></li>
+                            <li><a>End Date: {book ? convertDate(book.end_date) : "Loading"}</a></li>
+                            <li><a>Release Status: {book ? book.release_status : "Loading"}<hr /></a></li>
+                            <li><a>Author: {book ? book.author : "Loading"}</a></li>
                         </ul>
                     </div>
                     <div className={styles.info}>
-                        <h1 title={book.title} className={styles.title}>{book.title}</h1>
+                        <h1 title={book ? book.title : "Loading"} className={styles.title}>{book ? book.title : "Loading"}</h1>
                         <div className={styles.descriptionWrapper}>
                             <h2>Description</h2>
-                            <p className={styles.description}>{book.description}</p>
+                            <p className={book ? book.description : "Loading"}>{book ? book.description : "Loading"}</p>
                         </div>
                         <div className={styles.volumeWrapper}>
                             <h2>Volumes</h2>

@@ -1,56 +1,27 @@
 import styles from "../styles/SetupAccount.module.css"
 import Button from "../components/ui/button";
 import PageBase from "../components/pageBase";
-import InputField from "../components/ui/inputField.js"
-
-import { parse } from "cookie";
-import { getUserInfo, withUserId } from "../lib/db";
+import { InputField } from "../components/ui/inputField";
 import { useRouter } from 'next/router';
-import { useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-
-export async function getServerSideProps(context) {
-    const cookie_header = context.req.headers.cookie;
-    if (!cookie_header) {
-        return {
-            redirect: {
-                permanent: false,
-                destination: '/login',
-            },
-        }
-    }
-
-    const cookies = parse(context.req.headers.cookie);
-    const token = cookies.token;
-    const info = await withUserId(token, async (user_id) => await getUserInfo(user_id));
-    if (info == null) {
-        return {
-            redirect: {
-                permanent: false,
-                destination: '/login',
-            },
-        }
-    }
-
-    if (info.username != null) {
-        return {
-            redirect: {
-                permanent: false,
-                destination: '/',
-            },
-        }
-    }
-
-    return {
-        props: {
-            user_info: info,
-        },
-    };
-}
+import { useUser } from "../lib/clientHelpers";
 
 
 export default function SetupAccount() {
     const router = useRouter();
+
+    const userInfo = useUser({
+        logged_in: true,
+        be_mod: false,
+        be_admin: false
+    });
+
+    useEffect(() => {
+        if (userInfo?.username != null) {
+            router.push("/");
+        }
+    }, [userInfo])
 
     const usernameRef = useRef(null);
 
@@ -87,7 +58,7 @@ export default function SetupAccount() {
                 transition={{ delay: 4 }}
             >
                 <div className={styles.content}>
-                    <InputField ref={usernameRef} inputType="text" placeHolder="(Max 32 Characters)" maxLength="32" onChange={({ target }) => setUsernameInput(target.value)} />
+                    <InputField ref={usernameRef} inputType="text" placeHolder="(Max 32 Characters)" maxLength="32" />
                     <Button title="Complete Account!" icon="fas fa-user-alt" onClick={onCompleteClick} />
                 </div>
             </motion.div>

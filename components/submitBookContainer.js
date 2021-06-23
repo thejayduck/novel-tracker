@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 import styles from '../styles/components/SubmitBookContainer.module.css'
-import InputField from './ui/inputField';
+import { InputField } from './ui/inputField';
 import ToolTip from './ui/toolTip';
 
 export default function SubmitBookContainer({ title, children, toolTip }) {

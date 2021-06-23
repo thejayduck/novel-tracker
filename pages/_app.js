@@ -2,6 +2,7 @@ import '../styles/globals.css'
 import Head from 'next/head'
 import { AppWrapper } from '../components/appWrapper'
 import { AuthWrapper } from '../components/authWrapper'
+import { CookiesProvider } from 'react-cookie'
 
 export default function MyApp({ Component, pageProps }) {
 

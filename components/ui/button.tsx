@@ -56,13 +56,14 @@ export function FooterButton({ title, icon, onClick, href }: ButtonProps) {
     );
 }
 
-export function CardButton({ title, icon, onClick }: ButtonProps) {
+export function CardButton({ title, icon, onClick, href }: ButtonProps) {
     return (
         <>
             <a
                 className={styles.cardButton}
                 onClick={onClick}
                 title={title}
+                href={href}
             >
                 <i className={icon} />
             </a>

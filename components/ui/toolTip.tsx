@@ -7,12 +7,10 @@ export interface ToolTipProps {
 }
 
 export default function ToolTip({ children, toolTip }: ToolTipProps) {
-    const child = React.Children.only(children);
-
     return (
         <div className={styles.toolTip}>
             <div>
-                {child}
+                {children}
                 <i className="fas fa-question" />
             </div>
             <span className={styles.toolTipText}>{toolTip}</span>

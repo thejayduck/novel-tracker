@@ -15,8 +15,6 @@ export default function LibraryCard({ entry: _entry, onDelete: _onDelete }) {
     const [chaptersRead, setChaptersRead, liveChaptersRead] = useDelayedStateWithLive(entry.chapters_read, 250);
     const [volumesRead, setVolumesRead, liveVolumesRead] = useDelayedStateWithLive(entry.volumes_read, 250);
 
-    console.log(_entry);
-
     useEffect(async () => {
         if (isNaN(chaptersRead)) {
             return;

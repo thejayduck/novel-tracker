@@ -1,61 +1,21 @@
 import styles from '../styles/SubmitBook.module.css';
 import { InputField, OptionSelect } from '../components/ui/inputField';
 import SubmitBookContainer, { DescriptionSection, VolumeFormSection } from '../components/submitBookContainer';
-import { parse } from 'cookie';
-import { getUserInfo, withUserId } from '../lib/db';
 import { FloatingButton } from '../components/ui/button';
 import PageBase from '../components/pageBase';
-import { useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
+import { useQueryParams, useUser } from '../lib/clientHelpers';
 
-export async function getServerSideProps(context) {
-    const cookie_header = context.req.headers.cookie;
-    if (!cookie_header) {
-        return {
-            redirect: {
-                permanent: false,
-                destination: '/error?reason=must_login',
-            },
-        }
-    }
+export default function SubmitBook() {
+    const query = useQueryParams();
 
-    const cookies = parse(cookie_header);
-    const token = cookies.token;
-    const info = await withUserId(token, async (user_id) => await getUserInfo(user_id));
-    if (info == null) {
-        return {
-            redirect: {
-                permanent: false,
-                destination: '/error?reason=must_login',
-            },
-        }
-    }
-    if (info.moderation_level < 2) {
-        return {
-            redirect: {
-                permanent: false,
-                destination: '/error?reason=mod_only',
-            },
-        }
-    }
+    useUser({
+        logged_in: true,
+        be_mod: true,
+        be_admin: false
+    });
 
-    let existing_book = null;
-    if (context.query.id) {
-        // TODO
-        throw {
-            message: "Unimplemented"
-        }
-    }
-
-    return {
-        props: {
-            user_info: info,
-            existing_book,
-        },
-    };
-}
-
-export default function SubmitBook({ existing_book }) {
     const detailRefs = {
         title: useRef(null),
         title_romanized: useRef(null),
@@ -72,7 +32,18 @@ export default function SubmitBook({ existing_book }) {
         banner_url: useRef(null),
     }
 
-    const router = useRouter();
+    useEffect(async () => {
+        if (query?.id) {
+            const response = await fetch(`/api/get_book?id=${query.id}`);
+            const json = await response.json();
+            const data = json.data;
+
+            Object.keys(detailRefs).forEach(k => {
+                const new_value = data[k];
+                detailRefs[k].current.value = new_value;
+            });
+        }
+    }, [query?.id])
 
     async function onSubmit() {
         const book_details = Object.fromEntries(Object.entries(detailRefs).map(([k, v]) => {
