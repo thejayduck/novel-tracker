@@ -40,10 +40,6 @@ a {
   text-decoration: none;
 }
 
-* {
-  box-sizing: border-box;
-}
-
 ::selection {
   background: #8f8f8f;
 }

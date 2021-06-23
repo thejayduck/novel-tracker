@@ -38,12 +38,7 @@ export default function BookDetails({ book, onExit, onAddClicked, onOutsideClick
                             <div className={styles.coverWrapper}>
                                 <img className={styles.cover} src={book.cover_url} />
                                 <br />
-                                <div className={styles.buttonWrap}>
-                                    <Button title="Add" onClick={() => addBook()} />
-                                    <br />
-                                    <Button title="Edit" href={`/submitBook?id=${book.book_id}`} />
-                                    <br />
-                                </div>
+
                             </div>
                             <div className={styles.titleWrapper}>
                                 <ul className={styles.detailList}>
@@ -64,7 +59,15 @@ export default function BookDetails({ book, onExit, onAddClicked, onOutsideClick
                         }
                     </div>
                 </div>
-                <Button title="Exit" onClick={() => onExit()} />
+                <div className={styles.buttonWrap}>
+                    <Button title="Add" onClick={() => addBook()} />
+                    <br />
+                    <Button title="Edit" href={`/submitBook?id=${book.book_id}`} />
+                    <br />
+                </div>
+                <div className={styles.buttonWrapper}>
+                    <Button title="Exit" onClick={() => onExit()} />
+                </div>
             </OverlayMenu>
         </div>
     );
