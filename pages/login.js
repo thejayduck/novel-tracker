@@ -37,7 +37,7 @@ export default function Login() {
     })
     return url && (
         <PageBase>
-            <div style={{ textAlign: "center" }}>
+            <div className={styles.wrapper}>
                 <img className={styles.logo} src='../book.svg' />
                 <div >
                     <h1>Welcome to Novel Tracker! </h1>

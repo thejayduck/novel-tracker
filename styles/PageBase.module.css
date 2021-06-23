@@ -13,17 +13,6 @@
   transition: 0.2s;
 }
 
-/* NEEDS TO OVERWRITE SPECIFIED PAGES */
-#index {
-  /* Alignment */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
-  padding: 5rem 0;
-}
-
 .dark {
   color: white;
   background-color: var(--backgroundColor-themeDark);

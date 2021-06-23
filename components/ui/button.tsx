@@ -17,7 +17,7 @@ export default function Button({ title, icon, onClick, href }: ButtonProps) {
             className={styles.button}
             onClick={onClick}
         >
-            {title && <a href={href}> {title} {icon && <i className={icon} />}</a>}
+            <a href={href}> {title} {icon && <i className={icon} />}</a>
         </motion.div>
     );
 }
@@ -53,5 +53,19 @@ export function FooterButton({ title, icon, onClick, href }: ButtonProps) {
             onClick={onClick}
             href={href}
         ><i className={icon} /></a>
+    );
+}
+
+export function CardButton({ title, icon, onClick }: ButtonProps) {
+    return (
+        <>
+            <a
+                className={styles.cardButton}
+                onClick={onClick}
+                title={title}
+            >
+                <i className={icon} />
+            </a>
+        </>
     );
 }

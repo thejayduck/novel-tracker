@@ -1,10 +1,10 @@
 import styles from '../../styles/components/CardElement.module.css'
+import CardElement from './cardElement';
+import { CardButton } from '../ui/button';
 import { InputFieldNonManaged } from '../ui/inputField';
 
 import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
-import CardElement from './cardElement';
-import QuickButton from './quickButton';
 import { useDelayedStateWithLive } from '../../lib/clientHelpers';
 
 export default function LibraryCard({ entry: _entry, onDelete: _onDelete }) {
@@ -71,13 +71,13 @@ export default function LibraryCard({ entry: _entry, onDelete: _onDelete }) {
                             Current Chapter: {liveChaptersRead}
                         </span>
                         <hr />
-                        <div className={styles.quickEdit}>
+                        <div className={styles.cardButtonWrapper}>
                             <div>
-                                <QuickButton title="Edit Progress" icon="fas fa-feather-alt" onClick={() => setEditPanel(true)} />
+                                <CardButton title="Edit Progress" icon="fas fa-feather-alt" onClick={() => setEditPanel(true)} />
                             </div>
                             <div>
-                                <QuickButton title="Decrease Progress" icon="fas fa-minus" onClick={() => setChaptersRead(Math.max(0, liveChaptersRead - 1))} />
-                                <QuickButton title="Increase Progress" icon="fas fa-plus" onClick={() => setChaptersRead(liveChaptersRead + 1)} />
+                                <CardButton title="Increase Progress" icon="fas fa-minus" onClick={() => setChaptersRead(Math.max(0, liveChaptersRead - 1))} />
+                                <CardButton title="Decrease Progress" icon="fas fa-plus" onClick={() => setChaptersRead(liveChaptersRead + 1)} />
                             </div>
                         </div>
                     </div>
@@ -96,10 +96,10 @@ export default function LibraryCard({ entry: _entry, onDelete: _onDelete }) {
                             <InputFieldNonManaged title="Volumes" inputType="number" value={liveVolumesRead} onChange={({ target }) => setVolumesRead(target.value)} maxValue="200" />
                             <InputFieldNonManaged title="Chapters" inputType="number" value={liveChaptersRead} onChange={({ target }) => setChaptersRead(target.value)} maxValue="10000" />
                             <hr />
-                            <div className={styles.quickEdit}>
+                            <div className={styles.cardButtonWrapper}>
                                 <div>
-                                    <QuickButton title="Close Editing" icon="fas fa-angle-left" onClick={() => setEditPanel(false)} />
-                                    <QuickButton title="Delete Book" icon="fas fa-trash-alt" onClick={onDelete} />
+                                    <CardButton title="Close Editing" icon="fas fa-angle-left" onClick={() => setEditPanel(false)} />
+                                    <CardButton title="Delete Book" icon="fas fa-trash-alt" onClick={onDelete} />
                                 </div>
                             </div>
                         </div>

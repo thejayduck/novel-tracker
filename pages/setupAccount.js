@@ -71,15 +71,11 @@ export default function SetupAccount() {
         router.push('/');
     }
 
-    const [animEnd, setAnimEnd] = useState(false);
     return (
 
         <PageBase>
             <motion.div
                 animate={{ height: "150px", width: "150px" }}
-                onAnimationComplete={definition => {
-                    console.log('Completed animating', definition)
-                }}
                 transition={{ delay: 2 }}
             >
                 <img className={styles.logo} src='../book.svg' />

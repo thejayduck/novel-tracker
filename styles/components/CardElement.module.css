@@ -1,11 +1,3 @@
-.quickButton {
-  transition: 0.2s;
-}
-
-.quickButton:hover {
-  transform: scale(var(--button-scale));
-}
-
 .cardListContainer {
   overflow-y: auto;
   overflow-x: hidden;
@@ -39,6 +31,14 @@
   height: auto;
   margin: 1em;
   position: relative;
+
+  transition: 0.2s;
+}
+
+.activityEntry:hover,
+.activityEntry:active {
+  box-shadow: 0px 10px 20px black;
+  transform: scale(1.05);
 }
 
 .list .cover {
@@ -118,14 +118,7 @@
   font-size: large;
 }
 
-.quickEdit {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: stretch;
-}
-
-.quickEdit div {
+.cardButtonWrapper div {
   display: flex;
   flex-direction: row;
 }
@@ -188,11 +181,8 @@ div:hover > .viewDetails {
   .list .cover {
     user-select: none;
   }
-  .list:hover .details {
+  .list:hover .details:not(.editPanel) {
     height: 65%;
-  }
-  .quickButton {
-    height: 60px;
   }
   .activityEntry {
     margin: 1px;

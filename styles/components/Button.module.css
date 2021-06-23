@@ -70,8 +70,19 @@
   cursor: pointer;
 }
 
+.cardButton {
+  transition: 0.2s;
+}
+
+.cardButton:hover {
+  transform: scale(var(--button-scale));
+}
+
 @media screen and (max-width: 720px) {
   .floatingButton {
     z-index: 5;
+  }
+  .cardButton {
+    height: 60px;
   }
 }

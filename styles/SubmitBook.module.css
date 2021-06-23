@@ -12,3 +12,9 @@
   min-width: 100%;
   border-radius: var(--border);
 }
+
+.volumeWrapper {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}

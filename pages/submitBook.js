@@ -128,11 +128,7 @@ export default function SubmitBook({ existing_book }) {
                 <SubmitBookContainer title="Lengths">
                     <div>
                         <InputField title="Volumes" inputType="number" defaultValue="0" maxValue="200" />
-                        <div style={{
-                            display: "flex",
-                            flexFlow: "row wrap",
-                            justifyContent: "center"
-                        }}>
+                        <div className={styles.volumeWrapper}>
                             {/* <VolumeFormSection index="Volume [1]" /> */}
                         </div>
                     </div>

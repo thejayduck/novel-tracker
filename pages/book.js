@@ -1,5 +1,5 @@
-import PageBase from "../components/pageBase";
 import styles from '../styles/Book.module.css'
+import PageBase from "../components/pageBase";
 import Button from "../components/ui/button";
 import { getBook } from "../lib/db";
 import { motion } from "framer-motion";
@@ -43,13 +43,7 @@ export default function Book({ book: _book }) {
                 <meta key='image' property="og:image" content={book.banner_url} />
             </Head>
 
-            <div
-                style={{
-                    minHeight: "100vh",
-                    height: "100%",
-                    width: "100%"
-                }}
-            >
+            <div className={styles.pageWrapper}>
                 <div className={styles.bannerWrapper}>
                     <img src={book.banner_url} />
                 </div>
@@ -104,7 +98,7 @@ function VolumeItem() {
         >
             <div>
                 <img
-                    style={{ borderRadius: "var(--border)", objectFit: "contain", height: 250 }}
+                    className={styles.volumeCover}
                     src="https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx87383-z7hT5qLqUSY2.jpg"
                 />
                 <h3>Volume [1]</h3>

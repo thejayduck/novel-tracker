@@ -1,3 +1,9 @@
+.pageWrapper {
+  min-height: 100vh;
+  height: 100%;
+  width: 100%;
+}
+
 /* BANNER */
 .bannerWrapper {
   background: hsl(271, 100%, 65%);
@@ -48,7 +54,7 @@
   border-radius: var(--border);
 
   /* Alignment */
-  height: 400px; /* OLD VALUE '350px' */
+  height: 400px;
   margin: 5px;
 
   z-index: 10;
@@ -173,6 +179,12 @@
 }
 .volumeItem div {
   width: 197.3px;
+}
+
+.volumeCover {
+  border-radius: var(--border);
+  object-fit: contain;
+  height: 250px;
 }
 
 /* .volumeList li:hover {
