@@ -1,5 +1,5 @@
 import styles from '../styles/Home.module.css'
-import PageBase from './pageBase';
+import PageBase from '../components/pageBase';
 import NewBook from '../components/newBook'
 
 /* Components */

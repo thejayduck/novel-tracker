@@ -4,7 +4,7 @@ import SubmitBookContainer, { DescriptionSection, VolumeFormSection } from '../c
 import { parse } from 'cookie';
 import { getUserInfo, withUserId } from '../lib/db';
 import { FloatingButton } from '../components/ui/button';
-import PageBase from './pageBase';
+import PageBase from '../components/pageBase';
 import { useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 

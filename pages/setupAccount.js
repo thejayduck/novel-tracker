@@ -1,12 +1,12 @@
 import styles from "../styles/SetupAccount.module.css"
 import Button from "../components/ui/button";
-import PageBase from "./pageBase";
+import PageBase from "../components/pageBase";
 import InputField from "../components/ui/inputField.js"
 
 import { parse } from "cookie";
 import { getUserInfo, withUserId } from "../lib/db";
 import { useRouter } from 'next/router';
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 
 export async function getServerSideProps(context) {
@@ -52,7 +52,7 @@ export async function getServerSideProps(context) {
 export default function SetupAccount() {
     const router = useRouter();
 
-    const [usernameInput, setUsernameInput] = useState("");
+    const usernameRef = useRef(null);
 
     async function onCompleteClick() {
         const response = await fetch("/api/me/set_username", {
@@ -61,7 +61,7 @@ export default function SetupAccount() {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                new_name: usernameInput,
+                new_name: usernameRef.current.value,
             }),
         });
         const json = await response.json();
@@ -91,7 +91,7 @@ export default function SetupAccount() {
                 transition={{ delay: 4 }}
             >
                 <div className={styles.content}>
-                    <InputField inputType="text" placeHolder="(Max 32 Characters)" maxLength="32" onChange={({ target }) => setUsernameInput(target.value)} />
+                    <InputField ref={usernameRef} inputType="text" placeHolder="(Max 32 Characters)" maxLength="32" onChange={({ target }) => setUsernameInput(target.value)} />
                     <Button title="Complete Account!" icon="fas fa-user-alt" onClick={onCompleteClick} />
                 </div>
             </motion.div>

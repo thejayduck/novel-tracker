@@ -1,5 +1,5 @@
 import styles from '../styles/Login.module.css'
-import PageBase from './pageBase';
+import PageBase from '../components/pageBase';
 import { motion } from 'framer-motion';
 
 import { parse } from 'cookie';

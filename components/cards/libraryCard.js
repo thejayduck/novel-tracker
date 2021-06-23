@@ -5,15 +5,17 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import CardElement from './cardElement';
 import QuickButton from './quickButton';
-import { useDelayedState } from '../../lib/clientHelpers';
+import { useDelayedStateWithLive } from '../../lib/clientHelpers';
 
 export default function LibraryCard({ entry: _entry, onDelete: _onDelete }) {
 
     const [editPanel, setEditPanel] = useState(false);
     const [entry, setEntry] = useState(_entry);
 
-    const [chaptersRead, setChaptersRead, liveChaptersRead] = useDelayedState(entry.chapters_read, 250);
-    const [volumesRead, setVolumesRead, liveVolumesRead] = useDelayedState(entry.volumes_read, 250);
+    const [chaptersRead, setChaptersRead, liveChaptersRead] = useDelayedStateWithLive(entry.chapters_read, 250);
+    const [volumesRead, setVolumesRead, liveVolumesRead] = useDelayedStateWithLive(entry.volumes_read, 250);
+
+    console.log(_entry);
 
     useEffect(async () => {
         if (isNaN(chaptersRead)) {

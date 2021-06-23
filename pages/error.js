@@ -1,4 +1,4 @@
-import PageBase from "./pageBase"
+import PageBase from "../components/pageBase"
 import Button from "../components/ui/button"
 
 const reason_messages = {

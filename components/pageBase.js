@@ -1,5 +1,5 @@
 import styles from '../styles/PageBase.module.css'
-import { useAppContext } from "../components/appWrapper";
+import { useAppContext } from "./appWrapper";
 
 export default function PageBase({ children }) {
     const [state] = useAppContext();

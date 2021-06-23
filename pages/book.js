@@ -1,4 +1,4 @@
-import PageBase from "./pageBase";
+import PageBase from "../components/pageBase";
 import styles from '../styles/Book.module.css'
 import Button from "../components/ui/button";
 import { getBook } from "../lib/db";
