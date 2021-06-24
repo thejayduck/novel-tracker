@@ -21,13 +21,13 @@ export default function MyApp({ Component, pageProps }) {
         <meta name="msapplication-TileImage" content="/favicon.ico" />
 
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Novel Tracker" />
-        <meta property="og:description" content="Track your Novels Locally" />
-        <meta property="og:image" content="/book.png" />
+        <meta key='title' property="og:title" content="Novel Tracker" />
+        <meta key='description' property="og:description" content="Track your Novels Locally" />
+        <meta key='image' property="og:image" content="/book.png" />
         <meta property="og:image:type" content="image/png" />
         <meta property="og:image:width" content="64" />
         <meta property="og:image:height" content="64" />
-        <meta name="twitter:creator" content="Novel Tracker" />
+        <meta name="og:site_name" content="Novel Tracker" />
 
       </Head>
 
