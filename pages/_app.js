@@ -17,6 +17,7 @@ export default function MyApp({ Component, pageProps }) {
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 
+
         <meta name="msapplication-TileColor" content="#ffffff" />
         <meta name="msapplication-TileImage" content="/favicon.ico" />
 
@@ -28,6 +29,7 @@ export default function MyApp({ Component, pageProps }) {
         <meta property="og:image:width" content="64" />
         <meta property="og:image:height" content="64" />
         <meta name="og:site_name" content="Novel Tracker" />
+        <meta key='card' name="twitter:card" content="summary" />
 
       </Head>
 

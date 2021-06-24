@@ -52,6 +52,8 @@ export default function Book({ book: _book, info }) {
                 <meta key='title' property="og:title" content={_book.title} />
                 <meta key='description' property="og:description" content={_book.description} />
                 <meta key='image' property="og:image" content={_book.banner_url} />
+                <meta key='card' name="twitter:card" content="summary_large_image" />
+
             </Head>
 
             <div>
