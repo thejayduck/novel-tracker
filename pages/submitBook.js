@@ -2,10 +2,10 @@ import styles from '../styles/SubmitBook.module.css';
 import { InputField, OptionSelect } from '../components/ui/inputField';
 import SubmitBookContainer, { DescriptionSection, VolumeFormSection } from '../components/submitBookContainer';
 import { parse } from 'cookie';
-import { getUserInfo, withUserId } from '../lib/db';
+import { getBook, getUserInfo, withUserId } from '../lib/db';
 import { FloatingButton } from '../components/ui/button';
 import PageBase from '../components/pageBase';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 
 export async function getServerSideProps(context) {
@@ -41,10 +41,8 @@ export async function getServerSideProps(context) {
 
     let existing_book = null;
     if (context.query.id) {
-        // TODO
-        throw {
-            message: "Unimplemented"
-        }
+        const id = Number.parseInt(context.query.id);
+        existing_book = await getBook(id);
     }
 
     return {
@@ -71,6 +69,15 @@ export default function SubmitBook({ existing_book }) {
         cover_url: useRef(null),
         banner_url: useRef(null),
     }
+
+    useEffect(() => {
+        if (existing_book) {
+            Object.keys(detailRefs).forEach(k => {
+                const new_value = existing_book[k];
+                detailRefs[k].current.value = new_value;
+            });
+        }
+    }, [existing_book]);
 
     const router = useRouter();
 
