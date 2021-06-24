@@ -43,11 +43,11 @@ export default function BookDetails({ book, onExit, onAddClicked, onOutsideClick
                             <div className={styles.titleWrapper}>
                                 <ul className={styles.detailList}>
                                     <h2 className={styles.title} title={book.title}> {book.title} </h2>
-                                    <li><a>Title (Romanized): {book.title_romanized}</a></li>
-                                    <li><a>Title (Native): {book.title_native}<hr /></a></li>
-                                    <li><a>Total Volumes: 10</a></li>
-                                    <li><a>Total Chapters: 10<hr /></a></li>
-                                    <li><a>Author: {book.author}</a></li>
+                                    <li><span>Title (Romanized): {book.title_romanized}</span></li>
+                                    <li><span>Title (Native): {book.title_native}<hr /></span></li>
+                                    <li><span>Total Volumes: 10</span></li>
+                                    <li><span>Total Chapters: 10<hr /></span></li>
+                                    <li><span>Author: {book.author}</span></li>
                                 </ul>
                             </div>
                         </div>

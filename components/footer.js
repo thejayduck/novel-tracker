@@ -25,8 +25,8 @@ export default function Footer({ data, showModButtons }) {
                 />
 
             </div>
-            <p>Books: {data.length}</p>
             <div>
+                <p>Books: {data.length}</p>
                 <p className={styles.volumeCount} >Volumes Read: {data.reduce((acc, val) => acc + val.volume, 0)}</p>
                 <p>Chapters Read: {data.reduce((acc, val) => acc + val.chapter, 0)}</p>
             </div>

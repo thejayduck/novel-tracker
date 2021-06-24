@@ -30,10 +30,16 @@
   padding: 15px;
 
   overflow: auto;
+
+  /* Chrome and edge requires this to fix text clarity */
+  will-change: transform;
 }
 
 .button i {
   margin-left: 10px;
+
+  /* Chrome and edge requires this to fix text clarity */
+  will-change: transform;
 }
 
 .button:hover {
@@ -43,6 +49,8 @@
 }
 
 .floatingButton {
+  display: flex;
+
   /* Colors */
   background-color: var(--color-primary);
   box-shadow: 0px 4px 5px black;
@@ -50,20 +58,18 @@
   color: white;
 
   /* Alignment */
-  display: block;
   position: fixed;
-  text-align: center;
-  width: auto;
-  min-width: 52px;
-  height: 52px;
-  bottom: 3.5em;
-  right: 1em;
+  bottom: 50px;
+  right: 0;
   padding: 15px;
+  margin: 15px;
 
-  font-size: 20px;
-  line-height: 26px;
+  font-size: var(--font-size);
   z-index: 1;
   transition: 0.2s;
+
+  /* Chrome and edge requires this to fix text clarity */
+  will-change: transform;
 }
 .floatingButton:hover {
   background-color: var(--color-primaryDark);
@@ -72,6 +78,9 @@
 
 .cardButton {
   transition: 0.2s;
+
+  /* Chrome and edge requires this to fix text clarity */
+  will-change: transform;
 }
 
 .cardButton:hover {
@@ -81,6 +90,7 @@
 @media screen and (max-width: 720px) {
   .floatingButton {
     z-index: 5;
+    bottom: 0px;
   }
   .cardButton {
     height: 60px;

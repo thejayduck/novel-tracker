@@ -6,9 +6,10 @@ import ToolTip from './ui/toolTip';
 export default function SubmitBookContainer({ title, children, toolTip }) {
     return (
         <>
-            <ToolTip toolTip={toolTip}>
+            {/* <ToolTip toolTip={toolTip}>
                 <h2 className={styles.containerTitle}> {title} </h2>
-            </ToolTip>
+            </ToolTip> */}
+            <h2 tooltip={toolTip} className={styles.containerTitle}> {title} </h2>
 
             <div className={styles.container}>
                 {children}

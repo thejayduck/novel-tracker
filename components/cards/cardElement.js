@@ -12,12 +12,12 @@ export default function CardElement({ entry, children }) {
             <div className={styles.activityEntry}>
                 <div className={styles.wrap}>
                     <div className={styles.list}>
-                        <p
+                        <h2
                             title={`${entry?.title}`}
                             className={styles.title}
                         >
                             {entry?.title}
-                        </p>
+                        </h2>
                         {children}
                     </div>
                 </div>

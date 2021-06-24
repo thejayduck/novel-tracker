@@ -66,16 +66,16 @@ export default function Book({ book: _book, info }) {
                         <br />
                         <Button title="Back to Library" href="/" />
                         <ul>
-                            <li><a>Title (Romanized):<br />{book.title_romanized}</a></li>
-                            <li><a>Title (Native):<br />{book.title_native}</a></li>
+                            <li><span>Title (Romanized):<br />{book.title_romanized}</span></li>
+                            <li><span>Title (Native):<br />{book.title_native}</span></li>
                             <hr />
-                            <li><a>Total Volumes: 10</a></li>
-                            <li><a>Total Chapters: 10</a></li><br />
-                            <li><a>Start Date: {convertDate(book.start_date)}</a></li>
-                            <li><a>End Date: {convertDate(book.end_date)}</a></li>
-                            <li><a>Release Status: {book.release_status}</a></li>
+                            <li><span>Total Volumes: 10</span></li>
+                            <li><span>Total Chapters: 10</span></li><br />
+                            <li><span>Start Date: {convertDate(book.start_date)}</span></li>
+                            <li><span>End Date: {convertDate(book.end_date)}</span></li>
+                            <li><span>Release Status: {book.release_status}</span></li>
                             <hr />
-                            <li><a>Author: {book.author}</a></li>
+                            <li><span>Author: {book.author}</span></li>
                         </ul>
                     </div>
                     <div className={styles.info}>

@@ -9,43 +9,41 @@
   flex-direction: column;
   position: absolute;
   max-width: 60%;
-  max-height: 80%;
+  max-height: 60%;
   height: auto;
+
+  padding: 10px;
+  gap: 10px;
 
   overflow: hidden auto;
   z-index: 999;
 }
 
 .headerWrap {
-  z-index: 999;
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   overflow: hidden;
 }
 
 .header {
   display: flex;
-  top: 0;
-  z-index: 200px;
-  margin: 10px;
   gap: 10px;
-  /* margin-bottom: 30px; */
-  /* padding: 10px; */
 }
 
 .banner {
   filter: blur(var(--blur-amount)) brightness(50%);
-  transform: scale(1.1);
+  /* transform: scale(1.1); */
 
   position: absolute;
   object-fit: cover;
 
-  height: 400px;
-  width: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 
-  object-fit: cover;
-  -webkit-object-fit: cover;
-  -moz-object-fit: cover;
-  -o-object-fit: cover;
+  height: 60%;
   z-index: -1;
 }
 
@@ -54,19 +52,17 @@
   color: white;
   border-radius: var(--border);
   /* Alignment */
-  font-size: larger;
   list-style: none;
   margin: 0;
   padding: 15px;
 
-  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
 .titleWrapper {
-  /* margin-left: 10px;
-  margin-right: 10px; */
-  margin-top: 0;
-  width: 100%;
+  flex: 4;
 }
 
 .title {
@@ -76,31 +72,28 @@
   border-radius: var(--border);
   /* Alignment */
   padding: 5px;
-  margin-top: 0;
   width: 100%;
 
   text-align: center;
 }
 
 .coverWrapper {
-  margin: 0px;
+  /* width: 50%; */
+  flex: 1;
 }
 
 .buttonWrap {
   display: flex;
   margin: auto;
-  margin-bottom: 10px;
   gap: 10px;
 }
 
 .cover {
-  /* display: block; */
   border-radius: var(--border);
   /* Alignment */
-  /* width: 150px; */
-  max-height: 240px;
+  width: 100%;
+  /* max-height: 100%; */
   object-fit: contain;
-  margin-bottom: 0px;
 }
 
 .descriptionWrap h2 {
@@ -113,7 +106,6 @@
   color: white;
   border-radius: var(--border);
   /* Alignment */
-  margin: 10px;
   padding: 15px;
   user-select: none;
   z-index: 1;
@@ -121,9 +113,8 @@
 }
 .description {
   /* Alignment */
-  margin: 0;
+  margin-bottom: 0;
   max-height: 100%;
-  font-size: large;
   overflow: hidden auto;
 }
 
@@ -149,6 +140,9 @@
   }
   .buttonWrapper {
     display: initial;
+  }
+  .coverWrapper {
+    display: none;
   }
 }
 

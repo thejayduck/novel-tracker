@@ -42,7 +42,7 @@
   margin: 20px auto auto auto;
   padding: 5px;
 
-  font-size: larger;
+  font-size: var(--large-font);
   list-style: none;
 }
 
@@ -113,7 +113,7 @@
   margin: 0;
   max-height: 100%;
 
-  font-size: large;
+  font-size: var(--large-font);
   overflow: hidden auto;
 }
 
@@ -165,7 +165,7 @@
   white-space: nowrap;
   overflow: hidden;
   font-weight: bold;
-  font-size: larger;
+  font-size: var(--large-font);
 }
 
 .volumeItem .volumeDetailsWrap {

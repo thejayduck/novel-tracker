@@ -26,7 +26,7 @@ export interface FloatingButtonProps extends ButtonProps {
     hoverTitle: string,
 }
 
-export function FloatingButton({ hoverTitle, title, icon, href, onClick }: FloatingButtonProps) {
+export function FloatingButton({ hoverTitle, title, icon, onClick }: FloatingButtonProps) {
     return (
         <motion.div
             whileHover={{ scale: 1.05 }}
@@ -36,7 +36,7 @@ export function FloatingButton({ hoverTitle, title, icon, href, onClick }: Float
             onClick={onClick}
             title={hoverTitle}
         >
-            <a href={href}><i className={icon} /> {title}</a>
+            <i className={icon} /> {title}
         </motion.div>
     );
 }

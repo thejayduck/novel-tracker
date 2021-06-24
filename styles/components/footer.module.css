@@ -1,31 +1,22 @@
 .footerButton {
-  position: relative;
-  display: inline-block;
+  display: flex;
 
-  width: 35px;
-  height: 35px;
-  font-size: 10px;
+  justify-content: center;
+  align-items: center;
+
+  padding: 10px;
+
   text-align: center;
 
   color: white;
   background-color: var(--color-primary);
 
   border-radius: var(--border);
-  border: none;
-  text-decoration: none;
   cursor: pointer;
 
-  margin: 5px;
+  font-size: 18px;
 
   transition: 0.2s;
-}
-
-.footerButton i {
-  font-size: 20px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 
 .footerButton:hover {
@@ -51,26 +42,29 @@
   z-index: 1;
 }
 
-.footer p {
+.footer > div {
   display: flex;
   justify-content: center;
-  align-items: center;
-  float: left;
-  padding: 0 20px 0 20px;
+  gap: 10px;
+}
+
+
+.footer > div:nth-child(2) {
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  min-width: 35%;
+}
+
+
+.footer p {
+  /* padding: 0 20px 0 20px; */
 
   user-select: none;
   font-weight: bold;
 }
 
-.footer a {
-  padding-right: 10px;
-  font-size: 25px;
-}
-
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 720px) {
   .footer {
-    position: relative;
-    bottom: 0;
     height: auto;
     flex-flow: column;
     padding-top: 10px;
@@ -80,6 +74,11 @@
   .footer p {
     line-height: 0;
     padding: 0 5px 0 5px;
+  }
+
+  .footer > div:nth-child(2) {
+    margin-left: 0;
+    margin-right: 0;
   }
 }
 

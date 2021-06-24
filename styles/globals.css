@@ -1,6 +1,6 @@
-@import url(https://fonts.googleapis.com/css?family=Kumbh+Sans);
-
 :root {
+  --large-font: 21px;
+  --font-size: 16px;
   --border: 5px;
   --blur-amount: 10px;
   --button-scale: 1.06;
@@ -23,22 +23,91 @@
   }
 }
 
-* {
-  font-family: "Kumbh Sans", serif;
-  scroll-behavior: smooth;
-  box-sizing: border-box;
-}
-
 html,
 body {
   padding: 0;
   margin: 0;
+
+  font-family: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-weight: 400;
+  font-size: var(--font-size);
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+
+  vertical-align: middle;
+}
+
+*:not(html, body) {
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  scroll-behavior: inherit;
+  box-sizing: inherit;
+
+  vertical-align: inherit;
 }
 
 a {
   color: inherit;
   text-decoration: none;
 }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-size: var(--large-font);
+}
+
+/* Attempt to fix chrome and edge's text render bug where text becomes blurry */
+p, a, span, h1, h2, h3, h4, h5, h6, i {
+  -webkit-font-smoothing: subpixel-antialiased;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+@media screen and (min-width: 720px) {
+  [tooltip]:not(:hover)::after {
+    content: "?";
+
+    display: inline-block;
+
+    position: fixed;
+
+    border-radius: 50%;
+    text-align: center;
+    line-height: 1em;
+
+    font-size: 12px;
+
+    height: 1em;
+    width: 1em;
+
+    transform: translateY(0em);
+
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+  }
+
+  [tooltip]:hover::after {
+    content: attr(tooltip);
+
+    position:fixed;
+    height:2em;
+    transform: translateY(-1.5em);
+    line-height: 1.65em;
+    margin-left: 4px;
+    padding: 4px;
+
+    font-size: 18px;
+
+    text-align: center;
+
+    color: white;
+    background-color: rgba(0, 0, 0, 0.6);
+
+    border-radius: 5px;
+  }
+}
+
 
 ::selection {
   background: #8f8f8f;
