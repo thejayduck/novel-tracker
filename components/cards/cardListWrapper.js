@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 export default function CardListWrapper({ children }) {
     return (
-        <motion.div layout="position" className={styles.cardListContainer}>
+        <motion.div layout className={styles.cardListContainer}>
             <ul className={styles.cardListFeed}>
                 {children}
             </ul>

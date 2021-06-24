@@ -72,6 +72,6 @@
 
 @media screen and (max-width: 720px) {
   .features {
-    flex-direction: column;
+    flex-direction: column wrap;
   }
 }

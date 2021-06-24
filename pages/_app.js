@@ -18,11 +18,11 @@ export default function MyApp({ Component, pageProps }) {
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 
         <meta name="msapplication-TileColor" content="#ffffff" />
-        <meta name="msapplication-TileImage" content="public/favicon.ico" />
+        <meta name="msapplication-TileImage" content="/favicon.ico" />
 
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Light Novel Tracker" />
-        <meta property="og:description" content="Track your Light Novels Locally" />
+        <meta property="og:title" content="Novel Tracker" />
+        <meta property="og:description" content="Track your Novels Locally" />
         <meta property="og:image" content="/book.png" />
         <meta property="og:image:type" content="image/png" />
         <meta property="og:image:width" content="64" />

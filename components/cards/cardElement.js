@@ -4,17 +4,12 @@ import { motion } from 'framer-motion';
 
 export default function CardElement({ entry, children }) {
     return (
-        <li>
-            <motion.div
-                layout
-                initial={{ opacity: 0, }}
-                animate={{ opacity: 1, }}
-                transition={{
-                    type: "spring",
-                    duration: 0.5,
-                }}
-                className={styles.activityEntry}
-            >
+        <motion.li
+            layout
+            initial={{ opacity: 0, }}
+            animate={{ opacity: 1, }}
+        >
+            <div className={styles.activityEntry}>
                 <div className={styles.wrap}>
                     <div className={styles.list}>
                         <p
@@ -26,7 +21,7 @@ export default function CardElement({ entry, children }) {
                         {children}
                     </div>
                 </div>
-            </motion.div>
-        </li>
+            </div>
+        </motion.li>
     );
 }

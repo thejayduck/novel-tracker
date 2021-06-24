@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 import styles from '../styles/components/SubmitBookContainer.module.css'
-import InputField from './ui/inputField';
+import { InputField } from './ui/inputField';
 import ToolTip from './ui/toolTip';
 
 export default function SubmitBookContainer({ title, children, toolTip }) {
@@ -19,11 +19,11 @@ export default function SubmitBookContainer({ title, children, toolTip }) {
 
 export function VolumeFormSection({ index }) {
     return (
-        <div className={styles.volumeSection}>
+        <li className={styles.volumeSection}>
             <h3>{index}</h3>
             <InputField title="Chapters" inputType="number" defaultValue="0" />
             <InputField title="Extra Chapters" inputType="number" defaultValue="0" />
-        </div>
+        </li>
     );
 }
 

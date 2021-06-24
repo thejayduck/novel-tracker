@@ -3,6 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  max-width: 50%;
 }
 
 .pageContent textArea {
@@ -16,5 +17,12 @@
 .volumeWrapper {
   display: flex;
   flex-flow: row wrap;
+  align-items: center;
+  align-content: space-between;
   justify-content: center;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
 }

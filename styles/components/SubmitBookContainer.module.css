@@ -27,6 +27,7 @@
   /* Alignment */
   padding: 10px;
   margin: 5px;
+  width: max-content;
 
   text-align: center;
 }

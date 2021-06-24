@@ -1,13 +1,13 @@
 import styles from "../styles/SetupAccount.module.css"
 import Button from "../components/ui/button";
 import PageBase from "../components/pageBase";
-import InputField from "../components/ui/inputField.js"
+import { InputField } from "../components/ui/inputField"
 
-import { parse } from "cookie";
 import { getUserInfo, withUserId } from "../lib/db";
 import { useRouter } from 'next/router';
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
+import { parse } from "cookie";
 
 export async function getServerSideProps(context) {
     const cookie_header = context.req.headers.cookie;
@@ -74,20 +74,15 @@ export default function SetupAccount() {
     return (
 
         <PageBase>
-            <motion.div
-                animate={{ height: "150px", width: "150px" }}
-                transition={{ delay: 2 }}
-            >
-                <img className={styles.logo} src='../book.svg' />
-            </motion.div>
+            <img className={styles.logo} src='../book.svg' />
             <h3>Please Enter a Username to Finish Setting Up Your "Novel Tracker" Account </h3>
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 4 }}
             >
                 <div className={styles.content}>
-                    <InputField ref={usernameRef} inputType="text" placeHolder="(Max 32 Characters)" maxLength="32" onChange={({ target }) => setUsernameInput(target.value)} />
+
+                    <InputField ref={usernameRef} inputType="text" placeHolder="(Max 32 Characters)" maxLength="32" />
                     <Button title="Complete Account!" icon="fas fa-user-alt" onClick={onCompleteClick} />
                 </div>
             </motion.div>

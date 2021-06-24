@@ -46,7 +46,7 @@ export default function Login() {
                         <motion.div
                             className={styles.features}
                             initial={{ height: "0", opacity: 0 }}
-                            animate={{ height: "auto", opacity: 1 }}
+                            animate={{ height: "max-content", opacity: 1 }}
                             transition={{ type: "spring", delay: 0.5 }}
                         >
                             <FeatureItem

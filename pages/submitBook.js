@@ -5,7 +5,7 @@ import { parse } from 'cookie';
 import { getBook, getUserInfo, withUserId } from '../lib/db';
 import { FloatingButton } from '../components/ui/button';
 import PageBase from '../components/pageBase';
-import { useEffect, useRef, useState } from 'react';
+import { useDebugValue, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 
 export async function getServerSideProps(context) {
@@ -102,6 +102,8 @@ export default function SubmitBook({ existing_book }) {
         router.push(`/book?id=${json.id}`);
     }
 
+    const [volumeCount, setVolumeCount] = useState(0);
+
     return (
         <PageBase>
             <div className={styles.pageContent}>
@@ -134,10 +136,12 @@ export default function SubmitBook({ existing_book }) {
 
                 <SubmitBookContainer title="Lengths">
                     <div>
-                        <InputField title="Volumes" inputType="number" defaultValue="0" maxValue="200" />
-                        <div className={styles.volumeWrapper}>
-                            {/* <VolumeFormSection index="Volume [1]" /> */}
-                        </div>
+                        <InputField title="Volumes" inputType="number" defaultValue="0" maxValue="200" onChange={e => setVolumeCount(Number.parseInt(e.target.value))} />
+                        <ul className={styles.volumeWrapper}>
+                            {[...Array(volumeCount).keys()].map((q, idx) => (
+                                <VolumeFormSection key={idx} index={`Volume ${idx + 1}`} />
+                            ))}
+                        </ul>
                     </div>
                 </SubmitBookContainer>
 
