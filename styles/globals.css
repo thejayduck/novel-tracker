@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Kumbh+Sans);
 
 :root {
-  --border: 0.3em;
+  --border: 5px;
   --blur-amount: 10px;
   --button-scale: 1.06;
 
