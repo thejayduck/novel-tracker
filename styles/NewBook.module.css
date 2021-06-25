@@ -23,3 +23,9 @@
   color: black;
   background-color: var(--backgroundColor-themeLight);
 }
+
+@media screen and (max-width: 720px) {
+  .container {
+    width: 100%;
+  }
+}

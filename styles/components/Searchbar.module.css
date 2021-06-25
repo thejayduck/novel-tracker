@@ -47,3 +47,9 @@
   font-size: var(--large-font);
   opacity: 0.75;
 }
+
+@media screen and (max-width: 720px) {
+  .searchBar .faSearch {
+    display: none;
+  }
+}
