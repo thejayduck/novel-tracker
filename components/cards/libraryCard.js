@@ -69,11 +69,11 @@ export default function LibraryCard({ entry: _entry, onDelete: _onDelete }) {
                             Current Chapter: {liveChaptersRead}
                         </span>
                         <hr />
-                        <div className={styles.cardButtonWrapper}>
-                            <div>
+                        <div>
+                            <div className={styles.cardButtonWrap}>
                                 <CardButton title="Edit Progress" icon="fas fa-feather-alt" onClick={() => setEditPanel(true)} />
                             </div>
-                            <div>
+                            <div className={styles.cardButtonWrap}>
                                 <CardButton title="Increase Progress" icon="fas fa-minus" onClick={() => setChaptersRead(Math.max(0, liveChaptersRead - 1))} />
                                 <CardButton title="Decrease Progress" icon="fas fa-plus" onClick={() => setChaptersRead(liveChaptersRead + 1)} />
                             </div>
@@ -93,9 +93,8 @@ export default function LibraryCard({ entry: _entry, onDelete: _onDelete }) {
                         <div>
                             <InputFieldNonManaged title="Volumes" inputType="number" value={liveVolumesRead} onChange={({ target }) => setVolumesRead(target.value)} maxValue="200" />
                             <InputFieldNonManaged title="Chapters" inputType="number" value={liveChaptersRead} onChange={({ target }) => setChaptersRead(target.value)} maxValue="10000" />
-                            <hr />
-                            <div className={styles.cardButtonWrapper}>
-                                <div>
+                            <div>
+                                <div className={styles.cardButtonWrap}>
                                     <CardButton title="Close Editing" icon="fas fa-angle-left" onClick={() => setEditPanel(false)} />
                                     <CardButton title="Delete Book" icon="fas fa-trash-alt" onClick={onDelete} />
                                 </div>

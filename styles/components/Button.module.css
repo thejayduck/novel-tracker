@@ -77,14 +77,32 @@
 }
 
 .cardButton {
+  /* Colors */
+  background-color: var(--color-primary);
+  border-radius: var(--border);
+
+  /* Alignment */
+  display: flex;
+  text-align: center;
+  margin: 5px;
+  padding: 5px;
+  width: 95%;
+
+  cursor: pointer;
   transition: 0.2s;
 
   /* Chrome and edge requires this to fix text clarity */
   will-change: transform;
 }
 
+.cardButtonIcon {
+  padding: 5px;
+  margin: auto;
+  padding: auto;
+}
+
 .cardButton:hover {
-  transform: scale(var(--button-scale));
+  transform: scale(1.06);
 }
 
 @media screen and (max-width: 720px) {
