@@ -1,0 +1,16 @@
+{
+    "name": "Novel Tracker",
+    "short_name": "noveltracker",
+    "start_url": "/",
+    "display": "fullscreen",
+    "background_color": "#6723cd",
+    "theme_color": "#6723cd",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "/book.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ]
+}
