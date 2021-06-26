@@ -2,6 +2,7 @@ import styles from '../styles/components/footer.module.css'
 import { useAppContext } from './appWrapper';
 import { FooterButton } from './ui/button';
 
+
 export default function Footer({ data, showModButtons }) {
     const [state, setState] = useAppContext();
 
@@ -10,22 +11,25 @@ export default function Footer({ data, showModButtons }) {
             className={`${styles.footer} ${state.darkMode ? styles.dark : styles.light}`}
         >
             <div>
-                <FooterButton title="Sign Out" icon="fas fa-user-alt-slash" href="/api/me/logout" />
+                <FooterButton className={styles.footerButton} title="Sign Out" text="TheJayDuck" icon="fas fa-sign-out-alt" href="/api/me/logout" />
 
-                {showModButtons && <FooterButton
+                {/* {showModButtons && <FooterButton
                     title="Submit Book"
                     icon="fas fa-feather-alt"
                     href="/submitBook"
-                />}
+                />} */}
 
                 <FooterButton
+                    className={styles.footerButton}
                     title="Toggle Theme"
                     icon={`${state.darkMode ? `fas fa-sun` : `fas fa-moon`}`}
+                    href="javascript:void(0);"
                     onClick={() => setState(state => ({ ...state, darkMode: !state.darkMode }))}
                 />
 
-                <FooterButton title="TheJayDuck's Github" icon="fab fa-github" href="https://github.com/thejayduck" />
-                <FooterButton title="nobbele's Github" icon="fab fa-github" href="https://github.com/nobbele" />
+                <FooterButton className={styles.footerButton} title="Information" icon="fas fa-info-circle" href="javascript:void(0);" />
+                {/* <FooterButton title="TheJayDuck's Github" icon="fab fa-github" href="https://github.com/thejayduck" />
+                <FooterButton title="nobbele's Github" icon="fab fa-github" href="https://github.com/nobbele" /> */}
             </div>
             <div>
                 <p>Books: {data.length}</p>

@@ -6,28 +6,20 @@
   /* Alignment */
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-  min-width: 100%;
-  height: 100%;
-  /* padding-top: 50px; */
+  position: absolute;
+  width: 30%;
+  height: 80%;
+  /* padding-top: 65px; */
 
   overflow-y: auto;
-}
-
-@media screen and (max-width: 720px) {
-  .container {
-    padding: 0;
-    /* margin-top: 100px; */
-  }
+  z-index: 10;
 }
 
 .dark {
+  color: white;
   background-color: var(--backgroundColor-themeDark);
-
-  transition: 0.2s;
 }
 .light {
+  color: black;
   background-color: var(--backgroundColor-themeLight);
-
-  transition: 0.2s;
 }

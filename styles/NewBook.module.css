@@ -9,6 +9,7 @@
   position: absolute;
   width: 85%;
   height: 85%;
+  /* padding: 10px; */
   padding-top: 65px;
 
   overflow-y: auto;

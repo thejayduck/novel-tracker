@@ -60,13 +60,11 @@ export default function BookDetails({ book, onExit, onAddClicked, onOutsideClick
                     </div>
                 </div>
                 <div className={styles.buttonWrap}>
-                    <Button title="Add" onClick={() => addBook()} />
+                    <Button text="Add" onClick={() => addBook()} />
                     <br />
-                    <Button title="Edit" href={`/submitBook?id=${book.book_id}`} />
+                    <Button text="Edit" href={`/submitBook?id=${book.book_id}`} />
                     <br />
-                </div>
-                <div className={styles.buttonWrapper}>
-                    <Button title="Exit" onClick={() => onExit()} />
+                    <Button text="Close" onClick={() => onExit()} />
                 </div>
             </OverlayMenu>
         </div>

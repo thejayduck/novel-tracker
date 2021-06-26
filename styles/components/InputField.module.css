@@ -2,8 +2,8 @@
 .customSelect {
   /* Alignment */
   display: flex;
+
   flex-direction: column;
-  padding: 10px;
 }
 
 .title {
@@ -15,12 +15,14 @@
 
 .inputField > input {
   /* Colors */
-  background-color: #fff;
+  background-color: white;
   border-radius: var(--border);
 
   padding: 0.25em 0.5em;
+}
 
-  font-size: 24px;
+.inputField > input:invalid {
+  background-color: hsla(0, 100%, 50%, 85%);
 }
 
 .customSelect > select {

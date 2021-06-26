@@ -3,9 +3,9 @@ import { InputField, OptionSelect } from '../components/ui/inputField';
 import SubmitBookContainer, { DescriptionSection, VolumeFormSection } from '../components/submitBookContainer';
 import { parse } from 'cookie';
 import { getBook, getUserInfo, withUserId } from '../lib/db';
-import { FloatingButton } from '../components/ui/button';
+import Button from '../components/ui/button';
 import PageBase from '../components/pageBase';
-import { useDebugValue, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 
 export async function getServerSideProps(context) {
@@ -109,24 +109,25 @@ export default function SubmitBook({ existing_book }) {
             <div className={styles.pageContent}>
                 <h2 className={styles.containerTitle} >Submit Book <i className="fas fa-feather-alt" /></h2>
 
-                <SubmitBookContainer title="Titles" toolTip="Please Enter *Official* Titles of the Book.">
+                <SubmitBookContainer title="Titles">
                     <InputField
-                        ref={detailRefs.title}
-                        title="Title (Licensed*)"
+                        ref={detailRefs.title_native}
+                        title="Title Native*"
                         inputType="text"
-                        placeHolder="Licensed English Title"
+                        placeHolder="Native Title"
                     />
                     <InputField
                         ref={detailRefs.title_romanized}
-                        title="Title Romanized"
+                        title="Title Romanized*"
                         inputType="text"
                         placeHolder="Romanized Title"
                     />
                     <InputField
-                        ref={detailRefs.title_native}
-                        title="Title Native"
+                        ref={detailRefs.title}
+                        title="Title (Licensed)"
                         inputType="text"
-                        placeHolder="Native Title"
+                        placeHolder="Licensed English Title"
+                        toolTip="Licensed English Title (Fan Translated Titles are NOT Allowed)"
                     />
                 </SubmitBookContainer>
 
@@ -134,7 +135,7 @@ export default function SubmitBook({ existing_book }) {
                     ref={detailRefs.description}
                 />
 
-                <SubmitBookContainer title="Lengths">
+                <SubmitBookContainer title="Lengths" toolTip="Volumes Released So Far.">
                     <div>
                         <InputField title="Volumes" inputType="number" defaultValue="0" maxValue="200" onChange={e => setVolumeCount(Number.parseInt(e.target.value))} />
                         <ul className={styles.volumeWrapper}>
@@ -173,21 +174,19 @@ export default function SubmitBook({ existing_book }) {
                         ref={detailRefs.cover_url}
                         title="Cover Url"
                         inputType="url"
+                        pattern="https://./*"
                     />
                     <InputField
                         ref={detailRefs.banner_url}
                         title="Banner Url"
                         inputType="text"
+                        pattern="https://./*"
                     />
                 </SubmitBookContainer>
-
                 <br />
-
-                <FloatingButton
-                    title="Submit"
-                    icon="fas fa-cloud-upload-alt"
-                    onClick={onSubmit}
-                />
+                <div>
+                    <Button icon="fas fa-cloud-upload-alt" text="Submit Book" onClick={onSubmit} />
+                </div>
                 <br />
             </div>
         </PageBase>

@@ -3,7 +3,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-width: 50%;
+  gap: 10px;
+  width: 80%;
+}
+
+.containerTitle {
+  margin-bottom: 10px;
 }
 
 .pageContent textArea {
@@ -29,6 +34,6 @@
 
 @media screen and (max-width: 720px) {
   .pageContent {
-    max-width: 100%;
+    width: 100%;
   }
 }

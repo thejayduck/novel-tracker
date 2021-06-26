@@ -1,10 +1,10 @@
 import styles from '../styles/Home.module.css'
 import PageBase from '../components/pageBase';
 import NewBook from '../components/newBook'
+import Information from '../components/information';
 
 /* Components */
-import SearchBar from '../components/searchBar'
-import { FloatingButton } from '../components/ui/button'
+import TopNav from '../components/topNav';
 import Footer from '../components/footer'
 import CardListWrapper from '../components/cards/cardListWrapper';
 import LibraryCard from '../components/cards/libraryCard';
@@ -65,7 +65,7 @@ export default function Home({ user_info }) {
       ],
     });
     const fuseResults = fuse.search(query);
-    return fuseResults.map(result => result.item);;
+    return fuseResults.map(result => result.item);
   }, [query, data]);
 
   async function updateData() {
@@ -81,10 +81,14 @@ export default function Home({ user_info }) {
 
   useEffect(updateData, [])
 
-
   return (
     <PageBase>
-      <SearchBar onInput={setQuery} />
+      <TopNav
+        showModButtons={user_info.moderation_level >= 2}
+        onAddBook={() => setNewBookPanel(prev => !prev)}
+        onSubmitBook={`/submitBook`}
+        onSearch={e => setQuery(e.target.value)}
+      />
       <div className={styles.container}>
         <AnimateSharedLayout>
           <CardListWrapper
@@ -101,10 +105,9 @@ export default function Home({ user_info }) {
         </AnimateSharedLayout>
       </div>
 
-      <Footer
-        data={data}
-        showModButtons={user_info.moderation_level >= 2}
-      />
+      {/* <Information /> */}
+
+      <Footer data={data} />
       <AnimatePresence>
         {newBookPanel && (
           <NewBook
@@ -113,7 +116,6 @@ export default function Home({ user_info }) {
           />
         )}
       </AnimatePresence>
-      <FloatingButton hoverTitle="Add New Book" icon="fas fa-plus" onClick={() => setNewBookPanel(prev => !prev)} />
 
       {/* <QuickAlert message="A New Book Has Been Added!" icon="fas fa-check" /> */}
 

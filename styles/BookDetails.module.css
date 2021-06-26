@@ -119,12 +119,6 @@
   overflow: hidden auto;
 }
 
-.buttonWrapper {
-  margin: auto;
-  margin-bottom: 10px;
-  display: none;
-}
-
 @media screen and (max-width: 720px) {
   .container {
     max-width: 90%;
@@ -139,9 +133,7 @@
     align-items: center;
     flex-direction: column;
   }
-  .buttonWrapper {
-    display: initial;
-  }
+
   .coverWrapper {
     display: none;
   }

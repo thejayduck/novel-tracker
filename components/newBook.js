@@ -1,6 +1,8 @@
 import styles from '../styles/NewBook.module.css'
 
 import SearchBar from './searchBar'
+// import Button from './ui/button'
+import { InputField } from './ui/inputField'
 import { useState, useEffect } from 'react'
 import OverlayMenu from './overlayMenu'
 import { useAppContext } from './appWrapper'
@@ -42,6 +44,8 @@ export default function NewBook({ onAddClicked, onOutsideClicked }) {
         className={`${styles.container} ${state.darkMode ? styles.dark : styles.light}`}
         close={onOutsideClicked}
       >
+        {/* <InputField onChange={e => setUserInput(e.target.value)} /> */}
+
         <SearchBar onInput={setUserInput} />
         <AnimateSharedLayout>
           <CardListWrapper>

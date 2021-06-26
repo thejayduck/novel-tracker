@@ -3,6 +3,7 @@
   --font-size: 16px;
   --border: 5px;
   --blur-amount: 10px;
+  --button-scale: 1.06;
 
   /* Colors */
   --color-primary: hsla(264, 71%, 47%, 1); /* #6723cd */
@@ -31,7 +32,6 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-weight: 400;
   font-size: var(--font-size);
-  letter-spacing: 0.3px;
   scroll-behavior: smooth;
   box-sizing: border-box;
 
@@ -84,8 +84,7 @@ i {
     content: "?";
 
     display: inline-block;
-
-    position: fixed;
+    position: absolute;
 
     border-radius: 50%;
     text-align: center;
@@ -98,18 +97,18 @@ i {
 
     transform: translateY(0em);
 
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgb(0, 0, 0);
     color: white;
   }
 
   [tooltip]:hover::after {
     content: attr(tooltip);
 
-    position: fixed;
-    height: 2em;
-    transform: translateY(-1.5em);
+    position: absolute;
+    transform: translateY(-1em);
     line-height: 1.65em;
     margin-left: 4px;
+    margin-right: 4px;
     padding: 4px;
 
     font-size: 18px;
@@ -119,7 +118,7 @@ i {
     color: white;
     background-color: rgba(0, 0, 0, 0.6);
 
-    border-radius: 5px;
+    border-radius: var(--border);
   }
 }
 

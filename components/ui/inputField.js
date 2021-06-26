@@ -1,11 +1,22 @@
 import { forwardRef } from 'react';
 import styles from '../../styles/components/InputField.module.css'
 
-export const InputField = forwardRef(({ inputType, title, placeHolder, defaultValue, maxValue, maxLength, onChange }, ref) => {
+export const InputField = forwardRef(({ inputType, title, placeHolder, defaultValue, maxValue, maxLength, onChange, toolTip, pattern }, ref) => {
     return (
         <div className={styles.inputField}>
-            <h3 className={styles.title}>{title}</h3>
-            <input ref={ref} type={inputType} placeholder={placeHolder} autoComplete="off" min="0" max={maxValue} maxLength={maxLength} defaultValue={defaultValue} onInput={onChange} />
+            <h3 tooltip={toolTip} className={styles.title}>{title}</h3>
+            <input
+                ref={ref}
+                type={inputType}
+                placeholder={placeHolder}
+                autoComplete="off"
+                min="0"
+                max={maxValue}
+                maxLength={maxLength}
+                defaultValue={defaultValue}
+                onInput={onChange}
+                pattern={pattern}
+            />
         </div>
     );
 });
