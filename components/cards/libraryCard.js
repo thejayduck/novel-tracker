@@ -61,7 +61,7 @@ export default function LibraryCard({ entry: _entry, onDelete: _onDelete }) {
 
     return (
         <CardElement entry={entry}>
-            <img className={styles.cover} src={entry?.cover_url} />
+            <img width="192" height="256" className={styles.cover} src={entry?.cover_url} alt={`${entry.title.split(' ')[0]} Cover`} />
             {!editPanel &&
                 <div className={styles.details}>
                     <div>

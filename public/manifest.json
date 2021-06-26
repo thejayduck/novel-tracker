@@ -2,7 +2,7 @@
     "name": "Novel Tracker",
     "short_name": "noveltracker",
     "start_url": "/",
-    "display": "standalone",
+    "display": "fullscreen",
     "background_color": "#6723cd",
     "theme_color": "#6723cd",
     "orientation": "portrait-primary",

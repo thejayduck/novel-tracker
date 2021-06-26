@@ -17,12 +17,17 @@ export default function MyApp({ Component, pageProps }) {
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+        <meta name="description" content="Track your Novels" />
+
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#ffffff" />
+
         <meta name="msapplication-TileColor" content="#ffffff" />
         <meta name="msapplication-TileImage" content="/favicon.ico" />
 
         <meta property="og:type" content="website" />
         <meta key='title' property="og:title" content="Novel Tracker" />
-        <meta key='description' property="og:description" content="Track your Novels Locally" />
+        <meta key='description' property="og:description" content="Track your Novels" />
         <meta key='image' property="og:image" content="/book.png" />
         <meta property="og:image:type" content="image/png" />
         <meta property="og:image:width" content="64" />
