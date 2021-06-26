@@ -60,12 +60,12 @@ export default function Book({ book: _book, info }) {
                 <div className={styles.infoWrap}>
                     <div className={styles.coverWrap}>
                         <img className={styles.cover} src={book.cover_url} />
-                        {info && <Button title="Add Book" onClick={() => { window.alert("Add") }} />}
+                        {info && <Button text="Add Book" onClick={() => { window.alert("Add") }} />}
                         <br />
-                        {info?.moderation_level > 2 && <Button title="Edit Information" href={`/submitBook?id=${book.book_id}`} />}
+                        {info?.moderation_level > 2 && <Button text="Edit Information" href={`/submitBook?id=${book.book_id}`} />}
                         <br />
-                        <Button title="Back to Library" href="/" />
-                        <ul>
+                        <Button text="Back to Library" href="/" />
+                        <ul className={styles.info}>
                             <li><span>Title (Romanized):<br />{book.title_romanized}</span></li>
                             <li><span>Title (Native):<br />{book.title_native}</span></li>
                             <hr />
@@ -78,10 +78,10 @@ export default function Book({ book: _book, info }) {
                             <li><span>Author: {book.author}</span></li>
                         </ul>
                     </div>
-                    <div className={styles.info}>
+                    <div className={styles.contentContainer}>
                         <div className={styles.descriptionWrap}>
                             <h1 className={styles.title} title={book.title}>{book.title}</h1>
-                            <h2>Description</h2>
+                            <h2 className={styles.descriptionTitle}>Description</h2>
                             <p className={styles.description}>{book.description}</p>
                         </div>
                         <div className={styles.volumeWrap}>
