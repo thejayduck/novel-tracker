@@ -64,7 +64,7 @@ export function CardButton({ title, icon, onClick }: ButtonProps) {
                 onClick={onClick}
                 title={title}
             >
-                <i className={icon} />
+                <i className={`${styles.cardButtonIcon} ${icon}`} />
             </a>
         </>
     );

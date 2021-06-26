@@ -32,7 +32,6 @@
 
   text-transform: capitalize;
   font-size: 1.5rem;
-  font-weight: 600;
   letter-spacing: -0.01em;
 }
 .searchBar input::placeholder {
@@ -47,4 +46,10 @@
 
   font-size: var(--large-font);
   opacity: 0.75;
+}
+
+@media screen and (max-width: 720px) {
+  .searchBar .faSearch {
+    display: none;
+  }
 }

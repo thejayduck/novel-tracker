@@ -3,7 +3,6 @@
   --font-size: 16px;
   --border: 5px;
   --blur-amount: 10px;
-  --button-scale: 1.06;
 
   /* Colors */
   --color-primary: hsla(264, 71%, 47%, 1); /* #6723cd */
@@ -28,9 +27,11 @@ body {
   padding: 0;
   margin: 0;
 
-  font-family: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-weight: 400;
   font-size: var(--font-size);
+  letter-spacing: 0.3px;
   scroll-behavior: smooth;
   box-sizing: border-box;
 
@@ -52,13 +53,27 @@ a {
   text-decoration: none;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin: 0;
   font-size: var(--large-font);
 }
 
 /* Attempt to fix chrome and edge's text render bug where text becomes blurry */
-p, a, span, h1, h2, h3, h4, h5, h6, i {
+p,
+a,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+i {
   -webkit-font-smoothing: subpixel-antialiased;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
@@ -90,8 +105,8 @@ p, a, span, h1, h2, h3, h4, h5, h6, i {
   [tooltip]:hover::after {
     content: attr(tooltip);
 
-    position:fixed;
-    height:2em;
+    position: fixed;
+    height: 2em;
     transform: translateY(-1.5em);
     line-height: 1.65em;
     margin-left: 4px;
@@ -107,7 +122,6 @@ p, a, span, h1, h2, h3, h4, h5, h6, i {
     border-radius: 5px;
   }
 }
-
 
 ::selection {
   background: #8f8f8f;

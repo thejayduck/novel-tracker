@@ -105,40 +105,13 @@
   opacity: 1;
 }
 
-.details a {
-  /* Colors */
-  background-color: var(--color-primary);
-  border-radius: var(--border);
-
-  /* Alignment */
-  display: flex;
-  text-align: center;
-  margin: 5px;
-  padding: 5px;
-  width: 95%;
-
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.details a i {
-  padding: 5px;
-  margin: auto;
-  padding: auto;
-
-  font-size: large;
-}
-
-.cardButtonWrapper div {
+.cardButtonWrap {
   display: flex;
   flex-direction: row;
 }
 
 .title {
   /* Alignment */
-  /* margin: 0.25em;
-  margin-top: 0; */
-  /* max-height: 58px; */
   margin: 0;
   text-align: center;
 
