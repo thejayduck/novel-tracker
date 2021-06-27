@@ -102,8 +102,6 @@ export default function SubmitBook({ existing_book }) {
         router.push(`/book?id=${json.id}`);
     }
 
-    const [volumeCount, setVolumeCount] = useState(0);
-
     return (
         <PageBase>
             <div className={styles.pageContent}>
@@ -131,20 +129,7 @@ export default function SubmitBook({ existing_book }) {
                     />
                 </SubmitBookContainer>
 
-                <DescriptionSection
-                    ref={detailRefs.description}
-                />
-
-                <SubmitBookContainer title="Lengths" toolTip="Volumes Released So Far.">
-                    <div>
-                        <InputField title="Volumes" inputType="number" defaultValue="0" maxValue="200" onChange={e => setVolumeCount(Number.parseInt(e.target.value))} />
-                        <ul className={styles.volumeWrapper}>
-                            {[...Array(volumeCount).keys()].map((q, idx) => (
-                                <VolumeFormSection key={idx} index={`Volume ${idx + 1}`} />
-                            ))}
-                        </ul>
-                    </div>
-                </SubmitBookContainer>
+                <DescriptionSection ref={detailRefs.description} />
 
                 <SubmitBookContainer title="Publication Date">
                     <InputField
