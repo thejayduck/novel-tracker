@@ -58,14 +58,16 @@ export function createSerializableBookInfo(info: BookInfo): SerializableBookInfo
     return { ...info, start_date: start_date && start_date.toISOString(), end_date: end_date && end_date.toISOString() };
 }
 
-export function createBookInfo(info: SerializableBookInfo): BookInfo {
-    const { start_date, end_date } = info;
-
-    return { ...info, start_date: start_date && new Date(start_date), end_date: end_date && new Date(end_date) };
-}
-
 export interface UserInfo {
     user_id: number,
     username: string,
     moderation_level: number,
+}
+
+export interface BookVolume {
+    book_id: number,
+    volume_number: number,
+    chapter_count: number,
+    extra_chapter_count: number,
+    cover_url: string,
 }

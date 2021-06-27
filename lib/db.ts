@@ -1,6 +1,6 @@
 import { randomBytes } from 'crypto';
 import { Pool } from 'pg';
-import { BookInfo, createSerializableBookInfo, SerializableBookInfo, UserBookInfo, UserInfo } from './types';
+import { BookInfo, BookVolume, createSerializableBookInfo, SerializableBookInfo, UserBookInfo, UserInfo } from './types';
 const pool = new Pool();
 
 // TODO database functions?
@@ -134,6 +134,15 @@ export async function getBook(book_id: number) {
     const info = result.rows[0];
 
     return createSerializableBookInfo(info);
+}
+
+export async function getBookWithVolumes(book_id: number): Promise<SerializableBookInfo & { volumes: BookVolume[] }> {
+    const book_info = await getBook(book_id);
+    const result = await pool.query<BookVolume>("SELECT * FROM volumes WHERE book_id = $1::integer", [book_id]);
+
+    const volumes = result.rows;
+
+    return { ...book_info, volumes };
 }
 
 export async function getUserBookInfos(user_id: number) {

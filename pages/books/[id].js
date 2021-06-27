@@ -2,9 +2,8 @@ import styles from '../../styles/Book.module.css'
 import PageBase from "../../components/pageBase";
 import Button, { CardButton } from "../../components/ui/button";
 import Head from "next/dist/next-server/lib/head";
-import { getBook, getUserInfo, withUserId } from "../../lib/db";
+import { getBookWithVolumes, getUserInfo, withUserId } from "../../lib/db";
 import { motion } from "framer-motion";
-import { createBookInfo } from "../../lib/types";
 import { parse } from 'cookie';
 
 export async function getServerSideProps(context) {
@@ -22,7 +21,7 @@ export async function getServerSideProps(context) {
         info = await withUserId(token, async (user_id) => await getUserInfo(user_id));
     }
 
-    const book = await getBook(context.query.id);
+    const book = await getBookWithVolumes(context.query.id);
 
     return {
         props: {
@@ -32,16 +31,16 @@ export async function getServerSideProps(context) {
     };
 }
 
-export default function Book({ book: _book, info }) {
-    const book = createBookInfo(_book);
-
+export default function Book({ book, info }) {
     function convertDate(date) {
         if (date) {
-            return date.toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' })
+            return new Date(date).toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' })
         } else {
             return "Unknown";
         }
     }
+
+    console.log(book.volumes);
 
     return (
         <PageBase>
@@ -49,9 +48,9 @@ export default function Book({ book: _book, info }) {
                 <title>Novel Tracker - {book.title}</title>
 
                 {/* _book must be used because book is loaded via javascript */}
-                <meta key='title' property="og:title" content={_book.title} />
-                <meta key='description' property="og:description" content={_book.description} />
-                <meta key='image' property="og:image" content={_book.banner_url} />
+                <meta key='title' property="og:title" content={book.title} />
+                <meta key='description' property="og:description" content={book.description} />
+                <meta key='image' property="og:image" content={book.banner_url} />
                 <meta key='card' name="twitter:card" content="summary_large_image" />
 
             </Head>
@@ -87,9 +86,9 @@ export default function Book({ book: _book, info }) {
                         <div className={styles.volumeWrap}>
                             <h2>Volumes</h2>
                             <ul className={styles.volumeList}>
-                                {/* TODO */}
-                                <VolumeItem />
-                                {/* TODO */}
+                                {book.volumes.map(volume => (
+                                    <VolumeItem key={volume.volume_number} volume={volume} />
+                                ))}
                             </ul>
                         </div>
                     </div>
@@ -99,20 +98,20 @@ export default function Book({ book: _book, info }) {
     );
 }
 
-function VolumeItem() {
+function VolumeItem({ volume }) {
     return (
         <li className={styles.volumeItem}>
             <div>
-                <p>Volume 1</p>
+                <p>Volume {volume.volume_number}</p>
                 <img
                     className={styles.volumeCover}
-                    src="https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx87383-z7hT5qLqUSY2.jpg"
+                    src={volume.cover_url || "https://i.imgur.com/MgqRa43.jpg"}
                 />
             </div>
             <div className={styles.volumeDetailsWrap}>
                 <br />
-                <h2>Chapters: 100</h2>
-                <h2>Extras: 100</h2>
+                <h2>Chapters: {volume.chapter_count}</h2>
+                <h2>Extras: {volume.extra_chapter_count}</h2>
                 <div className={styles.volumeButton}>
                     <Button text="Start From" />
                 </div>
