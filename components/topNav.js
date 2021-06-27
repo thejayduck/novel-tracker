@@ -4,7 +4,7 @@ import { FooterButton } from './ui/button';
 import { useState } from 'react';
 import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion';
 
-export default function TopNav({ showModButtons, onAddBook, onSubmitBook, onSearch, hasSearch }) {
+export default function TopNav({ hasModButtons, onAddBook, onSubmitBook, onSearch, hasSearch, hasAddBook }) {
     const [isSearching, setIsSearching] = useState(false);
 
     return (
@@ -30,8 +30,8 @@ export default function TopNav({ showModButtons, onAddBook, onSubmitBook, onSear
                             </AnimatePresence>
                         </>
                     }
-                    <FooterButton icon="fas fa-plus" text="Add Book" onClick={onAddBook} />
-                    {showModButtons && <FooterButton icon="fas fa-feather-alt" text="Submit Book" href={onSubmitBook} />}
+                    {hasAddBook && <FooterButton icon="fas fa-plus" text="Add Book" onClick={onAddBook} />}
+                    {hasModButtons && <FooterButton icon="fas fa-feather-alt" text="Submit Book" href={onSubmitBook} />}
                 </div>
             </AnimateSharedLayout>
         </div>

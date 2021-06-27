@@ -9,8 +9,6 @@
   flex-direction: column;
   position: absolute;
   max-width: 60%;
-  max-height: 60%;
-  height: auto;
 
   padding: 10px;
   gap: 10px;

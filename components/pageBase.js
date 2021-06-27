@@ -18,10 +18,11 @@ export default function PageBase({ children, onDataUpdate, userInfo, setSearchQu
     return (
         <main className={`${styles.main} ${state.darkMode ? styles.dark : styles.light}`} >
             <TopNav
-                showModButtons={userInfo && userInfo.moderation_level >= 2}
                 onAddBook={() => setAddBookPanel(prev => !prev)}
                 onSubmitBook={`/submitBook`}
                 onSearch={e => setSearchQuery(e.target.value)}
+                hasModButtons={!!userInfo && userInfo.moderation_level >= 2}
+                hasAddBook={!!userInfo}
                 hasSearch={!!setSearchQuery}
             />
 
@@ -36,7 +37,7 @@ export default function PageBase({ children, onDataUpdate, userInfo, setSearchQu
                     />
                 )}
             </AnimatePresence>
-            <Footer />
+            <Footer userInfo={userInfo} />
 
         </main>
     );
