@@ -90,15 +90,11 @@ export default function LibraryCard({ entry: _entry, onDelete: _onDelete }) {
                         transition={{ duration: 0.2 }}
                         className={`${styles.details} ${styles.editPanel}`}
                     >
-                        <div>
-                            <InputFieldNonManaged title="Volumes" inputType="number" value={liveVolumesRead} onChange={({ target }) => setVolumesRead(target.value)} maxValue="200" />
-                            <InputFieldNonManaged title="Chapters" inputType="number" value={liveChaptersRead} onChange={({ target }) => setChaptersRead(target.value)} maxValue="10000" />
-                            <div>
-                                <div className={styles.cardButtonWrap}>
-                                    <CardButton title="Close Editing" icon="fas fa-angle-left" onClick={() => setEditPanel(false)} />
-                                    <CardButton title="Delete Book" icon="fas fa-trash-alt" onClick={onDelete} />
-                                </div>
-                            </div>
+                        <InputFieldNonManaged title="Volumes" inputType="number" value={liveVolumesRead} onChange={({ target }) => setVolumesRead(target.value)} maxValue="200" />
+                        <InputFieldNonManaged title="Chapters" inputType="number" value={liveChaptersRead} onChange={({ target }) => setChaptersRead(target.value)} maxValue="10000" />
+                        <div className={styles.cardButtonWrap}>
+                            <CardButton title="Close Editing" icon="fas fa-angle-left" onClick={() => setEditPanel(false)} />
+                            <CardButton title="Delete Book" icon="fas fa-trash-alt" onClick={onDelete} />
                         </div>
                     </motion.div>
                 }

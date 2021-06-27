@@ -1,7 +1,7 @@
 import styles from '../styles/components/footer.module.css'
 import { useAppContext } from './appWrapper';
 import { FooterButton } from './ui/button';
-
+import Information from './information';
 
 export default function Footer({ data, showModButtons }) {
     const [state, setState] = useAppContext();
@@ -31,11 +31,11 @@ export default function Footer({ data, showModButtons }) {
                 {/* <FooterButton title="TheJayDuck's Github" icon="fab fa-github" href="https://github.com/thejayduck" />
                 <FooterButton title="nobbele's Github" icon="fab fa-github" href="https://github.com/nobbele" /> */}
             </div>
-            <div>
+            {/* <div>
                 <p>Books: {data.length}</p>
                 <p className={styles.volumeCount} >Volumes Read: {data.reduce((acc, val) => acc + val.volume, 0)}</p>
                 <p>Chapters Read: {data.reduce((acc, val) => acc + val.chapter, 0)}</p>
-            </div>
+            </div> */}
         </footer>
     );
 }

@@ -19,6 +19,7 @@
   border-radius: var(--border);
 
   padding: 0.25em 0.5em;
+  font-size: 20px;
 }
 
 .inputField > input:invalid {

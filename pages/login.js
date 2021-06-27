@@ -37,54 +37,56 @@ export default function Login() {
     })
     return url && (
         <PageBase>
-            <div className={styles.wrapper}>
-                <img className={styles.logo} src='../book.svg' />
-                <div >
-                    <h1>Welcome to Novel Tracker! </h1>
-                    <div className={styles.about}>
-                        <h1> Novel Tracking Made Easy! </h1>
-                        <motion.div
-                            className={styles.features}
-                            initial={{ height: "0", opacity: 0 }}
-                            animate={{ height: "max-content", opacity: 1 }}
-                            transition={{ type: "spring", delay: 0.5 }}
-                        >
-                            <FeatureItem
-                                title="Automatic Chapter-Volume Conversion"
-                                icon="fas fa-calculator"
+            <div className={styles.container}>
+                <div className={styles.wrapper}>
+                    <img className={styles.logo} src='../book.svg' />
+                    <div >
+                        <h1>Welcome to Novel Tracker! </h1>
+                        <div className={styles.about}>
+                            <h1> Novel Tracking Made Easy! </h1>
+                            <motion.div
+                                className={styles.features}
+                                initial={{ height: "0", opacity: 0 }}
+                                animate={{ height: "max-content", opacity: 1 }}
+                                transition={{ type: "spring", delay: 0.5 }}
                             >
-                                Keep track of your novels easier with automatic chapter-volume conversion.
-                            </FeatureItem>
-                            <FeatureItem
-                                title="Mobile-App Capable"
-                                icon="fas fa-mobile-alt"
-                            >
-                                Our website is mobile-app capable, offering you a smooth and elegant experience.
-                            </FeatureItem>
-                            <FeatureItem
-                                title="Account Syncing"
-                                icon="fas fa-sync-alt"
-                            >
-                                Bring your novel progress everywhere you go.
-                            </FeatureItem>
-                            <FeatureItem
-                                title="Socialize"
-                                icon="fas fa-user"
-                            >
-                                Follow your friends progress.
-                            </FeatureItem>
-                            <FeatureItem
-                                title="Community Managed"
-                                icon="fas fa-user-friends"
-                            >
-                                Our library grows with every moderators contribution in the community.
-                            </FeatureItem>
-                        </motion.div>
-                        <a href={url} className={`${styles.google} ${styles.btn}`}>
-                            <i className="fab fa-google"> </i> Login with Google
-                        </a>
-                    </div>
+                                <FeatureItem
+                                    title="Automatic Chapter-Volume Conversion"
+                                    icon="fas fa-calculator"
+                                >
+                                    Keep track of your novels easier with automatic chapter-volume conversion.
+                                </FeatureItem>
+                                <FeatureItem
+                                    title="Mobile-App Capable"
+                                    icon="fas fa-mobile-alt"
+                                >
+                                    Our website is mobile-app capable, offering you a smooth and elegant experience.
+                                </FeatureItem>
+                                <FeatureItem
+                                    title="Account Syncing"
+                                    icon="fas fa-sync-alt"
+                                >
+                                    Bring your novel progress everywhere you go.
+                                </FeatureItem>
+                                <FeatureItem
+                                    title="Socialize"
+                                    icon="fas fa-user"
+                                >
+                                    Follow your friends progress.
+                                </FeatureItem>
+                                <FeatureItem
+                                    title="Community Managed"
+                                    icon="fas fa-user-friends"
+                                >
+                                    Our library grows with every moderators contribution in the community.
+                                </FeatureItem>
+                            </motion.div>
+                            <a href={url} className={`${styles.google} ${styles.btn}`}>
+                                <i className="fab fa-google"> </i> Login with Google
+                            </a>
+                        </div>
 
+                    </div>
                 </div>
             </div>
         </PageBase >

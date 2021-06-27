@@ -1,6 +1,6 @@
 import styles from '../styles/Book.module.css'
 import PageBase from "../components/pageBase";
-import Button from "../components/ui/button";
+import Button, { CardButton } from "../components/ui/button";
 import Head from "next/dist/next-server/lib/head";
 import { getBook, getUserInfo, withUserId } from "../lib/db";
 import { motion } from "framer-motion";
@@ -101,21 +101,22 @@ export default function Book({ book: _book, info }) {
 
 function VolumeItem() {
     return (
-        <li>
-            <div className={styles.volumeItem}>
+        <li className={styles.volumeItem}>
+            <div>
                 <p>Volume 1</p>
                 <img
                     className={styles.volumeCover}
                     src="https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx87383-z7hT5qLqUSY2.jpg"
                 />
-                {/* <div className={styles.volumeDetailsWrap}>
-                    <h3>Volume [1]</h3>
-                    <a>Chapters: 100</a>
-                    <br />
-                    <a>Extras: 100</a>
-                </div> */}
             </div>
-            {/* <Button title="Start From" /> */}
+            <div className={styles.volumeDetailsWrap}>
+                <br />
+                <h2>Chapters: 100</h2>
+                <h2>Extras: 100</h2>
+                <div className={styles.volumeButton}>
+                    <Button text="Start From" />
+                </div>
+            </div>
         </li>
     );
 }

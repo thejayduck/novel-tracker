@@ -1,7 +1,7 @@
 .icon {
   margin-right: 5px;
   /* Chrome and edge requires this to fix text clarity */
-  will-change: transform;
+  /* will-change: transform; */
 }
 
 .button {
@@ -9,7 +9,6 @@
   color: white;
   background-color: var(--color-primary);
   border-radius: var(--border);
-  filter: drop-shadow(0 10px 5px black);
 
   /* Alignment */
   display: block;
@@ -38,11 +37,12 @@
   overflow: auto;
 
   /* Chrome and edge requires this to fix text clarity */
-  will-change: transform;
+  /* will-change: transform; */
 }
 
 .button:hover {
   background-color: var(--color-primaryDark);
+  filter: drop-shadow(0 10px 5px black);
 
   cursor: pointer;
 }
@@ -89,7 +89,7 @@
   transition: 0.2s;
 
   /* Chrome and edge requires this to fix text clarity */
-  will-change: transform;
+  /* will-change: transform; */
 }
 
 .cardButtonIcon {

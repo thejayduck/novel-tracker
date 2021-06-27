@@ -8,6 +8,7 @@ import TopNav from '../components/topNav';
 import Footer from '../components/footer'
 import CardListWrapper from '../components/cards/cardListWrapper';
 import LibraryCard from '../components/cards/libraryCard';
+import QuickAlert from '../components/quickAlert';
 
 /* Other Imports */
 import Fuse from 'fuse.js'
@@ -16,7 +17,6 @@ import { AnimatePresence, AnimateSharedLayout } from 'framer-motion'
 import { parse } from 'cookie'
 import { getUserInfo, withUserId } from '../lib/db'
 import { useDelayedState } from '../lib/clientHelpers';
-
 
 export async function getServerSideProps(context) {
   const cookie_header = context.req.headers.cookie;
@@ -49,7 +49,8 @@ export async function getServerSideProps(context) {
 }
 
 export default function Home({ user_info }) {
-  const [newBookPanel, setNewBookPanel] = useState(false);
+  // const [addBookPanel, setAddBookPanel] = useState(false);
+  // const [informationPanel, setInformationPanel] = useState(false);
   const [data, setData] = useState([]);
 
   const [query, setQuery] = useDelayedState('', 250);
@@ -82,13 +83,13 @@ export default function Home({ user_info }) {
   useEffect(updateData, [])
 
   return (
-    <PageBase>
-      <TopNav
+    <PageBase onDataUpdate={updateData} userInfo={user_info} setSearchQuery={setQuery}>
+      {/* <TopNav
         showModButtons={user_info.moderation_level >= 2}
-        onAddBook={() => setNewBookPanel(prev => !prev)}
+        onAddBook={() => setAddBookPanel(prev => !prev)}
         onSubmitBook={`/submitBook`}
         onSearch={e => setQuery(e.target.value)}
-      />
+      /> */}
       <div className={styles.container}>
         <AnimateSharedLayout>
           <CardListWrapper
@@ -105,17 +106,17 @@ export default function Home({ user_info }) {
         </AnimateSharedLayout>
       </div>
 
-      {/* <Information /> */}
+      {/* {informationPanel && <Information />}
 
-      <Footer data={data} />
       <AnimatePresence>
-        {newBookPanel && (
+        {addBookPanel && (
           <NewBook
             onAddClicked={() => updateData()}
-            onOutsideClicked={() => setNewBookPanel(false)}
+            onOutsideClicked={() => setAddBookPanel(false)}
           />
         )}
-      </AnimatePresence>
+      </AnimatePresence> */}
+      {/* <Footer data={data} /> */}
 
       {/* <QuickAlert message="A New Book Has Been Added!" icon="fas fa-check" /> */}
 

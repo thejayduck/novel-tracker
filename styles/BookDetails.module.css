@@ -97,10 +97,6 @@
   object-fit: contain;
 }
 
-.descriptionWrap h2 {
-  margin: 0 0 10px 0;
-  padding: 0;
-}
 .descriptionWrap {
   /* Colors */
   background-color: var(--color-primary);
