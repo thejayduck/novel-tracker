@@ -122,7 +122,7 @@ export async function createBook(bookDetails: SerializableBookInfo) {
 }
 
 export async function getBook(book_id: number) {
-    const result = await pool.query<BookInfo>("SELECT * FROM books WHERE book_id = $1::integer", [book_id]);
+    const result = await pool.query<BookInfo>("SELECT * FROM books WHERE book_id = $1::integer AND accepted = TRUE", [book_id]);
 
     if (result.rowCount == 0) {
         throw {
@@ -134,6 +134,23 @@ export async function getBook(book_id: number) {
     const info = result.rows[0];
 
     return createSerializableBookInfo(info);
+}
+
+export async function setBookAcceptStatus(book_id: number, accepted: boolean) {
+    const result = await pool.query("UPDATE user_books SET accepted = $2 WHERE book_id = $1", [book_id, accepted]);
+
+    if (result.rowCount > 1) {
+        throw {
+            message: "More than one book associated with these ids??",
+            book_id,
+        };
+    }
+    if (result.rowCount == 0) {
+        throw {
+            message: "Unable to find book",
+            book_id,
+        };
+    }
 }
 
 export async function getBookWithVolumes(book_id: number): Promise<SerializableBookInfo & { volumes: BookVolume[] }> {
