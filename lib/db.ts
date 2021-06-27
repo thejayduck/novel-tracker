@@ -222,7 +222,10 @@ export async function getVolumeForChapters(book_id: number, chapters_read: numbe
 export async function withUserId<T>(token: string, callback: (user_id: number) => Promise<T>) {
     const user_id = await getUserId(token);
     if (user_id == null) {
-        return null
+        throw {
+            message: "Unable to find user",
+            user_id,
+        }
     }
 
     return await callback(user_id);
