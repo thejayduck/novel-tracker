@@ -1,10 +1,10 @@
-import styles from '../styles/Book.module.css'
-import PageBase from "../components/pageBase";
-import Button, { CardButton } from "../components/ui/button";
+import styles from '../../styles/Book.module.css'
+import PageBase from "../../components/pageBase";
+import Button, { CardButton } from "../../components/ui/button";
 import Head from "next/dist/next-server/lib/head";
-import { getBook, getUserInfo, withUserId } from "../lib/db";
+import { getBook, getUserInfo, withUserId } from "../../lib/db";
 import { motion } from "framer-motion";
-import { createBookInfo } from "../lib/types";
+import { createBookInfo } from "../../lib/types";
 import { parse } from 'cookie';
 
 export async function getServerSideProps(context) {
