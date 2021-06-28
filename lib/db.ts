@@ -95,9 +95,9 @@ export async function setUsername(user_id: number, username: string) {
     }
 }
 
-export async function createBook(bookDetails: SerializableBookInfo) {
-    const result = await pool.query<{ book_id: number }>(
-        "INSERT INTO books VALUES (DEFAULT, $1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING book_id",
+export async function submitBook(bookDetails: SerializableBookInfo, submitted_by: number) {
+    const result = await pool.query<{ submission_id: number }>(
+        "INSERT INTO book_submissions VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, DEFAULT) RETURNING submission_id",
         [
             bookDetails.cover_url,
             bookDetails.title,
@@ -109,6 +109,7 @@ export async function createBook(bookDetails: SerializableBookInfo) {
             bookDetails.end_date,
             bookDetails.banner_url,
             bookDetails.release_status,
+            submitted_by
         ]
     );
 
@@ -118,11 +119,11 @@ export async function createBook(bookDetails: SerializableBookInfo) {
         };
     }
 
-    return result.rows[0].book_id;
+    return result.rows[0].submission_id;
 }
 
 export async function getBook(book_id: number) {
-    const result = await pool.query<BookInfo>("SELECT * FROM books WHERE book_id = $1::integer AND accepted = TRUE", [book_id]);
+    const result = await pool.query<BookInfo>("SELECT * FROM books WHERE book_id = $1::integer", [book_id]);
 
     if (result.rowCount == 0) {
         throw {
@@ -136,20 +137,15 @@ export async function getBook(book_id: number) {
     return createSerializableBookInfo(info);
 }
 
-export async function setBookAcceptStatus(book_id: number, accepted: boolean) {
-    const result = await pool.query("UPDATE user_books SET accepted = $2 WHERE book_id = $1", [book_id, accepted]);
+export async function getPendingBooks() {
+    const result = await pool.query<(BookInfo & { submitted_by: number, submission_id: number })[]>("SELECT * FROM book_submissions");
 
-    if (result.rowCount > 1) {
-        throw {
-            message: "More than one book associated with these ids??",
-            book_id,
-        };
-    }
-    if (result.rowCount == 0) {
-        throw {
-            message: "Unable to find book",
-            book_id,
-        };
+    return result.rows;
+}
+
+export async function acceptBook(book_id: number) {
+    throw {
+        message: "Unimplemented"
     }
 }
 

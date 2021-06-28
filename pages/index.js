@@ -14,34 +14,12 @@ import QuickAlert from '../components/quickAlert';
 import Fuse from 'fuse.js'
 import { useState, useEffect, useMemo } from 'react'
 import { AnimatePresence, AnimateSharedLayout } from 'framer-motion'
-import { parse } from 'cookie'
-import { getUserInfo, withUserId } from '../lib/db'
 import { useDelayedState } from '../lib/clientHelpers';
+import { serverSide_checkAuth } from '../lib/serverHelpers';
 
 export async function getServerSideProps(context) {
-  const cookie_header = context.req.headers.cookie;
-  if (!cookie_header) {
-    return {
-      redirect: {
-        permanent: false,
-        destination: '/login',
-      },
-    }
-  }
-
-  const cookies = parse(context.req.headers.cookie);
-  const token = cookies.token;
-  const info = await withUserId(token, async (user_id) => await getUserInfo(user_id));
-  if (info == null) {
-    return {
-      redirect: {
-        permanent: false,
-        destination: '/login',
-      },
-    }
-  }
-
-  return {
+  const [auth, info] = await serverSide_checkAuth(context, true, false, false);
+  return auth || {
     props: {
       user_info: info,
     },

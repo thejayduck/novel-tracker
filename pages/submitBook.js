@@ -1,43 +1,15 @@
 import styles from '../styles/SubmitBook.module.css';
 import { InputField, OptionSelect } from '../components/ui/inputField';
 import SubmitBookContainer, { DescriptionSection, VolumeFormSection } from '../components/submitBookContainer';
-import { parse } from 'cookie';
-import { getBook, getUserInfo, withUserId } from '../lib/db';
 import Button from '../components/ui/button';
 import PageBase from '../components/pageBase';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
+import { serverSide_checkAuth } from "../lib/serverHelpers";
+import { getBook } from '../lib/db';
 
 export async function getServerSideProps(context) {
-    const cookie_header = context.req.headers.cookie;
-    if (!cookie_header) {
-        return {
-            redirect: {
-                permanent: false,
-                destination: '/error?reason=must_login',
-            },
-        }
-    }
-
-    const cookies = parse(cookie_header);
-    const token = cookies.token;
-    const info = await withUserId(token, async (user_id) => await getUserInfo(user_id));
-    if (info == null) {
-        return {
-            redirect: {
-                permanent: false,
-                destination: '/error?reason=must_login',
-            },
-        }
-    }
-    if (info.moderation_level < 2) {
-        return {
-            redirect: {
-                permanent: false,
-                destination: '/error?reason=mod_only',
-            },
-        }
-    }
+    const [auth, info] = await serverSide_checkAuth(context, true, false, false);
 
     let existing_book = null;
     if (context.query.id) {
@@ -45,7 +17,7 @@ export async function getServerSideProps(context) {
         existing_book = await getBook(id);
     }
 
-    return {
+    return auth || {
         props: {
             user_info: info,
             existing_book,
@@ -53,7 +25,7 @@ export async function getServerSideProps(context) {
     };
 }
 
-export default function SubmitBook({ existing_book }) {
+export default function SubmitBook({ user_info, existing_book }) {
     const detailRefs = {
         title: useRef(null),
         title_romanized: useRef(null),
@@ -86,7 +58,10 @@ export default function SubmitBook({ existing_book }) {
             const val = v.current.value;
             return [k, val === "" ? null : val];
         }));
-        const response = await fetch("/api/create_book", {
+        if (existing_book) {
+            book_details.book_id = existing_book.book_id;
+        }
+        const response = await fetch("/api/me/submit_book", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -99,11 +74,11 @@ export default function SubmitBook({ existing_book }) {
         if (json.status != "OK") {
             throw json;
         }
-        router.push(`/book?id=${json.id}`);
+        router.push(`/`);
     }
 
     return (
-        <PageBase>
+        <PageBase userInfo={user_info}>
             <div className={styles.pageContent}>
                 <h2 className={styles.containerTitle} >Submit Book <i className="fas fa-feather-alt" /></h2>
 
@@ -159,13 +134,13 @@ export default function SubmitBook({ existing_book }) {
                         ref={detailRefs.cover_url}
                         title="Cover Url"
                         inputType="url"
-                        pattern="https://./*"
+                        pattern="https?://.+"
                     />
                     <InputField
                         ref={detailRefs.banner_url}
                         title="Banner Url"
                         inputType="text"
-                        pattern="https://./*"
+                        pattern="https?://.+"
                     />
                 </SubmitBookContainer>
                 <br />

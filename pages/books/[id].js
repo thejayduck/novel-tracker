@@ -2,36 +2,29 @@ import styles from '../../styles/Book.module.css'
 import PageBase from "../../components/pageBase";
 import Button, { CardButton } from "../../components/ui/button";
 import Head from "next/dist/next-server/lib/head";
-import { getBookWithVolumes, getUserInfo, withUserId } from "../../lib/db";
+import { getBookWithVolumes } from "../../lib/db";
 import { motion } from "framer-motion";
-import { parse } from 'cookie';
+import { serverSide_checkAuth } from '../../lib/serverHelpers';
 
 export async function getServerSideProps(context) {
+    const [auth, info] = await serverSide_checkAuth(context, false, false, false);
+
     if (!context.query.id) {
         throw {
             message: "No book id was passed"
         }
     }
-    const cookie_header = context.req.headers.cookie;
-
-    let info = null;
-    if (cookie_header) {
-        const cookies = parse(context.req.headers.cookie);
-        const token = cookies.token;
-        info = await withUserId(token, async (user_id) => await getUserInfo(user_id));
-    }
-
     const book = await getBookWithVolumes(context.query.id);
 
-    return {
+    return auth || {
         props: {
             book,
-            info
+            user_info: info,
         },
     };
 }
 
-export default function Book({ book, info }) {
+export default function Book({ book, user_info }) {
     function convertDate(date) {
         if (date) {
             return new Date(date).toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' })
@@ -41,7 +34,7 @@ export default function Book({ book, info }) {
     }
 
     return (
-        <PageBase userInfo={info}>
+        <PageBase userInfo={user_info}>
             <Head>
                 <title>Novel Tracker - {book.title}</title>
 
@@ -57,9 +50,9 @@ export default function Book({ book, info }) {
                 <div className={styles.infoWrap}>
                     <div className={styles.coverWrap}>
                         <img className={styles.cover} src={book.cover_url} />
-                        {info && <Button text="Add Book" onClick={() => { window.alert("Add") }} />}
+                        {user_info && <Button text="Add Book" onClick={() => { window.alert("Add") }} />}
                         <br />
-                        {info?.moderation_level > 2 && <Button text="Edit Information" href={`/submitBook?id=${book.book_id}`} />}
+                        {user_info && <Button text="Edit Information" href={`/submitBook?id=${book.book_id}`} />}
                         <br />
                         <Button text="Back to Library" href="/" />
                         <ul className={styles.info}>
