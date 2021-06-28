@@ -19,7 +19,6 @@ export default function PageBase({ children, onDataUpdate, userInfo, setSearchQu
         <main className={`${styles.main} ${state.darkMode ? styles.dark : styles.light}`} >
             <TopNav
                 onAddBook={() => setAddBookPanel(prev => !prev)}
-                onSubmitBook={`/submitBook`}
                 onSearch={e => setSearchQuery(e.target.value)}
                 hasModButtons={!!userInfo && userInfo.moderation_level >= 2}
                 hasAddBook={!!userInfo}
@@ -32,7 +31,7 @@ export default function PageBase({ children, onDataUpdate, userInfo, setSearchQu
             <AnimatePresence>
                 {addBookPanel && (
                     <NewBook
-                        onAddClicked={() => onDataUpdate()}
+                        onAddClicked={() => onDataUpdate && onDataUpdate()}
                         onOutsideClicked={() => setAddBookPanel(false)}
                     />
                 )}

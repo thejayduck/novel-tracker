@@ -31,7 +31,7 @@ export default function TopNav({ hasModButtons, onAddBook, onSubmitBook, onSearc
                         </>
                     }
                     {hasAddBook && <FooterButton icon="fas fa-plus" text="Add Book" onClick={onAddBook} />}
-                    {hasModButtons && <FooterButton icon="fas fa-feather-alt" text="Submit Book" href={onSubmitBook} />}
+                    <FooterButton icon="fas fa-feather-alt" text="Submit Book" href={"/submitBook"} />
                 </div>
             </AnimateSharedLayout>
         </div>

@@ -42,9 +42,14 @@ export function withHelperBareGet<T>(required_fields: string[], callback: (token
     }
 }
 
-export function withInfoHelperGet<T>(required_fields: string[], callback: (token: string, params: Params, user_info: UserInfo) => Promise<T>): (req: NextApiRequest, res: NextApiResponse) => Promise<void> {
+export function withInfoHelperGet<T>(required_fields: string[], callback: (token: string, params: Params, user_info: UserInfo) => Promise<T>, user_info_required: boolean = false): (req: NextApiRequest, res: NextApiResponse) => Promise<void> {
     return withHelperBareGet(required_fields, async (token, params) => {
         const user_info = await withUserId(token, getUserInfo);
+        if (user_info_required && !user_info) {
+            throw {
+                message: "Unable to find user",
+            };
+        }
         return await callback(token, params, user_info);
     });
 }
@@ -87,9 +92,14 @@ export function withHelperBarePost<T>(required_fields: string[], callback: (toke
     }
 }
 
-export function withInfoHelperPost<T>(required_fields: string[], callback: (token: string, params: Params, user_info: UserInfo) => Promise<T>): (req: NextApiRequest, res: NextApiResponse) => Promise<void> {
+export function withInfoHelperPost<T>(required_fields: string[], callback: (token: string, params: Params, user_info: UserInfo) => Promise<T>, user_info_required: boolean = false): (req: NextApiRequest, res: NextApiResponse) => Promise<void> {
     return withHelperBarePost(required_fields, async (token, params) => {
         const user_info = await withUserId(token, getUserInfo);
+        if (user_info_required && !user_info) {
+            throw {
+                message: "Unable to find user",
+            };
+        }
         return await callback(token, params, user_info);
     });
 }

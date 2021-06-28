@@ -10,4 +10,4 @@ export default withInfoHelperPost(["book_id"], async (_, params, user_info) => {
         };
     }
     await setBookAcceptStatus(book_id, true);
-});
+}, true);

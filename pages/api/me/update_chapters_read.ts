@@ -11,4 +11,4 @@ export default withInfoHelperPost(["new_chapters_read", "book_id"], async (_, pa
         chapters_read: new_chapters_read,
         volumes_read: new_volumes_read
     };
-});
+}, true);

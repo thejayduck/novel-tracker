@@ -8,4 +8,4 @@ export default withInfoHelperPost(["new_name"], async (_, params, user_info) => 
         }
     }
     await setUsername(user_info.user_id, params.new_name);
-});
+}, true);

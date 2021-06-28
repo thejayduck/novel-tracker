@@ -12,4 +12,4 @@ export default withInfoHelperPost(["book_id"], async (_, params, user_info) => {
         }
     }
     await addUserBooks(user_info.user_id, book_id);
-});
+}, true);

@@ -11,4 +11,4 @@ export default withInfoHelperGet([], async (_token, _params, user_info) => {
         }
     }));
     return fixed_user_books;
-});
+}, true);

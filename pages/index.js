@@ -84,12 +84,6 @@ export default function Home({ user_info }) {
 
   return (
     <PageBase onDataUpdate={updateData} userInfo={user_info} setSearchQuery={setQuery}>
-      {/* <TopNav
-        showModButtons={user_info.moderation_level >= 2}
-        onAddBook={() => setAddBookPanel(prev => !prev)}
-        onSubmitBook={`/submitBook`}
-        onSearch={e => setQuery(e.target.value)}
-      /> */}
       <div className={styles.container}>
         <AnimateSharedLayout>
           <CardListWrapper
@@ -105,18 +99,6 @@ export default function Home({ user_info }) {
           </CardListWrapper>
         </AnimateSharedLayout>
       </div>
-
-      {/* {informationPanel && <Information />}
-
-      <AnimatePresence>
-        {addBookPanel && (
-          <NewBook
-            onAddClicked={() => updateData()}
-            onOutsideClicked={() => setAddBookPanel(false)}
-          />
-        )}
-      </AnimatePresence> */}
-      {/* <Footer data={data} /> */}
 
       {/* <QuickAlert message="A New Book Has Been Added!" icon="fas fa-check" /> */}
 

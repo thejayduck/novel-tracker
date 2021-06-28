@@ -40,10 +40,8 @@ export default function Book({ book, info }) {
         }
     }
 
-    console.log(book.volumes);
-
     return (
-        <PageBase>
+        <PageBase userInfo={info}>
             <Head>
                 <title>Novel Tracker - {book.title}</title>
 
