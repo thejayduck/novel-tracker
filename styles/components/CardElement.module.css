@@ -75,6 +75,9 @@
 }
 
 .details {
+  display: flex;
+  flex-direction: column;
+
   /* Colors */
   background-color: var(--blur-background);
   border-radius: 0 0 var(--border) var(--border);

@@ -87,6 +87,11 @@ i {
   backface-visibility: hidden;
 }
 
+hr {
+  margin-left: 0;
+  margin-right: 0;
+}
+
 @media screen and (min-width: 720px) {
   [tooltip]:not(:hover)::after {
     content: "?";
