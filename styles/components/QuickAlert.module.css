@@ -10,10 +10,29 @@
   width: 400px;
   height: 75px;
   bottom: 10px;
-  left: 20px;
-  margin-top: 15px;
+  left: 10px;
+
+  animation: popup 5s forwards cubic-bezier(0.68, -0.6, 0.32, 1.6);
 
   z-index: 999;
+}
+
+@keyframes popup {
+  0% {
+    transform: translateY(calc(125% + 10px));
+  }
+
+  25% {
+    transform: translateY(0);
+  }
+
+  75% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(calc(125% + 10px));
+  }
 }
 
 .container i {

@@ -62,21 +62,19 @@ export default function Home({ user_info }) {
 
   return (
     <PageBase onDataUpdate={updateData} userInfo={user_info} setSearchQuery={setQuery}>
-      <div className={styles.container}>
-        <AnimateSharedLayout>
-          <CardListWrapper
-            data={data}
-          >
-            {bookResults.map(entry => (
-              <LibraryCard
-                key={entry.book_id}
-                entry={entry}
-                onDelete={() => updateData()}
-              />
-            ))}
-          </CardListWrapper>
-        </AnimateSharedLayout>
-      </div>
+      <AnimateSharedLayout>
+        <CardListWrapper
+          data={data}
+        >
+          {bookResults.map(entry => (
+            <LibraryCard
+              key={entry.book_id}
+              entry={entry}
+              onDelete={() => updateData()}
+            />
+          ))}
+        </CardListWrapper>
+      </AnimateSharedLayout>
 
       {/* <QuickAlert message="A New Book Has Been Added!" icon="fas fa-check" /> */}
 
