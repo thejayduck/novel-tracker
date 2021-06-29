@@ -1,0 +1,87 @@
+.pageContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  gap: 10px;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.submissionList {
+  width: 95%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  flex-flow: row wrap;
+}
+
+.submissionItem {
+  color: white;
+  background-color: var(--color-primary);
+  border-radius: var(--border);
+}
+
+.buttonWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 5px;
+  width: 200px;
+}
+
+.submissionItem .cover {
+  border-radius: var(--border);
+
+  margin: 5px;
+  width: 200px;
+
+  object-fit: cover;
+}
+
+.headerWrap {
+  display: flex;
+}
+
+.volumeList {
+  background-color: var(--color-primaryDark);
+
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+
+  padding: 5px;
+  gap: 5px;
+}
+
+.volumeItem {
+  background-color: var(--color-primaryLight);
+  border-radius: var(--border);
+
+  display: inline;
+
+  padding: 5px;
+  text-align: center;
+}
+
+.volumeItem .volumeCover {
+  border-radius: var(--border);
+
+  width: 120px;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 720px) {
+  .submissionItem .cover {
+    width: 120px;
+  }
+  .headerWrap {
+    display: flex;
+    flex-flow: column;
+  }
+}

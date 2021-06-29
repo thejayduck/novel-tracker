@@ -3,7 +3,7 @@ import { useAppContext } from './appWrapper';
 import { FooterButton } from './ui/button';
 import Information from './information';
 
-export default function Footer({ userInfo }) {
+export default function Footer({ userInfo, setInfoPanel }) {
     const [state, setState] = useAppContext();
 
     return (
@@ -20,7 +20,7 @@ export default function Footer({ userInfo }) {
                     onClick={() => setState(state => ({ ...state, darkMode: !state.darkMode }))}
                 />
 
-                <FooterButton className={styles.footerButton} title="Information" icon="fas fa-info-circle" />
+                <FooterButton className={styles.footerButton} title="Information" icon="fas fa-info-circle" onClick={() => setInfoPanel(true)} />
             </div>
             {/* <div>
                 <p>Books: {data.length}</p>
