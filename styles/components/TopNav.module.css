@@ -5,7 +5,7 @@
   /* border-radius: 0 0 var(--border) var(--border); */
 
   /* Alignment */
-  /* position: absolute; */
+  position: sticky;
   display: flex;
   align-items: center;
   /* justify-content: space-between; */
@@ -14,6 +14,7 @@
   top: 0;
   width: 100%;
 
+  user-select: none;
   z-index: 5;
   /* opacity: 0.2; */
   transition: 0.2s;
@@ -37,8 +38,8 @@
 
 @media screen and (max-width: 720px) {
   .headerWrap {
+    position: initial;
     flex-flow: column wrap;
     justify-content: center;
-    border-radius: 0;
   }
 }

@@ -1,6 +1,5 @@
 .container {
   /* Colors */
-  color: white;
   border-radius: var(--border);
 
   /* Alignment */
@@ -9,7 +8,6 @@
   justify-content: center;
   align-items: center;
 
-  min-height: 100vh;
   min-width: 100%;
   height: 100%;
   /* padding-top: 50px; */

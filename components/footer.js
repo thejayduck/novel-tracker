@@ -1,7 +1,6 @@
 import styles from '../styles/components/footer.module.css'
 import { useAppContext } from './appWrapper';
 import { FooterButton } from './ui/button';
-import Information from './information';
 
 export default function Footer({ userInfo, setInfoPanel }) {
     const [state, setState] = useAppContext();

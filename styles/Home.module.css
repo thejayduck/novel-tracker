@@ -6,8 +6,7 @@
   /* Alignment */
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-  min-width: 100%;
+  flex: 1;
   height: 100%;
   /* padding-top: 50px; */
 

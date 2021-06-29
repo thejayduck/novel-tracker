@@ -11,7 +11,7 @@ export default function TopNav({ hasModButtons, hasAdminButtons, onAddBook, onSu
         <div className={`${styles.headerWrap}`}>
             <AnimateSharedLayout>
                 <div className={styles.buttonWrap}>
-                    <FooterButton icon="fas fa-plus" text="Home" href="/" />
+                    <FooterButton icon="fas fa-home" text="Home" href="/" />
                     {hasSearch &&
                         <>
                             <FooterButton icon="fas fa-search" onClick={() => setIsSearching(isSearching => !isSearching)} />
@@ -31,8 +31,8 @@ export default function TopNav({ hasModButtons, hasAdminButtons, onAddBook, onSu
                     }
                     {hasAddBook && <FooterButton icon="fas fa-plus" text="Add Book" onClick={onAddBook} />}
                     <FooterButton icon="fas fa-feather-alt" text="Submit Book" href={"/submitBook"} />
-                    {hasModButtons && <FooterButton icon="fas fa-feather-alt" text="Mod Panel" href={"/modPanel"} />}
-                    {hasAdminButtons && <FooterButton icon="fas fa-feather-alt" text="Admin Panel" href={"/adminPanel"} />}
+                    {hasModButtons && <FooterButton icon="fas fa-columns" text="Mod Panel" href={"/modPanel"} />}
+                    {hasAdminButtons && <FooterButton icon="fas fa-columns" text="Admin Panel" href={"/adminPanel"} />}
                 </div>
             </AnimateSharedLayout>
         </div>

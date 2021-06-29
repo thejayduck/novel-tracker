@@ -3,10 +3,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+
   gap: 10px;
   width: 100%;
-  margin-top: 20px;
+  margin-top: 50px;
   margin-bottom: 20px;
 }
 
@@ -29,22 +29,32 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 10px;
 
   padding: 5px;
-  width: 200px;
+  margin: 5px;
+  width: 250px;
+}
+
+.submissionItem .coverWrap {
+  width: 250px;
 }
 
 .submissionItem .cover {
   border-radius: var(--border);
 
   margin: 5px;
-  width: 200px;
+  width: 230px;
 
   object-fit: cover;
 }
 
 .headerWrap {
+  background-color: var(--color-primaryLight);
+  border-radius: var(--border);
+
   display: flex;
+  margin: 5px;
 }
 
 .volumeList {
@@ -56,23 +66,29 @@
   align-items: center;
 
   padding: 5px;
-  gap: 5px;
+  gap: 10px;
 }
 
 .volumeItem {
   background-color: var(--color-primaryLight);
   border-radius: var(--border);
 
-  display: inline;
-
   padding: 5px;
   text-align: center;
+}
+
+.volumeItem .volumeInfo {
+  background-color: var(--color-primaryDark);
+  border-radius: var(--border);
+
+  margin-top: 5px;
+  padding: 5px;
 }
 
 .volumeItem .volumeCover {
   border-radius: var(--border);
 
-  width: 120px;
+  width: 150px;
   object-fit: cover;
 }
 

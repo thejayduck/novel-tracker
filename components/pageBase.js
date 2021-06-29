@@ -22,7 +22,7 @@ export default function PageBase({ children, onDataUpdate, userInfo, setSearchQu
     }
 
     return (
-        <main className={`${styles.main} ${state.darkMode ? styles.dark : styles.light}`} >
+        <>
             <TopNav
                 onAddBook={() => setAddBookPanel(prev => !prev)}
                 onSearch={e => setSearchQuery(e.target.value)}
@@ -31,21 +31,23 @@ export default function PageBase({ children, onDataUpdate, userInfo, setSearchQu
                 hasAddBook={!!userInfo}
                 hasSearch={!!setSearchQuery}
             />
+            <main className={`${styles.main} ${state.darkMode ? styles.dark : styles.light}`} >
 
-            {children}
+                {children}
 
-            <AnimatePresence>
-                {informationPanel && <Information onOutsideClicked={() => setInformationPanel(false)} />}
+                <AnimatePresence>
+                    {informationPanel && <Information onOutsideClicked={() => setInformationPanel(false)} />}
 
-                {addBookPanel && (
-                    <NewBook
-                        onAddClicked={() => onDataUpdate && onDataUpdate()}
-                        onOutsideClicked={() => setAddBookPanel(false)}
-                    />
-                )}
-            </AnimatePresence>
+                    {addBookPanel && (
+                        <NewBook
+                            onAddClicked={() => onDataUpdate && onDataUpdate()}
+                            onOutsideClicked={() => setAddBookPanel(false)}
+                        />
+                    )}
+                </AnimatePresence>
+
+            </main>
             <Footer userInfo={userInfo} setInfoPanel={setInformationPanel} />
-
-        </main>
+        </>
     );
 }

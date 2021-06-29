@@ -64,19 +64,17 @@ export default function LibraryCard({ entry: _entry, onDelete: _onDelete }) {
             <img width="192" height="256" className={styles.cover} src={entry?.cover_url} alt={`${entry.title.split(' ')[0]} Cover`} />
             {!editPanel &&
                 <div className={styles.details}>
+                    <span className={styles.status}>
+                        Current Chapter: {liveChaptersRead}
+                    </span>
+                    <hr />
                     <div>
-                        <span className={styles.status}>
-                            Current Chapter: {liveChaptersRead}
-                        </span>
-                        <hr />
-                        <div>
-                            <div className={styles.cardButtonWrap}>
-                                <CardButton title="Edit Progress" icon="fas fa-feather-alt" onClick={() => setEditPanel(true)} />
-                            </div>
-                            <div className={styles.cardButtonWrap}>
-                                <CardButton title="Increase Progress" icon="fas fa-minus" onClick={() => setChaptersRead(Math.max(0, liveChaptersRead - 1))} />
-                                <CardButton title="Decrease Progress" icon="fas fa-plus" onClick={() => setChaptersRead(liveChaptersRead + 1)} />
-                            </div>
+                        <div className={styles.cardButtonWrap}>
+                            <CardButton title="Edit Progress" icon="fas fa-feather-alt" onClick={() => setEditPanel(true)} />
+                        </div>
+                        <div className={styles.cardButtonWrap}>
+                            <CardButton title="Increase Progress" icon="fas fa-minus" onClick={() => setChaptersRead(Math.max(0, liveChaptersRead - 1))} />
+                            <CardButton title="Decrease Progress" icon="fas fa-plus" onClick={() => setChaptersRead(liveChaptersRead + 1)} />
                         </div>
                     </div>
                 </div>

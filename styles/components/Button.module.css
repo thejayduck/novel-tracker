@@ -9,6 +9,7 @@
   color: white;
   background-color: var(--color-primary);
   border-radius: var(--border);
+  border: 1px solid white;
 
   /* Alignment */
   display: block;
