@@ -96,7 +96,7 @@ function VolumeItem({ volume }) {
                 <p>Volume {volume.volume_number}</p>
                 <img
                     className={styles.volumeCover}
-                    src={volume.cover_url || "https://i.imgur.com/MgqRa43.jpg"}
+                    src={volume.cover_url || "https://media.discordapp.net/attachments/303528930634235904/858799121837457448/emptyBook.png"} /* Temporary Link */
                 />
             </div>
             <div className={styles.volumeDetailsWrap}>

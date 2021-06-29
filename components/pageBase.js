@@ -34,8 +34,9 @@ export default function PageBase({ children, onDataUpdate, userInfo, setSearchQu
 
             {children}
 
-            {informationPanel && <Information />}
             <AnimatePresence>
+                {informationPanel && <Information onOutsideClicked={() => setInformationPanel(false)} />}
+
                 {addBookPanel && (
                     <NewBook
                         onAddClicked={() => onDataUpdate && onDataUpdate()}
@@ -43,7 +44,7 @@ export default function PageBase({ children, onDataUpdate, userInfo, setSearchQu
                     />
                 )}
             </AnimatePresence>
-            <Footer userInfo={userInfo} />
+            <Footer userInfo={userInfo} setInfoPanel={setInformationPanel} />
 
         </main>
     );
