@@ -2,6 +2,14 @@ import { getUserInfo, withUserId } from "./db";
 import { parse } from 'cookie';
 
 export async function serverSide_checkAuth(context, require_login: boolean, require_mod: boolean, require_admin: boolean) {
+    if (!context.req.headers.cookie) {
+        return [{
+            redirect: {
+                permanent: false,
+                destination: '/login',
+            },
+        }, null];
+    }
     const cookies = parse(context.req.headers.cookie);
     const token = cookies.token;
 
