@@ -29,7 +29,11 @@ export default function ModPanel({ user_info }) {
     const alert = useAlert();
     const api = useApi();
 
-    const acceptBook = (pending_book) => api.acceptBook(pending_book.submission_id);
+    const acceptBook = async (pending_book) => {
+        await api.acceptBook(pending_book.submission_id);
+        setPendingBooks(prev => prev.filter(book => book.submission_id != pending_book.submission_id));
+        alert.information("Book has been accepted!");
+    };
     const denyBook = (_pending_book) => alert.error("Unimplemented!");
 
     return (

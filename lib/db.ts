@@ -138,14 +138,69 @@ export async function getBook(book_id: number) {
 }
 
 export async function getPendingBooks() {
-    const result = await pool.query<(BookInfo & { submitted_by: number, submission_id: number })[]>("SELECT * FROM book_submissions");
+    const result = await pool.query<(BookInfo & { submitted_by: number, submission_id: number })>("SELECT * FROM book_submissions");
 
     return result.rows;
 }
 
+export async function getPendingBook(submission_id: number) {
+    const result = await pool.query<(BookInfo & { submitted_by: number, submission_id: number })>("SELECT * FROM book_submissions WHERE submission_id = $1", [submission_id]);
+
+    if (result.rowCount == 0) {
+        throw {
+            message: "Unable to find a book with that submission id",
+            submission_id,
+        };
+    }
+
+    if (result.rowCount > 1) {
+        throw {
+            message: "More than one book associated with this submission id??",
+            submission_id,
+        };
+    }
+
+    return result.rows[0];
+}
+
 export async function acceptBook(submission_id: number) {
-    throw {
-        message: "Unimplemented"
+    // Should be possible to do in 1 sql statement but can't be bothered to do that right now
+    const pending_book = await getPendingBook(submission_id);
+
+    const result = await pool.query(
+        "INSERT INTO books VALUES (DEFAULT, $1, $2, $3, $4, $5, $6, $7, $8, $9, $10)",
+        [
+            pending_book.cover_url,
+            pending_book.title,
+            pending_book.title_romanized,
+            pending_book.title_native,
+            pending_book.description,
+            pending_book.author,
+            pending_book.start_date,
+            pending_book.end_date,
+            pending_book.banner_url,
+            pending_book.release_status
+        ]
+    );
+
+    if (result.rowCount == 0) {
+        throw {
+            message: "Unable to accept book",
+        };
+    }
+
+    const deleteResult = await pool.query("DELETE FROM book_submissions WHERE submission_id = $1", [submission_id]);
+
+    if (deleteResult.rowCount == 0) {
+        throw {
+            message: "Unable to delete book submission",
+        };
+    }
+
+    if (deleteResult.rowCount > 1) {
+        throw {
+            message: "More than one submission associated with this id??",
+        };
     }
 }
 

@@ -54,7 +54,7 @@ export function withInfoHelperGet<T>(required_fields: string[], callback: (token
     });
 }
 
-export function withHelperBarePost<T>(required_fields: string[], callback: (token: string, params: Params) => Promise<T>): (req: NextApiRequest, res: NextApiResponse) => Promise<void> {
+export function withHelperBarePost<T>(required_fields: string[], callback: (token: string, params: any) => Promise<T>): (req: NextApiRequest, res: NextApiResponse) => Promise<void> {
     return async function (req: NextApiRequest, res: NextApiResponse) {
         try {
             const token = req.cookies.token;
@@ -92,7 +92,7 @@ export function withHelperBarePost<T>(required_fields: string[], callback: (toke
     }
 }
 
-export function withInfoHelperPost<T>(required_fields: string[], callback: (token: string, params: Params, user_info: UserInfo) => Promise<T>, user_info_required: boolean = false): (req: NextApiRequest, res: NextApiResponse) => Promise<void> {
+export function withInfoHelperPost<T>(required_fields: string[], callback: (token: string, params: any, user_info: UserInfo) => Promise<T>, user_info_required: boolean = false): (req: NextApiRequest, res: NextApiResponse) => Promise<void> {
     return withHelperBarePost(required_fields, async (token, params) => {
         const user_info = await withUserId(token, getUserInfo);
         if (user_info_required && !user_info) {
