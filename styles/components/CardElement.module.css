@@ -139,7 +139,7 @@
 }
 
 /* RESULT CARD */
-.viewDetails {
+.viewDetailsWrap {
   /* Colors */
   background-color: var(--blur-background);
   backdrop-filter: blur(var(--blur-amount));
@@ -151,12 +151,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  vertical-align: middle;
   text-align: center;
   left: 0;
   bottom: 0;
   width: 100%;
-  height: 40%;
+  height: 90%;
+  transform: translateY(100%);
 
   z-index: 5;
   opacity: 0;
@@ -165,13 +165,20 @@
   transition: 0.2s;
 }
 
-.viewDetails a {
+.buttonWrap {
+  position: absolute;
+  bottom: 10px;
+  width: 90%;
+}
+
+.viewDetails {
+  margin-bottom: 35px;
   font-size: 45px;
   font-weight: bolder;
 }
 
-div:hover > .viewDetails {
-  height: 90%;
+div:hover > .viewDetailsWrap {
+  transform: translateY(0);
   display: flex;
 
   opacity: 1;
