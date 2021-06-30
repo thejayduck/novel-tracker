@@ -8,6 +8,8 @@ import NewBook from './newBook';
 import Information from './information';
 import TopNav from './topNav';
 import Footer from './footer';
+import { useAlert } from './alertWrapper';
+import QuickAlert from './quickAlert';
 
 export default function PageBase({ children, onDataUpdate, userInfo, setSearchQuery }) {
     const [state] = useAppContext();
@@ -21,6 +23,8 @@ export default function PageBase({ children, onDataUpdate, userInfo, setSearchQu
         };
     }
 
+    const alert = useAlert();
+
     return (
         <>
             <TopNav
@@ -32,7 +36,6 @@ export default function PageBase({ children, onDataUpdate, userInfo, setSearchQu
                 hasSearch={!!setSearchQuery}
             />
             <main className={`${styles.main} ${state.darkMode ? styles.dark : styles.light}`} >
-
                 {children}
 
                 <AnimatePresence>
@@ -40,13 +43,20 @@ export default function PageBase({ children, onDataUpdate, userInfo, setSearchQu
 
                     {addBookPanel && (
                         <NewBook
-                            onAddClicked={() => onDataUpdate && onDataUpdate()}
+                            onAddClicked={() => {
+                                if (onDataUpdate) {
+                                    onDataUpdate();
+                                }
+                                alert.information("Added book!");
+                            }}
                             onOutsideClicked={() => setAddBookPanel(false)}
                         />
                     )}
                 </AnimatePresence>
-
             </main>
+            {alert.alerts.map(alert => (
+                <QuickAlert key={alert.id} message={alert.content} severity={alert.severity} />
+            ))}
             <Footer userInfo={userInfo} setInfoPanel={setInformationPanel} />
         </>
     );

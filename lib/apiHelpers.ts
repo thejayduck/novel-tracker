@@ -28,7 +28,7 @@ export function withHelperBareGet<T>(required_fields: string[], callback: (token
             res.status(200).json({ status: "OK", data });
         } catch (reason) {
             console.log(reason);
-            let err: unknown;
+            let err: any;
             if (reason instanceof Error) {
                 err = {
                     name: reason.name,
@@ -37,7 +37,7 @@ export function withHelperBareGet<T>(required_fields: string[], callback: (token
             } else {
                 err = reason;
             }
-            res.status(500).json({ status: "Error", err });
+            res.status(500).json({ status: "Error", ...err });
         }
     }
 }
@@ -78,7 +78,7 @@ export function withHelperBarePost<T>(required_fields: string[], callback: (toke
             res.status(200).json({ status: "OK", data });
         } catch (reason) {
             console.log(reason);
-            let err: unknown;
+            let err: any;
             if (reason instanceof Error) {
                 err = {
                     name: reason.name,
@@ -87,7 +87,7 @@ export function withHelperBarePost<T>(required_fields: string[], callback: (toke
             } else {
                 err = reason;
             }
-            res.status(500).json({ status: "Error", err });
+            res.status(500).json({ status: "Error", ...err });
         }
     }
 }

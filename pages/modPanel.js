@@ -5,6 +5,8 @@ import Button from "../components/ui/button";
 
 import { useEffect, useState } from "react";
 import { serverSide_checkAuth } from "../lib/serverHelpers";
+import { useAlert } from "../components/alertWrapper";
+import { useApi } from "../lib/clientHelpers";
 
 export async function getServerSideProps(context) {
     const [auth, info] = await serverSide_checkAuth(context, true, true, false);
@@ -24,25 +26,11 @@ export default function ModPanel({ user_info }) {
         setPendingBooks(json.data);
     }, []);
 
-    async function acceptBook(pending_book) {
-        const response = await fetch("/api/mod/accept_book", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                submission_id: pending_book.submission_id,
-            }),
-        });
-        const json = await response.json();
-        if (json.status != "OK") {
-            throw json;
-        }
-    }
+    const alert = useAlert();
+    const api = useApi();
 
-    async function denyBook(pending_book) {
-
-    }
+    const acceptBook = (pending_book) => api.acceptBook(pending_book.submission_id);
+    const denyBook = (_pending_book) => alert.error("Unimplemented!");
 
     return (
         <PageBase userInfo={user_info}>

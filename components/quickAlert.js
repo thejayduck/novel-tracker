@@ -1,11 +1,15 @@
 import styles from '../styles/components/QuickAlert.module.css'
-import { motion } from 'framer-motion';
 
-export default function QuickAlert({ message, icon }) {
+const alertIcon = {
+    'information': "fas fa-check",
+    'error': "fas fa-check",
+};
+
+export default function QuickAlert({ message, icon, severity }) {
 
     return (
         <div className={styles.container}>
-            <i className={icon} />
+            <i className={alertIcon[severity]} />
             <a className={styles.message} title={message}>{message}</a>
         </div>
     );

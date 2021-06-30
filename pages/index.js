@@ -75,9 +75,6 @@ export default function Home({ user_info }) {
           ))}
         </CardListWrapper>
       </AnimateSharedLayout>
-
-      {/* <QuickAlert message="A New Book Has Been Added!" icon="fas fa-check" /> */}
-
     </PageBase>
   );
 }
