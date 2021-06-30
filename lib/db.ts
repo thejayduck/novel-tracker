@@ -143,7 +143,7 @@ export async function getPendingBooks() {
     return result.rows;
 }
 
-export async function acceptBook(book_id: number) {
+export async function acceptBook(submission_id: number) {
     throw {
         message: "Unimplemented"
     }

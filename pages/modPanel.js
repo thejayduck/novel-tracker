@@ -19,18 +19,37 @@ export async function getServerSideProps(context) {
 export default function ModPanel({ user_info }) {
     const [pendingBooks, setPendingBooks] = useState([]);
     useEffect(async () => {
-        const response = await fetch("/api/me/get_pending_books");
+        const response = await fetch("/api/mod/get_pending_books");
         const json = await response.json();
         setPendingBooks(json.data);
     }, []);
+
+    async function acceptBook(pending_book) {
+        const response = await fetch("/api/mod/accept_book", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                submission_id: pending_book.submission_id,
+            }),
+        });
+        const json = await response.json();
+        if (json.status != "OK") {
+            throw json;
+        }
+    }
+
+    async function denyBook(pending_book) {
+
+    }
 
     return (
         <PageBase userInfo={user_info}>
             <div className={styles.pageContent}>
                 <div className={styles.submissionList}>
-                    {/* <SubmissionItem /> */}
                     {pendingBooks.map(pending_book => (
-                        <SubmissionItem pending_book={pending_book} />
+                        <SubmissionItem pending_book={pending_book} acceptBook={acceptBook} denyBook={denyBook} />
                     ))}
                 </div>
             </div>
@@ -38,7 +57,7 @@ export default function ModPanel({ user_info }) {
     )
 }
 
-function SubmissionItem({ pending_book }) {
+function SubmissionItem({ pending_book, acceptBook, denyBook }) {
     function convertDate(date) {
         if (date) {
             return new Date(date).toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' })
@@ -73,8 +92,8 @@ function SubmissionItem({ pending_book }) {
                 <VolumeItem />
             </div>
             <div className={styles.buttonWrap}>
-                <Button icon="fas fa-check" text="Accept" onClick={() => window.alert("Accepted Book Submission")} />
-                <Button icon="fas fa-times" text="Dismiss" onClick={() => window.alert("Dismissed Book Submission")} />
+                <Button icon="fas fa-check" text="Accept" onClick={() => acceptBook(pending_book)} />
+                <Button icon="fas fa-times" text="Dismiss" onClick={() => denyBook(pending_book)} />
             </div>
         </div>
     );

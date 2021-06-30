@@ -97,6 +97,10 @@ ul {
 }
 
 @media screen and (min-width: 720px) {
+  [tooltip]::after {
+    transition: 25ms;
+  }
+
   [tooltip]:not(:hover)::after {
     content: "?";
 
