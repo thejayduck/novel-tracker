@@ -80,14 +80,15 @@ export default function SubmitBook({ user_info, existing_book }) {
     return (
         <PageBase userInfo={user_info}>
             <div className={styles.pageContent}>
-                <h2 className={styles.containerTitle} >Submit Book <i className="fas fa-feather-alt" /></h2>
+                <h2 className={styles.containerTitle} >Submit Book <i className="fas fa-fw fa-feather-alt" /></h2>
 
                 <SubmitBookContainer title="Titles">
                     <InputField
-                        ref={detailRefs.title_native}
-                        title="Title Native*"
+                        ref={detailRefs.title}
+                        title="Title (Licensed)"
                         inputType="text"
-                        placeHolder="Native Title"
+                        placeHolder="Licensed English Title"
+                        toolTip="Licensed English Title (Fan Translated Titles are NOT Allowed)"
                     />
                     <InputField
                         ref={detailRefs.title_romanized}
@@ -96,11 +97,10 @@ export default function SubmitBook({ user_info, existing_book }) {
                         placeHolder="Romanized Title"
                     />
                     <InputField
-                        ref={detailRefs.title}
-                        title="Title (Licensed)"
+                        ref={detailRefs.title_native}
+                        title="Title Native*"
                         inputType="text"
-                        placeHolder="Licensed English Title"
-                        toolTip="Licensed English Title (Fan Translated Titles are NOT Allowed)"
+                        placeHolder="Native Title"
                     />
                 </SubmitBookContainer>
 
@@ -145,7 +145,7 @@ export default function SubmitBook({ user_info, existing_book }) {
                 </SubmitBookContainer>
                 <br />
                 <div>
-                    <Button icon="fas fa-cloud-upload-alt" text="Submit Book" onClick={onSubmit} />
+                    <Button icon="fas fa-fw fa-cloud-upload-alt" text="Submit Book" onClick={onSubmit} />
                 </div>
                 <br />
             </div>

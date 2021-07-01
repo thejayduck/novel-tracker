@@ -64,7 +64,7 @@ export default function BookDetails({ book, onExit, onAddClicked, onOutsideClick
                     <br />
                     <Button text="Edit" href={`/submitBook?id=${book.book_id}`} />
                     <br />
-                    <Button text="More Info" href={`/books/${book.book_id}`} />
+                    <Button text="More" href={`/books/${book.book_id}`} />
                     <br />
                     <Button text="Close" onClick={() => onExit()} />
                 </div>

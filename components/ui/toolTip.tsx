@@ -13,7 +13,7 @@ export default function ToolTip({ children, toolTip }: ToolTipProps) {
         <div className={styles.toolTip}>
             <div>
                 {child}
-                <i className="fas fa-question" />
+                <i className="fas fa-fw fa-question" />
             </div>
             <span className={styles.toolTipText}>{toolTip}</span>
         </div>

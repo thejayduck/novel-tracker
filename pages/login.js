@@ -52,37 +52,37 @@ export default function Login() {
                             >
                                 <FeatureItem
                                     title="Automatic Chapter-Volume Conversion"
-                                    icon="fas fa-calculator"
+                                    icon="fas fa-fw fa-calculator"
                                 >
                                     Keep track of your novels easier with automatic chapter-volume conversion.
                                 </FeatureItem>
                                 <FeatureItem
                                     title="Mobile-App Capable"
-                                    icon="fas fa-mobile-alt"
+                                    icon="fas fa-fw fa-mobile-alt"
                                 >
                                     Our website is mobile-app capable, offering you a smooth and elegant experience.
                                 </FeatureItem>
                                 <FeatureItem
                                     title="Account Syncing"
-                                    icon="fas fa-sync-alt"
+                                    icon="fas fa-fw fa-sync-alt"
                                 >
                                     Bring your novel progress everywhere you go.
                                 </FeatureItem>
                                 <FeatureItem
                                     title="Socialize"
-                                    icon="fas fa-user"
+                                    icon="fas fa-fw fa-user"
                                 >
                                     Follow your friends progress.
                                 </FeatureItem>
                                 <FeatureItem
                                     title="Community Managed"
-                                    icon="fas fa-user-friends"
+                                    icon="fas fa-fw fa-user-friends"
                                 >
                                     Our library grows with every moderators contribution in the community.
                                 </FeatureItem>
                             </motion.div>
                             <a href={url} className={`${styles.google} ${styles.btn}`}>
-                                <i className="fab fa-google"> </i> Login with Google
+                                <i className="fab fa-fw fa-google"> </i> Login with Google
                             </a>
                         </div>
 

@@ -64,7 +64,7 @@ export default function SetupAccount() {
                 <div className={styles.content}>
 
                     <InputField ref={usernameRef} inputType="text" placeHolder="(Max 32 Characters)" maxLength="32" />
-                    <Button title="Complete Account!" icon="fas fa-user-alt" onClick={onCompleteClick} />
+                    <Button title="Complete Account!" icon="fas fa-fw fa-user-alt" onClick={onCompleteClick} />
                 </div>
             </motion.div>
         </PageBase>

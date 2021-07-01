@@ -54,6 +54,8 @@ export default function PageBase({ children, onDataUpdate, userInfo, setSearchQu
                     )}
                 </AnimatePresence>
             </main>
+            {/* <QuickAlert key="test" message="Test" severity={`information`} /> */}
+
             {alert.alerts.map(alert => (
                 <QuickAlert key={alert.id} message={alert.content} severity={alert.severity} />
             ))}

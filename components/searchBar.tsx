@@ -8,7 +8,7 @@ export default function SearchBar({ onInput }: SearchBarProps) {
     return (
         <div className={styles.searchContainer}>
             <div className={styles.searchBar}>
-                <i className={`${styles.icon} fas fa-search ${styles.faSearch}`} />
+                <i className={`${styles.icon} fas fa-fw fa-search ${styles.faSearch}`} />
                 <input
                     type="text"
                     placeholder="Search..."

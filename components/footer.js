@@ -10,16 +10,16 @@ export default function Footer({ userInfo, setInfoPanel }) {
             className={`${styles.footer} ${state.darkMode ? styles.dark : styles.light}`}
         >
             <div>
-                {userInfo && <FooterButton className={styles.footerButton} title="Sign Out" text={userInfo.username} icon="fas fa-sign-out-alt" href="/api/me/logout" />}
+                {userInfo && <FooterButton className={styles.footerButton} title="Sign Out" text={userInfo.username} icon="fas fa-fw fa-sign-out-alt" href="/api/me/logout" />}
 
                 <FooterButton
                     className={styles.footerButton}
                     title="Toggle Theme"
-                    icon={`${state.darkMode ? `fas fa-sun` : `fas fa-moon`}`}
+                    icon={`${state.darkMode ? `fas fa-fw fa-sun` : `fas fa-fw fa-moon`}`}
                     onClick={() => setState(state => ({ ...state, darkMode: !state.darkMode }))}
                 />
 
-                <FooterButton className={styles.footerButton} title="Information" icon="fas fa-info-circle" onClick={() => setInfoPanel(true)} />
+                <FooterButton className={styles.footerButton} title="Information" icon="fas fa-fw fa-info-circle" onClick={() => setInfoPanel(true)} />
             </div>
             {/* <div>
                 <p>Books: {data.length}</p>

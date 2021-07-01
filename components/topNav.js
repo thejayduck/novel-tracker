@@ -11,10 +11,10 @@ export default function TopNav({ hasModButtons, hasAdminButtons, onAddBook, onSu
         <div className={`${styles.headerWrap}`}>
             <AnimateSharedLayout>
                 <div className={styles.buttonWrap}>
-                    <FooterButton icon="fas fa-home" text="Home" href="/" />
+                    <FooterButton icon="fas fa-fw fa-home" text="Home" href="/" />
                     {hasSearch &&
                         <>
-                            <FooterButton icon="fas fa-search" onClick={() => setIsSearching(isSearching => !isSearching)} />
+                            <FooterButton icon="fas fa-fw fa-search" onClick={() => setIsSearching(isSearching => !isSearching)} />
                             <AnimatePresence>
                                 {isSearching &&
                                     <motion.div
@@ -29,10 +29,10 @@ export default function TopNav({ hasModButtons, hasAdminButtons, onAddBook, onSu
                             </AnimatePresence>
                         </>
                     }
-                    {hasAddBook && <FooterButton icon="fas fa-plus" text="Add Book" onClick={onAddBook} />}
-                    <FooterButton icon="fas fa-feather-alt" text="Submit Book" href={"/submitBook"} />
-                    {hasModButtons && <FooterButton icon="fas fa-columns" text="Mod Panel" href={"/modPanel"} />}
-                    {hasAdminButtons && <FooterButton icon="fas fa-columns" text="Admin Panel" href={"/adminPanel"} />}
+                    {hasAddBook && <FooterButton icon="fas fa-fw fa-plus" text="Add Book" onClick={onAddBook} />}
+                    <FooterButton icon="fas fa-fw fa-feather-alt" text="Submit Book" href={"/submitBook"} />
+                    {hasModButtons && <FooterButton icon="fas fa-fw fa-columns" text="Mod Panel" href={"/modPanel"} />}
+                    {hasAdminButtons && <FooterButton icon="fas fa-fw fa-columns" text="Admin Panel" href={"/adminPanel"} />}
                 </div>
             </AnimateSharedLayout>
         </div>

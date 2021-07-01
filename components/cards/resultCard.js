@@ -15,7 +15,7 @@ export default function ResultCard({ entry, onClick }) {
                         View Details
                     </a>
                     <div className={styles.buttonWrap}>
-                        <Button text="Add Book" icon="fas fa-plus" onClick={(e) => {
+                        <Button text="Add Book" icon="fas fa-fw fa-plus" onClick={(e) => {
                             window.alert("Unimplemented");
                             e.stopPropagation();
                         }} />

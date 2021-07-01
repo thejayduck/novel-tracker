@@ -84,8 +84,8 @@ function SubmissionItem({ pending_book, acceptBook, denyBook }) {
                 <VolumeItem />
             </div>
             <div className={styles.buttonWrap}>
-                <Button icon="fas fa-check" text="Accept" onClick={() => acceptBook(pending_book)} />
-                <Button icon="fas fa-times" text="Dismiss" onClick={() => denyBook(pending_book)} />
+                <Button icon="fas fa-fw fa-check" text="Accept" onClick={() => acceptBook(pending_book)} />
+                <Button icon="fas fa-fw fa-times" text="Dismiss" onClick={() => denyBook(pending_book)} />
             </div>
         </div>
     );

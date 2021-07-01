@@ -1,11 +1,11 @@
 import styles from '../styles/components/QuickAlert.module.css'
 
 const alertIcon = {
-    'information': "fas fa-check",
-    'error': "fas fa-check",
+    'information': "fas fa-fw fa-check",
+    'error': "fas fa-fw fa-exclamation",
 };
 
-export default function QuickAlert({ message, icon, severity }) {
+export default function QuickAlert({ message, severity }) {
 
     return (
         <div className={styles.container}>
