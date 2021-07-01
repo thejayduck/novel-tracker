@@ -20,6 +20,7 @@
 }
 
 .submissionItem {
+  width: 100%;
   color: white;
   background-color: var(--color-primary);
   border-radius: var(--border);
