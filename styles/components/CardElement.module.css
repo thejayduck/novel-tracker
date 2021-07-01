@@ -105,6 +105,10 @@
   opacity: 1;
 }
 
+.cardButtonContainer {
+  height: 100%;
+}
+
 .cardButtonWrap {
   margin-top: auto;
   position: sticky;

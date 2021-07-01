@@ -68,11 +68,8 @@ export default function LibraryCard({ entry: _entry, onDelete: _onDelete }) {
                         Current Chapter: {liveChaptersRead}
                     </span>
                     <hr />
-                    <div>
-                        <div className={styles.cardButtonWrap}>
-                            <CardButton title="Edit Progress" icon="fas fa-feather-alt" onClick={() => setEditPanel(true)} />
-                            {/* <CardButton title="More Info" icon="fas fa-fw fa-info" href={`/books/${entry.book_id}`} /> */}
-                        </div>
+                    <div className={styles.cardButtonContainer}>
+                        <CardButton title="Edit Progress" icon="fas fa-feather-alt" onClick={() => setEditPanel(true)} />
                         <div className={styles.cardButtonWrap}>
                             <CardButton title="Increase Progress" icon="fas fa-minus" onClick={() => setChaptersRead(Math.max(0, liveChaptersRead - 1))} />
                             <CardButton title="Decrease Progress" icon="fas fa-plus" onClick={() => setChaptersRead(liveChaptersRead + 1)} />
