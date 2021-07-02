@@ -2,7 +2,6 @@ import styles from '../styles/NewBook.module.css'
 
 import SearchBar from './searchBar'
 // import Button from './ui/button'
-import { InputField } from './ui/inputField'
 import { useState, useEffect } from 'react'
 import OverlayMenu from './overlayMenu'
 import { useAppContext } from './appWrapper'
@@ -12,7 +11,7 @@ import CardListWrapper from './cards/cardListWrapper'
 import ResultCard from './cards/resultCard'
 import { useDelayedState } from '../lib/clientHelpers';
 
-export default function NewBook({ onAddClicked, onOutsideClicked }) {
+export default function NewBook({ onAddClicked, onOutsideClicked, userInfo }) {
   const [state] = useAppContext();
 
   const [userInput, setUserInput] = useDelayedState("", 250);
@@ -50,7 +49,11 @@ export default function NewBook({ onAddClicked, onOutsideClicked }) {
         <AnimateSharedLayout>
           <CardListWrapper>
             {searchResults.map(entry => (
-              <ResultCard key={entry.book_id} entry={entry} onAddClick={onAddClicked} onClick={entry => onDetailsClick(entry)} />
+              <ResultCard userInfo={userInfo}
+                key={entry.book_id}
+                entry={entry}
+                onAddClick={onAddClicked}
+                onClick={entry => onDetailsClick(entry)} />
             ))}
           </CardListWrapper>
         </AnimateSharedLayout>
@@ -59,6 +62,7 @@ export default function NewBook({ onAddClicked, onOutsideClicked }) {
       <AnimatePresence>
         {detailedBook && (
           <BookDetails
+            userInfo={userInfo}
             book={detailedBook}
             onExit={() => setDetailedBook(null)}
             onOutsideClicked={() => setDetailedBook(null)}

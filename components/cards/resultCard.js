@@ -2,7 +2,7 @@ import styles from '../../styles/components/CardElement.module.css'
 import CardElement from './cardElement';
 import Button from '../ui/button';
 
-export default function ResultCard({ entry, onClick }) {
+export default function ResultCard({ entry, onClick, userInfo }) {
     return (
         <CardElement entry={entry}>
             <img className={styles.cover} src={entry?.coverUrl} />
@@ -13,12 +13,14 @@ export default function ResultCard({ entry, onClick }) {
                 <a className={styles.viewDetails} title="View Details">
                     View Details
                 </a>
-                <div className={styles.buttonWrap}>
-                    <Button text="Add Book" icon="fas fa-fw fa-plus" onClick={(e) => {
-                        window.alert("Unimplemented");
-                        e.stopPropagation();
-                    }} />
-                </div>
+                {userInfo &&
+                    <div className={styles.buttonWrap}>
+                        <Button text="Add Book" icon="fas fa-fw fa-plus" onClick={(e) => {
+                            window.alert("Unimplemented");
+                            e.stopPropagation();
+                        }} />
+                    </div>
+                }
             </div>
         </CardElement>
     );

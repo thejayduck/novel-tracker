@@ -32,7 +32,6 @@ export default function PageBase({ children, onDataUpdate, userInfo, setSearchQu
                 onSearch={e => setSearchQuery(e.target.value)}
                 hasModButtons={!!userInfo && userInfo.moderation_level >= 2}
                 hasAdminButtons={!!userInfo && userInfo.moderation_level >= 3}
-                hasAddBook={!!userInfo}
                 hasSearch={!!setSearchQuery}
             />
             <main className={`${styles.main} ${state.darkMode ? styles.dark : styles.light}`} >
@@ -50,6 +49,7 @@ export default function PageBase({ children, onDataUpdate, userInfo, setSearchQu
                                 alert.information("Added book!");
                             }}
                             onOutsideClicked={() => setAddBookPanel(false)}
+                            userInfo={userInfo}
                         />
                     )}
                 </AnimatePresence>

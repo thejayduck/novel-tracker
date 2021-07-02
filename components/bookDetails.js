@@ -4,7 +4,7 @@ import Button from './ui/button';
 
 import { useAppContext } from './appWrapper';
 
-export default function BookDetails({ book, onExit, onAddClicked, onOutsideClicked }) {
+export default function BookDetails({ book, onExit, onAddClicked, onOutsideClicked, userInfo }) {
     const [state] = useAppContext();
 
     async function addBook() {
@@ -60,10 +60,14 @@ export default function BookDetails({ book, onExit, onAddClicked, onOutsideClick
                     </div>
                 </div>
                 <div className={styles.buttonWrap}>
-                    <Button text="Add" onClick={() => addBook()} />
-                    <br />
-                    <Button text="Edit" href={`/submitBook?id=${book.book_id}`} />
-                    <br />
+                    {userInfo &&
+                        <>
+                            <Button text="Add" onClick={() => addBook()} />
+                            <br />
+                            <Button text="Edit" href={`/submitBook?id=${book.book_id}`} />
+                            <br />
+                        </>
+                    }
                     <Button text="More" href={`/books/${book.book_id}`} />
                     <br />
                     <Button text="Close" onClick={() => onExit()} />

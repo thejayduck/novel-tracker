@@ -4,7 +4,7 @@ import { FooterButton } from './ui/button';
 import { useState } from 'react';
 import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion';
 
-export default function TopNav({ hasModButtons, hasAdminButtons, onAddBook, onSubmitBook, onSearch, hasSearch, hasAddBook }) {
+export default function TopNav({ hasModButtons, hasAdminButtons, onAddBook, onSearch, hasSearch, hasSubmit }) {
     const [isSearching, setIsSearching] = useState(false);
 
     return (
@@ -29,8 +29,8 @@ export default function TopNav({ hasModButtons, hasAdminButtons, onAddBook, onSu
                             </AnimatePresence>
                         </>
                     }
-                    {hasAddBook && <FooterButton icon="fas fa-fw fa-book-open" text="Browse Books" onClick={onAddBook} />}
-                    <FooterButton icon="fas fa-fw fa-feather-alt" text="Submit Book" href={"/submitBook"} />
+                    <FooterButton icon="fas fa-fw fa-book-open" text="Browse Books" onClick={onAddBook} />
+                    {hasSubmit && <FooterButton icon="fas fa-fw fa-feather-alt" text="Submit Book" href={"/submitBook"} />}
                     {hasModButtons && <FooterButton icon="fas fa-fw fa-columns" text="Mod Panel" href={"/modPanel"} />}
                     {hasAdminButtons && <FooterButton icon="fas fa-fw fa-columns" text="Admin Panel" href={"/adminPanel"} />}
                 </div>
