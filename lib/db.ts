@@ -204,6 +204,22 @@ export async function acceptBook(submission_id: number) {
     }
 }
 
+export async function denyBook(submission_id: number) {
+    const result = await pool.query("DELETE FROM book_submissions WHERE submission_id = $1", [submission_id]);
+
+    if (result.rowCount == 0) {
+        throw {
+            message: "Unable to delete book submission",
+        };
+    }
+
+    if (result.rowCount > 1) {
+        throw {
+            message: "More than one submission associated with this id??",
+        };
+    }
+}
+
 export async function getBookWithVolumes(book_id: number): Promise<SerializableBookInfo & { volumes: BookVolume[] }> {
     const book_info = await getBook(book_id);
     const result = await pool.query<BookVolume>("SELECT * FROM volumes WHERE book_id = $1::integer ORDER BY volume_number", [book_id]);
