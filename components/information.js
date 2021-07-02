@@ -37,8 +37,8 @@ export default function Information({ onOutsideClicked }) {
                 <h1> Developers </h1>
                 <br />
                 <div className={styles.buttonWrap}>
-                    <Button icon="fab fa-fw fa-github" href="https://github.com/thejayduck" text="TheJayDuck" />
-                    <Button icon="fab fa-fw fa-github" href="https://github.com/nobbele" text="nobbele" />
+                    <Button icon="fab fa-fw fa-github" href="https://github.com/thejayduck" text="TheJayDuck" newTab={true} />
+                    <Button icon="fab fa-fw fa-github" href="https://github.com/nobbele" text="nobbele" newTab={true} />
                 </div>
                 <br />
             </div>

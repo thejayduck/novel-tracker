@@ -19,7 +19,7 @@ export default function Footer({ userInfo, setInfoPanel }) {
                 />
 
                 <FooterButton title="Information" icon="fas fa-fw fa-info-circle" onClick={() => setInfoPanel(true)} />
-                <FooterButton title="Follow the Development" icon="fab fa-fw fa-trello" href="https://trello.com/b/dPv92vJW/" />
+                <FooterButton title="Follow the Development" icon="fab fa-fw fa-trello" href="https://trello.com/b/dPv92vJW/" newTab={true} />
 
             </div>
             {/* <div>
