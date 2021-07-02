@@ -1,16 +1,12 @@
-**NOTE: Current build is barebones due to the custom database undergoing development.**
 
-## Novel Tracker
+# <img alt="logo" src="public/book.svg" width=64 align="center" /> Novel Tracker
 
-<img src="public/book.svg" width=128 />
-
-### Features
+## Features
 * Submit Books
 * Easily Track Your Favorite Novels
-* [TODO]
 
-### Screenshots
-[TODO]
+## Screenshots
+<img alt="mobile mockup" src="public/mockup_MOBILE.png" width=128 /> <img alt="pc mockup" src="public/mockup_PC.png" width=256 />
 
 ## Links
 [Old Version](https://lightnoveltracker-old.herokuapp.com/) /
