@@ -45,7 +45,7 @@ export default function ModPanel({ user_info }) {
             <div className={styles.pageContent}>
                 <div className={styles.submissionList}>
                     {pendingBooks.map(pending_book => (
-                        <SubmissionItem pending_book={pending_book} acceptBook={acceptBook} denyBook={denyBook} />
+                        <SubmissionItem key={pending_book.submission_id} pending_book={pending_book} acceptBook={acceptBook} denyBook={denyBook} />
                     ))}
                 </div>
             </div>
