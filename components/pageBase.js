@@ -33,6 +33,7 @@ export default function PageBase({ children, onDataUpdate, userInfo, setSearchQu
                 hasModButtons={!!userInfo && userInfo.moderation_level >= 2}
                 hasAdminButtons={!!userInfo && userInfo.moderation_level >= 3}
                 hasSearch={!!setSearchQuery}
+                hasSubmit={!!userInfo}
             />
             <main className={`${styles.main} ${state.darkMode ? styles.dark : styles.light}`} >
                 {children}
