@@ -22,6 +22,10 @@
 }
 
 .tutorialWrap {
+  display: none;
+}
+
+.tutorialContainer {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
@@ -56,9 +60,9 @@
 }
 
 @media screen and (max-width: 720px) {
-  /* .tutorialWrap {
-    display: flex;
-  } */
+  .tutorialWrap {
+    display: initial;
+  }
   .container {
     width: 100%;
   }
