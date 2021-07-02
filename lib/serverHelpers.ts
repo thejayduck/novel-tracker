@@ -1,6 +1,19 @@
 import { getUserInfo, withUserId } from "./db";
 import { parse } from 'cookie';
 
+async function getInfo(cookie) {
+    if (!cookie) {
+        return null;
+    }
+    const cookies = parse(cookie);
+    const token = cookies.token;
+    if (!token) {
+        return null;
+    }
+
+    return await withUserId(token, async (user_id) => await getUserInfo(user_id));
+}
+
 export async function serverSide_checkAuth(context, require_login: boolean, require_mod: boolean, require_admin: boolean) {
     // Assumptions about requirements
     if (require_admin) {
@@ -10,45 +23,40 @@ export async function serverSide_checkAuth(context, require_login: boolean, requ
         require_login = true;
     }
 
-    let info = null;
-    if (require_login) {
-        if (!context.req.headers.cookie) {
-            return [{
-                redirect: {
-                    permanent: false,
-                    destination: '/login',
-                },
-            }, null];
-        }
-        const cookies = parse(context.req.headers.cookie);
-        const token = cookies.token;
+    if (require_login && !context.req.headers.cookie) {
+        return [{
+            redirect: {
+                permanent: false,
+                destination: '/login',
+            },
+        }, null];
+    }
 
-        info = await withUserId(token, async (user_id) => await getUserInfo(user_id));
+    const info = await getInfo(context.req.headers.cookie);
 
-        if (!info) {
-            return [{
-                redirect: {
-                    permanent: false,
-                    destination: '/login',
-                },
-            }, null];
-        }
-        if (require_mod && info.moderation_level < 2) {
-            return [{
-                redirect: {
-                    permanent: false,
-                    destination: '/error?reason=mod_only',
-                },
-            }, null];
-        }
-        if (require_admin && info.moderation_level < 3) {
-            return [{
-                redirect: {
-                    permanent: false,
-                    destination: '/error?reason=admin_only',
-                },
-            }, null];
-        }
+    if (require_login && !info) {
+        return [{
+            redirect: {
+                permanent: false,
+                destination: '/login',
+            },
+        }, null];
+    }
+    if (require_mod && info.moderation_level < 2) {
+        return [{
+            redirect: {
+                permanent: false,
+                destination: '/error?reason=mod_only',
+            },
+        }, null];
+    }
+    if (require_admin && info.moderation_level < 3) {
+        return [{
+            redirect: {
+                permanent: false,
+                destination: '/error?reason=admin_only',
+            },
+        }, null];
     }
 
     return [null, info];
