@@ -16,6 +16,22 @@ export default function Information({ onOutsideClicked }) {
                 <br />
                 <p>Hello and Thank You for Using 'Novel Tracker'</p>
                 <br />
+                <h1>How to Add 'Novel Tracker' to Your Homepage</h1>
+                <div className={styles.tutorialWrap}>
+                    <div className={styles.tutorial}>
+                        <h2>Edge</h2>
+                        <img src="/tutorial_EDGE.gif" />
+                    </div>
+                    <div className={styles.tutorial}>
+                        <h2>Firefox</h2>
+                        <img src="/tutorial_FIREFOX.gif" />
+                    </div>
+                    <div className={styles.tutorial}>
+                        <h2>Chrome</h2>
+                        <img src="/tutorial_CHROME.gif" />
+                    </div>
+                </div>
+                <br />
                 <h1> Developers </h1>
                 <br />
                 <div className={styles.buttonWrap}>

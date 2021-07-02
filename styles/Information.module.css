@@ -21,6 +21,25 @@
   height: 128px;
 }
 
+.tutorialWrap {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.tutorial {
+  border: 2px solid;
+  border-radius: var(--border);
+
+  display: flex;
+  flex-flow: column;
+}
+.tutorial img {
+  width: 200px;
+}
+
 .main {
   display: flex;
   flex-flow: column;
@@ -37,6 +56,9 @@
 }
 
 @media screen and (max-width: 720px) {
+  /* .tutorialWrap {
+    display: flex;
+  } */
   .container {
     width: 100%;
   }

@@ -33,7 +33,7 @@ export default function BookDetails({ book, onExit, onAddClicked, onOutsideClick
             >
                 <div>
                     <div className={styles.headerWrap}>
-                        <img className={styles.banner} src={book.banner_url} />
+                        <img className={styles.banner} src={book.banner_url ? book.banner_url : book.cover_url} />
                         <div className={styles.header}>
                             <div className={styles.coverWrapper}>
                                 <img className={styles.cover} src={book.cover_url} />

@@ -19,7 +19,7 @@ export default function Error({ message }) {
     return (
         <PageBase>
             <div>
-                <h1 style={{ textTransform: "capitalize" }}>{message}</h1>
+                <h1>{message}</h1>
                 <Button title="Go Back" onClick={() => location.href = "/"} />
             </div>
         </PageBase>
