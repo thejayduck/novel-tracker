@@ -27,7 +27,7 @@
 
 .tutorialContainer {
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: column wrap;
   justify-content: center;
   align-items: center;
   gap: 10px;
@@ -39,9 +39,6 @@
 
   display: flex;
   flex-flow: column;
-}
-.tutorial img {
-  width: 200px;
 }
 
 .main {

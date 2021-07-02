@@ -20,16 +20,16 @@ export default function Information({ onOutsideClicked }) {
                     <h1>How to Add 'Novel Tracker' to Your Homepage</h1>
                     <div className={styles.tutorialContainer}>
                         <div className={styles.tutorial}>
+                            <h2>Chrome</h2>
+                            <video src="/tutorial_CHROME.mp4" width="200px" autoPlay={true} loop={true} />
+                        </div>
+                        <div className={styles.tutorial}>
                             <h2>Edge</h2>
-                            <img src="/tutorial_EDGE.gif" />
+                            <video src="/tutorial_EDGE.mp4" width="200px" autoPlay={true} loop={true} />
                         </div>
                         <div className={styles.tutorial}>
                             <h2>Firefox</h2>
-                            <img src="/tutorial_FIREFOX.gif" />
-                        </div>
-                        <div className={styles.tutorial}>
-                            <h2>Chrome</h2>
-                            <img src="/tutorial_CHROME.gif" />
+                            <video src="/tutorial_FIREFOX.mp4" width="200px" autoPlay={true} loop={true} />
                         </div>
                     </div>
                     <br />
