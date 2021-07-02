@@ -64,7 +64,7 @@ h3,
 h4,
 h5,
 h6 {
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
   margin: 0;
   font-size: var(--large-font);
   font-weight: 500;

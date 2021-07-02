@@ -10,16 +10,17 @@ export default function Footer({ userInfo, setInfoPanel }) {
             className={`${styles.footer} ${state.darkMode ? styles.dark : styles.light}`}
         >
             <div>
-                {userInfo && <FooterButton className={styles.footerButton} title="Sign Out" text={userInfo.username} icon="fas fa-fw fa-sign-out-alt" href="/api/me/logout" />}
+                {userInfo && <FooterButton title="Sign Out" text={userInfo.username} icon="fas fa-fw fa-sign-out-alt" href="/api/me/logout" />}
 
                 <FooterButton
-                    className={styles.footerButton}
                     title="Toggle Theme"
                     icon={`${state.darkMode ? `fas fa-fw fa-sun` : `fas fa-fw fa-moon`}`}
                     onClick={() => setState(state => ({ ...state, darkMode: !state.darkMode }))}
                 />
 
-                <FooterButton className={styles.footerButton} title="Information" icon="fas fa-fw fa-info-circle" onClick={() => setInfoPanel(true)} />
+                <FooterButton title="Information" icon="fas fa-fw fa-info-circle" onClick={() => setInfoPanel(true)} />
+                <FooterButton title="Follow the Development" icon="fab fa-fw fa-trello" href="https://trello.com/b/dPv92vJW/" />
+
             </div>
             {/* <div>
                 <p>Books: {data.length}</p>

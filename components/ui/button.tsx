@@ -30,6 +30,7 @@ export function FooterButton({ title, text, icon, onClick, href }: ButtonProps) 
             className={styles.footerButton}
             onClick={onClick}
             href={href}
+            target="_blank"
             tabIndex={0}
         ><i className={`${icon} ${text && styles.icon}`} />{text}</a>
     );

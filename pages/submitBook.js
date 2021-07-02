@@ -54,6 +54,7 @@ export default function SubmitBook({ user_info, existing_book }) {
     const router = useRouter();
 
     async function onSubmit() {
+
         const book_details = Object.fromEntries(Object.entries(detailRefs).map(([k, v]) => {
             const val = v.current.value;
             return [k, val === "" ? null : val];
