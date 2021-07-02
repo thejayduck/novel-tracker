@@ -8,8 +8,10 @@ export function withHelperBareGet<T>(required_fields: string[], callback: (token
     return async function (req: NextApiRequest, res: NextApiResponse) {
         try {
             const token = req.cookies.token;
-            if (!isToken(token)) {
-                throw "Invalid Token";
+            if (token && !isToken(token)) {
+                throw {
+                    message: "Invalid Token"
+                };
             }
 
             const params = req.query as Params;
@@ -58,8 +60,10 @@ export function withHelperBarePost<T>(required_fields: string[], callback: (toke
     return async function (req: NextApiRequest, res: NextApiResponse) {
         try {
             const token = req.cookies.token;
-            if (!isToken(token)) {
-                throw "Invalid Token";
+            if (token && !isToken(token)) {
+                throw {
+                    message: "Invalid Token"
+                };
             }
 
             const params = req.body;
