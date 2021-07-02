@@ -34,7 +34,11 @@ export default function ModPanel({ user_info }) {
         setPendingBooks(prev => prev.filter(book => book.submission_id != pending_book.submission_id));
         alert.information("Book has been accepted!");
     };
-    const denyBook = (_pending_book) => alert.error("Unimplemented!");
+    const denyBook = async (pending_book) => {
+        await api.denyBook(pending_book.submission_id);
+        setPendingBooks(prev => prev.filter(book => book.submission_id != pending_book.submission_id));
+        alert.information("Book has been denied!");
+    };
 
     return (
         <PageBase userInfo={user_info}>

@@ -41,6 +41,10 @@ export function useApi() {
             },
             body: JSON.stringify(data),
         });
+        if (response.status != 200) {
+            alert.error(`API Request for endpoint ${endpoint} returned ${response.status}`);
+            return;
+        }
         const json = await response.json();
         if (json.status != "OK") {
             alert.error(json.message);
@@ -54,6 +58,9 @@ export function useApi() {
     return {
         async acceptBook(submission_id: number, onSuccess?: (responseData: void) => void) {
             return postCall("mod/accept_book", { submission_id }, onSuccess);
-        }
+        },
+        async denyBook(submission_id: number, onSuccess?: (responseData: void) => void) {
+            return postCall("mod/deny_book", { submission_id }, onSuccess);
+        },
     }
 }

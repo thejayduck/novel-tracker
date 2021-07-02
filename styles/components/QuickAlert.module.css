@@ -54,7 +54,6 @@
 }
 
 .container .message {
-  text-transform: capitalize;
   position: absolute;
   text-align: center;
   margin: auto;
