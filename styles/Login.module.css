@@ -85,6 +85,6 @@
     padding: 10px;
   }
   .features {
-    flex-direction: column wrap;
+    flex-flow: column;
   }
 }
