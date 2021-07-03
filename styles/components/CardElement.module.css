@@ -1,4 +1,4 @@
-.cardListFeed {
+.cardListWrap {
   color: white;
 
   height: 100%;
@@ -14,7 +14,7 @@
 
   list-style: none;
 }
-.activityEntry {
+.cardElementWrap {
   /* Colors */
   background-color: var(--color-primary);
   border-radius: var(--border);
@@ -31,8 +31,8 @@
   /* will-change: transform; */
 }
 
-.activityEntry:hover,
-.activityEntry:active {
+.cardElementWrap:hover,
+.cardElementWrap:active {
   filter: drop-shadow(0 10px 5px black);
   z-index: 1;
 
@@ -40,7 +40,7 @@
   transform: scale(1.05) perspective(1px) translateZ(0);
 }
 
-.list .cover {
+.cardElement .cover {
   border-radius: var(--border);
 
   /* Alignment */
@@ -55,7 +55,7 @@
   margin-top: 6px;
 }
 
-.list {
+.cardElement {
   /* Alignment */
   position: relative;
   text-align: center;
@@ -89,7 +89,7 @@
   transition: 0.2s;
 }
 
-.list:hover .details:not(.editPanel) {
+.cardElement:hover .details:not(.editPanel) {
   opacity: 1;
   transform: translateY(0);
 }
@@ -173,16 +173,16 @@ div:hover > .viewDetailsWrap {
 }
 
 @media screen and (max-width: 720px) {
-  .cardListFeed {
+  .cardListWrap {
     margin-top: 20px;
   }
-  .list .cover {
+  .cardElement .cover {
     user-select: none;
   }
-  .list:hover .details:not(.editPanel) {
+  .cardElement:hover .details:not(.editPanel) {
     height: 65%;
   }
-  .activityEntry {
+  .cardElementWrap {
     margin: 1px;
     margin-bottom: 1em;
   }

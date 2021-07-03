@@ -1,14 +1,14 @@
 import styles from '../styles/NewBook.module.css'
 
 import SearchBar from './searchBar'
-// import Button from './ui/button'
-import { useState, useEffect } from 'react'
 import OverlayMenu from './overlayMenu'
-import { useAppContext } from './appWrapper'
-import { AnimatePresence, AnimateSharedLayout } from 'framer-motion'
 import BookDetails from './bookDetails'
 import CardListWrapper from './cards/cardListWrapper'
 import ResultCard from './cards/resultCard'
+
+import { useState, useEffect } from 'react'
+import { useAppContext } from './appWrapper'
+import { AnimatePresence, AnimateSharedLayout } from 'framer-motion'
 import { useDelayedState } from '../lib/clientHelpers';
 
 export default function NewBook({ onAddClicked, onOutsideClicked, userInfo }) {
@@ -27,7 +27,7 @@ export default function NewBook({ onAddClicked, onOutsideClicked, userInfo }) {
     setSearchResults(json.map(q => ({
       book_id: q.book_id,
       title: q.title,
-      coverUrl: q.cover_url,
+      cover_url: q.cover_url,
     })));
   }, [userInput]);
 
@@ -38,7 +38,7 @@ export default function NewBook({ onAddClicked, onOutsideClicked, userInfo }) {
   }
 
   return (
-    <div>
+    <>
       <OverlayMenu
         className={`${styles.container} ${state.darkMode ? styles.dark : styles.light}`}
         close={onOutsideClicked}
@@ -70,6 +70,6 @@ export default function NewBook({ onAddClicked, onOutsideClicked, userInfo }) {
           />
         )}
       </AnimatePresence>
-    </div>
+    </>
   );
 }

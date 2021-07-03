@@ -42,12 +42,10 @@ export default function ModPanel({ user_info }) {
 
     return (
         <PageBase userInfo={user_info}>
-            <div className={styles.pageContent}>
-                <div className={styles.submissionList}>
-                    {pendingBooks.map(pending_book => (
-                        <SubmissionItem key={pending_book.submission_id} pending_book={pending_book} acceptBook={acceptBook} denyBook={denyBook} />
-                    ))}
-                </div>
+            <div className={styles.submissionList}>
+                {pendingBooks.map(pending_book => (
+                    <SubmissionItem key={pending_book.submission_id} pending_book={pending_book} acceptBook={acceptBook} denyBook={denyBook} />
+                ))}
             </div>
         </PageBase>
     )
@@ -69,7 +67,7 @@ function SubmissionItem({ pending_book, acceptBook, denyBook }) {
                     <img className={styles.cover} src={pending_book.banner_url} />
                     <img className={styles.cover} src={pending_book.cover_url} />
                 </div>
-                <div>
+                <div className={styles.submissionDetails}>
                     <h2>Submitted By: {pending_book.submitted_by}</h2>
                     <h1>{pending_book.title}</h1>
                     <br />
@@ -81,12 +79,12 @@ function SubmissionItem({ pending_book, acceptBook, denyBook }) {
                     <span>Author: {pending_book.author}</span>
                     <hr />
                     <h2>Description</h2>
-                    <p>{pending_book.description}</p>
+                    <p className={styles.description} >{pending_book.description}</p>
                 </div>
             </div>
-            <div className={styles.volumeList}>
+            <ul className={styles.volumeList}>
                 <VolumeItem />
-            </div>
+            </ul>
             <div className={styles.buttonWrap}>
                 <Button icon="fas fa-fw fa-check" text="Accept" onClick={() => acceptBook(pending_book)} />
                 <Button icon="fas fa-fw fa-times" text="Dismiss" onClick={() => denyBook(pending_book)} />
@@ -97,13 +95,13 @@ function SubmissionItem({ pending_book, acceptBook, denyBook }) {
 
 function VolumeItem() {
     return (
-        <div className={styles.volumeItem}>
-            <img className={styles.volumeCover} src="https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx110801-P0va1ehMlNcL.jpg" />
+        <li className={styles.volumeItem}>
+            <img className={styles.volumeCover} src="https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx110801-P0va1ehMlNcL.jpg" />
             <div className={styles.volumeInfo}>
                 <span>Volume 1</span><br />
                 <span>Chapters: 20</span><br />
                 <span>Extras: 20</span>
             </div>
-        </div>
+        </li>
     );
 }

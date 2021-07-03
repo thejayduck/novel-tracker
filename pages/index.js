@@ -1,19 +1,14 @@
-import styles from '../styles/Home.module.css'
+// import styles from '../styles/Home.module.css'
 import PageBase from '../components/pageBase';
-import NewBook from '../components/newBook'
-import Information from '../components/information';
 
 /* Components */
-import TopNav from '../components/topNav';
-import Footer from '../components/footer'
 import CardListWrapper from '../components/cards/cardListWrapper';
 import LibraryCard from '../components/cards/libraryCard';
-import QuickAlert from '../components/quickAlert';
 
 /* Other Imports */
 import Fuse from 'fuse.js'
 import { useState, useEffect, useMemo } from 'react'
-import { AnimatePresence, AnimateSharedLayout } from 'framer-motion'
+import { AnimateSharedLayout } from 'framer-motion'
 import { useDelayedState } from '../lib/clientHelpers';
 import { serverSide_checkAuth } from '../lib/serverHelpers';
 
@@ -27,8 +22,6 @@ export async function getServerSideProps(context) {
 }
 
 export default function Home({ user_info }) {
-  // const [addBookPanel, setAddBookPanel] = useState(false);
-  // const [informationPanel, setInformationPanel] = useState(false);
   const [data, setData] = useState([]);
 
   const [query, setQuery] = useDelayedState('', 250);

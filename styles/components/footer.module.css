@@ -18,14 +18,14 @@
   z-index: 1;
 }
 
-.footer > div {
+.footer .elementWrap {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
   gap: 10px;
 }
 
-.footer > div:nth-child(2) {
+.footer .elementWrap:nth-child(2) {
   flex-wrap: wrap;
   justify-content: space-evenly;
   min-width: 30%;
@@ -49,7 +49,7 @@
     padding: 0 5px 0 5px;
   }
 
-  .footer > div:nth-child(2) {
+  .footer > .elementWrap:nth-child(2) {
     margin-left: 0;
     margin-right: 0;
   }

@@ -17,8 +17,6 @@
 }
 
 .logo {
-  width: 150px;
-  height: 150px;
   margin: 10px;
 }
 
@@ -67,6 +65,8 @@
   flex-wrap: wrap;
   flex-direction: row;
   max-width: 900px;
+  margin-top: 10px;
+  gap: 10px;
 }
 
 .features div {
@@ -77,11 +77,6 @@
   /* Alignment */
   flex: 45%;
   padding: 5px;
-  margin: 10px;
-}
-
-.features h3 {
-  margin: 5px;
 }
 
 @media screen and (max-width: 720px) {

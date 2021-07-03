@@ -1,11 +1,11 @@
 import styles from '../../styles/components/CardElement.module.css'
+
 import CardElement from './cardElement';
 import Button from '../ui/button';
 
 export default function ResultCard({ entry, onClick, userInfo }) {
     return (
         <CardElement entry={entry}>
-            <img className={styles.cover} src={entry?.coverUrl} />
             <div
                 className={styles.viewDetailsWrap}
                 onClick={() => onClick(entry)}

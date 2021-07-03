@@ -9,7 +9,7 @@ export default function Footer({ userInfo, setInfoPanel }) {
         <footer
             className={`${styles.footer} ${state.darkMode ? styles.dark : styles.light}`}
         >
-            <div>
+            <div className={styles.elementWrap}>
                 {userInfo && <FooterButton title="Sign Out" text={userInfo.username} icon="fas fa-fw fa-sign-out-alt" href="/api/me/logout" />}
 
                 <FooterButton
@@ -22,9 +22,9 @@ export default function Footer({ userInfo, setInfoPanel }) {
                 <FooterButton title="Follow the Development" icon="fab fa-fw fa-trello" href="https://trello.com/b/dPv92vJW/" newTab={true} />
 
             </div>
-            {/* <div>
+            {/* <div className={styles.elementWrap}>
                 <p>Books: {data.length}</p>
-                <p className={styles.volumeCount} >Volumes Read: {data.reduce((acc, val) => acc + val.volume, 0)}</p>
+                <p>Volumes Read: {data.reduce((acc, val) => acc + val.volume, 0)}</p>
                 <p>Chapters Read: {data.reduce((acc, val) => acc + val.chapter, 0)}</p>
             </div> */}
         </footer>

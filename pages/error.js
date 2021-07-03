@@ -17,10 +17,10 @@ export async function getServerSideProps({ query }) {
 
 export default function Error({ message }) {
     return (
-        <PageBase>
+        <PageBase userInfo={null}>
             <div>
                 <h1>{message}</h1>
-                <Button title="Go Back" onClick={() => location.href = "/"} />
+                <Button text="Go Back" href="/" />
             </div>
         </PageBase>
     )

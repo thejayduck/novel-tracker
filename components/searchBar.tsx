@@ -6,17 +6,15 @@ interface SearchBarProps {
 
 export default function SearchBar({ onInput }: SearchBarProps) {
     return (
-        <div className={styles.searchContainer}>
-            <div className={styles.searchBar}>
-                <i className={`${styles.icon} fas fa-fw fa-search ${styles.faSearch}`} />
-                <input
-                    type="text"
-                    placeholder="Search..."
-                    name="search"
-                    maxLength={50}
-                    onChange={e => onInput(e.target.value)}
-                />
-            </div>
+        <div className={styles.searchBar}>
+            <i className={`${styles.icon} fas fa-fw fa-search`} />
+            <input
+                className={styles.inputField}
+                type="text"
+                placeholder="Search..."
+                name="search"
+                onChange={e => onInput(e.target.value)}
+            />
         </div>
     );
 }

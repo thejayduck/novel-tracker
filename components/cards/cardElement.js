@@ -1,5 +1,4 @@
 import styles from '../../styles/components/CardElement.module.css'
-
 import { motion } from 'framer-motion';
 
 export default function CardElement({ entry, children }) {
@@ -9,17 +8,16 @@ export default function CardElement({ entry, children }) {
             initial={{ opacity: 0, }}
             animate={{ opacity: 1, }}
         >
-            <div className={styles.activityEntry}>
-                <div className={styles.wrap}>
-                    <div className={styles.list}>
-                        <h2
-                            title={`${entry?.title}`}
-                            className={styles.title}
-                        >
-                            {entry?.title}
-                        </h2>
-                        {children}
-                    </div>
+            <div className={styles.cardElementWrap}>
+                <div className={styles.cardElement}>
+                    <h2
+                        title={`${entry?.title}`}
+                        className={styles.title}
+                    >
+                        {entry?.title}
+                    </h2>
+                    <img className={styles.cover} width="192" height="256" src={entry?.cover_url} alt={`${entry.title.split(' ')[0]} Cover`} />
+                    {children}
                 </div>
             </div>
         </motion.li>

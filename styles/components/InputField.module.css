@@ -1,10 +1,7 @@
-.inputField,
+.inputFieldWrap,
 .customSelect {
   /* Alignment */
-  display: flex;
-
-  flex-direction: column;
-  font-size: 20px;
+  font-size: var(--large-font);
 }
 
 .title {
@@ -14,7 +11,7 @@
   user-select: none;
 }
 
-.inputField > input {
+.inputFieldWrap .inputField {
   /* Colors */
   background-color: white;
   border-radius: var(--border);
@@ -22,11 +19,11 @@
   padding: 0.25em 0.5em;
 }
 
-.inputField > input:invalid {
+.inputFieldWrap .inputField:invalid {
   background-color: hsla(0, 100%, 50%, 85%);
 }
 
-.customSelect > select {
+.customSelect {
   border-radius: var(--border);
 
   width: 100%;
@@ -36,7 +33,7 @@
 }
 
 @-moz-document url-prefix() {
-  .inputField > input {
+  .inputFieldWrap .inputField {
     width: 100%;
   }
 }

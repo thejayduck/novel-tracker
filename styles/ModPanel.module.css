@@ -1,26 +1,17 @@
-.pageContent {
+.submissionList {
   display: flex;
+  align-items: center;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-
   gap: 10px;
   width: 100%;
+
   margin-top: 20px;
   margin-bottom: 20px;
 }
 
-.submissionList {
-  width: 95%;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-
-  flex-flow: row wrap;
-}
-
 .submissionItem {
-  width: 100%;
+  width: 95%;
   color: white;
   background-color: var(--color-primary);
   border-radius: var(--border);
@@ -39,6 +30,14 @@
 
 .submissionItem .coverWrap {
   width: 250px;
+}
+
+.submissionDetails {
+  width: 100%;
+}
+
+.description {
+  word-break: break-all;
 }
 
 .submissionItem .cover {
@@ -68,6 +67,8 @@
   overflow-y: auto;
   padding: 5px;
   gap: 10px;
+
+  list-style: none;
 }
 
 .volumeItem {

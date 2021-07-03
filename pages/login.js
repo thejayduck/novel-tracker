@@ -38,16 +38,16 @@ export default function Login() {
     return url && (
         <PageBase userInfo={null}>
             <div className={styles.container}>
-                <img className={styles.logo} src='../book.svg' />
-                <div >
-                    <h1>Welcome to Novel Tracker! </h1>
+                <img width="150" height="150" className={styles.logo} src='../book.svg' />
+                <div>
+                    <h1>Welcome to Novel Tracker!</h1>
                     <div className={styles.about}>
                         <h1> Novel Tracking Made Easy! </h1>
                         <motion.div
                             className={styles.features}
-                            initial={{ height: "0", opacity: 0 }}
+                            initial={{ height: 0, opacity: 0 }}
                             animate={{ height: "max-content", opacity: 1 }}
-                            transition={{ type: "spring", delay: 0.5 }}
+                            transition={{ type: "spring", delay: 1 }}
                         >
                             <FeatureItem
                                 title="Automatic Chapter-Volume Conversion"
@@ -59,7 +59,7 @@ export default function Login() {
                                 title="Mobile-App Capable"
                                 icon="fas fa-fw fa-mobile-alt"
                             >
-                                Our website is mobile-app capable, offering you a smooth and elegant experience.
+                                Our website is mobile-app capable, offering you a smooth experience.
                             </FeatureItem>
                             <FeatureItem
                                 title="Account Syncing"

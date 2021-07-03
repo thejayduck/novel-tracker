@@ -3,11 +3,9 @@ import Button from "../components/ui/button";
 import PageBase from "../components/pageBase";
 import { InputField } from "../components/ui/inputField"
 
-import { getUserInfo, withUserId } from "../lib/db";
 import { useRouter } from 'next/router';
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { motion } from "framer-motion";
-import { parse } from "cookie";
 import { serverSide_checkAuth } from "../lib/serverHelpers";
 
 export async function getServerSideProps(context) {
@@ -62,7 +60,6 @@ export default function SetupAccount() {
                 animate={{ opacity: 1 }}
             >
                 <div className={styles.content}>
-
                     <InputField ref={usernameRef} inputType="text" placeHolder="(Max 32 Characters)" maxLength="32" />
                     <Button title="Complete Account!" icon="fas fa-fw fa-user-alt" onClick={onCompleteClick} />
                 </div>

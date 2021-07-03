@@ -39,7 +39,7 @@
   }
 }
 
-.container i {
+.container .icon {
   border: 1px solid;
   border-radius: var(--border);
 
