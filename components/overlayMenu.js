@@ -1,5 +1,5 @@
-import { AnimateSharedLayout, motion } from 'framer-motion';
 import styles from '../styles/components/overlayMenu.module.css'
+import { AnimateSharedLayout, motion } from 'framer-motion';
 
 export default function OverlayMenu({ children, className, close }) {
 

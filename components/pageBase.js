@@ -4,7 +4,7 @@ import { AnimatePresence } from 'framer-motion';
 import React, { useState } from 'react';
 import { useAppContext } from "./appWrapper";
 
-import NewBook from './newBook';
+import BrowseBooks from './browseBooks';
 import Information from './information';
 import TopNav from './topNav';
 import Footer from './footer';
@@ -14,7 +14,7 @@ import QuickAlert from './quickAlert';
 export default function PageBase({ children, onDataUpdate, userInfo, setSearchQuery }) {
     const [state] = useAppContext();
 
-    const [addBookPanel, setAddBookPanel] = useState(false);
+    const [browseBookPanel, setBrowseBookPanel] = useState(false);
     const [informationPanel, setInformationPanel] = useState(false);
 
     if (typeof userInfo == 'undefined') {
@@ -28,12 +28,12 @@ export default function PageBase({ children, onDataUpdate, userInfo, setSearchQu
     return (
         <>
             <TopNav
-                onAddBook={() => setAddBookPanel(prev => !prev)}
+                onBrowseBooks={() => setBrowseBookPanel(prev => !prev)}
                 onSearch={e => setSearchQuery(e.target.value)}
                 hasModButtons={!!userInfo && userInfo.moderation_level >= 2}
                 hasAdminButtons={!!userInfo && userInfo.moderation_level >= 3}
                 hasSearch={!!setSearchQuery}
-                hasSubmit={!!userInfo}
+                userInfo={!!userInfo}
             />
             <main className={`${styles.main} ${state.darkMode ? styles.dark : styles.light}`} >
                 {children}
@@ -41,15 +41,15 @@ export default function PageBase({ children, onDataUpdate, userInfo, setSearchQu
                 <AnimatePresence>
                     {informationPanel && <Information onOutsideClicked={() => setInformationPanel(false)} />}
 
-                    {addBookPanel && (
-                        <NewBook
+                    {browseBookPanel && (
+                        <BrowseBooks
                             onAddClicked={() => {
                                 if (onDataUpdate) {
                                     onDataUpdate();
                                 }
                                 alert.information("Added book!");
                             }}
-                            onOutsideClicked={() => setAddBookPanel(false)}
+                            onOutsideClicked={() => setBrowseBookPanel(false)}
                             userInfo={userInfo}
                         />
                     )}

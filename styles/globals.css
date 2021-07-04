@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
+  width: 100vw;
 }
 
 :root {
@@ -11,7 +12,7 @@
   --blur-amount: 10px;
 
   /* Colors */
-  --color-primary: hsla(264, 71%, 47%, 1); /* #6723cd */
+  --color-primary: hsl(264, 71%, 47%); /* #6723cd */
   --color-primaryLight: hsl(264, 71%, 55%); /* #7B39DD */
   --color-primaryLighter: hsl(264, 71%, 66%); /* #9C6AE6 */
   --color-primaryDark: hsl(264, 71%, 34%); /* #491992 */

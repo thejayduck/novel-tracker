@@ -4,9 +4,9 @@ import PageBase from "../components/pageBase";
 import { InputField } from "../components/ui/inputField"
 
 import { useRouter } from 'next/router';
-import { useRef } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
 import { serverSide_checkAuth } from "../lib/serverHelpers";
+
 
 export async function getServerSideProps(context) {
     const [auth, info] = await serverSide_checkAuth(context, true, false, false);
@@ -50,20 +50,28 @@ export default function SetupAccount({ user_info }) {
         router.push('/');
     }
 
-    return (
+    useEffect(() => {
+        if (usernameRef.current) {
+            function onKeyUp(e) {
+                if (e.key == "Enter") {
+                    onCompleteClick();
+                }
+            }
 
+            const input = usernameRef.current;
+            input.addEventListener("keyup", onKeyUp);
+            return () => input.removeEventListener("keyup", onKeyUp);
+        }
+    }, [usernameRef]);
+
+    return (
         <PageBase userInfo={user_info}>
-            <img className={styles.logo} src='../book.svg' />
-            <h3>Please Enter a Username to Finish Setting Up Your "Novel Tracker" Account </h3>
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-            >
-                <div className={styles.content}>
-                    <InputField ref={usernameRef} inputType="text" placeHolder="(Max 32 Characters)" maxLength="32" />
-                    <Button title="Complete Account!" icon="fas fa-fw fa-user-alt" onClick={onCompleteClick} />
-                </div>
-            </motion.div>
+            <img width="150" height="150" src='../book.svg' />
+            <div className={styles.content}>
+                <h3>Please Enter a Username to Finish Setting Up Your "Novel Tracker" Account </h3>
+                <InputField ref={usernameRef} inputType="text" placeHolder="(Max 32 Characters)" maxLength="32" />
+                <Button text="Complete Account!" icon="fas fa-fw fa-user-alt" onClick={onCompleteClick} />
+            </div>
         </PageBase>
     );
 }
