@@ -20,7 +20,7 @@ export default function Button({ text, icon, onClick, href, newTab }: ButtonProp
             onClick={onClick}
         >
             <a 
-                href={href} 
+                href={href || "#"} 
                 target={newTab ? "_blank" : "_self"} 
             >
                 {icon && <i className={`${icon} ${text && styles.icon}`} />}{text}

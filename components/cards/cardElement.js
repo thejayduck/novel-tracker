@@ -16,7 +16,7 @@ export default function CardElement({ entry, children }) {
                     >
                         {entry?.title}
                     </h2>
-                    <img className={styles.cover} width="192" height="256" src={entry?.cover_url} alt={`${entry.title.split(' ')[0]} Cover`} />
+                    <img className={styles.cover} width="192" height="256" src={entry?.cover_url} alt="Book Cover" />
                     {children}
                 </div>
             </div>

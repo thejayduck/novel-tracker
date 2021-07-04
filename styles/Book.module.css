@@ -70,7 +70,8 @@
   text-align: center;
 }
 
-.infoWrap li {
+.info > *:not(hr) {
+  display: block;
   border-radius: var(--border);
   background-color: var(--color-primaryLight);
 

@@ -1,6 +1,6 @@
 import styles from '../../styles/Book.module.css'
 import PageBase from "../../components/pageBase";
-import Button, { CardButton } from "../../components/ui/button";
+import Button from "../../components/ui/button";
 import Head from "next/dist/next-server/lib/head";
 import { getBookWithVolumes } from "../../lib/db";
 import { motion } from "framer-motion";
@@ -49,24 +49,28 @@ export default function Book({ book, user_info }) {
             <div>
                 <div className={styles.infoWrap}>
                     <div className={styles.coverWrap}>
-                        <img className={styles.cover} src={book.cover_url} />
-                        {user_info && <Button text="Add Book" onClick={() => { window.alert("Add") }} />}
-                        <br />
-                        {user_info && <Button text="Edit Information" href={`/submitBook?id=${book.book_id}`} />}
-                        <br />
-                        <Button text="Back to Library" href="/" />
-                        <ul className={styles.info}>
-                            <li><span>Title (Romanized):<br />{book.title_romanized}</span></li>
-                            <li><span>Title (Native):<br />{book.title_native}</span></li>
+                        <img alt="Book Cover" className={styles.cover} src={book.cover_url} />
+                        {user_info &&
+                            <>
+                                <Button text="Add Book" onClick={() => { window.alert("Add") }} />
+                                <br />
+                                <Button text="Edit Information" href={`/submitBook?id=${book.book_id}`} />
+                                <br />
+                                <Button text="Back to Library" href="/" />
+                            </>
+                        }
+                        <div className={styles.info}>
+                            <span>Title (Romanized):<br />{book.title_romanized}</span>
+                            <span>Title (Native):<br />{book.title_native}</span>
                             <hr />
-                            <li><span>Total Volumes: 10</span></li>
-                            <li><span>Total Chapters: 10</span></li><br />
-                            <li><span>Start Date: {convertDate(book.start_date)}</span></li>
-                            <li><span>End Date: {convertDate(book.end_date)}</span></li>
-                            <li><span>Release Status: {book.release_status}</span></li>
+                            <span>Total Volumes: 10</span>
+                            <span>Total Chapters: 10</span><br />
+                            <span>Start Date: {convertDate(book.start_date)}</span>
+                            <span>End Date: {convertDate(book.end_date)}</span>
+                            <span>Release Status: {book.release_status}</span>
                             <hr />
-                            <li><span>Author: {book.author}</span></li>
-                        </ul>
+                            <span>Author: {book.author}</span>
+                        </div>
                     </div>
                     <div className={styles.contentContainer}>
                         <div className={styles.descriptionWrap}>
@@ -95,6 +99,7 @@ function VolumeItem({ volume }) {
             <div>
                 <p>Volume {volume.volume_number}</p>
                 <img
+                    alt={`Volume ${volume.volume_number} Cover`}
                     className={styles.volumeCover}
                     src={volume.cover_url || "https://media.discordapp.net/attachments/303528930634235904/858799121837457448/emptyBook.png"} /* Temporary Link */
                 />

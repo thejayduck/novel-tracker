@@ -1,4 +1,4 @@
-import styles from '../styles/NewBook.module.css'
+import styles from '../styles/BrowseBooks.module.css'
 
 import SearchBar from './searchBar'
 import OverlayMenu from './overlayMenu'
@@ -11,7 +11,7 @@ import { useAppContext } from './appWrapper'
 import { AnimatePresence, AnimateSharedLayout } from 'framer-motion'
 import { useDelayedState } from '../lib/clientHelpers';
 
-export default function NewBook({ onAddClicked, onOutsideClicked, userInfo }) {
+export default function BrowseBooks({ onAddClicked, onOutsideClicked, userInfo }) {
   const [state] = useAppContext();
 
   const [userInput, setUserInput] = useDelayedState("", 250);

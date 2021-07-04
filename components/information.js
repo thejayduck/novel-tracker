@@ -19,15 +19,15 @@ export default function Information({ onOutsideClicked }) {
             <div className={styles.tutorialWrap}>
                 <div className={styles.tutorial}>
                     <h2>Chrome</h2>
-                    <video src="/tutorial_CHROME.mp4" width="200px" autoPlay={true} loop={true} />
+                    <video muted={true} playsInline={true} src="/tutorial_CHROME.mp4" width="200px" autoPlay={true} loop={true} />
                 </div>
                 <div className={styles.tutorial}>
                     <h2>Edge</h2>
-                    <video src="/tutorial_EDGE.mp4" width="200px" autoPlay={true} loop={true} />
+                    <video muted={true} playsInline={true} src="/tutorial_EDGE.mp4" width="200px" autoPlay={true} loop={true} />
                 </div>
                 <div className={styles.tutorial}>
                     <h2>Firefox</h2>
-                    <video src="/tutorial_FIREFOX.mp4" width="200px" autoPlay={true} loop={true} />
+                    <video muted={true} playsInline={true} src="/tutorial_FIREFOX.mp4" width="200px" autoPlay={true} loop={true} />
                 </div>
                 <br />
             </div>
