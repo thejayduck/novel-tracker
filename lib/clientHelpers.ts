@@ -62,5 +62,8 @@ export function useApi() {
         async denyBook(submission_id: number, onSuccess?: (responseData: void) => void) {
             return postCall("mod/deny_book", { submission_id }, onSuccess);
         },
+        async setUsername(new_name: string, onSuccess?: (responseData: void) => void) {
+            return postCall("me/set_username", { new_name }, onSuccess);
+        },
     }
 }

@@ -7,6 +7,7 @@ import { useRouter } from 'next/router';
 import { useRef } from "react";
 import { motion } from "framer-motion";
 import { serverSide_checkAuth } from "../lib/serverHelpers";
+import { useApi } from "../lib/clientHelpers";
 
 export async function getServerSideProps(context) {
     const [auth, info] = await serverSide_checkAuth(context, true, false, false);
@@ -30,23 +31,12 @@ export async function getServerSideProps(context) {
 
 export default function SetupAccount({ user_info }) {
     const router = useRouter();
+    const api = useApi();
 
     const usernameRef = useRef(null);
 
     async function onCompleteClick() {
-        const response = await fetch("/api/me/set_username", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                new_name: usernameRef.current.value,
-            }),
-        });
-        const json = await response.json();
-        if (json.status != "OK") {
-            throw json;
-        }
+        await api.setUsername(usernameRef.current.value);
         router.push('/');
     }
 
