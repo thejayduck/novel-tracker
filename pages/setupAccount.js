@@ -52,7 +52,7 @@ export default function SetupAccount({ user_info }) {
             input.addEventListener("keyup", onKeyUp);
             return () => input.removeEventListener("keyup", onKeyUp);
         }
-    }, [usernameRef]);
+    }, [usernameRef.current]);
 
     return (
         <PageBase userInfo={user_info}>
