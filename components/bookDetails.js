@@ -20,7 +20,7 @@ export default function BookDetails({ book, onExit, onAddClicked, onOutsideClick
 
     return (
         <OverlayMenu
-            className={`${styles.container} ${state.darkMode ? styles.dark : styles.light}`}
+            className={`${styles.container}`}
             close={onOutsideClicked}
         >
             <div className={styles.headerWrap}>

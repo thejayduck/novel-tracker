@@ -2,6 +2,7 @@
   /* Colors */
   color: white;
   border-radius: var(--border);
+  background-color: var(--background-color);
   border: 2px solid white;
 
   /* Alignment */
@@ -15,15 +16,6 @@
 
   overflow-y: auto;
   z-index: 10;
-}
-
-.dark {
-  color: white;
-  background-color: var(--backgroundColor-themeDark);
-}
-.light {
-  color: black;
-  background-color: var(--backgroundColor-themeLight);
 }
 
 @media screen and (max-width: 720px) {

@@ -46,14 +46,28 @@ body {
 
 .light {
   --background-color: hsla(184, 100%, 94%, 1);
-  --border-color: white;
+  --border-color: black;
   --text-color: black;
+}
+
+.light input,
+.light textarea,
+.light select {
+  background-color: white;
+  color: black;
 }
 
 .dark {
   --background-color: hsla(0, 0%, 8%, 1);
-  --border-color: black;
+  --border-color: white;
   --text-color: white;
+}
+
+.dark input,
+.dark textarea,
+.dark select {
+  background-color: hsla(0, 0%, 8%, 1);
+  color: white;
 }
 
 *:not(html, body) {

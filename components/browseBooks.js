@@ -40,7 +40,7 @@ export default function BrowseBooks({ onAddClicked, onOutsideClicked, userInfo }
   return (
     <>
       <OverlayMenu
-        className={`${styles.container} ${state.darkMode ? styles.dark : styles.light}`}
+        className={`${styles.container}`}
         close={onOutsideClicked}
       >
         {/* <InputField onChange={e => setUserInput(e.target.value)} /> */}

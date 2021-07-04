@@ -56,7 +56,7 @@ export default function PageBase({ children, onDataUpdate, userInfo, setSearchQu
                 hasSearch={!!setSearchQuery}
                 userInfo={!!userInfo}
             />
-            <main className={`${styles.main} ${state.darkMode ? styles.dark : styles.light}`} >
+            <main className={`${styles.main}`} >
                 {children}
 
                 <AnimatePresence>

@@ -8,7 +8,7 @@ export default function Information({ onOutsideClicked }) {
 
     return (
         <OverlayMenu
-            className={`${styles.container} ${state.darkMode ? styles.dark : styles.light}`}
+            className={`${styles.container}`}
             close={onOutsideClicked}
         >
             <img width="128" height="128" src="/book.svg" />

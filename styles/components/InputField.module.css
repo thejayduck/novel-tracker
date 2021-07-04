@@ -13,7 +13,6 @@
 
 .inputFieldWrap .inputField {
   /* Colors */
-  background-color: white;
   border-radius: var(--border);
 
   padding: 0.25em 0.5em;

@@ -11,7 +11,7 @@ export default function TopNav({ userInfo, hasModButtons, hasAdminButtons, onBro
         <div className={`${styles.headerWrap}`}>
             <AnimateSharedLayout>
                 <div className={styles.buttonWrap}>
-                    {!userInfo && <FooterButton icon="fas fa-fw fa-user" text="Login" href="/login" />}
+                    {!userInfo && <FooterButton icon="fas fa-fw fa-sign-in-alt" text="Login" href="/login" />}
                     {userInfo && <FooterButton icon="fas fa-fw fa-home" text="Home" href="/" />}
                     {hasSearch &&
                         <>

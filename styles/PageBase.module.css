@@ -10,13 +10,6 @@
   padding-bottom: 55px;
 
   transition: 0.2s;
-}
 
-.dark {
-  color: white;
-  background-color: var(--backgroundColor-themeDark);
-}
-.light {
-  color: black;
-  background-color: var(--backgroundColor-themeLight);
+  background-color: var(--background-color);
 }

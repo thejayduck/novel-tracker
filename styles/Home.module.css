@@ -19,14 +19,3 @@
     /* margin-top: 100px; */
   }
 }
-
-.dark {
-  background-color: var(--backgroundColor-themeDark);
-
-  transition: 0.2s;
-}
-.light {
-  background-color: var(--backgroundColor-themeLight);
-
-  transition: 0.2s;
-}

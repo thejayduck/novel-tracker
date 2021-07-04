@@ -5,6 +5,7 @@
   align-items: center;
   gap: 10px;
   width: 80%;
+  color: var(--text-color);
 }
 
 .containerTitle {

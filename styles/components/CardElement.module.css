@@ -14,6 +14,11 @@
 
   list-style: none;
 }
+
+.cardListWrap:first-child .cardElementWrap .ripple {
+  animation: ripple 0.85s ease-in;
+}
+
 .cardElementWrap {
   /* Colors */
   background-color: var(--color-primary);
@@ -26,14 +31,35 @@
   position: relative;
 
   transition: 0.2s;
+  overflow: hidden;
 
   /* Chrome and edge requires this to fix text clarity */
   /* will-change: transform; */
 }
 
+.ripple {
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.7);
+  bottom: 0;
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  z-index: 999;
+
+  transform: scale(0);
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
 .cardElementWrap:hover,
 .cardElementWrap:active {
-  filter: drop-shadow(0 10px 5px black);
+  /* filter: drop-shadow(0 10px 5px black); */
+  filter: drop-shadow(0 0 10px var(--color-primary));
   z-index: 1;
 
   /* Chrome and edge requires some translation hack to fix text clarity */

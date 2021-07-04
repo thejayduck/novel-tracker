@@ -1,8 +1,9 @@
 .container {
   /* Colors */
-  color: white;
+  color: var(--text-color);
   border-radius: var(--border);
-  border: 2px solid white;
+  background-color: var(--background-color);
+  border: 2px solid;
 
   /* Alignment */
   display: flex;
@@ -46,13 +47,4 @@
   .container {
     width: 100%;
   }
-}
-
-.dark {
-  color: white;
-  background-color: var(--backgroundColor-themeDark);
-}
-.light {
-  color: black;
-  background-color: var(--backgroundColor-themeLight);
 }
