@@ -8,7 +8,7 @@ export default withInfoHelperPost(["book_id"], async (_, params, user_info) => {
     const userBooks = await getUserBooks(user_info.user_id);
     if (userBooks.map(v => v.book_id).includes(book_id)) {
         throw {
-            message: "Books already exists in library"
+            message: "Book already exists in library"
         }
     }
     await addUserBooks(user_info.user_id, book_id);

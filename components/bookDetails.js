@@ -3,25 +3,18 @@ import OverlayMenu from './overlayMenu';
 import Button from './ui/button';
 
 import { useAppContext } from './appWrapper';
+import { useApi } from '../lib/clientHelpers';
+import { useAlert } from './alertWrapper';
 
 export default function BookDetails({ book, onExit, onAddClicked, onOutsideClicked, userInfo }) {
     const [state] = useAppContext();
+    const api = useApi();
+    const alert = useAlert();
 
     async function addBook() {
-        const response = await fetch("/api/me/add_book", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                book_id: book.book_id,
-            }),
+        api.addBook(book.book_id, () => {
+            alert.information("Added Book!");
         });
-        const json = await response.json();
-        if (json.status != "OK") {
-            throw json;
-        }
-
         onAddClicked();
     }
 

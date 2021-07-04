@@ -42,7 +42,12 @@ export function useApi() {
             body: JSON.stringify(data),
         });
         if (response.status != 200) {
-            alert.error(`API Request for endpoint ${endpoint} returned ${response.status}`);
+            if (response.status == 500) {
+                const json = await response.json()
+                alert.error(`Server Error: '${json.message}'`);
+            } else {
+                alert.error(`API Request for endpoint ${endpoint} returned ${response.status}`);
+            }
             return;
         }
         const json = await response.json();
@@ -52,6 +57,7 @@ export function useApi() {
             if (onSuccess) {
                 onSuccess(json.data);
             }
+            return json.data;
         }
     }
 
@@ -64,6 +70,18 @@ export function useApi() {
         },
         async setUsername(new_name: string, onSuccess?: (responseData: void) => void) {
             return postCall("me/set_username", { new_name }, onSuccess);
+        },
+        async submitBook(book_details: { [k: string]: any }, onSuccess?: (responseData: void) => void) {
+            return postCall("me/submit_book", { book_details }, onSuccess);
+        },
+        async deleteBook(book_id: number, onSuccess?: (responseData: void) => void) {
+            return postCall("me/delete_book", { book_id }, onSuccess);
+        },
+        async addBook(book_id: number, onSuccess?: (responseData: void) => void) {
+            return postCall("me/add_book", { book_id }, onSuccess);
+        },
+        async updateChaptersRead(book_id: number, new_chapters_read: number, onSuccess?: (responseData: void) => void) {
+            return postCall("me/update_chapters_read", { book_id, new_chapters_read }, onSuccess);
         },
     }
 }

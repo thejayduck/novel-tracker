@@ -47,7 +47,6 @@ export default function PageBase({ children, onDataUpdate, userInfo, setSearchQu
                                 if (onDataUpdate) {
                                     onDataUpdate();
                                 }
-                                alert.information("Added book!");
                             }}
                             onOutsideClicked={() => setBrowseBookPanel(false)}
                             userInfo={userInfo}

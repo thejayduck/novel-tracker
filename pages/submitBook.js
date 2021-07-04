@@ -7,6 +7,8 @@ import { useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { serverSide_checkAuth } from "../lib/serverHelpers";
 import { getBook } from '../lib/db';
+import { useApi } from '../lib/clientHelpers';
+import { useAlert } from '../components/alertWrapper';
 
 export async function getServerSideProps(context) {
     const [auth, info] = await serverSide_checkAuth(context, true, false, false);
@@ -52,6 +54,8 @@ export default function SubmitBook({ user_info, existing_book }) {
     }, [existing_book]);
 
     const router = useRouter();
+    const api = useApi();
+    const alert = useAlert();
 
     async function onSubmit() {
 
@@ -62,19 +66,9 @@ export default function SubmitBook({ user_info, existing_book }) {
         if (existing_book) {
             book_details.book_id = existing_book.book_id;
         }
-        const response = await fetch("/api/me/submit_book", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                book_details: book_details,
-            }),
+        await api.submitBook(book_details, () => {
+            alert.information("Book successfully submitted!");
         });
-        const json = await response.json();
-        if (json.status != "OK") {
-            throw json;
-        }
         router.push(`/`);
     }
 

@@ -6,7 +6,7 @@ import { InputFieldNonManaged } from '../ui/inputField';
 
 import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
-import { useDelayedStateWithLive } from '../../lib/clientHelpers';
+import { useApi, useDelayedStateWithLive } from '../../lib/clientHelpers';
 
 export default function LibraryCard({ entry: _entry, onDelete: _onDelete }) {
 
@@ -16,26 +16,17 @@ export default function LibraryCard({ entry: _entry, onDelete: _onDelete }) {
     const [chaptersRead, setChaptersRead, liveChaptersRead] = useDelayedStateWithLive(entry.chapters_read, 250);
     const [volumesRead, setVolumesRead, liveVolumesRead] = useDelayedStateWithLive(entry.volumes_read, 250);
 
+    // TODO Update volumes properly when chapters are updated
+
+    const api = useApi();
+
     useEffect(async () => {
         if (isNaN(chaptersRead)) {
             return;
         }
 
-        const response = await fetch("/api/me/update_chapters_read", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                book_id: entry.book_id,
-                new_chapters_read: chaptersRead,
-            }),
-        });
-        const json = await response.json();
-        if (json.status != "OK") {
-            throw json;
-        }
-        setEntry(entry => ({ ...entry, chapters_read: Number.parseInt(json.data.chapters_read), volumes_read: Number.parseInt(json.data.volumes_read) }));
+        const data = await api.updateChaptersRead(entry.book_id, chaptersRead);
+        setEntry(entry => ({ ...entry, chapters_read: Number.parseInt(data.chapters_read), volumes_read: Number.parseInt(data.volumes_read) }));
     }, [chaptersRead]);
 
     useEffect(async () => {
@@ -43,20 +34,7 @@ export default function LibraryCard({ entry: _entry, onDelete: _onDelete }) {
     }, [volumesRead]);
 
     async function onDelete() {
-        const response = await fetch("/api/me/delete_book", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                book_id: entry.book_id,
-            }),
-        });
-        const json = await response.json();
-        if (json.status != "OK") {
-            throw json;
-        }
-
+        await api.deleteBook(entry.book_id);
         _onDelete();
     }
 
