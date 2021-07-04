@@ -1,5 +1,6 @@
 import PageBase from "../components/pageBase"
 import Button from "../components/ui/button"
+import { serverSide_checkAuth } from "../lib/serverHelpers";
 
 const reason_messages = {
     must_login: "This page requires the user to be logged in!",
@@ -7,17 +8,20 @@ const reason_messages = {
     admin_only: "This page can only be accessed by users with 'Administrator' status!",
 }
 
-export async function getServerSideProps({ query }) {
+export async function getServerSideProps(context) {
+    const [_, info] = await serverSide_checkAuth(context, false, false, false);
+
     return {
         props: {
-            message: reason_messages[query.reason]
+            user_info: info,
+            message: reason_messages[context.query.reason]
         },
     }
 }
 
-export default function Error({ message }) {
+export default function Error({ user_info, message }) {
     return (
-        <PageBase userInfo={null}>
+        <PageBase userInfo={user_info}>
             <div>
                 <h1>{message}</h1>
                 <Button text="Go Back" href="/" />
