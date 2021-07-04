@@ -1,8 +1,8 @@
 .footer {
   /* Colors */
-  background-color: black;
-  border-top: 1px solid #ffffff;
-  color: #ffffff;
+  background-color: var(--background-color);
+  border-top: 1px solid var(--border-color);
+  color: var(--text-color);
 
   /* Alignment */
   display: flex;
@@ -16,6 +16,8 @@
 
   user-select: none;
   z-index: 1;
+
+  transition: 0.2s;
 }
 
 .footer .elementWrap {
@@ -53,21 +55,4 @@
     margin-left: 0;
     margin-right: 0;
   }
-}
-
-.dark {
-  /* Colors */
-  background-color: var(--backgroundColor-themeDark);
-  color: #ffffff;
-  border-top: 1px solid #000000;
-
-  transition: 0.2s;
-}
-.light {
-  /* Colors */
-  background-color: var(--backgroundColor-themeLight);
-  color: black;
-  border-top: 1px solid black;
-
-  transition: 0.2s;
 }

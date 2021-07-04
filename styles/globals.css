@@ -44,6 +44,18 @@ body {
   vertical-align: middle;
 }
 
+.light {
+  --background-color: hsla(184, 100%, 94%, 1);
+  --border-color: white;
+  --text-color: black;
+}
+
+.dark {
+  --background-color: hsla(0, 0%, 8%, 1);
+  --border-color: black;
+  --text-color: white;
+}
+
 *:not(html, body) {
   font-family: inherit;
   font-weight: inherit;

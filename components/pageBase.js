@@ -1,7 +1,7 @@
 import styles from '../styles/PageBase.module.css';
 
 import { AnimatePresence } from 'framer-motion';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAppContext } from "./appWrapper";
 
 import BrowseBooks from './browseBooks';
@@ -10,6 +10,8 @@ import TopNav from './topNav';
 import Footer from './footer';
 import { useAlert } from './alertWrapper';
 import QuickAlert from './quickAlert';
+
+const valid_themes = ['light', 'dark'];
 
 export default function PageBase({ children, onDataUpdate, userInfo, setSearchQuery }) {
     const [state] = useAppContext();
@@ -24,6 +26,25 @@ export default function PageBase({ children, onDataUpdate, userInfo, setSearchQu
     }
 
     const alert = useAlert();
+
+    const [theme, setTheme] = useState(() => {
+        if (typeof window != 'undefined') {
+            const themeValue = localStorage.getItem('theme');
+            if (themeValue && themeValue != 'undefined') {
+                if (valid_themes.includes(themeValue)) {
+                    return parsedTheme;
+                }
+            }
+        }
+
+        return 'light';
+    })
+
+    useEffect(() => {
+        localStorage.setItem('theme', JSON.stringify(theme));
+        valid_themes.forEach(valid_theme => document.body.classList.remove(valid_theme));
+        document.body.classList.add(theme);
+    }, [theme]);
 
     return (
         <>
@@ -59,7 +80,7 @@ export default function PageBase({ children, onDataUpdate, userInfo, setSearchQu
             {alert.alerts.map(alert => (
                 <QuickAlert key={alert.id} message={alert.content} severity={alert.severity} />
             ))}
-            <Footer userInfo={userInfo} setInfoPanel={setInformationPanel} />
+            <Footer userInfo={userInfo} setInfoPanel={setInformationPanel} setTheme={setTheme} />
         </>
     );
 }
