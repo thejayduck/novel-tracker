@@ -2,6 +2,7 @@
   /* Colors */
   color: white;
   border-radius: var(--border);
+  border: 2px solid white;
 
   /* Alignment */
   display: flex;
