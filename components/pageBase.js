@@ -28,14 +28,13 @@ export default function PageBase({ children, onDataUpdate, userInfo, setSearchQu
     const alert = useAlert();
 
     const [theme, setTheme] = useState(() => {
-        if (typeof window == 'undefined') {
-            return;
-        }
+        if (typeof window != 'undefined') {
+            const themeValue = localStorage.getItem('theme');
 
-        const themeValue = localStorage.getItem('theme');
-        if (themeValue && themeValue != 'undefined') {
-            if (valid_themes.includes(themeValue)) {
-                return themeValue;
+            if (themeValue && themeValue != 'undefined') {
+                if (valid_themes.includes(themeValue)) {
+                    return themeValue;
+                }
             }
         }
 
