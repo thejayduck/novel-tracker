@@ -3,7 +3,6 @@ import { useAppContext } from './appWrapper';
 import { FooterButton } from './ui/button';
 
 function flipTheme(theme) {
-    console.log(theme);
     if (theme == 'light')
         return 'dark';
     if (theme == 'dark')
