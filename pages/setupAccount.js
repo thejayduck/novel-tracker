@@ -28,7 +28,7 @@ export async function getServerSideProps(context) {
 }
 
 
-export default function SetupAccount() {
+export default function SetupAccount({ user_info }) {
     const router = useRouter();
 
     const usernameRef = useRef(null);
@@ -52,7 +52,7 @@ export default function SetupAccount() {
 
     return (
 
-        <PageBase>
+        <PageBase userInfo={user_info}>
             <img className={styles.logo} src='../book.svg' />
             <h3>Please Enter a Username to Finish Setting Up Your "Novel Tracker" Account </h3>
             <motion.div
