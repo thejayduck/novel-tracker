@@ -28,12 +28,14 @@ export default function PageBase({ children, onDataUpdate, userInfo, setSearchQu
     const alert = useAlert();
 
     const [theme, setTheme] = useState(() => {
-        if (typeof window != 'undefined') {
-            const themeValue = localStorage.getItem('theme');
-            if (themeValue && themeValue != 'undefined') {
-                if (valid_themes.includes(themeValue)) {
-                    return parsedTheme;
-                }
+        if (typeof window == 'undefined') {
+            return;
+        }
+
+        const themeValue = localStorage.getItem('theme');
+        if (themeValue && themeValue != 'undefined') {
+            if (valid_themes.includes(themeValue)) {
+                return themeValue;
             }
         }
 
@@ -41,7 +43,7 @@ export default function PageBase({ children, onDataUpdate, userInfo, setSearchQu
     })
 
     useEffect(() => {
-        localStorage.setItem('theme', JSON.stringify(theme));
+        localStorage.setItem('theme', theme);
         valid_themes.forEach(valid_theme => document.body.classList.remove(valid_theme));
         document.body.classList.add(theme);
     }, [theme]);
