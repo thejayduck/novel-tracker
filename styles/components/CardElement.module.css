@@ -15,10 +15,6 @@
   list-style: none;
 }
 
-.cardListWrap:first-child .cardElementWrap .ripple {
-  animation: ripple 0.85s ease-in;
-}
-
 .cardElementWrap {
   /* Colors */
   background-color: var(--color-primary);
@@ -47,6 +43,7 @@
   z-index: 999;
 
   transform: scale(0);
+  animation: ripple 0.85s ease-in;
 }
 
 @keyframes ripple {

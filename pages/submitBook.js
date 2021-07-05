@@ -80,7 +80,7 @@ export default function SubmitBook({ user_info, existing_book }) {
                 <SubmitBookContainer title="Titles">
                     <InputField
                         ref={detailRefs.title}
-                        title="Title (Licensed)"
+                        title="English Title*"
                         inputType="text"
                         placeHolder="Licensed English Title"
                         toolTip="Licensed English Title (Fan Translated Titles are NOT Allowed)"
@@ -90,6 +90,7 @@ export default function SubmitBook({ user_info, existing_book }) {
                         title="Title Romanized*"
                         inputType="text"
                         placeHolder="Romanized Title"
+                        toolTip="Licensed Romanized Title"
                     />
                     <InputField
                         ref={detailRefs.title_native}
