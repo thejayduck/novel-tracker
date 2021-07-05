@@ -2,12 +2,10 @@ import styles from '../styles/BookDetails.module.css'
 import OverlayMenu from './overlayMenu';
 import Button from './ui/button';
 
-import { useAppContext } from './appWrapper';
 import { useApi } from '../lib/clientHelpers';
 import { useAlert } from './alertWrapper';
 
 export default function BookDetails({ book, onExit, onAddClicked, onOutsideClicked, userInfo }) {
-    const [state] = useAppContext();
     const api = useApi();
     const alert = useAlert();
 

@@ -1,5 +1,4 @@
 import styles from '../styles/components/footer.module.css'
-import { useAppContext } from './appWrapper';
 import { FooterButton } from './ui/button';
 
 function flipTheme(theme) {
@@ -10,7 +9,6 @@ function flipTheme(theme) {
 }
 
 export default function Footer({ userInfo, setInfoPanel, currentTheme, setTheme }) {
-    const [_, setState] = useAppContext();
     return (
         <footer
             className={styles.footer}
@@ -23,8 +21,6 @@ export default function Footer({ userInfo, setInfoPanel, currentTheme, setTheme 
                     icon={`${currentTheme ? `fas fa-fw fa-sun` : `fas fa-fw fa-moon`}`}
                     onClick={() => {
                         setTheme(prev => flipTheme(prev));
-                        // Remove once everything has changed to the new system
-                        setState(state => ({ ...state, darkMode: !state.darkMode }));
                     }}
                 />
 

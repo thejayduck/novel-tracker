@@ -7,13 +7,10 @@ import CardListWrapper from './cards/cardListWrapper'
 import ResultCard from './cards/resultCard'
 
 import { useState, useEffect } from 'react'
-import { useAppContext } from './appWrapper'
 import { AnimatePresence, AnimateSharedLayout } from 'framer-motion'
 import { useApi, useDelayedState } from '../lib/clientHelpers';
 
 export default function BrowseBooks({ onAddClicked, onOutsideClicked, userInfo }) {
-  const [state] = useAppContext();
-
   const [userInput, setUserInput] = useDelayedState("", 250);
   const [searchResults, setSearchResults] = useState([]);
 

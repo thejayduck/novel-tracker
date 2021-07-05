@@ -2,7 +2,6 @@ import styles from '../styles/PageBase.module.css';
 
 import { AnimatePresence } from 'framer-motion';
 import React, { useEffect, useState } from 'react';
-import { useAppContext } from "./appWrapper";
 
 import BrowseBooks from './browseBooks';
 import Information from './information';
@@ -14,8 +13,6 @@ import QuickAlert from './quickAlert';
 const valid_themes = ['light', 'dark'];
 
 export default function PageBase({ children, onDataUpdate, userInfo, setSearchQuery }) {
-    const [state] = useAppContext();
-
     const [browseBookPanel, setBrowseBookPanel] = useState(false);
     const [informationPanel, setInformationPanel] = useState(false);
 

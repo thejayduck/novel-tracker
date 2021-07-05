@@ -1,10 +1,8 @@
 import styles from '../styles/Information.module.css'
-import { useAppContext } from './appWrapper';
 import OverlayMenu from './overlayMenu'
 import Button from './ui/button';
 
 export default function Information({ onOutsideClicked }) {
-    const [state] = useAppContext();
 
     return (
         <OverlayMenu
