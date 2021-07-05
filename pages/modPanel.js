@@ -19,15 +19,14 @@ export async function getServerSideProps(context) {
 
 
 export default function ModPanel({ user_info }) {
-    const [pendingBooks, setPendingBooks] = useState([]);
-    useEffect(async () => {
-        const response = await fetch("/api/mod/get_pending_books");
-        const json = await response.json();
-        setPendingBooks(json.data);
-    }, []);
-
     const alert = useAlert();
     const api = useApi();
+
+    const [pendingBooks, setPendingBooks] = useState([]);
+    useEffect(async () => {
+        const data = await api.getPendingBooks();
+        setPendingBooks(data);
+    }, []);
 
     const acceptBook = async (pending_book) => {
         await api.acceptBook(pending_book.submission_id);

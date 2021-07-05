@@ -9,7 +9,7 @@ import ResultCard from './cards/resultCard'
 import { useState, useEffect } from 'react'
 import { useAppContext } from './appWrapper'
 import { AnimatePresence, AnimateSharedLayout } from 'framer-motion'
-import { useDelayedState } from '../lib/clientHelpers';
+import { useApi, useDelayedState } from '../lib/clientHelpers';
 
 export default function BrowseBooks({ onAddClicked, onOutsideClicked, userInfo }) {
   const [state] = useAppContext();
@@ -19,12 +19,13 @@ export default function BrowseBooks({ onAddClicked, onOutsideClicked, userInfo }
 
   const [detailedBook, setDetailedBook] = useState(null);
 
+  const api = useApi();
+
 
   useEffect(async () => {
-    const response = await fetch(`/api/search_book?title=${userInput}`);
-    const json = await response.json();
+    const data = await api.searchBook(userInput);
 
-    setSearchResults(json.map(q => ({
+    setSearchResults(data.map(q => ({
       book_id: q.book_id,
       title: q.title,
       cover_url: q.cover_url,
@@ -32,9 +33,8 @@ export default function BrowseBooks({ onAddClicked, onOutsideClicked, userInfo }
   }, [userInput]);
 
   async function onDetailsClick(entry) {
-    const response = await fetch(`/api/get_book?id=${entry.book_id}`);
-    const json = await response.json();
-    setDetailedBook(json.data)
+    const data = await api.getBook(entry.book_id);
+    setDetailedBook(data);
   }
 
   return (

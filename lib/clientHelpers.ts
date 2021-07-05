@@ -53,6 +53,29 @@ export function useApi() {
         const json = await response.json();
         if (json.status != "OK") {
             alert.error(json.message);
+            return json;
+        } else {
+            if (onSuccess) {
+                onSuccess(json.data);
+            }
+            return json.data;
+        }
+    }
+    async function getCall<T, U>(endpoint: string, data: T, onSuccess?: (responseData: U) => void) {
+        const parameters = Object.entries(data).map(([key, value]) => `${key}=${value}`).join("&");
+        const response = await fetch(`/api/${endpoint}?${parameters}`);
+        if (response.status != 200) {
+            if (response.status == 500) {
+                const json = await response.json()
+                alert.error(`Server Error: '${json.message}'`);
+            } else {
+                alert.error(`API Request for endpoint ${endpoint} returned ${response.status}`);
+            }
+            return;
+        }
+        const json = await response.json();
+        if (json.status != "OK") {
+            alert.error(json.message);
         } else {
             if (onSuccess) {
                 onSuccess(json.data);
@@ -82,6 +105,21 @@ export function useApi() {
         },
         async updateChaptersRead(book_id: number, new_chapters_read: number, onSuccess?: (responseData: void) => void) {
             return postCall("me/update_chapters_read", { book_id, new_chapters_read }, onSuccess);
+        },
+        async searchBook(title: string, onSuccess?: (responseData: void) => void) {
+            return getCall("search_book", { title }, onSuccess);
+        },
+        async getBook(book_id: number, onSuccess?: (responseData: void) => void) {
+            return getCall("get_book", { id: book_id }, onSuccess);
+        },
+        /*async getUserInfo(onSuccess?: (responseData: void) => void) {
+            return getCall("me/info", {}, onSuccess);
+        },*/
+        async getPendingBooks(onSuccess?: (responseData: void) => void) {
+            return getCall("mod/get_pending_books", {}, onSuccess);
+        },
+        async getUserBookInfos(onSuccess?: (responseData: void) => void) {
+            return getCall("me/get_book_infos", {}, onSuccess);
         },
     }
 }

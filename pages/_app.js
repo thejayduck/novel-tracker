@@ -1,7 +1,6 @@
 import '../styles/globals.css'
 import Head from 'next/head'
 import { AppWrapper } from '../components/appWrapper'
-import { AuthWrapper } from '../components/authWrapper'
 import { resetId } from 'react-id-generator'
 import { AlertWrapper } from '../components/alertWrapper'
 
@@ -41,11 +40,9 @@ export default function MyApp({ Component, pageProps }) {
       </Head>
 
       <AppWrapper>
-        <AuthWrapper>
-          <AlertWrapper>
-            <Component {...pageProps} />
-          </AlertWrapper>
-        </AuthWrapper>
+        <AlertWrapper>
+          <Component {...pageProps} />
+        </AlertWrapper>
       </AppWrapper>
     </>
   )

@@ -12,7 +12,7 @@ export default function BookDetails({ book, onExit, onAddClicked, onOutsideClick
     const alert = useAlert();
 
     async function addBook() {
-        api.addBook(book.book_id, () => {
+        await api.addBook(book.book_id, () => {
             alert.information("Added Book!");
         });
         onAddClicked();

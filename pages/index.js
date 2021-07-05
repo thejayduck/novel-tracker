@@ -9,7 +9,7 @@ import LibraryCard from '../components/cards/libraryCard';
 import Fuse from 'fuse.js'
 import { useState, useEffect, useMemo } from 'react'
 import { AnimateSharedLayout } from 'framer-motion'
-import { useDelayedState } from '../lib/clientHelpers';
+import { useApi, useDelayedState } from '../lib/clientHelpers';
 import { serverSide_checkAuth } from '../lib/serverHelpers';
 
 export async function getServerSideProps(context) {
@@ -40,14 +40,10 @@ export default function Home({ user_info }) {
     return fuseResults.map(result => result.item);
   }, [query, data]);
 
+  const api = useApi();
+
   async function updateData() {
-    console.log("Updating data");
-    const response = await fetch("/api/me/get_book_infos");
-    const json = await response.json();
-    if (json.status != "OK") {
-      throw json;
-    }
-    const infos = json.data;
+    const infos = await api.getUserBookInfos();
     setData(infos)
   }
 
