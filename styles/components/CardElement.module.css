@@ -43,6 +43,9 @@
   z-index: 999;
 
   transform: scale(0);
+}
+
+.cardListWrap > :first-child .ripple {
   animation: ripple 0.85s ease-in;
 }
 

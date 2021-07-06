@@ -9,7 +9,7 @@ export default function CardElement({ entry, children }) {
             animate={{ opacity: 1, }}
         >
             <div className={styles.cardElementWrap}>
-                {/* <div className={styles.ripple} /> */}
+                <div className={styles.ripple} />
                 <div className={styles.cardElement}>
                     <h2
                         title={`${entry?.title}`}
