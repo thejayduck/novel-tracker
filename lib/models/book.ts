@@ -6,7 +6,7 @@ export interface IVolume {
     extras: number,
 }
 
-export interface IBook {
+export interface ISimpleBook {
     _id: ObjectId,
     title_english: string,
     title_romanized: string,
@@ -18,7 +18,15 @@ export interface IBook {
     release_status: string,
     start_date: Date,
     end_date: Date,
+}
+
+export interface IBook extends ISimpleBook {
     volumes: [IVolume]
+}
+
+export interface ISubmitBook extends IBook {
+    submitted_by: ObjectId,
+    denied: boolean,
 }
 
 const volumeSchema = new mongoose.Schema({
@@ -35,14 +43,29 @@ const volumeSchema = new mongoose.Schema({
         required: true,
     },
 });
-const bookSchema = new mongoose.Schema<IBook>({
+
+const bookSchemaDef = {
     /* TODO */
     volumes: {
         type: [volumeSchema],
         required: true,
     }
+};
+const bookSchema = new mongoose.Schema<IBook>(bookSchemaDef, { timestamps: true });
+
+const submitBookSchema = new mongoose.Schema<ISubmitBook>({
+    ...bookSchemaDef,
+    submitted_by: {
+        type: mongoose.Types.ObjectId,
+        required: true,
+    },
+    denied: {
+        type: Boolean,
+        required: true,
+    }
 }, { timestamps: true });
 
 const Book: mongoose.Model<IBook & mongoose.Document> = mongoose.models.Book || mongoose.model('Book', bookSchema);
+const BookSubmission: mongoose.Model<ISubmitBook & mongoose.Document> = mongoose.models.BookSubmission || mongoose.model('BookSubmission', submitBookSchema);
 
-export default Book;
+export { Book, BookSubmission };

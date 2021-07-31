@@ -1,3 +1,6 @@
+import { Types, isValidObjectId, ObjectId } from "mongoose";
+import { IBook } from "./models/book";
+
 export function isID(id: any): boolean {
     return id != undefined
         && id != null
@@ -5,12 +8,11 @@ export function isID(id: any): boolean {
         && Number.isInteger(id);
 }
 
-export function parseID(id: any): number {
-    const parsed_id = typeof id == 'number' ? id : Number.parseInt(id);
-    if (!isID(parsed_id)) {
+export function parseID(id: any): Types.ObjectId {
+    if (!isValidObjectId(id)) {
         throw 'Invalid Book Id';
     }
-    return parsed_id;
+    return Types.ObjectId(id);
 }
 
 export function isToken(id: any): boolean {
@@ -20,48 +22,8 @@ export function isToken(id: any): boolean {
         && typeof id === 'string';
 }
 
-export interface UserBookInfo {
-    chapters_read: number,
-}
+export function createSerializableBookInfo(book: IBook): any {
+    const { start_date, end_date } = book;
 
-export interface BookInfo {
-    book_id: number,
-    cover_url: string,
-    title: string,
-    title_romanized: string,
-    title_native: string,
-    description: string,
-    author: string,
-    start_date: Date,
-    end_date: Date,
-    banner_url: string,
-    release_status: string,
-}
-
-export interface SerializableBookInfo {
-    book_id: number,
-    cover_url: string,
-    title: string,
-    title_romanized: string,
-    title_native: string,
-    description: string,
-    author: string,
-    start_date: string, // ISO String
-    end_date: string, // ISO String
-    banner_url: string,
-    release_status: string,
-}
-
-export function createSerializableBookInfo(info: BookInfo): SerializableBookInfo {
-    const { start_date, end_date } = info;
-
-    return { ...info, start_date: start_date && start_date.toISOString(), end_date: end_date && end_date.toISOString() };
-}
-
-export interface BookVolume {
-    book_id: number,
-    volume_number: number,
-    chapter_count: number,
-    extra_chapter_count: number,
-    cover_url: string,
+    return { ...book, start_date: start_date && start_date.toISOString(), end_date: end_date && end_date.toISOString() };
 }

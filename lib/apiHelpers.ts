@@ -41,7 +41,7 @@ export function withHelperBareGet<T>(required_fields: string[], callback: (token
             } else {
                 err = reason;
             }
-            res.status(500).json({ status: "Error", ...err });
+            res.status(500).json({ status: "Error", err });
         }
     }
 }
@@ -93,7 +93,7 @@ export function withHelperBarePost<T>(required_fields: string[], callback: (toke
             } else {
                 err = reason;
             }
-            res.status(500).json({ status: "Error", ...err });
+            res.status(500).json({ status: "Error", err });
         }
     }
 }
