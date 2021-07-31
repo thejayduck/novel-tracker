@@ -59,5 +59,9 @@ export async function serverSide_checkAuth(context, require_login: boolean, requ
         }, null];
     }
 
-    return [null, info];
+    return [null, {
+        username: info.username,
+        moderation_level: info.moderation_level,
+        user_id: info.id
+    }];
 }

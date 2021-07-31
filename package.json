@@ -11,17 +11,21 @@
     "start": "next start -p $PORT"
   },
   "dependencies": {
+    "@types/mongoose": "^5.11.97",
     "@types/pg": "^8.6.0",
+    "babel-plugin-superjson-next": "^0.3.0",
     "cookie": "^0.4.1",
     "framer-motion": "^4.1.17",
     "fuse.js": "^6.4.6",
     "js-cookie": "^2.2.1",
+    "mongoose": "^5.13.4",
     "next": "^11.0.0",
     "pg": "^8.6.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-id-generator": "^3.0.1",
-    "sass": "^1.35.1"
+    "sass": "^1.35.1",
+    "superjson": "^1.7.4"
   },
   "devDependencies": {
     "@types/react": "^17.0.11",

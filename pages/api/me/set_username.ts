@@ -7,5 +7,5 @@ export default withInfoHelperPost(["new_name"], async (_, params, user_info) => 
             message: "We do not support changing your username right now."
         }
     }
-    await setUsername(user_info.user_id, params.new_name);
+    await setUsername(user_info._id, params.new_name);
 }, true);

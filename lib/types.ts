@@ -58,12 +58,6 @@ export function createSerializableBookInfo(info: BookInfo): SerializableBookInfo
     return { ...info, start_date: start_date && start_date.toISOString(), end_date: end_date && end_date.toISOString() };
 }
 
-export interface UserInfo {
-    user_id: number,
-    username: string,
-    moderation_level: number,
-}
-
 export interface BookVolume {
     book_id: number,
     volume_number: number,

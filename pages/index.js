@@ -13,10 +13,10 @@ import { useApi, useDelayedState } from '../lib/clientHelpers';
 import { serverSide_checkAuth } from '../lib/serverHelpers';
 
 export async function getServerSideProps(context) {
-  const [auth, info] = await serverSide_checkAuth(context, true, false, false);
+  const [auth, user_info] = await serverSide_checkAuth(context, true, false, false);
   return auth || {
     props: {
-      user_info: info,
+      user_info,
     },
   };
 }

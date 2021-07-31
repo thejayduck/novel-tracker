@@ -1,98 +1,43 @@
 import { randomBytes } from 'crypto';
-import { Pool } from 'pg';
-import { BookInfo, BookVolume, createSerializableBookInfo, SerializableBookInfo, UserBookInfo, UserInfo } from './types';
-const pool = new Pool();
+import { BookInfo, BookVolume, createSerializableBookInfo, SerializableBookInfo, UserBookInfo } from './types';
+import mongoose, { ObjectId } from 'mongoose';
+import User, { IUser } from './models/user';
+import Session from './models/session';
 
-// TODO database functions?
-
-export async function createUserFromGoogle(gui: number) {
-    const create_result = await pool.query<{ user_id: number }>("INSERT INTO users (google_user_id) VALUES ($1) RETURNING user_id", [gui]);
-    if (create_result.rowCount == 0) {
-        throw {
-            message: "Unable to create user",
-        };
-    };
-
-    return create_result.rows[0].user_id;
+console.log("Connecting to MongoDB");
+if (mongoose.connection.readyState == 0) {
+    const connection_string = `mongodb://${process.env.MONGO_USER}:${encodeURIComponent(process.env.MONGO_PASSWORD)}@192.168.68.115:5829/noveltracker?authSource=admin&w=1`;
+    mongoose.connect(connection_string, { useNewUrlParser: true, useUnifiedTopology: true })
 }
 
-export async function findUserIdFromGoogle(gui: number) {
-    const result = await pool.query<{ user_id: number }>("SELECT user_id FROM users WHERE google_user_id = $1", [gui]);
-
-    if (result.rowCount > 1) {
-        throw {
-            message: "More than one account associated with this google user id??",
-        };
-    }
-    if (result.rowCount == 0) {
-        return null;
-    }
-
-    return result.rows[0].user_id;
+export async function createUserFromGoogle(gui: number): Promise<null | ObjectId> {
+    return await new User({ google_user_id: gui }).save().then(user => user._id);
 }
 
-export async function createSession(user_id: number) {
+export async function findUserIdFromGoogle(gui: number): Promise<null | ObjectId> {
+    return await User.findOne({ google_user_id: gui }).then(user => user && user._id);
+}
+
+export async function createSession(user_id: ObjectId) {
     const session_token = randomBytes(32).toString('hex');
-
-    await pool.query("INSERT INTO sessions (user_id, session_token) VALUES ($1, $2)", [user_id, session_token]);
-
-    return session_token;
+    return await new Session({ user_id, session_token }).save().then(session => session.session_token);
 }
 
-export async function deleteSession(token: string) {
-    await pool.query("DELETE FROM sessions WHERE session_token = $1", [token]);
+export async function deleteSession(session_token: string) {
+    await Session.deleteOne({ session_token });
 }
 
-export async function getUserId(token: string) {
-    const result = await pool.query<{ user_id: number }>("SELECT user_id FROM sessions WHERE session_token = $1", [token]);
-
-    if (result.rowCount > 1) {
-        throw {
-            message: "More than one account associated with this token??",
-        };
-    }
-    if (result.rowCount == 0) {
-        return null;
-    }
-
-    return result.rows[0].user_id;
+export async function getUserId(session_token: string) {
+    return await Session.findOne({ session_token }).then(session => session && session.user_id);
 }
 
 
-export async function getUserInfo(user_id: number) {
-    const result = await pool.query<UserInfo>("SELECT user_id, moderation_level, username FROM users WHERE user_id = $1", [user_id]);
-
-    if (result.rowCount > 1) {
-        throw {
-            message: "More than one account associated with this user id??",
-            user_id,
-        };
-    }
-    if (result.rowCount == 0) {
-        throw {
-            message: "Unable to find a user with that user id",
-            user_id,
-        };
-    }
-
-    return result.rows[0];
+export async function getUserInfo(user_id: ObjectId) {
+    return await User.findById(user_id);
 }
 
-export async function setUsername(user_id: number, username: string) {
-    const result = await pool.query("UPDATE users SET username = $2 WHERE user_id = $1", [user_id, username]);
-
-    if (result.rowCount > 1) {
-        throw {
-            message: "More than one account associated with this user id??",
-            user_id,
-        };
-    }
-    if (result.rowCount == 0) {
-        throw {
-            message: "Unable to find a user with that user id",
-            user_id,
-        };
-    }
+export async function setUsername(user_id: ObjectId, username: string) {
+    await User.findByIdAndUpdate(user_id, { username }, { runValidators: true });
 }
 
 export async function submitBook(bookDetails: SerializableBookInfo, submitted_by: number) {
@@ -286,7 +231,7 @@ export async function getVolumeForChapters(book_id: number, chapters_read: numbe
     return volumes || 0;
 }
 
-export async function withUserId<T>(token: string, callback: (user_id: number) => Promise<T>) {
+export async function withUserId<T>(token: string, callback: (user_id: ObjectId) => Promise<T>) {
     const user_id = await getUserId(token);
     if (user_id == null) {
         return null;

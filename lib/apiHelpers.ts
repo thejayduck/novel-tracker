@@ -1,6 +1,8 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { getUserInfo, withUserId } from "./db";
-import { isToken, UserInfo } from "./types";
+import { IUser } from "./models/user";
+import { isToken } from "./types";
+import mongoose from 'mongoose'
 
 export type Params = { [key: string]: string };
 
@@ -44,7 +46,7 @@ export function withHelperBareGet<T>(required_fields: string[], callback: (token
     }
 }
 
-export function withInfoHelperGet<T>(required_fields: string[], callback: (token: string, params: Params, user_info: UserInfo) => Promise<T>, user_info_required: boolean = false): (req: NextApiRequest, res: NextApiResponse) => Promise<void> {
+export function withInfoHelperGet<T>(required_fields: string[], callback: (token: string, params: Params, user_info: IUser) => Promise<T>, user_info_required: boolean = false): (req: NextApiRequest, res: NextApiResponse) => Promise<void> {
     return withHelperBareGet(required_fields, async (token, params) => {
         const user_info = await withUserId(token, getUserInfo);
         if (user_info_required && !user_info) {
@@ -96,9 +98,9 @@ export function withHelperBarePost<T>(required_fields: string[], callback: (toke
     }
 }
 
-export function withInfoHelperPost<T>(required_fields: string[], callback: (token: string, params: any, user_info: UserInfo) => Promise<T>, user_info_required: boolean = false): (req: NextApiRequest, res: NextApiResponse) => Promise<void> {
+export function withInfoHelperPost<T>(required_fields: string[], callback: (token: string, params: any, user_info: IUser) => Promise<T>, user_info_required: boolean = false): (req: NextApiRequest, res: NextApiResponse) => Promise<void> {
     return withHelperBarePost(required_fields, async (token, params) => {
-        const user_info = await withUserId(token, getUserInfo);
+        const user_info: IUser = await withUserId(token, getUserInfo);
         if (user_info_required && !user_info) {
             throw {
                 message: "Unable to find user",
