@@ -107,7 +107,7 @@ export function useApi() {
             return postCall("me/update_chapters_read", { book_id, new_chapters_read }, onSuccess);
         },
         async searchBook(title: string, onSuccess?: (responseData: void) => void) {
-            return getCall("search_book", { title }, onSuccess);
+            return getCall("search_book", { query: title }, onSuccess);
         },
         async getBook(book_id: number, onSuccess?: (responseData: void) => void) {
             return getCall("get_book", { id: book_id }, onSuccess);

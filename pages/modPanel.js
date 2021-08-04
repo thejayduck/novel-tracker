@@ -29,13 +29,14 @@ export default function ModPanel({ user_info }) {
     }, []);
 
     const acceptBook = async (pending_book) => {
-        await api.acceptBook(pending_book.submission_id);
-        setPendingBooks(prev => prev.filter(book => book.submission_id != pending_book.submission_id));
+        console.log(pending_book);
+        await api.acceptBook(pending_book._id);
+        setPendingBooks(prev => prev.filter(book => book._id != pending_book._id));
         alert.information("Book has been accepted!");
     };
     const denyBook = async (pending_book) => {
-        await api.denyBook(pending_book.submission_id);
-        setPendingBooks(prev => prev.filter(book => book.submission_id != pending_book.submission_id));
+        await api.denyBook(pending_book._id);
+        setPendingBooks(prev => prev.filter(book => book._id != pending_book._id));
         alert.information("Book has been denied!");
     };
 
@@ -43,7 +44,7 @@ export default function ModPanel({ user_info }) {
         <PageBase userInfo={user_info}>
             <div className={styles.submissionList}>
                 {pendingBooks.map(pending_book => (
-                    <SubmissionItem key={pending_book.submission_id} pending_book={pending_book} acceptBook={acceptBook} denyBook={denyBook} />
+                    <SubmissionItem key={pending_book._id} pending_book={pending_book} acceptBook={acceptBook} denyBook={denyBook} />
                 ))}
             </div>
         </PageBase>

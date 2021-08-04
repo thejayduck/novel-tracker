@@ -1,6 +1,6 @@
 import { randomBytes } from 'crypto';
 import mongoose, { Types } from 'mongoose';
-import User, { IUserProgress } from './models/user';
+import User, { IUserProgress, UserProgress } from './models/user';
 import Session from './models/session';
 import { IBook, Book, BookSubmission } from './models/book';
 
@@ -27,7 +27,7 @@ export async function deleteSession(session_token: string) {
     await Session.deleteOne({ session_token });
 }
 
-export async function getUserId(session_token: string) {
+export async function getUserId(session_token: string): Promise<Types.ObjectId | null> {
     return await Session.findOne({ session_token }).then(session => session && session.user_id);
 }
 
@@ -40,11 +40,27 @@ export async function setUsername(user_id: Types.ObjectId, username: string) {
 }
 
 export async function submitBook(bookDetails: IBook, submitted_by: Types.ObjectId) {
-    return await new BookSubmission({ ...bookDetails, submitted_by }).save().then(book => book._id);
+    return await new BookSubmission({ ...bookDetails, submitted_by, denied: false }).save().then(book => book._id);
 }
 
 export async function getBook(book_id: Types.ObjectId) {
     return await Book.findById(book_id);
+}
+
+export async function searchBook(query: string) {
+    return await Book.find({
+        $or: [
+            {
+                title_native: new RegExp(query, 'gi'),
+            },
+            {
+                title_romanized: new RegExp(query, 'gi'),
+            },
+            {
+                title_english: new RegExp(query, 'gi'),
+            }
+        ]
+    });
 }
 
 export async function getPendingBooks() {
@@ -56,7 +72,7 @@ export async function getPendingBook(submission_id: Types.ObjectId) {
 }
 
 export async function acceptBook(submission_id: Types.ObjectId) {
-    const submission = (await BookSubmission.findOneAndDelete(submission_id)).toObject();
+    const submission = (await BookSubmission.findByIdAndDelete(submission_id)).toObject();
     delete submission.submitted_by;
     delete submission.denied;
     await new Book(submission).save();
@@ -74,49 +90,57 @@ export async function getUserBooks(user_id: Types.ObjectId): Promise<IUserProgre
     return await User.findById(user_id).then(user => user.books);
 }
 
-export async function addUserBooks(user_id: number, book_id: number) {
-    const result = await pool.query("INSERT INTO user_books (user_id, book_id) VALUES ($1, $2)", [user_id, book_id]);
-
-    if (result.rowCount == 0) {
-        throw {
-            message: "Unable to add book",
-        };
-    }
+export async function getUserBookInfos(user_id: Types.ObjectId): Promise<(IUserProgress)[]> {
+    return await User.findById(user_id).then(async (user) => await user.execPopulate()).then(user => user.books);
 }
 
-export async function deleteUserBooks(user_id: number, book_id: number) {
-    await pool.query("DELETE FROM user_books WHERE user_id = $1 AND book_id = $2", [user_id, book_id]);
+export async function addUserBooks(user_id: Types.ObjectId, book_id: Types.ObjectId) {
+    await User.findByIdAndUpdate(user_id, {
+        $push: {
+            books: new UserProgress({
+                book_id,
+                chapters: 0,
+                volumes: 0,
+            }),
+        }
+    })
 }
 
-export async function updateUserBookChaptersRead(user_id: number, book_id: number, new_chapters_read: number) {
-    const result = await pool.query("UPDATE user_books SET chapters_read = $3 WHERE user_id = $1 AND book_id = $2", [user_id, book_id, new_chapters_read]);
-
-    if (result.rowCount > 1) {
-        throw {
-            message: "More than one user book associated with these ids??",
-            user_id,
-        };
-    }
-    if (result.rowCount == 0) {
-        throw {
-            message: "Unable to find a users book",
-            user_id,
-        };
-    }
+export async function deleteUserBooks(user_id: Types.ObjectId, book_id: Types.ObjectId) {
+    await User.findByIdAndUpdate(user_id, {
+        $pull: {
+            books: {
+                book_id,
+            }
+        }
+    })
 }
 
-export async function getVolumeForChapters(book_id: number, chapters_read: number) {
-    const result = await pool.query<{ volume_number: number, chapter_count: number }>("SELECT volume_number, chapter_count FROM volumes WHERE book_id = $1 ORDER BY volume_number", [book_id]);
-    const [volumes] = result.rows
-        .reduce<[number, number][]>((acc, current, idx) => {
-            const [, prev_total_chapters] = idx > 0 ? acc[idx - 1] : [0, 0];
-            acc.push([current.volume_number, prev_total_chapters + current.chapter_count]);
-            return acc;
-        }, [])
-        .filter(([, total_chapters]) => total_chapters <= chapters_read)
-        .map(([volume_number]) => volume_number)
-        .slice(-1);
-    return volumes || 0;
+export async function updateUserBookChaptersRead(user_id: Types.ObjectId, book_id: Types.ObjectId, new_chapters_read: number) {
+    const new_volumes_read = await getVolumeForChapters(book_id, new_chapters_read);
+    await User.findOneAndUpdate(
+        { "_id": user_id, "books._id": book_id },
+        {
+            "$set": {
+                "books.$.chapters": new_chapters_read,
+                "books.$.volumes": new_volumes_read,
+            }
+        }
+    );
+}
+
+export async function getVolumeForChapters(book_id: Types.ObjectId, chapters_read: number) {
+    const book = await Book.findById(book_id);
+
+    let total_chapters = 0;
+    for (let i = 0; i < book.volumes.length; i++) {
+        const volume = book.volumes[i];
+
+        if (total_chapters >= chapters_read) {
+            return i;
+        }
+        total_chapters += volume.chapters + volume.extras;
+    }
 }
 
 export async function withUserId<T>(token: string, callback: (user_id: Types.ObjectId) => Promise<T>) {

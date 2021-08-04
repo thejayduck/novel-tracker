@@ -1,12 +1,13 @@
-import mongoose, { ObjectId } from 'mongoose'
+import mongoose, { Types, Schema } from 'mongoose'
 
 export interface IUserProgress {
+    book_id: Types.ObjectId,
     chapters: number,
     volumes: number,
 }
 
 export interface IUser {
-    _id: ObjectId,
+    _id: Types.ObjectId,
     google_user_id: number
     username: string | null,
     moderation_level: number,
@@ -16,6 +17,10 @@ export interface IUser {
 }
 
 const userProgressSchema = new mongoose.Schema<IUserProgress>({
+    book_id: {
+        type: Schema.Types.ObjectId,
+        ref: 'Book'
+    },
     chapters: {
         type: Number,
         required: true,
@@ -37,5 +42,7 @@ const userSchema = new mongoose.Schema<IUser>({
 }, { timestamps: true });
 
 const User: mongoose.Model<IUser & mongoose.Document> = mongoose.models.User || mongoose.model('User', userSchema);
+const UserProgress: mongoose.Model<IUserProgress & mongoose.Document> = mongoose.models.UserProgress || mongoose.model('UserProgress', userProgressSchema);
 
 export default User;
+export { UserProgress };

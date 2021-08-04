@@ -10,7 +10,7 @@ export default function BookDetails({ book, onExit, onAddClicked, onOutsideClick
     const alert = useAlert();
 
     async function addBook() {
-        await api.addBook(book.book_id, () => {
+        await api.addBook(book._id, () => {
             alert.information("Added Book!");
         });
         onAddClicked();
@@ -52,11 +52,11 @@ export default function BookDetails({ book, onExit, onAddClicked, onOutsideClick
                     <>
                         <Button text="Add" onClick={() => addBook()} />
                         <br />
-                        <Button text="Edit" href={`/submitBook?id=${book.book_id}`} />
+                        <Button text="Edit" href={`/submitBook?id=${book._id}`} />
                         <br />
                     </>
                 }
-                <Button text="More" href={`/books/${book.book_id}`} />
+                <Button text="More" href={`/books/${book._id}`} />
                 <br />
                 <Button text="Close" onClick={() => onExit()} />
             </div>

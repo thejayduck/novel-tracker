@@ -32,13 +32,13 @@ export default withInfoHelperPost(["book_details"], async (_, params, user_info)
         existing_book = getBook(book_id);
     }
 
-    let id;
+    let id: any;
     if (existing_book) {
         throw {
             message: "Unimplemented",
         }
     } else {
-        id = await submitBook(book_details, user_info.user_id);
+        id = await submitBook(book_details, user_info._id);
     }
 
     return {

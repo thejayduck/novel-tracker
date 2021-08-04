@@ -1,8 +1,8 @@
-import mongoose, { ObjectId } from 'mongoose'
+import mongoose, { Types, Schema } from 'mongoose'
 
 export interface ISession {
-    _id: ObjectId,
-    user_id: ObjectId,
+    _id: Types.ObjectId,
+    user_id: Types.ObjectId,
     session_token: string,
     createdAt: Date,
     updatedAt: Date,
@@ -10,7 +10,7 @@ export interface ISession {
 
 const sessionSchema = new mongoose.Schema<ISession>({
     user_id: {
-        type: mongoose.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         required: true,
         ref: 'User'
     },

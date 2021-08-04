@@ -1,4 +1,4 @@
-import mongoose, { ObjectId } from 'mongoose'
+import mongoose, { Schema, Types } from 'mongoose'
 
 export interface IVolume {
     cover_url: string,
@@ -7,14 +7,14 @@ export interface IVolume {
 }
 
 export interface ISimpleBook {
-    _id: ObjectId,
-    title_english: string,
-    title_romanized: string,
+    _id: Types.ObjectId,
+    title_english?: string,
+    title_romanized?: string,
     title_native: string,
     description: string,
     author: string,
-    cover_url: string,
-    banner_url: string,
+    cover_url?: string,
+    banner_url?: string,
     release_status: string,
     start_date: Date,
     end_date: Date,
@@ -25,7 +25,7 @@ export interface IBook extends ISimpleBook {
 }
 
 export interface ISubmitBook extends IBook {
-    submitted_by: ObjectId,
+    submitted_by: Schema.Types.ObjectId,
     denied: boolean,
 }
 
@@ -45,7 +45,34 @@ const volumeSchema = new mongoose.Schema({
 });
 
 const bookSchemaDef = {
-    /* TODO */
+    title_english: String,
+    title_romanized: String,
+    title_native: {
+        type: String,
+        required: true,
+    },
+    description: {
+        type: String,
+        required: true,
+    },
+    author: {
+        type: String,
+        required: true,
+    },
+    cover_url: String,
+    banner_url: String,
+    release_status: {
+        type: String,
+        required: true,
+    },
+    start_date: {
+        type: Date,
+        required: true,
+    },
+    end_date: {
+        type: Date,
+        required: true,
+    },
     volumes: {
         type: [volumeSchema],
         required: true,

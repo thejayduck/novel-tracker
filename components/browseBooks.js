@@ -23,7 +23,7 @@ export default function BrowseBooks({ onAddClicked, onOutsideClicked, userInfo }
     const data = await api.searchBook(userInput);
 
     setSearchResults(data.map(q => ({
-      book_id: q.book_id,
+      book_id: q._id,
       title: q.title,
       cover_url: q.cover_url,
     })));

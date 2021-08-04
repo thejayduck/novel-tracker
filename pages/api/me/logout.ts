@@ -1,7 +1,7 @@
 import { serialize } from "cookie";
 import { deleteSession } from "../../../lib/db";
 
-export default async function Logout({ cookies, headers }, res) {
+export default async function Logout({ cookies, headers }, res: any) {
     const token = cookies.token;
     try {
         await deleteSession(token);

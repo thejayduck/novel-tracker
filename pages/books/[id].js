@@ -2,8 +2,7 @@ import styles from '../../styles/Book.module.css'
 import PageBase from "../../components/pageBase";
 import Button from "../../components/ui/button";
 import Head from "next/dist/next-server/lib/head";
-import { getBookWithVolumes } from "../../lib/db";
-import { motion } from "framer-motion";
+import { getBook } from "../../lib/db";
 import { serverSide_checkAuth } from '../../lib/serverHelpers';
 
 export async function getServerSideProps(context) {
@@ -14,7 +13,13 @@ export async function getServerSideProps(context) {
             message: "No book id was passed"
         }
     }
-    const book = await getBookWithVolumes(context.query.id);
+
+    const book = (await getBook(context.query.id)).toObject();
+    delete book.createdAt;
+    delete book.updatedAt;
+    book.start_date = book.start_date.toISOString();
+    book.end_date = book.end_date.toISOString();
+    book._id = book._id.toString();
 
     return auth || {
         props: {
