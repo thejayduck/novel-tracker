@@ -6,7 +6,7 @@ import { IBook, Book, BookSubmission } from './models/book';
 
 console.log("Connecting to MongoDB");
 if (mongoose.connection.readyState == 0) {
-    const connection_string = `mongodb://${process.env.MONGO_USER}:${encodeURIComponent(process.env.MONGO_PASSWORD)}@${process.env.MONGO_HOST}/noveltracker?authSource=admin&w=1`;
+    const connection_string = `mongodb+srv://${process.env.MONGO_USER}:${encodeURIComponent(process.env.MONGO_PASSWORD)}@${process.env.MONGO_HOST}/noveltracker?authSource=admin&w=1`;
     mongoose.connect(connection_string, { useNewUrlParser: true, useUnifiedTopology: true })
 }
 
