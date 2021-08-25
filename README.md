@@ -11,7 +11,7 @@
 <img alt="mobile mockup" src="public/mockup_MOBILE.png" width=128 /> <img alt="pc mockup" src="public/mockup_PC.png" width=256 />
 
 ## Links
-[WIP Version](http://lightnoveltracker.herokuapp.com/) /
+[WIP Version](https://novel-tracker.vercel.app/) /
 [Old Version](https://lightnoveltracker-old.herokuapp.com/)
 
 
