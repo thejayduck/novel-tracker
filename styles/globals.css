@@ -6,21 +6,33 @@
 }
 
 :root {
-  --large-font: 21px;
-  --font-size: 16px;
-  --border: 5px;
-  --blur-amount: 10px;
+  /* Fonts */
+  --font-larger: 2.5em;
+  --font-large: 2em;
+  --font-medium: 1.5rem;
+  --font-normal: 1rem;
+  --font-small: 0.5rem;
+
+  /* Z Index */
+  --z-back: -10;
+  --z-normal: 1;
+  --z-front: 10;
+  --z-fixed: 100;
 
   /* Colors */
-  --color-primary: hsl(264, 71%, 47%); /* #6723cd */
-  --color-primaryLight: hsl(264, 71%, 55%); /* #7B39DD */
-  --color-primaryLighter: hsl(264, 71%, 66%); /* #9C6AE6 */
-  --color-primaryDark: hsl(264, 71%, 34%); /* #491992 */
-  --color-primaryDarker: hsl(264, 71%, 20%); /* #2C0F58 */
+  --accent: hsl(259, 100%, 65%);
+  --accent-dark: hsl(274, 100%, 30%);
+  --background: hsl(0, 0%, 100%);
+  --background-secondary: hsl(0, 0%, 12%);
+  --background-tertiary: hsl(0, 0%, 30%);
+  --scrollbar-thumb: hsl(259, 100%, 65%);
+  --scrollbar-track: #000000;
+  --alert: hsl(0, 100%, 55%);
+  --selection: hsl(259, 100%, 65%);
 
-  --backgroundColor-themeLight: hsla(184, 100%, 94%, 1);
-  --backgroundColor-themeDark: hsla(0, 0%, 8%, 1);
-  --blur-background: hsla(0, 0%, 0%, 0.5);
+  /* Other */
+  --border: 5px;
+  --blur: 10px;
 }
 
 @-moz-document url-prefix() {
@@ -41,7 +53,7 @@ body {
   scroll-behavior: smooth;
   box-sizing: border-box;
 
-  vertical-align: middle;
+  background-color: var(--background);
 }
 
 .light {
@@ -119,7 +131,18 @@ hr {
 }
 
 ul {
+  list-style: none;
+  padding: 0;
   margin: 0;
+  color: black;
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+}
+
+li {
+  transition: 0.2s ease-in-out;
 }
 
 @media screen and (min-width: 720px) {
@@ -170,7 +193,7 @@ ul {
 }
 
 ::selection {
-  background: #8f8f8f;
+  background: var(--selection);
 }
 
 /* width */
@@ -180,15 +203,15 @@ ul {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: var(--scrollbar-track);
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #888;
+  background: var(--scrollbar-thumb);
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: var(--scrollbar-thumb);
 }

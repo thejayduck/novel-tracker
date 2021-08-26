@@ -11,10 +11,13 @@ export default function MyApp({ Component, pageProps }) {
       <Head>
         <title>Novel Tracker</title>
         <link rel="icon" href="/favicon.ico" />
-        <link
+        {/* <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
-        />
+        /> */}
+        <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet' />
+
+
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
 

@@ -16,7 +16,7 @@ async function acessTokenRequest(code, redirect_uri) {
     const body = toUrlEncoded({
         code: code,
         client_id: "524679525288-o6gbij04v72f2i5ub4f83974mfocrc05.apps.googleusercontent.com",
-        client_secret: process.env.LNLDB_GOOGLE_CLIENT_SECRET,
+        client_secret: process.env.GOOGLE_CLIENT_SECRET,
         redirect_uri: redirect_uri,
         grant_type: 'authorization_code',
     });

@@ -1,42 +1,31 @@
-import styles from '../styles/components/TopNav.module.css';
-import { InputField } from './ui/inputField';
-import { FooterButton } from './ui/button';
-import { useState } from 'react';
-import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion';
+import styles from '../styles/components/TopNav.module.scss';
 
-export default function TopNav({ userInfo, hasModButtons, hasAdminButtons, onBrowseBooks, onSearch, hasSearch }) {
-    const [isSearching, setIsSearching] = useState(false);
-
+export default function TopNav({ data }) {
     return (
-        <div className={`${styles.headerWrap}`}>
-            <AnimateSharedLayout>
-                <div className={styles.buttonWrap}>
-                    {!userInfo && <FooterButton icon="fas fa-fw fa-sign-in-alt" text="Login" href="/login" />}
-                    {userInfo && <FooterButton icon="fas fa-fw fa-home" text="Home" href="/" />}
-                    {hasSearch &&
-                        <>
-                            <FooterButton icon="fas fa-fw fa-search" onClick={() => setIsSearching(isSearching => !isSearching)} />
-                            <AnimatePresence>
-                                {isSearching &&
-                                    <motion.div
-                                        layout
-                                        className={styles.inputWrap}
-                                        initial={{ width: 0 }}
-                                        animate={{ width: "auto" }}
-                                        exit={{ width: 0, transition: { display: "none" } }}
-                                    >
-                                        <InputField placeHolder="Search Books" onChange={onSearch} />
-                                    </motion.div>}
-                            </AnimatePresence>
-                        </>
-                    }
-                    <FooterButton icon="fas fa-fw fa-book-open" text="Browse Books" onClick={onBrowseBooks} />
-                    {userInfo && <FooterButton icon="fas fa-fw fa-feather-alt" text="Submit Book" href={"/submitBook"} />}
-                    {hasModButtons && <FooterButton icon="fas fa-fw fa-columns" text="Mod Panel" href={"/modPanel"} />}
-                    {hasAdminButtons && <FooterButton icon="fas fa-fw fa-columns" text="Admin Panel" href={"/adminPanel"} />}
-                </div>
-            </AnimateSharedLayout>
-        </div>
+        <nav className={`${styles.nav}`}>
+            <div className={`${styles.container}`}>
+                <User />
+                <ul className={`${styles.links}`}>
+                    <li><a title="Menu Search" ><i class='bx bx-search bx-md bx-tada-hover' /></a></li>
+                    <li><a title="Menu Notifications" ><i class='bx bx-bell bx-md bx-tada-hover' /></a></li>
+                    <li><a title="Menu Forums" ><i class='bx bx-chat bx-md bx-tada-hover' /></a></li>
+                    <li><a title="Menu Settings" ><i class='bx bx-cog bx-md bx-spin-hover' /></a></li>
+                </ul>
+            </div>
+        </nav>
     );
 
+}
+
+function User({ data }) {
+    return (
+        <div className={styles.userWrap}>
+            <img alt="Profile Picture" width={58} height={58} src={`/profileTemp.png`} />
+            <div className={styles.statusWrap}>
+                <span>TheJayDuck</span>
+                <span className={styles.status}>Admin</span>
+            </div>
+            <a><i class='bx bxs-down-arrow'></i></a>
+        </div>
+    );
 }

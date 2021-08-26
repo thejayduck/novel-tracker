@@ -1,4 +1,10 @@
 module.exports = {
+    env: {
+        MONGO_HOST: process.env.MONGO_HOST,
+        MONGO_PASSWORD: process.env.MONGO_PASSWORD,
+        MONGO_USER: process.env.MONGO_USER,
+        GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET
+    },
     i18n: {
         locales: ['en-US'],
         defaultLocale: 'en-US',
@@ -9,7 +15,7 @@ module.exports = {
                 new webpack.IgnorePlugin({
                     checkResource(resource, _context) {
                         // ??
-                        if (resource.includes("pg")) {
+                        if (resource.includes("mongoose")) {
                             return true;
                         }
                         return false;
