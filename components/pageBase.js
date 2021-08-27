@@ -2,6 +2,7 @@ import styles from '../styles/PageBase.module.scss';
 
 // Components
 import TopNav from './topNav';
+import Footer from './footer';
 
 export default function PageBase({ children }) {
     return (
@@ -10,6 +11,7 @@ export default function PageBase({ children }) {
             <main className={styles.container}>
                 {children}
             </main>
+            <Footer />
         </>
     );
 }

@@ -11,30 +11,30 @@
   z-index: var(--z-front);
   user-select: none;
   overflow: hidden;
+  padding: 5px;
 
   .container {
     position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5px 5px 5px 5px;
+    height: 100%;
+    // padding: 5px 5px 5px 5px;
 
     .links {
-      border-radius: var(--border) 0 0 var(--border);
+      border-radius: var(--border);
       box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
 
       color: white;
       padding: 10px;
 
-      position: absolute;
-      right: 0;
       height: 100%;
       background-color: var(--accent-dark);
 
       gap: 10px;
 
       a {
-        display: block;
+        display: inline-block;
       }
     }
   }
@@ -46,7 +46,7 @@
   justify-content: center;
   gap: 10px;
 
-  font-size: var(--font-medium);
+  font-size: var(--font-normal);
 
   img {
     border-radius: var(--border);
@@ -57,7 +57,7 @@
     flex-direction: column;
 
     .status {
-      font-size: var(--font-normal);
+      font-size: var(--font-small);
       background-color: var(--accent-dark);
       padding: 2px;
       text-align: center;

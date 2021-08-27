@@ -1,5 +1,4 @@
-import styles from '../styles/components/footer.module.css'
-import { FooterButton } from './ui/button';
+import styles from '../styles/components/footer.module.scss'
 
 function flipTheme(theme) {
     if (theme == 'light')
@@ -8,31 +7,18 @@ function flipTheme(theme) {
         return 'light';
 }
 
-export default function Footer({ userInfo, setInfoPanel, currentTheme, setTheme }) {
+export default function Footer() {
     return (
-        <footer
-            className={styles.footer}
-        >
-            <div className={styles.elementWrap}>
-                {userInfo && <FooterButton title="Sign Out" text={userInfo.username} icon="fas fa-fw fa-sign-out-alt" href="/api/me/logout" />}
+        <footer className={styles.footer}>
+            <div className={styles.container}>
+                <span className={styles.title}>Novel Tracker</span>
 
-                <FooterButton
-                    title="Toggle Theme"
-                    icon={`${currentTheme ? `fas fa-fw fa-sun` : `fas fa-fw fa-moon`}`}
-                    onClick={() => {
-                        setTheme(prev => flipTheme(prev));
-                    }}
-                />
-
-                <FooterButton title="Information" icon="fas fa-fw fa-info-circle" onClick={() => setInfoPanel(true)} />
-                <FooterButton title="Follow the Development" icon="fab fa-fw fa-trello" href="https://trello.com/b/dPv92vJW/" newTab={true} />
-
+                <ul className={styles.social}>
+                    <li><a aria-label="Github - TheJayDuck" target="_blank" title="Github - TheJayDuck" href="https://github.com/thejayduck" rel="noreferrer"><i className={"bx bxl-github bx-sm"} /></a></li>
+                    <li><a aria-label="Trello" target="_blank" title="Trello" href="https://trello.com/b/dPv92vJW" rel="noreferrer"><i className={"bx bxl-trello bx-sm"} /></a></li>
+                    <li><a aria-label="Github - nobbele" target="_blank" title="Github - nobbele" href="https://github.com/nobbele" rel="noreferrer"><i className={"bx bxl-github bx-sm"} /></a></li>
+                </ul>
             </div>
-            {/* <div className={styles.elementWrap}>
-                <p>Books: {data.length}</p>
-                <p>Volumes Read: {data.reduce((acc, val) => acc + val.volume, 0)}</p>
-                <p>Chapters Read: {data.reduce((acc, val) => acc + val.chapter, 0)}</p>
-            </div> */}
         </footer>
     );
 }

@@ -11,7 +11,8 @@
   --font-large: 2em;
   --font-medium: 1.5rem;
   --font-normal: 1rem;
-  --font-small: 0.5rem;
+  --font-small: 0.8rem;
+  --font-smaller: 0.5rem;
 
   /* Z Index */
   --z-back: -10;
@@ -23,7 +24,7 @@
   --accent: hsl(259, 100%, 65%);
   --accent-dark: hsl(274, 100%, 30%);
   --background: hsl(0, 0%, 100%);
-  --background-secondary: hsl(0, 0%, 12%);
+  --background-secondary: hsl(0, 0%, 95%);
   --background-tertiary: hsl(0, 0%, 30%);
   --scrollbar-thumb: hsl(259, 100%, 65%);
   --scrollbar-track: #000000;
@@ -145,7 +146,23 @@ li {
   transition: 0.2s ease-in-out;
 }
 
-@media screen and (min-width: 720px) {
+@media screen and (max-width: 1024px) {
+  .desktop {
+    display: none;
+  }
+  .mobile {
+    display: initial;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .desktop {
+    display: initial;
+  }
+  .mobile {
+    display: none;
+  }
+
   [tooltip]::after {
     transition: 25ms;
   }
