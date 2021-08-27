@@ -7,19 +7,20 @@
 .title {
   margin: 0;
 
-  text-align: center;
+  text-align: left;
   user-select: none;
 }
 
-.inputFieldWrap .inputField {
-  /* Colors */
-  border-radius: var(--border);
+.inputFieldWrap {
+  input {
+    /* Colors */
+    border-radius: var(--border);
+    padding: 0.25em 0.5em;
+  }
 
-  padding: 0.25em 0.5em;
-}
-
-.inputFieldWrap .inputField:invalid {
-  background-color: hsla(0, 100%, 50%, 85%);
+  input:invalid {
+    background-color: hsla(0, 100%, 50%, 85%);
+  }
 }
 
 .customSelect {
@@ -32,7 +33,9 @@
 }
 
 @-moz-document url-prefix() {
-  .inputFieldWrap .inputField {
-    width: 100%;
+  .inputFieldWrap {
+    input {
+      width: 100%;
+    }
   }
 }

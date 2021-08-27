@@ -6,9 +6,9 @@ export function UserSmall(data) {
             <img alt="Profile Picture" width={48} height={48} src={`/profileTemp.png`} />
             <div className={styles.statusWrap}>
                 <span>TheJayDuck</span>
-                <span title={`Moderation Level - Admin`} className={styles.status}>Admin</span>
+                {/* <span title={`Moderation Level - Admin`} className={styles.status}>Admin</span> */}
             </div>
-            <a className={`${"desktop"}`} ><i class='bx bxs-down-arrow'></i></a>
+            <a className={`${"desktop"}`} ><i className='bx bxs-down-arrow'></i></a>
         </div>
     );
 }
