@@ -21,7 +21,7 @@
   --z-fixed: 100;
 
   /* Colors */
-  --accent: hsl(259, 100%, 65%);
+  --accent: #854dff;
   --accent-dark: hsl(274, 100%, 30%);
   --background: hsl(0, 0%, 100%);
   --background-secondary: hsl(0, 0%, 95%);
@@ -30,6 +30,9 @@
   --scrollbar-track: #000000;
   --alert: hsl(0, 100%, 55%);
   --selection: hsl(259, 100%, 65%);
+
+  --admin: #70ff75;
+  --moderator: #ffba70;
 
   /* Other */
   --border: 5px;
@@ -106,7 +109,7 @@ h5,
 h6 {
   /* text-transform: capitalize; */
   margin: 0;
-  font-size: var(--large-font);
+  font-size: var(--font-medium);
   font-weight: 500;
 }
 
@@ -144,6 +147,48 @@ ul {
 
 li {
   transition: 0.2s ease-in-out;
+}
+
+// Flex
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  gap: 10px;
+}
+.flexRight {
+  justify-content: flex-start;
+}
+.flexLeft {
+  justify-content: flex-end;
+}
+.flexAround {
+  justify-content: space-around;
+}
+.flexEvenly {
+  justify-content: space-evenly;
+}
+.flexBetween {
+  justify-content: space-between;
+}
+
+// Font
+.fontSmaller {
+  font-size: var(--font-smaller);
+}
+.fontSmall {
+  font-size: var(--font-small);
+}
+.fontMedium {
+  font-size: var(--font-medium);
+}
+.fontLarge {
+  font-size: var(--font-large);
+}
+.fontLarger {
+  font-size: var(--font-larger);
 }
 
 @media screen and (max-width: 1024px) {

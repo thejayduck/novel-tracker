@@ -1,0 +1,19 @@
+.statisticItem {
+  background-color: var(--accent);
+  padding: 5px 5px 5px 5px;
+
+  border-radius: var(--border);
+  color: white;
+
+  flex: 0.3;
+
+  .statName {
+    color: var(--accent-dark);
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .statisticWrap {
+    flex-direction: column;
+  }
+}
