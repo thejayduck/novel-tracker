@@ -5,21 +5,18 @@
   position: sticky;
 
   top: 0;
-  left: 0;
   right: 0;
+  left: 0;
 
   z-index: var(--z-front);
   user-select: none;
-  overflow: hidden;
   padding: 5px 10px 5px 10px;
 
   .container {
-    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 100%;
-    // padding: 5px 5px 5px 5px;
 
     .links {
       border-radius: var(--border);

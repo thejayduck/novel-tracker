@@ -1,6 +1,7 @@
 .inputFieldWrap,
 .customSelect {
   /* Alignment */
+  width: 100%;
   font-size: var(--large-font);
 }
 
@@ -13,6 +14,7 @@
 
 .inputFieldWrap {
   input {
+    width: 100%;
     /* Colors */
     border-radius: var(--border);
     padding: 0.25em 0.5em;

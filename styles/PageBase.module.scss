@@ -6,9 +6,9 @@
   justify-content: flex-start;
   align-items: center;
 
-  backdrop-filter: blur(var(--blur));
-  background-color: var(--primary);
+  background-color: var(--background);
 
+  overflow: auto;
   flex: 1 1;
 
   padding: 1rem 15rem 0 15rem;

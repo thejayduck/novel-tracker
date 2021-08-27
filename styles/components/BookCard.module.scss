@@ -1,0 +1,18 @@
+.bookWrap {
+  text-align: center;
+  .book {
+    //   padding: 10px;
+    background-color: var(--accent);
+    border-radius: var(--border);
+
+    width: 200px;
+    height: 300px;
+    position: relative;
+
+    overflow: hidden;
+
+    img {
+      object-fit: cover;
+    }
+  }
+}

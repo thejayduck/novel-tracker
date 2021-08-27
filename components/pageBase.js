@@ -11,7 +11,7 @@ export default function PageBase({ children }) {
             <main className={styles.container}>
                 {children}
             </main>
-            <Footer />
+            {/* <Footer /> */}
         </>
     );
 }
