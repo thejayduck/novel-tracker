@@ -2,10 +2,11 @@ import styles from '../styles/Search.module.scss'
 
 // Components
 import PageBase from "../components/pageBase";
-import { InputFieldNonManaged } from "../components/ui/inputField";
+import { InputFieldNonManaged } from '../components/ui/inputField';
+
 import { Subtitle } from '../components/header';
 import { useState } from 'react';
-import { MobileOverlay } from '../components/mobileOverlay';
+import { DesktopOverlay, MobileOverlay } from '../components/Overlay';
 
 import dynamic from 'next/dynamic'
 
@@ -28,14 +29,11 @@ export default function Search() {
                 <a onClick={() => setFilterMenu(prev => !prev)} className={"fontLarge"} ><i className='bx bx-filter' /></a>
 
                 {filterMenu &&
-                    <div className={`floatingMenu desktop ${styles.filterOverlay}`} >
-                        <span>Filter Results</span>
-                        <div className={`${styles.children} flex`}>
-                            <InputFieldNonManaged title="Publishing Status" />
-                            <InputFieldNonManaged title="Genre" />
-                            <InputFieldNonManaged title="Year" />
-                        </div>
-                    </div>
+                    <DesktopOverlay title="Filter Results" className={styles.filterOverlay}>
+                        <InputFieldNonManaged title="Publishing Status" />
+                        <InputFieldNonManaged title="Genre" />
+                        <InputFieldNonManaged title="Year" />
+                    </DesktopOverlay>
                 }
             </div>
             <Subtitle text="Results" />

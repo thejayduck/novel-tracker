@@ -2,6 +2,7 @@ import { useState } from 'react';
 import styles from '../styles/components/Navigation.module.scss';
 import { UserSmall } from './userContainer';
 import dynamic from 'next/dynamic'
+import { DesktopOverlay } from './overlay';
 
 const NotificationItem = dynamic(() => import("./notificationItem"))
 
@@ -28,22 +29,9 @@ export default function Navigation({ data }) {
             </div>
 
             {notification &&
-                <div className={`floatingMenu desktop ${styles.notificationOverlay}`} >
-                    <span>Notifications (3)</span>
-                    <ul className={`${styles.children} flex`}>
-                        <NotificationItem />
-                        <NotificationItem />
-                        <NotificationItem />
-                        <NotificationItem />
-                        <NotificationItem />
-                        <NotificationItem />
-                        <NotificationItem />
-                        <NotificationItem />
-                        <NotificationItem />
-                        <NotificationItem />
-                        <NotificationItem />
-                    </ul>
-                </div>
+                <DesktopOverlay title={`Notificaion (1)`} className={styles.notificationOverlay} >
+                    <NotificationItem />
+                </DesktopOverlay>
             }
         </nav>
     );

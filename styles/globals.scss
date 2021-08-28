@@ -160,6 +160,8 @@ li {
   padding: 0.5rem;
 
   z-index: var(--z-front);
+
+  filter: drop-shadow(0 1px 5px rgb(0, 0, 0, 0.5));
 }
 
 // Flex
@@ -185,6 +187,14 @@ li {
 }
 .flexBetween {
   justify-content: space-between;
+}
+
+.flexColumn {
+  flex-direction: column;
+}
+
+.flexRow {
+  flex-direction: row;
 }
 
 // Font
