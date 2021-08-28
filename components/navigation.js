@@ -29,7 +29,7 @@ export default function Navigation({ data }) {
             </div>
 
             {notification &&
-                <DesktopOverlay title={`Notificaion (1)`} className={styles.notificationOverlay} >
+                <DesktopOverlay title={`Notification (1)`} className={styles.notificationOverlay} >
                     <NotificationItem />
                 </DesktopOverlay>
             }
