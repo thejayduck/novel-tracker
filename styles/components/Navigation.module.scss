@@ -8,7 +8,7 @@
   right: 0;
   left: 0;
 
-  z-index: var(--z-front);
+  z-index: var(--z-fixed);
   user-select: none;
   padding: 5px 10px 5px 10px;
 
@@ -34,5 +34,19 @@
         display: inline-block;
       }
     }
+  }
+}
+
+.notificationOverlay {
+  right: 130px;
+  top: 65px;
+  width: 40rem;
+  max-height: 50vh;
+  overflow: hidden;
+  overflow-y: auto;
+
+  .children {
+    flex-direction: column;
+    padding-top: 20px;
   }
 }

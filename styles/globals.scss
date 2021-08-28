@@ -29,6 +29,7 @@
   --scrollbar-track: #000000;
   --alert: hsl(0, 100%, 55%);
   --selection: hsl(259, 100%, 65%);
+  --overlay: hsla(0, 0%, 0%, 0.5);
 
   --admin: #70ff75;
   --moderator: #ffba70;
@@ -97,6 +98,7 @@ body {
 
 a {
   color: inherit;
+  cursor: pointer;
   text-decoration: none;
 }
 
@@ -137,7 +139,7 @@ ul {
   list-style: none;
   padding: 0;
   margin: 0;
-  color: black;
+  color: white;
   display: flex;
   gap: 30px;
   align-items: center;
@@ -146,6 +148,18 @@ ul {
 
 li {
   transition: 0.2s ease-in-out;
+}
+
+//Floating Menu
+.floatingMenu {
+  color: white;
+
+  position: absolute;
+  background-color: var(--accent);
+  border-radius: var(--border);
+  padding: 0.5rem;
+
+  z-index: var(--z-front);
 }
 
 // Flex

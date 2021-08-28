@@ -1,8 +1,19 @@
 .inputWrap {
   align-items: flex-start;
+
+  position: relative;
 }
+
 .results {
   align-items: center;
   flex-wrap: wrap;
   margin-bottom: 5rem;
+}
+
+.filterOverlay {
+  right: 0px;
+  bottom: -100px;
+  .children {
+    padding-top: 20px;
+  }
 }

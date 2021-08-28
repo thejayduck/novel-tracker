@@ -5,7 +5,7 @@ export function UserSmall(data) {
         <div className={`${styles.userWrap} ${styles.small}`}>
             <img className="skeleton" alt="Profile Picture" width={48} height={48} src={`http://source.unsplash.com/48x48/?nature`} />
             <div className={styles.statusWrap}>
-                <span>TheJayDuck</span>
+                <a href="/profile">TheJayDuck</a>
                 {/* <span title={`Moderation Level - Admin`} className={styles.status}>Admin</span> */}
             </div>
             <a className={`${"desktop"}`} ><i className='bx bxs-down-arrow'></i></a>

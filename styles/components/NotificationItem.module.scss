@@ -1,0 +1,26 @@
+.notificationItem {
+  position: relative;
+  overflow: hidden;
+  align-items: flex-end;
+  border-radius: var(--border);
+  background-color: var(--accent-dark);
+  padding: 1rem;
+
+  .newIndicator {
+    padding: 0 5px 0 5px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: var(--alert);
+    font-size: var(--font-small);
+    border-radius: 0 0 0 var(--border);
+  }
+  img {
+    opacity: 1;
+    border-radius: var(--border);
+  }
+  p {
+    margin: 20px 0 0 0;
+    font-size: var(--font-small);
+  }
+}

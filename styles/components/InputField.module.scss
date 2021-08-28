@@ -2,12 +2,12 @@
 .customSelect {
   /* Alignment */
   width: 100%;
-  font-size: var(--large-font);
+  font-size: var(--font-normal);
 }
 
 .title {
   margin: 0;
-
+  font-size: var(--font-normal);
   text-align: left;
   user-select: none;
 }
