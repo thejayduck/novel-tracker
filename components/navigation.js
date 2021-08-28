@@ -8,18 +8,20 @@ const NotificationItem = dynamic(() => import("./notificationItem"))
 
 export default function Navigation({ data }) {
     const [notification, setNotification] = useState(false);
+    const [userMenu, setUserMenu] = useState(false);
 
     return (
         <nav className={`${styles.nav}`}>
             <div className={`${styles.container}`}>
 
                 <div className={`desktop`}>
-                    <UserSmall />
+                    <UserSmall onDropDownClick={() => setUserMenu(prev => !prev)} />
                 </div>
 
                 <a className={`${"mobile"}`} title="Hamburger Menu" ><i className={`bx bx-menu bx-sm`} /></a>
                 <a className={`${"mobile"}`}>Homepage</a>
                 <ul className={`${styles.links}`}>
+                    <li><a title="Homepage" href="/" ><i className={`bx bx-home bx-sm bx-tada-hover`} /></a></li>
                     <li><a title="Search" href="/search" ><i className={`bx bx-search bx-sm bx-tada-hover`} /></a></li>
                     <li className={`${"desktop"}`}><a onClick={() => setNotification(prev => !prev)} title="Notifications" ><i className={`bx bx-bell bx-sm bx-tada-hover`} /></a></li>
                     <li className={`${"desktop"}`}><a title="Forums" ><i className={`bx bx-chat bx-sm bx-tada-hover`} /></a></li>
@@ -31,6 +33,19 @@ export default function Navigation({ data }) {
             {notification &&
                 <DesktopOverlay title={`Notification (1)`} className={styles.notificationOverlay} >
                     <NotificationItem />
+                </DesktopOverlay>
+            }
+
+            {userMenu &&
+                <DesktopOverlay title={`Account`} className={styles.userMenuOverlay} >
+                    <a href="/profile" className={`flex flexBetween ${styles.button}`} >
+                        <i class='bx bx-user bx-sm' />
+                        <span>Your Account</span>
+                    </a>
+                    <a href="#" className={`flex flexBetween ${styles.button}`}>
+                        <i class='bx bx-log-out bx-sm' />
+                        <span>Log Out</span>
+                    </a>
                 </DesktopOverlay>
             }
         </nav>
