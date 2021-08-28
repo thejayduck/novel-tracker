@@ -1,6 +1,6 @@
 import PageBase from "../components/pageBase"
 import Button from "../components/ui/button"
-import { serverSide_checkAuth } from "../lib/serverHelpers";
+// import { serverSide_checkAuth } from "../lib/serverHelpers";
 
 const reason_messages = {
     must_login: "This page requires the user to be logged in!",
@@ -9,22 +9,21 @@ const reason_messages = {
 }
 
 export async function getServerSideProps(context) {
-    const [_, info] = await serverSide_checkAuth(context, false, false, false);
+    // const [_, info] = await serverSide_checkAuth(context, false, false, false);
 
     return {
         props: {
-            user_info: info,
+            // user_info: info,
             message: reason_messages[context.query.reason]
         },
     }
 }
 
-export default function Error({ user_info, message }) {
+export default function Error({ message }) {
     return (
-        <PageBase userInfo={user_info}>
+        <PageBase>
             <div>
                 <h1>{message}</h1>
-                <Button text="Go Back" href="/" />
             </div>
         </PageBase>
     )

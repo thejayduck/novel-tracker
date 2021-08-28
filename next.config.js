@@ -1,4 +1,14 @@
-module.exports = {
+const withPWA = require('next-pwa');
+const runtimeCaching = require("next-pwa/cache");
+
+module.exports = withPWA({
+    pwa: {
+        dest: "public",
+        register: true,
+        register: true,
+        runtimeCaching,
+        disable: process.env.NODE_ENV === 'development',
+    },
     env: {
         MONGO_HOST: process.env.MONGO_HOST,
         MONGO_PASSWORD: process.env.MONGO_PASSWORD,
@@ -26,4 +36,4 @@ module.exports = {
 
         return config;
     },
-}
+})
