@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
-  width: 100vw;
 }
 
 :root {
@@ -41,7 +40,7 @@
 
 @-moz-document url-prefix() {
   :root {
-    --blur-background: hsla(0, 0%, 0%, 0.7);
+    --blur: hsla(0, 0%, 0%, 0.7);
   }
 }
 
@@ -53,7 +52,7 @@ body {
   font-family: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-weight: 400;
-  font-size: var(--font-size);
+  font-size: var(--font-normal);
   scroll-behavior: smooth;
   box-sizing: border-box;
 
@@ -190,6 +189,39 @@ li {
 .fontLarger {
   font-size: var(--font-larger);
 }
+
+// Skeleton Loading
+
+.skeleton {
+  opacity: 0.7;
+  animation: skeletonAnim 1s linear infinite alternate;
+}
+
+.skeletonText {
+  width: 100%;
+  height: 0.5rem;
+  margin-bottom: 0.25rem;
+
+  border-radius: var(--border);
+
+  &:last-child {
+    margin-bottom: 0;
+    width: 80%;
+  }
+}
+
+@keyframes skeletonAnim {
+  0% {
+    background-color: var(--accent-dark);
+    // background-color: hsl(200, 20%, 70%);
+  }
+  100% {
+    background-color: var(--accent);
+    // background-color: hsl(200, 20%, 95%);
+  }
+}
+
+// Media Screen
 
 @media screen and (max-width: 1024px) {
   .desktop {

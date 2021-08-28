@@ -1,7 +1,7 @@
-import styles from '../styles/components/TopNav.module.scss';
+import styles from '../styles/components/Navigation.module.scss';
 import { UserSmall } from './userContainer';
 
-export default function TopNav({ data }) {
+export default function Navigation({ data }) {
     return (
         <nav className={`${styles.nav}`}>
             <div className={`${styles.container}`}>

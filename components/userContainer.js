@@ -3,7 +3,7 @@ import styles from '../styles/components/UserContainer.module.scss'
 export function UserSmall(data) {
     return (
         <div className={`${styles.userWrap} ${styles.small}`}>
-            <img alt="Profile Picture" width={48} height={48} src={`/profileTemp.png`} />
+            <img className="skeleton" alt="Profile Picture" width={48} height={48} src={`http://source.unsplash.com/48x48/?nature`} />
             <div className={styles.statusWrap}>
                 <span>TheJayDuck</span>
                 {/* <span title={`Moderation Level - Admin`} className={styles.status}>Admin</span> */}
@@ -16,7 +16,7 @@ export function UserSmall(data) {
 export function UserBig(data) {
     return (
         <div className={`${styles.userWrap}`}>
-            <img alt="Profile Picture" width={96} height={96} src={`/profileTemp.png`} />
+            <img className="skeleton" alt="Profile Picture" width={96} height={96} src={`http://source.unsplash.com/96x96/?nature`} />
             <div className={styles.statusWrap}>
                 <span title={`Moderation Level - Admin`} className={styles.status}>Admin</span>
                 <span className="fontLarge">TheJayDuck</span>

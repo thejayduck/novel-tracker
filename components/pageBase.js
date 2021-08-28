@@ -1,17 +1,17 @@
 import styles from '../styles/PageBase.module.scss';
 
 // Components
-import TopNav from './topNav';
+import Navigation from './navigation';
 import Footer from './footer';
 
 export default function PageBase({ children }) {
     return (
         <>
-            <TopNav />
+            <Navigation />
             <main className={styles.container}>
                 {children}
             </main>
-            {/* <Footer /> */}
+            <Footer />
         </>
     );
 }
