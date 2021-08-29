@@ -1,11 +1,12 @@
 .bookWrap {
-  text-align: center;
   margin-bottom: 1rem;
+  width: 200px;
+  transition: transform 250ms ease-in-out;
+
   .book {
     background-color: var(--accent);
     border-radius: var(--border);
 
-    width: 200px;
     height: 300px;
 
     position: relative;
@@ -17,10 +18,22 @@
       object-fit: cover;
     }
   }
-  span {
-    padding: 5px;
-    display: block;
-    width: 200px;
-    word-wrap: break-word;
+  p {
+    padding: 5px 0 0 0;
+    margin: 0;
+
+    font-weight: var(--font-bold);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    transition: color 0.2s ease-in-out;
+  }
+
+  &:hover {
+    transform: translateY(-5px);
+    p {
+      color: var(--accent);
+    }
   }
 }

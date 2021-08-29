@@ -38,6 +38,18 @@ export default function Search() {
             <Subtitle text="Results" />
             <div className={`${styles.results} flex`}>
                 <BookCard data={data} />
+                <BookCard data={data} />
+                <BookCard data={data} />
+                <BookCard data={data} />
+                <BookCard data={data} />
+                <BookCard data={data} />
+                <BookCard data={data} />
+                <BookCard data={data} />
+                <BookCard data={data} />
+                <BookCard data={data} />
+                <BookCard data={data} />
+                <BookCard data={data} />
+                <BookCard data={data} />
             </div>
 
             {filterMenu &&

@@ -7,7 +7,7 @@ export default function BookCard({ data }) {
                 <img className="skeleton" width={200} height={300} src={data.image} />
             </div>
             <div className={styles.title}>
-                <span>{data.title}</span>
+                <p>{data.title}</p>
                 {/* <div className={`skeleton skeletonText`} />
                 <div className={`skeleton skeletonText`} /> */}
             </div>

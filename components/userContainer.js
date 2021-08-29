@@ -3,11 +3,13 @@ import styles from '@styles/components/UserContainer.module.scss'
 export function UserSmall({ onDropDownClick }) {
     return (
         <div className={`${styles.userWrap} ${styles.small}`}>
-            <img className="skeleton" alt="Profile Picture" width={48} height={48} src={`http://source.unsplash.com/48x48/?nature`} />
-            <div className={styles.statusWrap}>
-                <a href="/profile">TheJayDuck</a>
-                {/* <span title={`Moderation Level - Admin`} className={styles.status}>Admin</span> */}
-            </div>
+            <a href="/profile" className="flex">
+                <img className="skeleton" alt="Profile Picture" width={48} height={48} src={`http://source.unsplash.com/48x48/?nature`} />
+                <div className={styles.statusWrap}>
+                    <span>TheJayDuck</span>
+                    {/* <span title={`Moderation Level - Admin`} className={styles.status}>Admin</span> */}
+                </div>
+            </a>
             <a onClick={onDropDownClick} className={`${"desktop"}`} ><i className='bx bxs-down-arrow'></i></a>
         </div>
     );
