@@ -1,4 +1,4 @@
-import styles from '../styles/components/QuickAlert.module.css'
+import styles from '@styles/components/QuickAlert.module.css'
 
 const alertIcon = {
     'information': "fas fa-fw fa-check",

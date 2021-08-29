@@ -1,12 +1,12 @@
-import styles from "../styles/ModPanel.module.css"
+import styles from "@styles/ModPanel.module.css"
 
-import PageBase from "../components/pageBase";
-import Button from "../components/ui/button";
+import PageBase from "@components/pageBase";
+import Button from "@components/ui/button";
 
 import { useEffect, useState } from "react";
-import { serverSide_checkAuth } from "../lib/serverHelpers";
-import { useAlert } from "../components/alertWrapper";
-import { useApi } from "../lib/clientHelpers";
+import { serverSide_checkAuth } from "@lib/serverHelpers";
+import { useAlert } from "@components/alertWrapper";
+import { useApi } from "@lib/clientHelpers";
 
 export async function getServerSideProps(context) {
     const [auth, info] = await serverSide_checkAuth(context, true, true, false);

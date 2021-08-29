@@ -1,4 +1,4 @@
-import styles from '../styles/components/UserContainer.module.scss'
+import styles from '@styles/components/UserContainer.module.scss'
 
 export function UserSmall({ onDropDownClick }) {
     return (

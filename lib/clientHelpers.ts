@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useAlert } from '../components/alertWrapper';
+import { useAlert } from '@components/alertWrapper';
 
 export function useDelayedState<T>(initialState: T, delay: number) {
     const [delayedState, setDelayedState] = useState(initialState);

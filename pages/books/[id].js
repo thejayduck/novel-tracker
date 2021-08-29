@@ -1,7 +1,9 @@
+import PageBase from "@components/pageBase"
+
 export default function Book() {
     return (
-        <div>
+        <PageBase>
 
-        </div>
+        </PageBase>
     )
 }

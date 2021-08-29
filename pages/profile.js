@@ -1,8 +1,8 @@
-import styles from '../styles/Profile.module.scss'
+import styles from '@styles/Profile.module.scss'
 
-import { Subtitle } from "../components/header";
-import PageBase from "../components/pageBase";
-import { UserBig } from "../components/userContainer";
+import { Subtitle } from "@components/header";
+import PageBase from "@components/pageBase";
+import { UserBig } from "@components/userContainer";
 
 export default function Profile() {
     return (

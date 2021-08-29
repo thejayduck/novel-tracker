@@ -1,8 +1,8 @@
-import styles from '../styles/Home.module.scss'
+import styles from '@styles/Home.module.scss'
 
 // Components
-import PageBase from '../components/pageBase';
-import { Subtitle } from '../components/header';
+import PageBase from '@components/pageBase';
+import { Subtitle } from '@components/header';
 
 export default function Home({ user_info }) {
   return (

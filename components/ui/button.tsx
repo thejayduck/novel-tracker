@@ -1,4 +1,4 @@
-import styles from '../../styles/components/Button.module.css'
+import styles from '@styles/components/Button.module.css'
 import { motion } from 'framer-motion';
 
 export interface ButtonProps {

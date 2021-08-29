@@ -1,4 +1,4 @@
-import styles from '../styles/PageBase.module.scss';
+import styles from '@styles/PageBase.module.scss';
 
 // Components
 import Navigation from './navigation';

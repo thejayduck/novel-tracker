@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import styles from '../styles/components/Navigation.module.scss';
+import styles from '@styles/components/Navigation.module.scss';
 import { UserSmall } from './userContainer';
 import dynamic from 'next/dynamic'
-import { DesktopOverlay } from './overlay';
+import { DesktopOverlay } from './overlayMenu';
 
 const NotificationItem = dynamic(() => import("./notificationItem"))
 
@@ -31,13 +31,16 @@ export default function Navigation({ data }) {
             </div>
 
             {notification &&
-                <DesktopOverlay title={`Notification (1)`} className={styles.notificationOverlay} >
+                <DesktopOverlay title={`Notification (1)`} className={styles.notificationOverlay} flexDirection="flexColumn" >
+                    <NotificationItem />
+                    <NotificationItem />
+                    <NotificationItem />
+                    <NotificationItem />
                     <NotificationItem />
                 </DesktopOverlay>
             }
-
             {userMenu &&
-                <DesktopOverlay title={`Account`} className={styles.userMenuOverlay} >
+                <DesktopOverlay title={`Account`} className={styles.userMenuOverlay} flexDirection="flexColumn" >
                     <a href="/profile" className={`flex flexBetween ${styles.button}`} >
                         <i class='bx bx-user bx-sm' />
                         <span>Your Account</span>
@@ -48,7 +51,8 @@ export default function Navigation({ data }) {
                     </a>
                 </DesktopOverlay>
             }
-        </nav>
+
+        </nav >
     );
 
 }

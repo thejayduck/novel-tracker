@@ -1,8 +1,8 @@
-import styles from '../../styles/components/BookCard.module.scss'
+import styles from '@styles/components/BookCard.module.scss'
 
 export default function BookCard({ data }) {
     return (
-        <div className={styles.bookWrap}>
+        <a className={styles.bookWrap}>
             <div className={styles.book}>
                 <img className="skeleton" width={200} height={300} src={data.image} />
             </div>
@@ -11,6 +11,6 @@ export default function BookCard({ data }) {
                 {/* <div className={`skeleton skeletonText`} />
                 <div className={`skeleton skeletonText`} /> */}
             </div>
-        </div>
+        </a>
     );
 }

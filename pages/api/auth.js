@@ -1,5 +1,5 @@
 import { serialize } from 'cookie';
-import { createSession, findUserIdFromGoogle, createUserFromGoogle } from '../../lib/db';
+import { createSession, findUserIdFromGoogle, createUserFromGoogle } from '@lib/db';
 function toUrlEncoded(obj) {
     let formBody = [];
     for (const property in obj) {

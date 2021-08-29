@@ -1,6 +1,6 @@
-import PageBase from "../components/pageBase"
-import Button from "../components/ui/button"
-// import { serverSide_checkAuth } from "../lib/serverHelpers";
+import PageBase from "@components/pageBase"
+import Button from "@components/ui/button"
+// import { serverSide_checkAuth } from "@lib/serverHelpers";
 
 const reason_messages = {
     must_login: "This page requires the user to be logged in!",
