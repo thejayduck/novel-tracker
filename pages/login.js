@@ -9,7 +9,7 @@ export default function Login() {
             <div className={styles.container}>
                 <img width="150" height="150" className={`${styles.logo}`} src='../icon.svg' />
                 <div>
-                    <h1>Welcome to <span>Novel Tracker!</span></h1>
+                    <h1 className={styles.title} >Welcome to <span>Novel Tracker!</span></h1>
                     <div className={styles.about}>
                         <Subtitle text="Features" />
                         <div className={`flex  ${styles.features}`}>

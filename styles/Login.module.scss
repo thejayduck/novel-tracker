@@ -13,6 +13,13 @@
 
   overflow-y: auto;
 
+  .title {
+    span {
+      font-weight: var(--font-bold);
+      color: var(--accent);
+    }
+  }
+
   .about {
     border-radius: var(--border);
     color: black;
