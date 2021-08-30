@@ -15,6 +15,6 @@
 [Old Version](https://lightnoveltracker-old.herokuapp.com/)
 
 
-[Trello](https://trello.com/b/dPv92vJW/light-novel-tracker) /
+[Trello](https://trello.com/b/dPv92vJW/novel-tracker) /
 [TheJayDuck](https://github.com/thejayduck) /
 [nobbele](https://github.com/nobbele)
