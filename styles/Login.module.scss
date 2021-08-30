@@ -1,0 +1,77 @@
+.container {
+  /* Colors */
+  border-radius: var(--border);
+
+  /* Alignment */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  min-width: 100%;
+  height: 100%;
+  color: var(--text-color);
+
+  overflow-y: auto;
+
+  .about {
+    border-radius: var(--border);
+    color: black;
+
+    margin: 20px;
+    padding: 20px;
+    width: fit-content;
+
+    overflow: hidden;
+    user-select: none;
+  }
+
+  .features {
+    color: white;
+    flex-wrap: wrap;
+    max-width: 900px;
+    margin-top: 10px;
+    gap: 10px;
+    align-items: stretch;
+
+    div {
+      background-color: var(--accent);
+      border-radius: var(--border);
+
+      flex: 45%;
+      padding: 5px;
+    }
+  }
+}
+
+.logo {
+  margin: 10px;
+}
+
+.googleBtn {
+  font-family: "Roboto", sans-serif;
+
+  background: white;
+  color: #444;
+  border: thin solid #888;
+  box-shadow: 1px 1px 1px grey;
+
+  /* Alignment */
+  display: inline-block;
+  width: 190px;
+  padding: 12px;
+  margin: 5px 0;
+  opacity: 0.85;
+  line-height: 20px;
+
+  text-decoration: none;
+  border-radius: 5px;
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 1024px) {
+  .features {
+    flex-direction: column;
+  }
+}
