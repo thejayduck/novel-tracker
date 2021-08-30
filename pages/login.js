@@ -7,7 +7,7 @@ export default function Login() {
     return (
         <PageBase>
             <div className={styles.container}>
-                <img width="150" height="150" className={styles.logo} src='../icon.svg' />
+                <img width="150" height="150" className={`${styles.logo}`} src='../icon.svg' />
                 <div>
                     <h1>Welcome to <span>Novel Tracker!</span></h1>
                     <div className={styles.about}>
@@ -23,7 +23,7 @@ export default function Login() {
                                 title="Mobile-App Capable"
                                 icon="bx bx-mobile-alt"
                             >
-                                Our website is mobile-app capable, offering you a smooth experience.
+                                Our website is mobile-app capable, offering you a smooth experience on the go.
                             </FeatureItem>
                             <FeatureItem
                                 title="Account Syncing"
@@ -35,7 +35,7 @@ export default function Login() {
                                 title="Socialize"
                                 icon="bx bx-comment-detail"
                             >
-                                Follow your friends progress.
+                                Follow your friends progress, start conversations in our forums.
                             </FeatureItem>
                             <FeatureItem
                                 title="Community Managed"

@@ -9,8 +9,6 @@
   align-items: center;
   text-align: center;
 
-  min-width: 100%;
-  height: 100%;
   color: var(--text-color);
 
   overflow-y: auto;
@@ -19,9 +17,7 @@
     border-radius: var(--border);
     color: black;
 
-    margin: 20px;
     padding: 20px;
-    width: fit-content;
 
     overflow: hidden;
     user-select: none;
@@ -30,9 +26,7 @@
   .features {
     color: white;
     flex-wrap: wrap;
-    max-width: 900px;
     margin-top: 10px;
-    gap: 10px;
     align-items: stretch;
 
     div {
