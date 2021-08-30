@@ -95,7 +95,12 @@ export function MobileMenu({ onOutSideClick }) {
                 exit={{ x: -500 }}
                 transition={{ duration: 0.2 }}
             >
-                <UserSmall />
+                <div className={`flex flexAround`} >
+                    <UserSmall />
+                    <a onClick={
+                        onOutSideClick
+                    } ><i className="bx bx-arrow-back bx-sm" /></a>
+                </div>
                 <div className={styles.menu}>
                     <section className="flex flexColumn" >
                         <Subtitle text="Pages" />
