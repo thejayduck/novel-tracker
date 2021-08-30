@@ -9,7 +9,7 @@ import { useState } from 'react';
 import { DesktopOverlay, MobileOverlay } from '@components/overlayMenu';
 
 import dynamic from 'next/dynamic'
-import { motion } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 
 const BookCard = dynamic(() => import("@components/cards/bookCard"))
 
@@ -27,13 +27,15 @@ export default function Search() {
                 <InputFieldNonManaged placeHolder="Search..." />
                 <a onClick={() => setFilterMenu(prev => !prev)} className={"fontLarge"} ><i className='bx bx-filter' /></a>
 
-                {filterMenu &&
-                    <DesktopOverlay title="Filter Results" className={styles.filterOverlay}>
-                        <InputFieldNonManaged title="Publishing Status" />
-                        <InputFieldNonManaged title="Genre" />
-                        <InputFieldNonManaged title="Year" />
-                    </DesktopOverlay>
-                }
+                <AnimatePresence>
+                    {filterMenu &&
+                        <DesktopOverlay title="Filter Results" className={styles.filterOverlay}>
+                            <InputFieldNonManaged title="Publishing Status" />
+                            <InputFieldNonManaged title="Genre" />
+                            <InputFieldNonManaged title="Year" />
+                        </DesktopOverlay>
+                    }
+                </AnimatePresence>
             </div>
             <Subtitle text="Results" />
             <div className={`${styles.results} flex`}>
@@ -52,13 +54,16 @@ export default function Search() {
                 <BookCard data={data} />
             </div>
 
-            {filterMenu &&
-                <MobileOverlay title={"Filter Results"} onOutSideClick={() => setFilterMenu(false)} >
-                    <InputFieldNonManaged placeHolder="Publishing Status" />
-                    <InputFieldNonManaged placeHolder="Genre" />
-                    <InputFieldNonManaged placeHolder="Year" />
-                </MobileOverlay>
-            }
+            <AnimatePresence>
+                {filterMenu &&
+                    <MobileOverlay title={"Filter Results"} onOutSideClick={() => setFilterMenu(false)} >
+                        <InputFieldNonManaged placeHolder="Publishing Status" />
+                        <InputFieldNonManaged placeHolder="Genre" />
+                        <InputFieldNonManaged placeHolder="Year" />
+                    </MobileOverlay>
+                }
+            </AnimatePresence>
+
         </PageBase >
     )
 }

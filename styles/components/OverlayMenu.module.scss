@@ -11,6 +11,7 @@
 
   top: 0;
   left: 0;
+  text-align: center;
 
   .mobileOverlay {
     position: absolute;
@@ -65,9 +66,8 @@
 
 .desktopOverlay {
   padding: 5px 0 0 0;
-  span {
-    padding: 5px;
-  }
+  text-align: center;
+
   .children {
     background-color: var(--accent-dark);
     padding: 5px;

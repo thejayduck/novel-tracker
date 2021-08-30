@@ -7,7 +7,22 @@ import { NavigationButton } from "@components/ui/button"
 import NotificationItem from './notificationItem'
 import { useEffect, useState } from 'react'
 
+const constrains = {
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+}
+
 export function MobileOverlay({ title, onOutSideClick, children }) {
+    const [velocity, setVelocity] = useState();
+    useEffect(() => {
+
+        if (velocity >= 800)
+            onOutSideClick()
+
+    }, [velocity])
+
     return (
         <motion.div
             onClick={onOutSideClick}
@@ -17,12 +32,30 @@ export function MobileOverlay({ title, onOutSideClick, children }) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
         >
-            <div onClick={(e) => e.stopPropagation()} className={styles.mobileOverlay}>
+            <motion.div
+                className={styles.mobileOverlay}
+                onClick={(e) => e.stopPropagation()}
+
+                drag="y"
+                dragConstraints={constrains}
+
+                initial={{ y: 100 }}
+                animate={{ y: 0 }}
+                exit={{ y: 500 }}
+                transition={{ duration: 0.2 }}
+
+                onDragEnd={
+                    (event, info) => {
+                        setVelocity(info.velocity.y)
+                        console.log(info)
+                    }
+                }
+            >
                 <span>{title}</span>
                 <div className={`${styles.children} flex`}>
                     {children}
                 </div>
-            </div>
+            </motion.div>
         </motion.div>
     )
 }
@@ -32,10 +65,8 @@ export function MobileMenu({ onOutSideClick }) {
 
     useEffect(() => {
 
-        if (velocity <= -900) {
-            console.log("hey");
+        if (velocity <= -800)
             onOutSideClick()
-        }
 
     }, [velocity])
 
@@ -52,16 +83,10 @@ export function MobileMenu({ onOutSideClick }) {
                 className={styles.mobileMenu}
                 onClick={(e) => e.stopPropagation()}
                 drag="x"
-                dragConstraints={{
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                }}
+                dragConstraints={constrains}
                 onDragEnd={
                     (event, info) => {
                         setVelocity(info.velocity.x)
-                        console.log(info)
                     }
                 }
 
