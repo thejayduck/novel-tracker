@@ -74,7 +74,7 @@ export function MobileMenu({ onOutSideClick }) {
                 <div className={styles.menu}>
                     <section className="flex flexColumn" >
                         <Subtitle text="Pages" />
-                        <NavigationButton href="/profile" icon="bx bx-library bx-sm" text="Library" />
+                        <NavigationButton href="/" icon="bx bx-library bx-sm" text="Library" />
                         <NavigationButton href="#" icon="bx bx-chat bx-sm" text="Forums" />
                     </section>
                     <section>
