@@ -25,6 +25,12 @@ export default function Home({ user_info }) {
 
         </div>
       </section>
+      <section className={styles.section}>
+        <Subtitle text="Dropped" icon={`bx bx-trash-alt`} />
+        <div className={styles.container} >
+
+        </div>
+      </section>
     </PageBase>
   );
 }

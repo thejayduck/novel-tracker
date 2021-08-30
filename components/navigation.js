@@ -25,8 +25,8 @@ export default function Navigation({ data }) {
                 <a className={`${"mobile"}`}>Homepage</a>
                 <ul className={`${styles.links}`}>
                     <li className={`${"desktop"}`}>
-                        <a title="Homepage" href="/" >
-                            <i className={`bx bx-home bx-sm bx-tada-hover`} />
+                        <a title="Library" href="/" >
+                            <i className={`bx bx-library bx-sm bx-tada-hover`} />
                         </a>
                     </li>
                     <li>
@@ -74,7 +74,7 @@ export default function Navigation({ data }) {
 
             <AnimatePresence>
                 {notification &&
-                    <DesktopOverlay title={`Notification (1)`} className={styles.notificationOverlay} flexDirection="flexColumn" >
+                    <DesktopOverlay title={`Notifications (1)`} className={styles.notificationOverlay} flexDirection="flexColumn" >
                         <NotificationItem />
                         <NotificationItem />
                         <NotificationItem />
