@@ -1,0 +1,10 @@
+.button {
+  padding: 5px;
+  border-radius: var(--border);
+  text-align: end;
+  background-color: var(--accent);
+}
+
+.button:hover {
+  background-color: var(--accent-dark);
+}

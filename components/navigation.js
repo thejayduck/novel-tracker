@@ -2,13 +2,17 @@ import { useState } from 'react';
 import styles from '@styles/components/Navigation.module.scss';
 import { UserSmall } from './userContainer';
 import dynamic from 'next/dynamic'
-import { DesktopOverlay } from './overlayMenu';
+import { DesktopOverlay, MobileMenu } from './overlayMenu';
+
+import { NavigationButton } from "@components/ui/button"
+import { AnimatePresence } from 'framer-motion';
 
 const NotificationItem = dynamic(() => import("./notificationItem"))
 
 export default function Navigation({ data }) {
     const [notification, setNotification] = useState(false);
     const [userMenu, setUserMenu] = useState(false);
+    const [mobileMenu, setMobileMenu] = useState(false);
 
     return (
         <nav className={`${styles.nav}`}>
@@ -17,7 +21,7 @@ export default function Navigation({ data }) {
                     <UserSmall onDropDownClick={() => setUserMenu(prev => !prev)} />
                 </div>
 
-                <a className={`${"mobile"}`} title="Hamburger Menu" ><i className={`bx bx-menu bx-sm`} /></a>
+                <a className={`${"mobile"}`} onClick={() => setMobileMenu(true)} title="Hamburger Menu" ><i className={`bx bx-menu bx-sm`} /></a>
                 <a className={`${"mobile"}`}>Homepage</a>
                 <ul className={`${styles.links}`}>
                     <li className={`${"desktop"}`}>
@@ -52,23 +56,36 @@ export default function Navigation({ data }) {
                     </li>
                 </ul>
             </div>
-            {userMenu &&
-                <DesktopOverlay title={`Account`} className={styles.userMenuOverlay} flexDirection="flexColumn" >
-                    <a href="/profile" className={`flex flexBetween ${styles.button}`} >
-                        <i class='bx bx-user bx-sm' />
-                        <span>Your Account</span>
-                    </a>
-                    <a href="#" className={`flex flexBetween ${styles.button}`}>
-                        <i class='bx bx-log-out bx-sm' />
-                        <span>Log Out</span>
-                    </a>
-                </DesktopOverlay>
-            }
-            {notification &&
-                <DesktopOverlay title={`Notification (1)`} className={styles.notificationOverlay} flexDirection="flexColumn" >
-                    <NotificationItem />
-                </DesktopOverlay>
-            }
+
+            <AnimatePresence>
+                {mobileMenu &&
+                    <MobileMenu onOutSideClick={() => setMobileMenu(false)} />
+                }
+            </AnimatePresence>
+
+            <AnimatePresence>
+                {userMenu &&
+                    <DesktopOverlay title={`Account`} className={styles.userMenuOverlay} flexDirection="flexColumn" >
+                        <NavigationButton href="/profile" icon="bx bx-user bx-sm" text="Your Account" />
+                        <NavigationButton icon="bx bx-log-out bx-sm" text="Log Out" />
+                    </DesktopOverlay>
+                }
+            </AnimatePresence>
+
+            <AnimatePresence>
+                {notification &&
+                    <DesktopOverlay title={`Notification (1)`} className={styles.notificationOverlay} flexDirection="flexColumn" >
+                        <NotificationItem />
+                        <NotificationItem />
+                        <NotificationItem />
+                        <NotificationItem />
+                        <NotificationItem />
+                        <NotificationItem />
+                        <NotificationItem />
+                    </DesktopOverlay>
+                }
+            </AnimatePresence>
+
 
         </nav >
     );

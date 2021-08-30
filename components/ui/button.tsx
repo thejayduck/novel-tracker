@@ -1,5 +1,4 @@
-import styles from '@styles/components/Button.module.css'
-import { motion } from 'framer-motion';
+import styles from '@styles/components/Button.module.scss'
 
 export interface ButtonProps {
     title: string,
@@ -10,49 +9,18 @@ export interface ButtonProps {
     newTab: boolean,
 }
 
-export default function Button({ text, icon, onClick, href, newTab }: ButtonProps) {
-    return (
-        <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
+export function NavigationButton({text, icon, onClick, href, newTab}: ButtonProps) {
+    return(
+        <a 
+            className={`flex flexBetween ${styles.button}`}
 
-            className={styles.button}
+            href={href || "#"}
+            target={newTab ? "_blank" : "_self"}  
             onClick={onClick}
         >
-            <a 
-                href={href || "#"} 
-                target={newTab ? "_blank" : "_self"} 
-            >
-                {icon && <i className={`${icon} ${text && styles.icon}`} />}{text}
-            </a>
-        </motion.div>
-    );
-}
+            {icon && <i className={icon} />}
+            <span>{text}</span>
+        </a>
 
-export function FooterButton({ title, text, icon, onClick, href, newTab }: ButtonProps) {
-    return (
-        <a
-            title={title}
-            className={styles.footerButton}
-            onClick={onClick}
-            href={href}
-            tabIndex={0}
-            target={newTab ? "_blank" : "_self"}
-        ><i className={`${icon} ${text && styles.icon}`} />{text}</a>
-    );
-}
-
-export function CardButton({ title, icon, onClick, href }: ButtonProps) {
-    return (
-        <>
-            <a
-                className={styles.cardButton}
-                onClick={onClick}
-                href={href}
-                title={title}
-            >
-                <i className={`${styles.cardButtonIcon} ${icon}`} />
-            </a>
-        </>
     );
 }

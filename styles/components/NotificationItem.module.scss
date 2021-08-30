@@ -3,7 +3,7 @@
   overflow: hidden;
   align-items: flex-end;
   border-radius: var(--border);
-  background-color: var(--accent-dark);
+  background-color: var(--accent);
   padding: 0.5rem;
 
   .newIndicator {
@@ -22,5 +22,9 @@
   p {
     margin: 20px 0 0 0;
     font-size: var(--font-small);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 }

@@ -50,14 +50,4 @@
   left: 5px;
   top: 65px;
   width: 15rem;
-
-  .button {
-    padding: 5px;
-    border-radius: var(--border);
-    text-align: end;
-  }
-
-  .button:hover {
-    background-color: var(--accent-dark);
-  }
 }

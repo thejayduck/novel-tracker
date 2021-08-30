@@ -31,8 +31,47 @@
   }
 }
 
+.mobileMenuWrap {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: var(--overlay);
+  backdrop-filter: blur(var(--blur));
+
+  color: white;
+  top: 0;
+  left: 0;
+
+  z-index: var(--z-absolute);
+
+  .mobileMenu {
+    position: absolute;
+    width: 65%;
+    height: 100%;
+    padding: 1rem 0 0 0;
+    border-radius: 0 var(--border) var(--border) 0;
+
+    background-color: var(--accent);
+    overflow-y: auto;
+
+    .menu {
+      padding: 5px;
+      margin-top: 1rem;
+      border-radius: var(--border) var(--border) 0 0;
+      background-color: var(--accent-dark);
+    }
+  }
+}
+
 .desktopOverlay {
+  padding: 5px 0 0 0;
+  span {
+    padding: 5px;
+  }
   .children {
-    padding-top: 10px;
+    background-color: var(--accent-dark);
+    padding: 5px;
+    margin-top: 10px;
+    border-radius: var(--border);
   }
 }
