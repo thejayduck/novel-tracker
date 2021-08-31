@@ -44,7 +44,7 @@ export default function Search() {
                     </AnimatePresence>
                 </div>
                 <Subtitle text="Results" />
-                <div className={`${styles.results} flex flexBetween`}>
+                <div className={`${styles.results} flex`}>
                     <BookCard data={data} />
                     <BookCard data={data} />
                     <BookCard data={data} />

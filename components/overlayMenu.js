@@ -90,6 +90,7 @@ export function MobileMenu({ onOutSideClick }) {
                     }
                 }
 
+
                 initial={{ x: -200 }}
                 animate={{ x: 0 }}
                 exit={{ x: -500 }}
