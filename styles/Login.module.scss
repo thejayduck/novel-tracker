@@ -76,3 +76,9 @@
     flex-direction: column;
   }
 }
+
+@supports (-webkit-touch-callout: none) {
+  .featureItem {
+    margin: 5px;
+  }
+}
