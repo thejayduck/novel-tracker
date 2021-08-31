@@ -29,3 +29,10 @@
     overflow: hidden;
   }
 }
+@supports (-webkit-touch-callout: none) {
+  .notificationItem {
+    img {
+      margin-right: 5px;
+    }
+  }
+}

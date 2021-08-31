@@ -18,3 +18,9 @@
     padding: 1rem;
   }
 }
+
+@supports (-webkit-touch-callout: none) {
+  .container {
+    display: block;
+  }
+}

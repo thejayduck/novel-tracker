@@ -14,3 +14,17 @@
   right: 0px;
   bottom: -100px;
 }
+
+@supports (-webkit-touch-callout: none) {
+  .inputWrap {
+    display: grid;
+    grid-template-areas:
+      "left left right"
+      "left left right"
+      "bottom bottom bottom";
+  }
+  .results {
+    display: grid;
+    grid-template-columns: repeat(1, 185px);
+  }
+}

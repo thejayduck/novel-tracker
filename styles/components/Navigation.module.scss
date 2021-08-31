@@ -2,6 +2,10 @@
   background-color: var(--accent);
   color: white;
 
+  position: -webkit-sticky;
+  position: -moz-sticky;
+  position: -o-sticky;
+  position: -ms-sticky;
   position: sticky;
 
   top: 0;

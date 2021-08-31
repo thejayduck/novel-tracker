@@ -17,3 +17,10 @@
     flex-direction: column;
   }
 }
+
+@supports (-webkit-touch-callout: none) {
+  .statisticItem {
+    margin: 5px;
+    overflow: hidden;
+  }
+}
