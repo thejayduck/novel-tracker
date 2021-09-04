@@ -69,7 +69,7 @@ function VolumeItem({ data }) {
                 <img className="skeleton" width={200} height={300} src={data.image} />
                 <div className={`${styles.volumeDetails}`}>
                     <InputField placeHolder="Image URL" inputType="url" />
-                    <InputField placeHolder="Volume" inputType="number" maxValue="99" />
+                    {/* <InputField placeHolder="Volume" inputType="number" maxValue="99" /> */}
                     <InputField placeHolder="Chapters" inputType="number" maxValue="999" />
                 </div>
             </div>
