@@ -53,9 +53,8 @@ export default function SubmitPage() {
                     <VolumeItem data={data} />
                     <VolumeItem data={data} />
                     <a title="New Volume" className={`${styles.volumeItem} ${styles.placeholder} flex flexAround`}>
-                        <div>
-                            <i className="bx bx-plus bx-md" />
-                        </div>
+                        <i className="bx bx-plus bx-md" />
+
                     </a>
                 </ul>
             </section>
