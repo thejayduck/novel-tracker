@@ -1,9 +1,14 @@
 import styles from '@styles/SubmitPage.module.scss'
 
+// Components
 import PageBase from '@components/pageBase';
 import { InputField } from '@components/ui/inputField';
 import { Subtitle } from '@components/header';
 
+const data = {
+    title: "That Mysterious Transfer Student Molests People On The Train, Because My Imouto Is A Lovecraftian Horror!",
+    image: "http://source.unsplash.com/200x300/?nature"
+}
 
 export default function SubmitPage() {
     return (
@@ -14,7 +19,7 @@ export default function SubmitPage() {
                 <div className={styles.sectionContainer}>
                     <InputField title="Native" />
                     <InputField title="Romanized" />
-                    <InputField toolTip="Licensed Only! Fan translated titles are NOT allowed." title="English" />
+                    <InputField toolTip="Licensed only! Fan translated titles are NOT allowed." title="English" />
                 </div>
             </section>
 
@@ -28,10 +33,14 @@ export default function SubmitPage() {
             <section className={styles.section}>
                 <Subtitle text="Other" />
                 <div className={styles.sectionContainer}>
-                    <InputField title="Author Name" />
-                    <InputField title="Status" placeHolder="TODO: option select" />
-                    <InputField title="Start Date" inputType="date" />
-                    <InputField title="End Date" inputType="date" />
+                    <div className="flex">
+                        <InputField title="Author Name" />
+                        <InputField title="Status" placeHolder="TODO: option select" />
+                    </div>
+                    <div className="flex">
+                        <InputField title="Start Date" inputType="date" />
+                        <InputField title="End Date" inputType="date" />
+                    </div>
                 </div>
             </section>
 
@@ -43,17 +52,16 @@ export default function SubmitPage() {
                     <VolumeItem data={data} />
                     <VolumeItem data={data} />
                     <VolumeItem data={data} />
+                    <a title="New Volume" className={`${styles.volumeItem} ${styles.placeholder} flex flexAround`}>
+                        <div>
+                            <i className="bx bx-plus bx-md" />
+                        </div>
+                    </a>
                 </ul>
             </section>
         </PageBase>
     )
 }
-
-const data = {
-    title: "That Mysterious Transfer Student Molests People On The Train, Because My Imouto Is A Lovecraftian Horror!",
-    image: "http://source.unsplash.com/200x300/?nature"
-}
-
 
 function VolumeItem({ data }) {
     return (
@@ -61,9 +69,9 @@ function VolumeItem({ data }) {
             <div className={`flex flexColumn ${styles.book}`}>
                 <img className="skeleton" width={200} height={300} src={data.image} />
                 <div className={`${styles.volumeDetails}`}>
-                    <InputField title="Image URL" />
-                    <InputField title="Volume" />
-                    <InputField title="Chapters" />
+                    <InputField placeHolder="Image URL" inputType="url" />
+                    <InputField placeHolder="Volume" inputType="number" maxValue="99" />
+                    <InputField placeHolder="Chapters" inputType="number" maxValue="999" />
                 </div>
             </div>
         </li>

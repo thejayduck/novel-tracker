@@ -9,16 +9,26 @@
       border-radius: var(--border);
       width: 100%;
       resize: none;
+      border: 2px solid var(--accent);
     }
   }
 }
 
 .volumeList {
   flex-wrap: wrap;
+  color: black;
+}
+
+.volumeList .placeholder {
+  width: 200px;
+  height: 300px;
+  border-radius: var(--border);
+  box-sizing: border-box;
+  text-align: center;
+  background-color: var(--accent);
 }
 
 .volumeItem {
-  position: relative;
   .book {
     img {
       border-radius: var(--border);

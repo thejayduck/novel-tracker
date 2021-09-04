@@ -45,7 +45,7 @@ export default function Navigation({ data }) {
                         </a>
                     </li>
                     <li>
-                        <a title="Submit Book">
+                        <a title="Submit Book" href="/submit">
                             <i className={`bx bx-plus bx-sm bx-tada-hover`} />
                         </a>
                     </li>
