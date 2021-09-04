@@ -45,7 +45,7 @@ export default function SubmitPage() {
             </section>
 
             <section className={styles.section}>
-                <Subtitle text="Volumes" />
+                <Subtitle text="Volumes (5)" />
                 <ul className={`${styles.sectionContainer} ${styles.volumeList} flex`}>
                     <VolumeItem data={data} />
                     <VolumeItem data={data} />
