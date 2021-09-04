@@ -15,6 +15,7 @@
 }
 
 .volumeList {
+  gap: 10px;
   flex-wrap: wrap;
   color: black;
 }
@@ -26,9 +27,11 @@
   box-sizing: border-box;
   text-align: center;
   background-color: var(--accent);
+  color: white;
 }
 
 .volumeItem {
+  width: 200px;
   .book {
     img {
       border-radius: var(--border);
