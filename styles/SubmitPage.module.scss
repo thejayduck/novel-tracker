@@ -1,0 +1,30 @@
+.section {
+  width: 100%;
+  margin: 10px 0 10px 0;
+  h2 {
+    text-align: center;
+  }
+  .sectionContainer {
+    textarea {
+      border-radius: var(--border);
+      width: 100%;
+      resize: none;
+    }
+  }
+}
+
+.volumeList {
+  flex-wrap: wrap;
+}
+
+.volumeItem {
+  position: relative;
+  .book {
+    img {
+      border-radius: var(--border);
+    }
+    .volumeDetails {
+      bottom: 0;
+    }
+  }
+}
