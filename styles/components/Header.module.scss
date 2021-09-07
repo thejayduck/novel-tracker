@@ -9,10 +9,13 @@
   user-select: none;
 
   display: flex;
-  flex-direction: row;
 
   margin-top: 6px;
   margin-bottom: 6px;
+
+  i {
+    margin: auto;
+  }
 
   &:after {
     content: "";
