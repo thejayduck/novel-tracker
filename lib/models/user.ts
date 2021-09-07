@@ -1,4 +1,4 @@
-import mongoose, { Types, Schema } from 'mongoose'
+import mongoose, { Types, Schema } from 'mongoose';
 
 export interface IUserProgress {
     book_id: Types.ObjectId,

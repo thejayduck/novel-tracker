@@ -4,10 +4,11 @@ import User, { IUserProgress, UserProgress } from './models/user';
 import Session from './models/session';
 import { IBook, Book, BookSubmission } from './models/book';
 
-console.log("Connecting to MongoDB");
-if (mongoose.connection.readyState == 0) {
-    const connection_string = `mongodb+srv://${process.env.MONGO_USER}:${encodeURIComponent(process.env.MONGO_PASSWORD)}@${process.env.MONGO_HOST}/noveltracker?authSource=admin&w=1`;
-    mongoose.connect(connection_string, { useNewUrlParser: true, useUnifiedTopology: true })
+export async function connectDb() {
+    if (mongoose.connection.readyState == 0) {
+        console.log("Connecting to MongoDB");
+        mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+    }
 }
 
 export async function createUserFromGoogle(gui: number): Promise<null | Types.ObjectId> {

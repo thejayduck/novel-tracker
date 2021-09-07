@@ -1,19 +1,26 @@
-import styles from '@styles/PageBase.module.scss';
+import styles from 'styles/PageBase.module.scss';
 
 // Components
 import Navigation from './navigation';
 import Footer from './footer';
 import { MobileMenu } from './overlayMenu';
-import { useState } from 'react';
+import { createContext, useState } from 'react';
+import { useContext } from 'react';
 
-export default function PageBase({ children }) {
+const UserInfoContext = createContext();
+
+export default function PageBase({ children, user_info }) {
     return (
-        <>
+        <UserInfoContext.Provider value={user_info}>
             <Navigation />
             <main className={styles.container}>
                 {children}
             </main>
             <Footer />
-        </>
+        </UserInfoContext.Provider>
     );
+}
+
+export function useUserInfoContext() {
+    return useContext(UserInfoContext);
 }

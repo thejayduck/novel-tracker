@@ -1,4 +1,5 @@
-import styles from '@styles/components/UserContainer.module.scss'
+import styles from 'styles/components/UserContainer.module.scss'
+import { useUserInfoContext } from './pageBase';
 
 const data = {
     picture: "http://source.unsplash.com/48x48/?nature",
@@ -10,12 +11,13 @@ const data = {
 }
 
 export function UserSmall({ onDropDownClick }) {
+    const userInfo = useUserInfoContext();
     return (
         <div className={`${styles.userWrap} ${styles.small}`}>
             <a href="/profile" className="flex">
                 <img className="skeleton" alt="Profile Picture" width={48} height={48} src={data.picture} />
                 <div className={styles.statusWrap}>
-                    <span>{data.username}</span>
+                    <span>{userInfo.username}</span>
                     {/* <span title={`Moderation Level - ${data.moderation}`} className={styles.status}>{data.moderation}</span> */}
                 </div>
             </a>
@@ -24,15 +26,15 @@ export function UserSmall({ onDropDownClick }) {
     );
 }
 
-export function UserBig() {
+export function UserBig({ userProfile }) {
     return (
         <div className={`${styles.userWrap}`}>
             <img className="skeleton" alt="Profile Picture" width={96} height={96} src={data.picture} />
             <div className={styles.statusWrap}>
-                <span title={`Moderation Level - ${data.moderation}`} className={styles.status}>{data.moderation}</span>
-                <span className="fontLarge">TheJayDuck</span>
+                <span title={`Moderation Level`} className={styles.status}>{userProfile ? userProfile.moderation_level : "Loading..."}</span>
+                <span className="fontLarge">{userProfile ? userProfile.username : "Loading..."}</span>
                 <span className="fontSmall">
-                    Joined {data.joined}
+                    Joined {userProfile ? userProfile.createdAt : "Loading..."}
                     <br />
                     {data.followers} Followers / {data.following} Following
                 </span>

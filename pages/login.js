@@ -1,8 +1,25 @@
-import styles from '@styles/Login.module.scss'
+import styles from 'styles/Login.module.scss'
 
-import PageBase from '@components/pageBase';
-import { Subtitle } from '@components/header';
+import PageBase from 'components/pageBase';
+import { Subtitle } from 'components/header';
 import Head from 'next/head'
+import { useState, useEffect } from 'react';
+import { serverSide_checkIsLoggedIn } from 'lib/serverHelpers';
+
+export async function getServerSideProps(context) {
+    const isLoggedIn = await serverSide_checkIsLoggedIn(context, true, false, false);
+
+    return isLoggedIn ? {
+        redirect: {
+            permanent: false,
+            destination: '/',
+        },
+    } : {
+        props: {
+            user_info: null,
+        },
+    }
+}
 
 export default function Login() {
     return (
@@ -50,15 +67,25 @@ export default function Login() {
                                 </FeatureItem>
                             </div>
                             <br />
-                            <a className={`${styles.googleBtn}`}>
-                                <i className="bx bxl-google bx-sm"> </i> Login with Google
-                            </a>
+                            <LoginWithGoogle />
                         </div>
                     </div>
                 </div>
             </PageBase >
         </>
     );
+}
+
+function LoginWithGoogle() {
+    const [url, setUrl] = useState(null);
+
+    useEffect(() => {
+        const domain = `${window.location.protocol}//${window.location.host}`;
+        setUrl(`https://accounts.google.com/o/oauth2/v2/auth?scope=email%20profile&access_type=offline&response_type=code&client_id=524679525288-o6gbij04v72f2i5ub4f83974mfocrc05.apps.googleusercontent.com&redirect_uri=${domain}/api/auth&state=434595.10145617445`);
+    })
+    return url && (<a className={`${styles.googleBtn}`} href={url}>
+        <i className="bx bxl-google bx-sm"> </i> Login with Google
+    </a>)
 }
 
 function FeatureItem({ title, children, icon }) {

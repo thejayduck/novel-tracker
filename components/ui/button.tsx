@@ -1,4 +1,4 @@
-import styles from '@styles/components/Button.module.scss'
+import styles from 'styles/components/Button.module.scss'
 
 export interface ButtonProps {
     title: string,
@@ -9,13 +9,13 @@ export interface ButtonProps {
     newTab: boolean,
 }
 
-export function NavigationButton({text, icon, onClick, href, newTab}: ButtonProps) {
-    return(
-        <a 
+export function NavigationButton({ text, icon, onClick, href, newTab }: ButtonProps) {
+    return (
+        <a
             className={`flex flexBetween ${styles.button}`}
 
             href={href || "#"}
-            target={newTab ? "_blank" : "_self"}  
+            target={newTab ? "_blank" : "_self"}
             onClick={onClick}
         >
             {icon && <i className={icon} />}

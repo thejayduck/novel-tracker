@@ -1,6 +1,6 @@
-import { submitBook, getBook } from "@lib/db";
-import { withInfoHelperPost } from '@lib/apiHelpers';
-import { parseID } from "@lib/types";
+import { submitBook, getBook } from "lib/db";
+import { withInfoHelperPost } from 'lib/apiHelpers';
+import { parseID } from "lib/types";
 
 export default withInfoHelperPost(["book_details"], async (_, params, user_info) => {
     const book_details = params.book_details;

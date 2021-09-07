@@ -1,8 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { getUserInfo, withUserId } from "./db";
+import { connectDb, getUserInfo, withUserId } from "./db";
 import { IUser } from "./models/user";
 import { isToken } from "./types";
-import mongoose from 'mongoose'
 
 export type Params = { [key: string]: string };
 
@@ -15,6 +14,8 @@ export function withHelperBareGet<T>(required_fields: string[], callback: (token
                     message: "Invalid Token"
                 };
             }
+
+            await connectDb();
 
             const params = req.query as Params;
 
@@ -67,6 +68,8 @@ export function withHelperBarePost<T>(required_fields: string[], callback: (toke
                     message: "Invalid Token"
                 };
             }
+
+            await connectDb();
 
             const params = req.body;
 

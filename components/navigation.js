@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import styles from '@styles/components/Navigation.module.scss';
+import styles from 'styles/components/Navigation.module.scss';
 import { UserSmall } from './userContainer';
 import dynamic from 'next/dynamic'
 import { DesktopOverlay, MobileMenu } from './overlayMenu';
 
-import { NavigationButton } from "@components/ui/button"
+import { NavigationButton } from "components/ui/button"
 import { AnimatePresence } from 'framer-motion';
+import { useUserInfoContext } from './pageBase';
 
 const NotificationItem = dynamic(() => import("./notificationItem"))
 
@@ -14,11 +15,13 @@ export default function Navigation({ data }) {
     const [userMenu, setUserMenu] = useState(false);
     const [mobileMenu, setMobileMenu] = useState(false);
 
+    const userInfo = useUserInfoContext();
+
     return (
         <nav className={`${styles.nav}`}>
             <div className={`${styles.container}`}>
                 <div className={`desktop`}>
-                    <UserSmall onDropDownClick={() => setUserMenu(prev => !prev)} />
+                    {userInfo && <UserSmall onDropDownClick={() => setUserMenu(prev => !prev)} />}
                 </div>
 
                 <a className={`${"mobile"}`} onClick={() => setMobileMenu(true)} title="Hamburger Menu" ><i className={`bx bx-menu bx-sm`} /></a>

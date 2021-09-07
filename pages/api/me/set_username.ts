@@ -1,5 +1,5 @@
-import { withInfoHelperPost } from "@lib/apiHelpers";
-import { setUsername } from "@lib/db";
+import { withInfoHelperPost } from "lib/apiHelpers";
+import { setUsername } from "lib/db";
 
 export default withInfoHelperPost(["new_name"], async (_, params, user_info) => {
     if (user_info.username) {

@@ -1,7 +1,7 @@
-import { getUserInfo, withUserId } from "./db";
+import { connectDb, getUserInfo, withUserId } from "./db";
 import { parse } from 'cookie';
 
-async function getInfo(cookie) {
+async function getInfo(cookie: any) {
     if (!cookie) {
         return null;
     }
@@ -14,7 +14,23 @@ async function getInfo(cookie) {
     return await withUserId(token, async (user_id) => await getUserInfo(user_id));
 }
 
-export async function serverSide_checkAuth(context, require_login: boolean, require_mod: boolean, require_admin: boolean) {
+export async function serverSide_checkIsLoggedIn(context: any) {
+    if (!context.req.headers.cookie) {
+        return false;
+    }
+
+    await connectDb();
+
+    const info = await getInfo(context.req.headers.cookie);
+
+    if (!info) {
+        return false;
+    }
+
+    return true;
+}
+
+export async function serverSide_checkAuth(context: any, require_login: boolean, require_mod: boolean, require_admin: boolean) {
     // Assumptions about requirements
     if (require_admin) {
         require_mod = true;
@@ -31,6 +47,8 @@ export async function serverSide_checkAuth(context, require_login: boolean, requ
             },
         }, null];
     }
+
+    await connectDb();
 
     const info = await getInfo(context.req.headers.cookie);
 

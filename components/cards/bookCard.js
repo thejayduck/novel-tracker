@@ -1,4 +1,4 @@
-import styles from '@styles/components/BookCard.module.scss'
+import styles from 'styles/components/BookCard.module.scss'
 
 export default function BookCard({ data }) {
     return (
