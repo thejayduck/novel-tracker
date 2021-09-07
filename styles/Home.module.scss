@@ -1,3 +1,9 @@
 .section {
   width: 100%;
+
+  .sectionContainer {
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 5rem;
+  }
 }

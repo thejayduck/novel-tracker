@@ -63,6 +63,7 @@ body {
   background-color: var(--background);
 }
 
+// THEMES
 .light {
   --background-color: hsla(184, 100%, 94%, 1);
   --border-color: black;
@@ -89,6 +90,7 @@ body {
   color: white;
 }
 
+// OTHER
 *:not(html, body) {
   font-family: inherit;
   font-weight: inherit;
