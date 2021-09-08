@@ -1,5 +1,5 @@
-import PageBase from "@components/pageBase"
-import Button from "@components/ui/button"
+import PageBase from "components/pageBase"
+import Button from "components/ui/button"
 // import { serverSide_checkAuth } from "@lib/serverHelpers";
 
 const reason_messages = {

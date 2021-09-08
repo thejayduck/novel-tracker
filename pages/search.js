@@ -1,18 +1,18 @@
-import styles from '@styles/Search.module.scss'
+import styles from 'styles/Search.module.scss'
 
 // Components
-import PageBase from "@components/pageBase";
-import { InputFieldNonManaged } from '@components/ui/inputField';
+import PageBase from "components/pageBase";
+import { InputFieldNonManaged } from 'components/ui/inputField';
 
-import { Subtitle } from '@components/header';
+import { Subtitle } from 'components/header';
 import { useState } from 'react';
-import { DesktopOverlay, MobileOverlay } from '@components/overlayMenu';
+import { DesktopOverlay, MobileOverlay } from 'components/overlayMenu';
 
 import dynamic from 'next/dynamic'
 import { AnimatePresence } from 'framer-motion';
 import Head from 'next/head'
 
-const BookCard = dynamic(() => import("@components/cards/bookCard"))
+const BookCard = dynamic(() => import("components/cards/bookCard"))
 
 const data = {
     title: "That Mysterious Transfer Student Molests People On The Train, Because My Imouto Is A Lovecraftian Horror!",

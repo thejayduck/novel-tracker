@@ -1,11 +1,11 @@
-import styles from "@styles/SetupAccount.module.css"
-import { Button } from "@components/ui/button";
-import PageBase from "@components/pageBase";
+import styles from "styles/SetupAccount.module.css"
+import { Button } from "components/ui/button";
+import PageBase from "components/pageBase";
 
 import { useRouter } from 'next/router';
 import { useEffect, useRef } from "react";
-import { serverSide_checkAuth } from "@lib/serverHelpers";
-import { useApi } from "@lib/clientHelpers";
+import { serverSide_checkAuth } from "lib/serverHelpers";
+import { useApi } from "lib/clientHelpers";
 import { InputField } from "../components/ui/inputField";
 
 

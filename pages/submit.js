@@ -1,9 +1,9 @@
-import styles from '@styles/SubmitPage.module.scss'
+import styles from 'styles/SubmitPage.module.scss'
 
 // Components
-import PageBase from '@components/pageBase';
-import { InputField } from '@components/ui/inputField';
-import { Subtitle } from '@components/header';
+import PageBase from 'components/pageBase';
+import { InputField } from 'components/ui/inputField';
+import { Subtitle } from 'components/header';
 import Head from 'next/head'
 
 export default function SubmitPage({ data }) {
