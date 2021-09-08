@@ -1,4 +1,4 @@
-import styles from '@styles/components/NotificationItem.module.scss'
+import styles from 'styles/components/NotificationItem.module.scss'
 
 export default function NotificationItem(data) {
     return (

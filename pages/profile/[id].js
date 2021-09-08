@@ -1,29 +1,43 @@
-import styles from '@styles/Profile.module.scss'
+import styles from 'styles/Profile.module.scss'
 
-import { Subtitle } from "@components/header";
-import PageBase from "@components/pageBase";
-import { UserBig } from "@components/userContainer";
+import { Subtitle } from "components/header";
+import PageBase from "components/pageBase";
+import { UserBig } from "components/userContainer";
 import Head from 'next/head'
+import { serverSide_checkAuth } from 'lib/serverHelpers';
+import { useApi } from 'lib/clientHelpers';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 
-export default function Profile({ data }) {
+export async function getServerSideProps(context) {
+    const [redirect, info] = await serverSide_checkAuth(context, true, false, false);
 
-    data = {
-        reading_books: 3,
-        finished_books: 20,
-        planned_books: 13,
-        dropped_books: 0,
-        username: "TheJayDuck"
+    return redirect ? redirect : {
+        props: {
+            user_info: info,
+        },
     }
+}
 
+export default function Profile({ user_info }) {
+    const api = useApi();
+    const router = useRouter()
+    const { id } = router.query;
+
+    const [userProfile, setUserProfile] = useState(null);
+    useEffect(async () => {
+        const userProfile = await api.getUserInfo(id);
+        setUserProfile(userProfile);
+    });
     return (
         <>
             <Head>
-                <title>{data.username} · Novel Tracker</title>
+                <title>{userProfile ? userProfile.username : "Loading..."} · Novel Tracker</title>
             </Head>
 
-            <PageBase>
+            <PageBase user_info={user_info}>
                 <section className="flex flexRight" >
-                    <UserBig />
+                    <UserBig userProfile={userProfile} />
                 </section>
                 <Subtitle text="Statistics" />
                 <section className={`${styles.statisticWrap} flex flexBetween`} >

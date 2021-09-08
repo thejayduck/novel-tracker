@@ -1,5 +1,5 @@
-import { withInfoHelperGet } from "@lib/apiHelpers";
-import { getPendingBooks } from "@lib/db";
+import { withInfoHelperGet } from "lib/apiHelpers";
+import { getPendingBooks } from "lib/db";
 
 export default withInfoHelperGet([], async (_token, _params, user_info) => {
     if (user_info.moderation_level < 2) {

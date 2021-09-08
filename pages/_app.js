@@ -1,7 +1,7 @@
-import '@styles/globals.scss'
+import 'styles/globals.scss'
 import Head from 'next/head'
 import { resetId } from 'react-id-generator'
-import { AlertWrapper } from '@components/alertWrapper'
+import { AlertWrapper } from 'components/alertWrapper'
 
 export default function MyApp({ Component, pageProps }) {
   resetId();

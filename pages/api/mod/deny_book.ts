@@ -1,6 +1,6 @@
-import { withInfoHelperPost } from "@lib/apiHelpers";
-import { denyBook } from "@lib/db";
-import { parseID } from "@lib/types";
+import { withInfoHelperPost } from "lib/apiHelpers";
+import { denyBook } from "lib/db";
+import { parseID } from "lib/types";
 
 export default withInfoHelperPost(["submission_id"], async (_, params, user_info) => {
     const submission_id = parseID(params.submission_id);

@@ -1,4 +1,4 @@
-import styles from '@styles/components/Header.module.scss'
+import styles from 'styles/components/Header.module.scss'
 
 export function Subtitle({ text, icon }) {
     return (

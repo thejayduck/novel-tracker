@@ -18,17 +18,6 @@
         "isolatedModules": true,
         "jsx": "preserve",
         "baseUrl": "./",
-        "paths": {
-            "@components/*": [
-                "components/*"
-            ],
-            "@styles/*": [
-                "styles/*"
-            ],
-            "@lib/*": [
-                "lib/*"
-            ]
-        }
     },
     "include": [
         "next-env.d.ts",

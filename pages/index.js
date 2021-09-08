@@ -1,9 +1,21 @@
-import styles from '@styles/Home.module.scss'
+import styles from 'styles/Home.module.scss'
 
 // Components
-import PageBase from '@components/pageBase';
-import { Subtitle } from '@components/header';
+import PageBase from 'components/pageBase';
+import { Subtitle } from 'components/header';
 import Head from 'next/head'
+import { serverSide_checkAuth } from 'lib/serverHelpers'
+
+export async function getServerSideProps(context) {
+  const [redirect, info] = await serverSide_checkAuth(context, true, false, false);
+
+  return redirect ? redirect : {
+    props: {
+      user_info: info,
+    },
+  }
+}
+
 import BookCard from '../components/cards/bookCard';
 
 const data = {
@@ -17,8 +29,7 @@ export default function Home({ user_info }) {
       <Head>
         <title>Library · Novel Tracker</title>
       </Head>
-
-      <PageBase>
+      <PageBase user_info={user_info}>
         <Section title="Reading" icon="bx bx-book-open" />
         <Section title="Planning" icon="bx bx-bookmarks" />
         <Section title="Finished" icon="bx bx-check" />

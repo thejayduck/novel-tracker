@@ -10,7 +10,7 @@ export function isID(id: any): boolean {
 
 export function parseID(id: any): Types.ObjectId {
     if (!isValidObjectId(id)) {
-        throw 'Invalid Book Id';
+        throw 'Invalid Id';
     }
     return Types.ObjectId(id);
 }

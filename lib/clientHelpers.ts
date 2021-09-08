@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useAlert } from '@components/alertWrapper';
+import { useAlert } from 'components/alertWrapper';
 
 export function useDelayedState<T>(initialState: T, delay: number) {
     const [delayedState, setDelayedState] = useState(initialState);
@@ -85,10 +85,10 @@ export function useApi() {
     }
 
     return {
-        async acceptBook(submission_id: number, onSuccess?: (responseData: void) => void) {
+        async acceptBook(submission_id: string, onSuccess?: (responseData: void) => void) {
             return postCall("mod/accept_book", { submission_id }, onSuccess);
         },
-        async denyBook(submission_id: number, onSuccess?: (responseData: void) => void) {
+        async denyBook(submission_id: string, onSuccess?: (responseData: void) => void) {
             return postCall("mod/deny_book", { submission_id }, onSuccess);
         },
         async setUsername(new_name: string, onSuccess?: (responseData: void) => void) {
@@ -97,20 +97,23 @@ export function useApi() {
         async submitBook(book_details: { [k: string]: any }, onSuccess?: (responseData: void) => void) {
             return postCall("me/submit_book", { book_details }, onSuccess);
         },
-        async deleteBook(book_id: number, onSuccess?: (responseData: void) => void) {
+        async deleteBook(book_id: string, onSuccess?: (responseData: void) => void) {
             return postCall("me/delete_book", { book_id }, onSuccess);
         },
-        async addBook(book_id: number, onSuccess?: (responseData: void) => void) {
+        async addBook(book_id: string, onSuccess?: (responseData: void) => void) {
             return postCall("me/add_book", { book_id }, onSuccess);
         },
-        async updateChaptersRead(book_id: number, new_chapters_read: number, onSuccess?: (responseData: void) => void) {
+        async updateChaptersRead(book_id: string, new_chapters_read: number, onSuccess?: (responseData: void) => void) {
             return postCall("me/update_chapters_read", { book_id, new_chapters_read }, onSuccess);
         },
         async searchBook(title: string, onSuccess?: (responseData: void) => void) {
             return getCall("search_book", { query: title }, onSuccess);
         },
-        async getBook(book_id: number, onSuccess?: (responseData: void) => void) {
+        async getBook(book_id: string, onSuccess?: (responseData: void) => void) {
             return getCall("get_book", { id: book_id }, onSuccess);
+        },
+        async getUserInfo(user_id: string, onSuccess?: (responseData: void) => void) {
+            return getCall(`user/${user_id}/info`, {}, onSuccess);
         },
         /*async getUserInfo(onSuccess?: (responseData: void) => void) {
             return getCall("me/info", {}, onSuccess);
