@@ -4,61 +4,69 @@ import styles from '@styles/SubmitPage.module.scss'
 import PageBase from '@components/pageBase';
 import { InputField } from '@components/ui/inputField';
 import { Subtitle } from '@components/header';
+import Head from 'next/head'
 
-const data = {
-    title: "That Mysterious Transfer Student Molests People On The Train, Because My Imouto Is A Lovecraftian Horror!",
-    image: "http://source.unsplash.com/200x300/?nature"
-}
+export default function SubmitPage({ data }) {
 
-export default function SubmitPage() {
+    data = {
+        title: "That Mysterious Transfer Student Molests People On The Train, Because My Imouto Is A Lovecraftian Horror!",
+        image: "https://dummyimage.com/200x300/000000/ffffff&text=image+will+appear+here"
+    }
+
     return (
-        <PageBase>
-            <section className={styles.section}>
-                <Subtitle text="Titles" />
+        <>
+            <Head>
+                <title>Submit · Novel Tracker</title>
+            </Head>
 
-                <div className={styles.sectionContainer}>
-                    <InputField title="Native" />
-                    <InputField title="Romanized" />
-                    <InputField toolTip="Licensed only! Fan translated titles are NOT allowed." title="English" />
-                </div>
-            </section>
+            <PageBase>
+                <section className={styles.section}>
+                    <Subtitle text="Titles" />
 
-            <section className={styles.section}>
-                <Subtitle text="Description" />
-                <div className={styles.sectionContainer}>
-                    <textarea rows={15} wrap="soft" />
-                </div>
-            </section>
-
-            <section className={styles.section}>
-                <Subtitle text="Other" />
-                <div className={styles.sectionContainer}>
-                    <div className="flex">
-                        <InputField title="Author Name" />
-                        <InputField title="Status" placeHolder="TODO: option select" />
+                    <div className={styles.sectionContainer}>
+                        <InputField title="Native" />
+                        <InputField title="Romanized" />
+                        <InputField toolTip="Licensed only! Fan translated titles are NOT allowed." title="English" />
                     </div>
-                    <div className="flex">
-                        <InputField title="Start Date" inputType="date" />
-                        <InputField title="End Date" inputType="date" />
+                </section>
+
+                <section className={styles.section}>
+                    <Subtitle text="Description" />
+                    <div className={styles.sectionContainer}>
+                        <textarea rows={15} wrap="soft" />
                     </div>
-                </div>
-            </section>
+                </section>
 
-            <section className={styles.section}>
-                <Subtitle text="Volumes (5)" />
-                <ul className={`${styles.sectionContainer} ${styles.volumeList} flex`}>
-                    <VolumeItem data={data} />
-                    <VolumeItem data={data} />
-                    <VolumeItem data={data} />
-                    <VolumeItem data={data} />
-                    <VolumeItem data={data} />
-                    <a title="New Volume" className={`${styles.volumeItem} ${styles.placeholder} flex flexAround`}>
-                        <i className="bx bx-plus bx-md" />
+                <section className={styles.section}>
+                    <Subtitle text="Other" />
+                    <div className={styles.sectionContainer}>
+                        <div className="flex">
+                            <InputField title="Author Name" />
+                            <InputField title="Status" placeHolder="TODO: option select" />
+                        </div>
+                        <div className="flex">
+                            <InputField title="Start Date" inputType="date" />
+                            <InputField title="End Date" inputType="date" />
+                        </div>
+                    </div>
+                </section>
 
-                    </a>
-                </ul>
-            </section>
-        </PageBase>
+                <section className={styles.section}>
+                    <Subtitle text="Volumes (5)" />
+                    <ul className={`${styles.sectionContainer} ${styles.volumeList} flex`}>
+                        <VolumeItem data={data} />
+                        <VolumeItem data={data} />
+                        <VolumeItem data={data} />
+                        <VolumeItem data={data} />
+                        <VolumeItem data={data} />
+                        <a title="New Volume" className={`${styles.volumeItem} ${styles.placeholder} flex flexAround`}>
+                            <i className="bx bx-plus bx-md" />
+
+                        </a>
+                    </ul>
+                </section>
+            </PageBase>
+        </>
     )
 }
 

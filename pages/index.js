@@ -34,18 +34,6 @@ function Section({ title, icon }) {
       <Subtitle text={title} icon={icon} />
       <div className={`${styles.sectionContainer} flex`} >
         <BookCard data={data} />
-        <BookCard data={data} />
-        <BookCard data={data} />
-        <BookCard data={data} />
-        <BookCard data={data} />
-        <BookCard data={data} />
-        <BookCard data={data} />
-        <BookCard data={data} />
-        <BookCard data={data} />
-        <BookCard data={data} />
-        <BookCard data={data} />
-        <BookCard data={data} />
-        <BookCard data={data} />
       </div>
     </section>
   );
