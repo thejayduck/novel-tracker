@@ -20,11 +20,6 @@ export async function getServerSideProps(context) {
   }
 }
 
-const data = {
-  title: "That Mysterious Transfer Student Molests People On The Train, Because My Imouto Is A Lovecraftian Horror!",
-  image: "http://source.unsplash.com/200x300/?nature"
-}
-
 export default function Home({ user_info }) {
   return (
     <>

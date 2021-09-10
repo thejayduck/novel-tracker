@@ -8,11 +8,6 @@ import Head from 'next/head'
 
 export default function SubmitPage({ data }) {
 
-    data = {
-        title: "That Mysterious Transfer Student Molests People On The Train, Because My Imouto Is A Lovecraftian Horror!",
-        image: "https://dummyimage.com/200x300/000000/ffffff&text=image+will+appear+here"
-    }
-
     return (
         <>
             <Head>
@@ -57,11 +52,11 @@ export default function SubmitPage({ data }) {
                 <section className={styles.section}>
                     <Subtitle text="Volumes (5)" />
                     <ul className={`${styles.sectionContainer} ${styles.volumeList} flex`}>
-                        <VolumeItem data={data} />
-                        <VolumeItem data={data} />
-                        <VolumeItem data={data} />
-                        <VolumeItem data={data} />
-                        <VolumeItem data={data} />
+                        <VolumeItem />
+                        <VolumeItem />
+                        <VolumeItem />
+                        <VolumeItem />
+                        <VolumeItem />
                         <div>
                             <a title="New Volume" className={`${styles.volumeItem} ${styles.placeholder} flex flexAround`}>
                                 <i className="bx bx-plus bx-md" />
