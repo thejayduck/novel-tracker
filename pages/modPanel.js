@@ -1,7 +1,7 @@
 import styles from "styles/ModPanel.module.css"
 
 import PageBase from "components/pageBase";
-import Button from "components/ui/button";
+import { NavigationButton } from "components/ui/button";
 
 import { useEffect, useState } from "react";
 import { serverSide_checkAuth } from "lib/serverHelpers";
@@ -86,8 +86,8 @@ function SubmissionItem({ pending_book, acceptBook, denyBook }) {
                 <VolumeItem />
             </ul>
             <div className={styles.buttonWrap}>
-                <Button icon="fas fa-fw fa-check" text="Accept" onClick={() => acceptBook(pending_book)} />
-                <Button icon="fas fa-fw fa-times" text="Dismiss" onClick={() => denyBook(pending_book)} />
+                <NavigationButton icon="fas fa-fw fa-check" text="Accept" onClick={() => acceptBook(pending_book)} />
+                <NavigationButton icon="fas fa-fw fa-times" text="Dismiss" onClick={() => denyBook(pending_book)} />
             </div>
         </div>
     );

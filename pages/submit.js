@@ -8,6 +8,10 @@ import Head from 'next/head'
 
 export default function SubmitPage({ data }) {
 
+    data = {
+        image: "https://dummyimage.com/200x300/000000/ffffff&text=image+will+appear+here"
+    }
+
     return (
         <>
             <Head>
