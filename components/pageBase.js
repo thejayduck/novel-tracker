@@ -12,7 +12,7 @@ const UserInfoContext = createContext();
 export default function PageBase({ children, user_info }) {
     return (
         <UserInfoContext.Provider value={user_info}>
-            <Navigation />
+            <Navigation user_info={user_info} />
             <main className={styles.container}>
                 {children}
             </main>

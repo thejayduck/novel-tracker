@@ -4,12 +4,11 @@ import { useUserInfoContext } from './pageBase';
 export function UserSmall({ onDropDownClick, data }) {
     data = {
         picture: "http://source.unsplash.com/48x48/?nature",
-        username: "TheJayDuck",
     }
     const userInfo = useUserInfoContext();
     return (
         <div className={`${styles.userWrap} ${styles.small}`}>
-            <a href="/profile" className="flex">
+            <a href={`/profile/${userInfo.user_id}`} className="flex">
                 <img className="skeleton" alt="Profile Picture" width={48} height={48} src={data.picture} />
                 <div className={styles.statusWrap}>
                     <span>{userInfo.username}</span>
@@ -24,7 +23,6 @@ export function UserSmall({ onDropDownClick, data }) {
 export function UserBig({ userProfile, data }) {
     data = {
         picture: "http://source.unsplash.com/96x96/?nature",
-        username: "TheJayDuck",
         followers: 20,
         following: 0
     }

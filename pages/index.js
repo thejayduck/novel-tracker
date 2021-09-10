@@ -5,6 +5,7 @@ import PageBase from 'components/pageBase';
 import { Subtitle } from 'components/header';
 import Head from 'next/head'
 import { serverSide_checkAuth } from 'lib/serverHelpers'
+import BookCard from '../components/cards/bookCard';
 
 export async function getServerSideProps(context) {
   const [redirect, info] = await serverSide_checkAuth(context, true, false, false);
@@ -15,8 +16,6 @@ export async function getServerSideProps(context) {
     },
   }
 }
-
-import BookCard from '../components/cards/bookCard';
 
 const data = {
   title: "That Mysterious Transfer Student Molests People On The Train, Because My Imouto Is A Lovecraftian Horror!",

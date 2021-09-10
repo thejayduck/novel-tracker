@@ -83,6 +83,7 @@ export function MobileMenu({ onOutSideClick }) {
                 className={styles.mobileMenu}
                 onClick={(e) => e.stopPropagation()}
                 drag="x"
+
                 dragConstraints={constrains}
                 onDragEnd={
                     (event, info) => {
@@ -106,7 +107,9 @@ export function MobileMenu({ onOutSideClick }) {
                     <section className="flex flexColumn" >
                         <Subtitle text="Pages" />
                         <NavigationButton href="/" icon="bx bx-library bx-sm" text="Library" />
+                        <NavigationButton href="#" icon="bx bx-search bx-sm" text="Search" />
                         <NavigationButton href="#" icon="bx bx-chat bx-sm" text="Forums" />
+                        <NavigationButton href="#" icon="bx bx-cog bx-sm" text="Settings" />
                     </section>
                     <section>
                         <Subtitle text="Notifications (1)" />
