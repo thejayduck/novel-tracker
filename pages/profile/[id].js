@@ -24,6 +24,13 @@ export default function Profile({ user_info }) {
     const router = useRouter()
     const { id } = router.query;
 
+    const data = {
+        reading_books: 20,
+        finished_books: 20,
+        planned_books: 20,
+        dropped_books: 20,
+    }
+
     const [userProfile, setUserProfile] = useState(null);
     useEffect(async () => {
         const userProfile = await api.getUserInfo(id);
@@ -41,10 +48,10 @@ export default function Profile({ user_info }) {
                 </section>
                 <Subtitle text="Statistics" />
                 <section className={`${styles.statisticWrap} flex flexBetween`} >
-                    {/* <StatisticItem title="Reading" icon="bx bx-bookmark" stat={`${data.reading_books} Books`} />
+                    <StatisticItem title="Reading" icon="bx bx-bookmark" stat={`${data.reading_books} Books`} />
                     <StatisticItem title="Finished" icon="bx bx-check-square" stat={`${data.finished_books} Books`} />
                     <StatisticItem title="Planning" icon="bx bx-calendar" stat={`${data.planned_books} Books`} />
-                    <StatisticItem title="Dropped" icon="bx bx-trash-alt" stat={`${data.dropped_books} Books`} /> */}
+                    <StatisticItem title="Dropped" icon="bx bx-trash-alt" stat={`${data.dropped_books} Books`} />
                 </section>
             </PageBase>
         </>

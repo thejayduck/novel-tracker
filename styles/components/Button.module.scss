@@ -1,5 +1,5 @@
 .button {
-  padding: 5px;
+  padding: var(--padding-small);
   border-radius: var(--border);
   text-align: end;
   background-color: var(--accent);

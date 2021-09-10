@@ -4,10 +4,10 @@
   align-items: flex-end;
   border-radius: var(--border);
   background-color: var(--accent);
-  padding: 0.5rem;
+  padding: var(--padding-small);
 
   .newIndicator {
-    padding: 0 10px 0 10px;
+    padding: 0 var(--padding-normal) 0 var(--padding-normal);
     font-weight: var(--font-bold);
     position: absolute;
     right: 0;

@@ -56,7 +56,7 @@
     overflow-y: auto;
 
     .menu {
-      padding: 5px;
+      padding: var(--padding-small);
       margin-top: 1rem;
       border-radius: var(--border) var(--border) 0 0;
       background-color: var(--accent-dark);
@@ -65,13 +65,13 @@
 }
 
 .desktopOverlay {
-  padding: 5px 0 0 0;
+  padding: var(--padding-small) 0 0 0;
   text-align: center;
 
   .children {
     text-align: initial;
     background-color: var(--accent-dark);
-    padding: 5px;
+    padding: var(--padding-small);
     margin-top: 10px;
     border-radius: var(--border);
   }
