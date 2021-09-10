@@ -4,9 +4,10 @@ import { UserSmall } from './userContainer';
 import { DesktopOverlay, MobileMenu } from './overlayMenu';
 import { NavigationButton } from "components/ui/button"
 import { useUserInfoContext } from './pageBase';
-import { AnimatePresence } from 'framer-motion';
-import { useState } from 'react';
+
 import dynamic from 'next/dynamic'
+import { useState } from 'react';
+import { AnimatePresence } from 'framer-motion';
 
 const NotificationItem = dynamic(() => import("./notificationItem"))
 

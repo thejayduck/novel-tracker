@@ -3,9 +3,12 @@ import styles from 'styles/Home.module.scss'
 // Components
 import PageBase from 'components/pageBase';
 import { Subtitle } from 'components/header';
-import Head from 'next/head'
 import { serverSide_checkAuth } from 'lib/serverHelpers'
-import BookCard from '../components/cards/bookCard';
+
+import Head from 'next/head'
+import dynamic from 'next/dynamic'
+
+const BookCard = dynamic(() => import("../components/cards/bookCard"))
 
 export async function getServerSideProps(context) {
   const [redirect, info] = await serverSide_checkAuth(context, true, false, false);
@@ -43,7 +46,7 @@ function Section({ title, icon }) {
     <section className={styles.section}>
       <Subtitle text={title} icon={icon} />
       <div className={`${styles.sectionContainer} flex`} >
-        <BookCard data={data} />
+        <BookCard />
       </div>
     </section>
   );

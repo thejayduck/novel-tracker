@@ -3,21 +3,15 @@ import styles from 'styles/Search.module.scss'
 // Components
 import PageBase from "components/pageBase";
 import { InputFieldNonManaged } from 'components/ui/inputField';
-
 import { Subtitle } from 'components/header';
 import { useState } from 'react';
 import { DesktopOverlay, MobileOverlay } from 'components/overlayMenu';
 
+import Head from 'next/head'
 import dynamic from 'next/dynamic'
 import { AnimatePresence } from 'framer-motion';
-import Head from 'next/head'
 
 const BookCard = dynamic(() => import("components/cards/bookCard"))
-
-const data = {
-    title: "That Mysterious Transfer Student Molests People On The Train, Because My Imouto Is A Lovecraftian Horror!",
-    image: "http://source.unsplash.com/200x300/?nature"
-}
 
 export default function Search() {
     const [filterMenu, setFilterMenu] = useState(false);
@@ -45,19 +39,19 @@ export default function Search() {
                 </div>
                 <Subtitle text="Results" />
                 <div className={`${styles.results} flex flextRight`}>
-                    <BookCard data={data} />
-                    <BookCard data={data} />
-                    <BookCard data={data} />
-                    <BookCard data={data} />
-                    <BookCard data={data} />
-                    <BookCard data={data} />
-                    <BookCard data={data} />
-                    <BookCard data={data} />
-                    <BookCard data={data} />
-                    <BookCard data={data} />
-                    <BookCard data={data} />
-                    <BookCard data={data} />
-                    <BookCard data={data} />
+                    <BookCard />
+                    <BookCard />
+                    <BookCard />
+                    <BookCard />
+                    <BookCard />
+                    <BookCard />
+                    <BookCard />
+                    <BookCard />
+                    <BookCard />
+                    <BookCard />
+                    <BookCard />
+                    <BookCard />
+                    <BookCard />
                 </div>
 
                 <AnimatePresence>

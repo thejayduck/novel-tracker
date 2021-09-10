@@ -1,6 +1,12 @@
 import styles from 'styles/components/BookCard.module.scss'
 
 export default function BookCard({ data }) {
+
+    data = {
+        title: "Ascendance of a Bookworm ~I'll do anything to become a librarian~ Part 1 Daughter of a Soldier",
+        image: "http://source.unsplash.com/200x300/?nature"
+    }
+
     return (
         <a className={styles.bookWrap}>
             <div className={styles.book}>
