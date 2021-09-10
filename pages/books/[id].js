@@ -2,6 +2,7 @@ import PageBase from "components/pageBase"
 import styles from 'styles/Book.module.scss'
 import { Subtitle } from "../../components/header"
 import dynamic from 'next/dynamic'
+import QuickAlert from "../../components/quickAlert"
 
 const BookCard = dynamic(() => import("components/cards/bookCard"))
 
