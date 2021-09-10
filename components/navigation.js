@@ -69,7 +69,7 @@ export default function Navigation({ data }) {
             <AnimatePresence>
                 {userMenu &&
                     <DesktopOverlay title={`Account`} className={styles.userMenuOverlay} flexDirection="flexColumn" >
-                        <NavigationButton href="/profile" icon="bx bx-user bx-sm" text="Your Account" />
+                        <NavigationButton href={`/profile`} icon="bx bx-user bx-sm" text="Your Account" />
                         <NavigationButton icon="bx bx-log-out bx-sm" text="Log Out" />
                     </DesktopOverlay>
                 }
@@ -78,12 +78,6 @@ export default function Navigation({ data }) {
             <AnimatePresence>
                 {notification &&
                     <DesktopOverlay title={`Notifications (1)`} className={styles.notificationOverlay} flexDirection="flexColumn" >
-                        <NotificationItem />
-                        <NotificationItem />
-                        <NotificationItem />
-                        <NotificationItem />
-                        <NotificationItem />
-                        <NotificationItem />
                         <NotificationItem />
                     </DesktopOverlay>
                 }

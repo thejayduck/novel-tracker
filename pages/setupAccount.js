@@ -1,5 +1,5 @@
 import styles from "styles/SetupAccount.module.css"
-import { Button } from "components/ui/button";
+import { NavigationButton } from "components/ui/button";
 import PageBase from "components/pageBase";
 
 import { useRouter } from 'next/router';
@@ -56,11 +56,11 @@ export default function SetupAccount({ user_info }) {
 
     return (
         <PageBase user_info={user_info}>
-            <img width="150" height="150" src='../book.svg' />
+            <img width="150" height="150" src='../icon.svg' />
             <div className={styles.content}>
                 <h3>Please Enter a Username to Finish Setting Up Your "Novel Tracker" Account </h3>
                 <InputField ref={usernameRef} inputType="text" placeHolder="(Max 32 Characters)" maxLength="32" />
-                <button text="Complete Account!" icon="fas fa-fw fa-user-alt" onClick={onCompleteClick} />
+                <NavigationButton text="Complete Account!" icon="fas fa-fw fa-user-alt" onClick={onCompleteClick} />
             </div>
         </PageBase>
     );

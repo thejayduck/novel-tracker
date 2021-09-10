@@ -2,7 +2,7 @@ import styles from 'styles/SubmitPage.module.scss'
 
 // Components
 import PageBase from 'components/pageBase';
-import { InputField } from 'components/ui/inputField';
+import { InputField, OptionSelect } from 'components/ui/inputField';
 import { Subtitle } from 'components/header';
 import Head from 'next/head'
 
@@ -42,8 +42,11 @@ export default function SubmitPage({ data }) {
                     <div className={styles.sectionContainer}>
                         <div className="flex">
                             <InputField title="Author Name" />
-                            <InputField title="Status" placeHolder="TODO: option select" />
-                        </div>
+                            {/* <InputField title="Status" placeHolder="TODO: option select" /> */}
+                            <OptionSelect
+                                title="Release Status"
+                                options={['Finished', 'Releasing', 'Cancelled', 'Hiatus', 'Coming Soon']}
+                            />                        </div>
                         <div className="flex">
                             <InputField title="Start Date" inputType="date" />
                             <InputField title="End Date" inputType="date" />
@@ -59,10 +62,19 @@ export default function SubmitPage({ data }) {
                         <VolumeItem data={data} />
                         <VolumeItem data={data} />
                         <VolumeItem data={data} />
-                        <a title="New Volume" className={`${styles.volumeItem} ${styles.placeholder} flex flexAround`}>
-                            <i className="bx bx-plus bx-md" />
-
-                        </a>
+                        <div>
+                            <a title="New Volume" className={`${styles.volumeItem} ${styles.placeholder} flex flexAround`}>
+                                <i className="bx bx-plus bx-md" />
+                            </a>
+                            <div className="skeleton skeletonText" />
+                            <div className="skeleton skeletonText" />
+                            <div className="skeleton skeletonText" />
+                            <div className="skeleton skeletonText" />
+                            <div className="skeleton skeletonText" />
+                            <div className="skeleton skeletonText" />
+                            <div className="skeleton skeletonText" />
+                            <div className="skeleton skeletonText" />
+                        </div>
                     </ul>
                 </section>
             </PageBase>

@@ -23,15 +23,19 @@ export function UserSmall({ onDropDownClick, data }) {
 
 export function UserBig({ userProfile, data }) {
     data = {
-        picture: "http://source.unsplash.com/48x48/?nature",
+        picture: "http://source.unsplash.com/96x96/?nature",
         username: "TheJayDuck",
+        followers: 20,
+        following: 0
     }
 
     return (
         <div className={`${styles.userWrap}`}>
             <img className="skeleton" alt="Profile Picture" width={96} height={96} src={data.picture} />
             <div className={styles.statusWrap}>
-                <span title={`Moderation Level`} className={styles.status}>{userProfile ? userProfile.moderation_level : "Loading..."}</span>
+                {userProfile?.moderation_level > 0 &&
+                    <span title={`Moderation Level`} className={styles.status}>{userProfile ? userProfile.moderation_level : "Loading..."}</span>
+                }
                 <span className="fontLarge">{userProfile ? userProfile.username : "Loading..."}</span>
                 <span className="fontSmall">
                     Joined {userProfile ? userProfile.createdAt : "Loading..."}

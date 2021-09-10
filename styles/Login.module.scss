@@ -1,53 +1,56 @@
-.container {
-  /* Colors */
-  border-radius: var(--border);
-
-  /* Alignment */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.welcomeMessage {
   text-align: center;
+  color: white;
+  height: calc(100vh - 3rem);
+  align-items: center;
 
-  color: var(--text-color);
+  img {
+    max-width: 80%;
+  }
 
-  overflow-y: auto;
+  .redirect {
+    margin-top: 20px;
+    font-size: var(--font-medium);
+  }
 
-  .title {
+  h1 {
+    color: black;
     span {
       font-weight: var(--font-bold);
+      font-size: var(--font-large);
       color: var(--accent);
     }
   }
-
-  .about {
-    border-radius: var(--border);
-    color: black;
-
-    padding: 20px;
-
-    overflow: hidden;
-    user-select: none;
-  }
+}
+.featuresWrap {
+  width: 100%;
+  margin: 3rem;
 
   .features {
     color: white;
-    flex-wrap: wrap;
-    margin-top: 10px;
-    align-items: stretch;
+    .featureItem {
+      will-change: transform;
+      cursor: pointer;
+      padding: 10px;
+      user-select: none;
+      height: auto;
+      gap: 0;
 
-    div {
       background-color: var(--accent);
       border-radius: var(--border);
 
-      flex: 45%;
-      padding: 5px;
+      .details {
+        background-color: var(--accent-dark);
+        width: 100%;
+        border-radius: var(--border);
+
+        p {
+          padding: 5px;
+          text-align: center;
+        }
+      }
     }
   }
-}
-
-.logo {
-  margin: 10px;
 }
 
 .googleBtn {
@@ -72,7 +75,7 @@
 }
 
 @media screen and (max-width: 1024px) {
-  .features {
+  .redirect {
     flex-direction: column;
   }
 }

@@ -3,6 +3,13 @@
   border-radius: var(--border);
   text-align: end;
   background-color: var(--accent);
+
+  span {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: inline-block;
+  }
 }
 
 .button:hover {

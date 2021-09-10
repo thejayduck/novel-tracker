@@ -13,7 +13,7 @@ export function NavigationButton({ text, icon, onClick, href, newTab }: ButtonPr
     return (
         <a
             className={`flex flexBetween ${styles.button}`}
-
+            title={text}
             href={href || "#"}
             target={newTab ? "_blank" : "_self"}
             onClick={onClick}
