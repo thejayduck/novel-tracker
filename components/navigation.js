@@ -27,12 +27,12 @@ export default function Navigation() {
                 <a className={`${"mobile"}`} onClick={() => setMobileMenu(true)} title="Hamburger Menu" ><i className={`bx bx-menu bx-sm`} /></a>
                 {/* <a className={`${"mobile"}`}>Homepage</a> */}
                 <ul className={`${styles.links}`}>
-                    <LinkItem type="desktop" icon="bx bx-library" title="Library" href="/" />
-                    <LinkItem icon="bx bx-search" title="Search" href="/search" />
-                    <LinkItem type="desktop" icon="bx bx-bell" title="Notifications" onClick={() => setNotification(prev => !prev)} />
-                    <LinkItem type="desktop" icon="bx bx-chat" title="Forums" href="/" />
-                    <LinkItem icon="bx bx-plus" title="Submit Book" href="/submit" />
-                    <LinkItem type="desktop" icon="bx bx-cog" title="Settings" href="/" />
+                    <LinkItem type="desktop" icon="bx bx-library bx-tada-hover" title="Library" href="/" />
+                    <LinkItem icon="bx bx-search bx-tada-hover" title="Search" href="/search" />
+                    <LinkItem type="desktop" icon="bx bx-bell bx-tada-hover" title="Notifications" onClick={() => setNotification(prev => !prev)} />
+                    <LinkItem type="desktop" icon="bx bx-chat bx-tada-hover" title="Forums" href="/" />
+                    <LinkItem icon="bx bx-plus bx-tada-hover" title="Submit Book" href="/submit" />
+                    <LinkItem type="desktop" icon="bx bx-cog bx-spin-hover" title="Settings" href="/" />
                 </ul>
             </div>
 
@@ -67,7 +67,7 @@ function LinkItem({ type, icon, title, href, onClick }) {
     return (
         <li className={type}>
             <a title={title} href={href} onClick={onClick} >
-                <i className={`${icon} bx-sm bx-tada-hover`} />
+                <i className={`${icon} bx-sm`} />
             </a>
         </li>
     )
