@@ -1,10 +1,11 @@
 import styles from 'styles/SubmitPage.module.scss'
 
 // Components
+import Head from 'next/head'
+
 import PageBase from 'components/pageBase';
 import { InputField, OptionSelect } from 'components/ui/inputField';
 import { Subtitle } from 'components/header';
-import Head from 'next/head'
 
 export default function SubmitPage({ data }) {
 

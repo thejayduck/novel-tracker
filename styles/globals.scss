@@ -5,7 +5,7 @@
 }
 
 :root {
-  /* Fonts */
+  // Fonts
   --font-larger: 2.5em;
   --font-large: 2em;
   --font-medium: 1.5rem;
@@ -15,14 +15,14 @@
   --font-bold: 600;
   --font-normal: 400;
 
-  /* Z Index */
+  // Z Index
   --z-back: -10;
   --z-normal: 1;
   --z-front: 10;
   --z-fixed: 100;
   --z-absolute: 999;
 
-  /* Colors */
+  // Colors
   --accent: hsl(259, 100%, 65%);
   --accent-dark: hsl(274, 100%, 30%);
   --background: hsl(0, 0%, 100%);
@@ -37,9 +37,15 @@
   --admin: #70ff75;
   --moderator: #ffba70;
 
-  /* Other */
+  // Other
   --border: 5px;
   --blur: 10px;
+
+  // Padding
+  --padding-small: 0.5rem;
+  --padding-normal: 1rem;
+  --padding-medium: 2rem;
+  --padding-large: 5rem;
 }
 
 @-moz-document url-prefix() {
@@ -162,7 +168,7 @@ li {
   position: absolute;
   background-color: var(--accent);
   border-radius: var(--border);
-  padding: 0.5rem;
+  padding: var(--padding-small);
 
   z-index: var(--z-front);
 
