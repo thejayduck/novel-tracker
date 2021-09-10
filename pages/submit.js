@@ -6,6 +6,7 @@ import Head from 'next/head'
 import PageBase from 'components/pageBase';
 import { InputField, OptionSelect } from 'components/ui/inputField';
 import { Subtitle } from 'components/header';
+import { NavigationButton } from "components/ui/button";
 
 export default function SubmitPage({ data }) {
 
@@ -78,6 +79,7 @@ export default function SubmitPage({ data }) {
                         </div>
                     </ul>
                 </section>
+                <NavigationButton text="Submit Book" icon="bx bx-subdirectory-left bx-sm" />
             </PageBase>
         </>
     )
