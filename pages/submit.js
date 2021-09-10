@@ -9,6 +9,7 @@ import Head from 'next/head'
 export default function SubmitPage({ data }) {
 
     data = {
+        title: "Honzuki no Gekokujou: Shisho ni Naru Tame ni wa Shudan wo Erandeiraremasen Dai 1-bu - Heishi no Musume",
         image: "https://dummyimage.com/200x300/000000/ffffff&text=image+will+appear+here"
     }
 
@@ -56,11 +57,11 @@ export default function SubmitPage({ data }) {
                 <section className={styles.section}>
                     <Subtitle text="Volumes (5)" />
                     <ul className={`${styles.sectionContainer} ${styles.volumeList} flex`}>
-                        <VolumeItem />
-                        <VolumeItem />
-                        <VolumeItem />
-                        <VolumeItem />
-                        <VolumeItem />
+                        <VolumeItem data={data} />
+                        <VolumeItem data={data} />
+                        <VolumeItem data={data} />
+                        <VolumeItem data={data} />
+                        <VolumeItem data={data} />
                         <div>
                             <a title="New Volume" className={`${styles.volumeItem} ${styles.placeholder} flex flexAround`}>
                                 <i className="bx bx-plus bx-md" />
