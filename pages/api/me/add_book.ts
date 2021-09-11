@@ -9,7 +9,7 @@ export default withInfoHelperPost(["book_id"], async (_, params, user_info) => {
     if (userBooks.map(v => v.book_id).includes(book_id)) {
         throw {
             message: "Book already exists in library"
-        }
+        };
     }
     await addUserBooks(user_info._id, book_id);
 }, true);

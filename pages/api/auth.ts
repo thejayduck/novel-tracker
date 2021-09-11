@@ -1,6 +1,6 @@
-import { serialize } from 'cookie';
+import { serialize } from "cookie";
 
-import { createSession, createUserFromGoogle,findUserIdFromGoogle } from 'lib/db';
+import { createSession, createUserFromGoogle,findUserIdFromGoogle } from "lib/db";
 
 function toUrlEncoded(obj: any) {
     let formBody: any = [];
@@ -20,14 +20,14 @@ async function acessTokenRequest(code, redirect_uri) {
         client_id: "524679525288-o6gbij04v72f2i5ub4f83974mfocrc05.apps.googleusercontent.com",
         client_secret: process.env.GOOGLE_CLIENT_SECRET,
         redirect_uri: redirect_uri,
-        grant_type: 'authorization_code',
+        grant_type: "authorization_code",
     });
 
     const response = await fetch("https://oauth2.googleapis.com/token", {
-        method: 'POST',
-        cache: 'no-cache',
+        method: "POST",
+        cache: "no-cache",
         headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
+            "Content-Type": "application/x-www-form-urlencoded"
         },
         body: body,
     });
@@ -37,7 +37,7 @@ async function acessTokenRequest(code, redirect_uri) {
         throw {
             message: "Google OAuth2 Token request returned an error!",
             details: err_obj
-        }
+        };
     }
 
     const json = await response.json();
@@ -47,10 +47,10 @@ async function acessTokenRequest(code, redirect_uri) {
 
 async function getUserInfo(access_token) {
     const response = await fetch("https://www.googleapis.com/userinfo/v2/me", {
-        method: 'GET',
-        cache: 'no-cache',
+        method: "GET",
+        cache: "no-cache",
         headers: new Headers({
-            'Authorization': `Bearer ${access_token}`,
+            "Authorization": `Bearer ${access_token}`,
         })
     });
 
@@ -100,7 +100,7 @@ export default async function Auth(req, res) {
             };
         })
         .then(result => {
-            res.setHeader('Set-Cookie', serialize('token', result.session_token, { path: "/", httpOnly: false, sameSite: "lax", expires: new Date(new Date(Date.now()).getUTCFullYear() + 1, 7, 2, 15, 11) }));
+            res.setHeader("Set-Cookie", serialize("token", result.session_token, { path: "/", httpOnly: false, sameSite: "lax", expires: new Date(new Date(Date.now()).getUTCFullYear() + 1, 7, 2, 15, 11) }));
 
             if (result.action == "setup_account") {
                 res.status(200).redirect("/setupAccount");

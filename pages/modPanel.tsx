@@ -1,5 +1,5 @@
 // @ts-nocheck
-import styles from "styles/ModPanel.module.css"
+import styles from "styles/ModPanel.module.css";
 
 import React, { useEffect, useState } from "react";
 
@@ -8,7 +8,6 @@ import PageBase from "components/pageBase";
 import { NavigationButton } from "components/ui/button";
 
 import { useApi } from "lib/clientHelpers";
-import { serverSide_checkAuth } from "lib/serverHelpers";
 
 export async function getServerSideProps(context) {
     const [auth, info] = await serverSide_checkAuth(context, true, true, false);
@@ -50,13 +49,13 @@ export default function ModPanel({ user_info }) {
                 ))}
             </div>
         </PageBase>
-    )
+    );
 }
 
 function SubmissionItem({ pending_book, acceptBook, denyBook }) {
     function convertDate(date) {
         if (date) {
-            return new Date(date).toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' })
+            return new Date(date).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
         } else {
             return "Unknown";
         }

@@ -1,9 +1,9 @@
-import { randomBytes } from 'crypto';
-import mongoose, { Types } from 'mongoose';
+import { randomBytes } from "crypto";
+import mongoose, { Types } from "mongoose";
 
-import { Book, BookSubmission,IBook } from './models/book';
-import Session from './models/session';
-import User, { IUserProgress, UserProgress } from './models/user';
+import { Book, BookSubmission,IBook } from "./models/book";
+import Session from "./models/session";
+import User, { IUserProgress, UserProgress } from "./models/user";
 
 export async function connectDb() {
     if (mongoose.connection.readyState == 0) {
@@ -21,7 +21,7 @@ export async function findUserIdFromGoogle(gui: number): Promise<null | Types.Ob
 }
 
 export async function createSession(user_id: Types.ObjectId) {
-    const session_token = randomBytes(32).toString('hex');
+    const session_token = randomBytes(32).toString("hex");
     return await new Session({ user_id, session_token }).save().then(session => session.session_token);
 }
 
@@ -53,13 +53,13 @@ export async function searchBook(query: string) {
     return await Book.find({
         $or: [
             {
-                title_native: new RegExp(query, 'gi'),
+                title_native: new RegExp(query, "gi"),
             },
             {
-                title_romanized: new RegExp(query, 'gi'),
+                title_romanized: new RegExp(query, "gi"),
             },
             {
-                title_english: new RegExp(query, 'gi'),
+                title_english: new RegExp(query, "gi"),
             }
         ]
     });
@@ -105,7 +105,7 @@ export async function addUserBooks(user_id: Types.ObjectId, book_id: Types.Objec
                 volumes: 0,
             }),
         }
-    })
+    });
 }
 
 export async function deleteUserBooks(user_id: Types.ObjectId, book_id: Types.ObjectId) {
@@ -115,7 +115,7 @@ export async function deleteUserBooks(user_id: Types.ObjectId, book_id: Types.Ob
                 book_id,
             }
         }
-    })
+    });
 }
 
 export async function updateUserBookChaptersRead(user_id: Types.ObjectId, book_id: Types.ObjectId, new_chapters_read: number) {

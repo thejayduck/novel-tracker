@@ -1,17 +1,17 @@
 // @ts-nocheck
-import styles from 'styles/Profile.module.scss'
+import styles from "styles/Profile.module.scss";
 
-import Head from 'next/head'
-import { useRouter } from 'next/router';
+import Head from "next/head";
+import { useRouter, useRouter } from "next/router";
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useEffect, useState, useState } from "react";
 
 import PageBase from "components/pageBase";
 import { Subtitle } from "components/subtitle";
 import { UserBig } from "components/userContainer";
 
-import { GetUserInfoResponse,useApi  } from 'lib/clientHelpers';
-import { serverSide_checkAuth } from 'lib/serverHelpers';
+import { GetUserInfoResponse, GetUserInfoResponse, useApi, useApi } from "lib/clientHelpers";
+import { serverSide_checkAuth } from "lib/serverHelpers";
 
 export async function getServerSideProps(context) {
     const [redirect, info] = await serverSide_checkAuth(context, false, false, false);
@@ -20,12 +20,12 @@ export async function getServerSideProps(context) {
         props: {
             user_info: info,
         },
-    }
+    };
 }
 
 export default function Profile({ user_info }) {
     const api = useApi();
-    const router = useRouter()
+    const router = useRouter();
     const { id } = router.query;
 
     const data = {
@@ -33,7 +33,7 @@ export default function Profile({ user_info }) {
         finished_books: 20,
         planned_books: 20,
         dropped_books: 20,
-    }
+    };
 
     const [userProfile, setUserProfile] = useState<GetUserInfoResponse>(null);
     useEffect(async () => {
@@ -68,7 +68,7 @@ export default function Profile({ user_info }) {
 function StatisticItem({ icon, title, stat }) {
     return (
         <a href="#" className={`${styles.statisticItem} flex flexBetween`}>
-            <div className={`flex flexRight`}>
+            <div className={"flex flexRight"}>
                 <i className={`${icon} fontLarger`} />
                 <div className={styles.statistic}>
                     <span>{stat}</span>
@@ -78,5 +78,5 @@ function StatisticItem({ icon, title, stat }) {
             </div >
             <i className='bx bxs-down-arrow' />
         </a >
-    )
+    );
 }

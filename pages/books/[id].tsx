@@ -1,20 +1,19 @@
 // @ts-nocheck
-import styles from 'styles/Book.module.scss'
+import styles from "styles/Book.module.scss";
 
-import { useRouter } from 'next/dist/client/router'
-import dynamic from 'next/dynamic'
-import Head from 'next/head'
+import { useRouter } from "next/dist/client/router";
+import dynamic from "next/dynamic";
+import Head from "next/head";
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
 
-import PageBase from "components/pageBase"
+import PageBase from "components/pageBase";
+import { Subtitle } from "components/subtitle";
 
-import { GetBookResponse,useApi  } from 'lib/clientHelpers'
-import { serverSide_checkAuth } from 'lib/serverHelpers'
+import { GetBookResponse, useApi } from "lib/clientHelpers";
+import { serverSide_checkAuth } from "lib/serverHelpers";
 
-import { Subtitle } from "../../components/subtitle"
-
-const VolumeCard = dynamic(() => import("components/cards/volumeCard"))
+const VolumeCard = dynamic(() => import("components/cards/volumeCard"));
 
 export async function getServerSideProps(context) {
     const [redirect, info] = await serverSide_checkAuth(context, false, false, false);
@@ -23,11 +22,11 @@ export async function getServerSideProps(context) {
         props: {
             user_info: info,
         },
-    }
+    };
 }
 
 export default function Book({ user_info }) {
-    const router = useRouter()
+    const router = useRouter();
     const { id } = router.query;
 
     const api = useApi();
@@ -72,14 +71,14 @@ export default function Book({ user_info }) {
                     </div>
                     {/* TODO make description constant size */}
                     <p>{book?.description || "Loading..."}</p>
-                    <Subtitle text={`Volumes (3)`} />
+                    <Subtitle text={"Volumes (3)"} />
                     <div className={`${styles.volumeList} flex`}>
                         {book && book.volumes.map(volume => (<VolumeCard key={volume.cover_url} data={volume} />))}
                     </div>
                 </section>
             </PageBase>
         </>
-    )
+    );
 }
 
 function DetailItem({ title, value }) {
@@ -88,5 +87,5 @@ function DetailItem({ title, value }) {
             <h3>{title}</h3>
             <span>{value}</span>
         </div>
-    )
+    );
 }

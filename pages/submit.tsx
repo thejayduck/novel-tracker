@@ -1,19 +1,19 @@
 // @ts-nocheck
-import styles from 'styles/SubmitPage.module.scss'
+import styles from "styles/SubmitPage.module.scss";
 
 // Components
-import Head from 'next/head'
+import Head from "next/head";
 
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState } from "react";
 
-import { useAlert } from 'components/alertWrapper';
-import PageBase from 'components/pageBase';
-import { Subtitle } from 'components/subtitle';
+import { useAlert } from "components/alertWrapper";
+import PageBase from "components/pageBase";
+import { Subtitle } from "components/subtitle";
 import { NavigationButton } from "components/ui/button";
-import { InputField, OptionSelect } from 'components/ui/inputField';
+import { InputField, OptionSelect } from "components/ui/inputField";
 
-import { useApi } from 'lib/clientHelpers';
-import { serverSide_checkAuth } from 'lib/serverHelpers';
+import { useApi } from "lib/clientHelpers";
+import { serverSide_checkAuth } from "lib/serverHelpers";
 
 interface SubmitPageProps {
     book_id?: number,
@@ -27,7 +27,7 @@ export async function getServerSideProps(context) {
         props: {
             user_info: info,
         },
-    }
+    };
 }
 
 export default function SubmitPage({ book_id, user_info }: SubmitPageProps) {
@@ -71,7 +71,7 @@ export default function SubmitPage({ book_id, user_info }: SubmitPageProps) {
                 // TODO
                 extras: 0,
             }))
-        }
+        };
         console.log(bookDetails);
         const data = await api.submitBook(bookDetails, () => {
             alert.information("Submitted!");
@@ -110,7 +110,7 @@ export default function SubmitPage({ book_id, user_info }: SubmitPageProps) {
                             {/* <InputField title="Status" placeHolder="TODO: option select" /> */}
                             <OptionSelect
                                 title="Release Status"
-                                options={['Finished', 'Releasing', 'Cancelled', 'Hiatus', 'Coming Soon']}
+                                options={["Finished", "Releasing", "Cancelled", "Hiatus", "Coming Soon"]}
                                 ref={releaseStatusRef}
                             />
                         </div>
@@ -132,13 +132,13 @@ export default function SubmitPage({ book_id, user_info }: SubmitPageProps) {
                                     setVolumes(oldVolumes => {
                                         oldVolumes[idx].cover_url = newCover;
                                         return [...oldVolumes];
-                                    })
+                                    });
                                 }}
                                 onChaptersCountChange={newChapterCount => {
                                     setVolumes(oldVolumes => {
                                         oldVolumes[idx].chapterCount = newChapterCount;
                                         return [...oldVolumes];
-                                    })
+                                    });
                                 }}
                             />
                         ))}
@@ -151,8 +151,8 @@ export default function SubmitPage({ book_id, user_info }: SubmitPageProps) {
                                         return [...oldVolumes, {
                                             cover_url: null,
                                             chapterCount: 0
-                                        }]
-                                    })
+                                        }];
+                                    });
                                 }}
                             >
                                 <i className="bx bx-plus bx-md" />
@@ -171,7 +171,7 @@ export default function SubmitPage({ book_id, user_info }: SubmitPageProps) {
                 <NavigationButton text="Submit Book" icon="bx bx-subdirectory-left bx-sm" href={null} onClick={onSubmit} />
             </PageBase>
         </>
-    )
+    );
 }
 
 interface VolumeItemProps {
@@ -192,5 +192,5 @@ function VolumeItem({ image, onCoverUrlChange, onChaptersCountChange }: VolumeIt
                 </div>
             </div>
         </li>
-    )
+    );
 }

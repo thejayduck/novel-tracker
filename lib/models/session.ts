@@ -1,4 +1,4 @@
-import mongoose, { Schema,Types } from 'mongoose'
+import mongoose, { Schema,Types } from "mongoose";
 
 export interface ISession {
     _id: Types.ObjectId,
@@ -12,7 +12,7 @@ const sessionSchema = new mongoose.Schema<ISession>({
     user_id: {
         type: Schema.Types.ObjectId,
         required: true,
-        ref: 'User'
+        ref: "User"
     },
     session_token: {
         type: String,
@@ -20,6 +20,6 @@ const sessionSchema = new mongoose.Schema<ISession>({
     }
 }, { timestamps: true });
 
-const Session: mongoose.Model<ISession & mongoose.Document> = mongoose.models.Session || mongoose.model('Session', sessionSchema);
+const Session: mongoose.Model<ISession & mongoose.Document> = mongoose.models.Session || mongoose.model("Session", sessionSchema);
 
 export default Session;

@@ -1,19 +1,19 @@
 // @ts-nocheck
-import styles from 'styles/Search.module.scss'
+import styles from "styles/Search.module.scss";
 
-import dynamic from 'next/dynamic'
-import Head from 'next/head'
-import { AnimatePresence } from 'framer-motion';
+import dynamic from "next/dynamic";
+import Head from "next/head";
+import { AnimatePresence, AnimatePresence } from "framer-motion";
 
-import React, { useState } from 'react';
+import React, { useState, useState } from "react";
 
-import { DesktopOverlay, MobileOverlay } from 'components/overlayMenu';
+import { DesktopOverlay, DesktopOverlay, MobileOverlay, MobileOverlay } from "components/overlayMenu";
 // Components
 import PageBase from "components/pageBase";
-import { Subtitle } from 'components/subtitle';
-import { InputFieldNonManaged } from 'components/ui/inputField';
+import { Subtitle } from "components/subtitle";
+import { InputFieldNonManaged } from "components/ui/inputField";
 
-const BookCard = dynamic(() => import("components/cards/bookCard"))
+const BookCard = dynamic(() => import("components/cards/bookCard"));
 
 export default function Search() {
     const [filterMenu, setFilterMenu] = useState(false);
@@ -68,5 +68,5 @@ export default function Search() {
 
             </PageBase >
         </>
-    )
+    );
 }

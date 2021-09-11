@@ -1,7 +1,7 @@
 // @ts-nocheck
-import styles from 'styles/components/InputField.module.scss'
+import styles from "styles/components/InputField.module.scss";
 
-import { forwardRef } from 'react';
+import { forwardRef } from "react";
 
 export const InputField = forwardRef<HTMLInputElement>(({ inputType, title, placeHolder, defaultValue, maxValue, maxLength, onChange, toolTip, pattern }, ref) => {
     return (
@@ -49,6 +49,6 @@ export const OptionSelect = forwardRef(({ title, options, onChange }, ref) => {
         </div>
 
     );
-})
+});
 
 OptionSelect.displayName = "OptionSelect";

@@ -1,7 +1,7 @@
 // @ts-nocheck
-import styles from "styles/SetupAccount.module.css"
+import styles from "styles/SetupAccount.module.css";
 
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 
 import React, { useEffect, useRef } from "react";
 
@@ -20,9 +20,9 @@ export async function getServerSideProps(context) {
         return {
             redirect: {
                 permanent: false,
-                destination: '/',
+                destination: "/",
             },
-        }
+        };
     }
 
     return auth || {
@@ -40,7 +40,7 @@ export default function SetupAccount({ user_info }) {
 
     async function onCompleteClick() {
         await api.setUsername(usernameRef.current.value);
-        router.push('/');
+        router.push("/");
     }
 
     useEffect(() => {

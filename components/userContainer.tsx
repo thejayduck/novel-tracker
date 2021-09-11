@@ -1,12 +1,12 @@
 // @ts-nocheck
-import styles from 'styles/components/UserContainer.module.scss'
+import styles from "styles/components/UserContainer.module.scss";
 
-import { useUserInfoContext } from './pageBase';
+import { useUserInfoContext } from "./pageBase";
 
 export function UserSmall({ onDropDownClick, data }) {
     data = {
         picture: "http://source.unsplash.com/48x48/?nature",
-    }
+    };
     const userInfo = useUserInfoContext();
     return (
         <div className={`${styles.userWrap} ${styles.small}`}>
@@ -27,7 +27,7 @@ const moderationLevelNames = {
     1: "Mod",
     2: "Admin",
     3: "Owner",
-}
+};
 
 interface UserBigProps {
     userProfile: GetUserInfoResponse,
@@ -38,14 +38,14 @@ export function UserBig({ userProfile }: UserBigProps) {
         picture: "http://source.unsplash.com/96x96/?nature",
         followers: 20,
         following: 0
-    }
+    };
 
     return (
         <div className={`${styles.userWrap}`}>
             <img className="skeleton" alt="Profile Picture" width={96} height={96} src={data.picture} />
             <div className={styles.statusWrap}>
                 {userProfile?.moderation_level > 0 &&
-                    <span title={`Moderation Level`} className={styles.status}>{userProfile ? moderationLevelNames[userProfile.moderation_level] : "Loading..."}</span>
+                    <span title={"Moderation Level"} className={styles.status}>{userProfile ? moderationLevelNames[userProfile.moderation_level] : "Loading..."}</span>
                 }
                 <span className="fontLarge">{userProfile ? userProfile.username : "Loading..."}</span>
                 <span className="fontSmall">

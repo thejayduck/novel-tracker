@@ -1,12 +1,12 @@
 // @ts-nocheck
-import 'styles/globals.scss'
+import "styles/globals.scss";
 
-import Head from 'next/head'
+import Head from "next/head";
 
-import React from 'react';
-import { resetId } from 'react-id-generator'
+import React from "react";
+import { resetId } from "react-id-generator";
 
-import { AlertWrapper } from 'components/alertWrapper'
+import { AlertWrapper } from "components/alertWrapper";
 
 export default function MyApp({ Component, pageProps }) {
   resetId();
@@ -33,14 +33,14 @@ export default function MyApp({ Component, pageProps }) {
 
         {/* <!-- Open Graph / Facebook --> */}
         <meta key="ogType" property="og:type" content="website" />
-        <meta key="ogUrl" property="og:url" content={`https://novel-tracker.vercel.app/`} />
+        <meta key="ogUrl" property="og:url" content={"https://novel-tracker.vercel.app/"} />
         <meta key="ogTitle" property="og:title" content="Novel Tracker" />
         <meta key="ogDescription" property="og:description" content="Track Your Favorite Novels and Light Novels" />
         <meta key="ogImage" property="og:image" content="/icon.svg" />
 
         {/* <!-- Twitter --> */}
         <meta key="twCard" property="twitter:card" content="summary_large_image" />
-        <meta key="twUrl" property="twitter:url" content={`https://novel-tracker.vercel.app/`} />
+        <meta key="twUrl" property="twitter:url" content={"https://novel-tracker.vercel.app/"} />
         <meta key="twTitle" property="twitter:title" content="Novel Tracker" />
         <meta key="twDescription" property="twitter:description" content="Track Your Favorite Novels and Light Novels" />
         <meta key="twImage" property="twitter:image" content="/icon.svg" />
@@ -51,5 +51,5 @@ export default function MyApp({ Component, pageProps }) {
         <Component {...pageProps} />
       </AlertWrapper>
     </>
-  )
+  );
 }

@@ -1,4 +1,4 @@
-import mongoose, { Schema, Types } from 'mongoose'
+import mongoose, { Schema, Types } from "mongoose";
 
 export interface IVolume {
     cover_url: string,
@@ -83,7 +83,7 @@ const submitBookSchema = new mongoose.Schema<ISubmitBook>({
     }
 }, { timestamps: true });
 
-const Book: mongoose.Model<IBook & mongoose.Document> = mongoose.models.Book || mongoose.model('Book', bookSchema);
-const BookSubmission: mongoose.Model<ISubmitBook & mongoose.Document> = mongoose.models.BookSubmission || mongoose.model('BookSubmission', submitBookSchema);
+const Book: mongoose.Model<IBook & mongoose.Document> = mongoose.models.Book || mongoose.model("Book", bookSchema);
+const BookSubmission: mongoose.Model<ISubmitBook & mongoose.Document> = mongoose.models.BookSubmission || mongoose.model("BookSubmission", submitBookSchema);
 
 export { Book, BookSubmission };

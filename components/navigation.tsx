@@ -1,18 +1,18 @@
 // @ts-nocheck
-import styles from 'styles/components/Navigation.module.scss';
+import styles from "styles/components/Navigation.module.scss";
 
-import dynamic from 'next/dynamic'
-import { AnimatePresence } from 'framer-motion';
+import dynamic from "next/dynamic";
+import { AnimatePresence } from "framer-motion";
 
-import { useState } from 'react';
+import { useState } from "react";
 
-import { NavigationButton } from "components/ui/button"
+import { NavigationButton } from "components/ui/button";
 
-import { DesktopOverlay, MobileMenu } from './overlayMenu';
-import { useUserInfoContext } from './pageBase';
-import { UserSmall } from './userContainer';
+import { DesktopOverlay, MobileMenu } from "./overlayMenu";
+import { useUserInfoContext } from "./pageBase";
+import { UserSmall } from "./userContainer";
 
-const NotificationItem = dynamic(() => import("./notificationItem"))
+const NotificationItem = dynamic(() => import("./notificationItem"));
 
 export default function Navigation() {
     const [notification, setNotification] = useState(false);
@@ -24,11 +24,11 @@ export default function Navigation() {
     return (
         <nav className={`${styles.nav}`}>
             <div className={`${styles.container}`}>
-                <div className={`desktop`}>
+                <div className={"desktop"}>
                     {userInfo && <UserSmall onDropDownClick={() => setUserMenu(prev => !prev)} />}
                 </div>
 
-                <a className={`${"mobile"}`} onClick={() => setMobileMenu(true)} title="Hamburger Menu" ><i className={`bx bx-menu bx-sm`} /></a>
+                <a className={`${"mobile"}`} onClick={() => setMobileMenu(true)} title="Hamburger Menu" ><i className={"bx bx-menu bx-sm"} /></a>
                 {/* <a className={`${"mobile"}`}>Homepage</a> */}
                 <ul className={`${styles.links}`}>
                     <LinkItem type="desktop" icon="bx bx-library bx-tada-hover" title="Library" href="/" />
@@ -48,7 +48,7 @@ export default function Navigation() {
 
             <AnimatePresence>
                 {userMenu &&
-                    <DesktopOverlay title={`Account`} className={styles.userMenuOverlay} flexDirection="flexColumn" >
+                    <DesktopOverlay title={"Account"} className={styles.userMenuOverlay} flexDirection="flexColumn" >
                         <NavigationButton href={`/profile/${userInfo.user_id}`} icon="bx bx-user bx-sm" text="Your Account" />
                         <NavigationButton icon="bx bx-log-out bx-sm" text="Log Out" />
                     </DesktopOverlay>
@@ -57,7 +57,7 @@ export default function Navigation() {
 
             <AnimatePresence>
                 {notification &&
-                    <DesktopOverlay title={`Notifications (1)`} className={styles.notificationOverlay} flexDirection="flexColumn" >
+                    <DesktopOverlay title={"Notifications (1)"} className={styles.notificationOverlay} flexDirection="flexColumn" >
                         <NotificationItem />
                     </DesktopOverlay>
                 }
@@ -74,5 +74,5 @@ function LinkItem({ type, icon, title, href, onClick }) {
                 <i className={`${icon} bx-sm`} />
             </a>
         </li>
-    )
+    );
 }

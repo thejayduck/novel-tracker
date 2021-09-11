@@ -24,7 +24,7 @@ export function withHelperBareGet<T>(required_fields: string[], callback: (token
                 const value = req.query[required_field];
                 return value == undefined
                     || value == null
-                    || (typeof value == 'string' && !value);
+                    || (typeof value == "string" && !value);
             });
 
             if (missing.length > 0) {
@@ -39,13 +39,13 @@ export function withHelperBareGet<T>(required_fields: string[], callback: (token
                 err = {
                     name: reason.name,
                     message: reason.message,
-                }
+                };
             } else {
                 err = reason;
             }
             res.status(400).json({ status: "Error", err });
         }
-    }
+    };
 }
 
 export function withInfoHelperGet<T>(required_fields: string[], callback: (token: string, params: Params, user_info: IUser) => Promise<T>, user_info_required = false): (req: NextApiRequest, res: NextApiResponse) => Promise<void> {
@@ -78,7 +78,7 @@ export function withHelperBarePost<T>(required_fields: string[], callback: (toke
                 const value = req.body[required_field];
                 return value == undefined
                     || value == null
-                    || (typeof value == 'string' && !value);
+                    || (typeof value == "string" && !value);
             });
 
             if (missing.length > 0) {
@@ -93,13 +93,13 @@ export function withHelperBarePost<T>(required_fields: string[], callback: (toke
                 err = {
                     name: reason.name,
                     message: reason.message,
-                }
+                };
             } else {
                 err = reason;
             }
             res.status(400).json({ status: "Error", err });
         }
-    }
+    };
 }
 
 export function withInfoHelperPost<T>(required_fields: string[], callback: (token: string, params: any, user_info: IUser) => Promise<T>, user_info_required = false): (req: NextApiRequest, res: NextApiResponse) => Promise<void> {

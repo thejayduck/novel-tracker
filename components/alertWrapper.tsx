@@ -1,6 +1,6 @@
 // @ts-nocheck
-import { createContext, useContext, useState } from 'react';
-import nextId from 'react-id-generator';
+import { createContext, useContext, useState } from "react";
+import nextId from "react-id-generator";
 
 const AlertContext = createContext();
 
@@ -31,7 +31,7 @@ export function useAlert() {
     }
     return {
         alerts,
-        information: msg => addItem(msg, 'information'),
-        error: msg => addItem(msg, 'error'),
-    }
+        information: msg => addItem(msg, "information"),
+        error: msg => addItem(msg, "error"),
+    };
 }

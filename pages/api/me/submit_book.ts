@@ -1,4 +1,4 @@
-import { withInfoHelperPost } from 'lib/apiHelpers';
+import { withInfoHelperPost } from "lib/apiHelpers";
 import { getBook,submitBook } from "lib/db";
 import { parseID } from "lib/types";
 
@@ -7,7 +7,7 @@ export default withInfoHelperPost(["book_details"], async (_, params, user_info)
     if (!book_details) {
         throw {
             message: "No Book Details"
-        }
+        };
     }
 
     const badField = [
@@ -17,14 +17,14 @@ export default withInfoHelperPost(["book_details"], async (_, params, user_info)
         throw {
             message: "One or more of the fields were null",
             fields: badField,
-        }
+        };
     }
 
     Object.keys(book_details).forEach(key => {
         if (book_details[key] === "") {
             book_details[key] = null;
         }
-    })
+    });
 
     let existing_book = null;
     if (book_details.book_id) {
@@ -36,12 +36,12 @@ export default withInfoHelperPost(["book_details"], async (_, params, user_info)
     if (existing_book) {
         throw {
             message: "Unimplemented",
-        }
+        };
     } else {
         id = await submitBook(book_details, user_info._id);
     }
 
     return {
         id,
-    }
+    };
 }, true);

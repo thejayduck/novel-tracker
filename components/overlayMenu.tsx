@@ -1,31 +1,31 @@
 // @ts-nocheck
-import styles from 'styles/components/OverlayMenu.module.scss'
+import styles from "styles/components/OverlayMenu.module.scss";
 
-import { motion } from 'framer-motion'
+import { motion } from "framer-motion";
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from "react";
 
-import { NavigationButton } from "components/ui/button"
+import { NavigationButton } from "components/ui/button";
 
-import NotificationItem from './notificationItem'
-import { Subtitle } from './subtitle'
-import { UserSmall } from './userContainer'
+import NotificationItem from "./notificationItem";
+import { Subtitle } from "./subtitle";
+import { UserSmall } from "./userContainer";
 
 const constrains = {
     top: 0,
     left: 0,
     right: 0,
     bottom: 0,
-}
+};
 
 export function MobileOverlay({ title, onOutSideClick, children }) {
     const [velocity, setVelocity] = useState();
     useEffect(() => {
 
         if (velocity >= 800)
-            onOutSideClick()
+            onOutSideClick();
 
-    }, [velocity])
+    }, [velocity]);
 
     return (
         <motion.div
@@ -50,8 +50,8 @@ export function MobileOverlay({ title, onOutSideClick, children }) {
 
                 onDragEnd={
                     (event, info) => {
-                        setVelocity(info.velocity.y)
-                        console.log(info)
+                        setVelocity(info.velocity.y);
+                        console.log(info);
                     }
                 }
             >
@@ -61,7 +61,7 @@ export function MobileOverlay({ title, onOutSideClick, children }) {
                 </div>
             </motion.div>
         </motion.div>
-    )
+    );
 }
 
 export function MobileMenu({ onOutSideClick }) {
@@ -70,9 +70,9 @@ export function MobileMenu({ onOutSideClick }) {
     useEffect(() => {
 
         if (velocity <= -800)
-            onOutSideClick()
+            onOutSideClick();
 
-    }, [velocity])
+    }, [velocity]);
 
     return (
         <motion.div
@@ -91,7 +91,7 @@ export function MobileMenu({ onOutSideClick }) {
                 dragConstraints={constrains}
                 onDragEnd={
                     (event, info) => {
-                        setVelocity(info.velocity.x)
+                        setVelocity(info.velocity.x);
                     }
                 }
 
@@ -101,7 +101,7 @@ export function MobileMenu({ onOutSideClick }) {
                 exit={{ x: -500 }}
                 transition={{ duration: 0.2 }}
             >
-                <div className={`flex flexAround`} >
+                <div className={"flex flexAround"} >
                     <UserSmall />
                     <a onClick={
                         onOutSideClick
@@ -124,7 +124,7 @@ export function MobileMenu({ onOutSideClick }) {
                 </div>
             </motion.div>
         </motion.div>
-    )
+    );
 }
 
 export function DesktopOverlay({ title, children, className, flexDirection }) {
@@ -150,5 +150,5 @@ export function DesktopOverlay({ title, children, className, flexDirection }) {
                 {children}
             </div>
         </motion.div>
-    )
+    );
 }

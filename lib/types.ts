@@ -5,13 +5,13 @@ import { IBook } from "./models/book";
 export function isID(id: any): boolean {
     return id != undefined
         && id != null
-        && typeof id === 'number'
+        && typeof id === "number"
         && Number.isInteger(id);
 }
 
 export function parseID(id: any): Types.ObjectId {
     if (!isValidObjectId(id)) {
-        throw 'Invalid Id';
+        throw "Invalid Id";
     }
     return Types.ObjectId(id);
 }
@@ -20,7 +20,7 @@ export function isToken(id: any): boolean {
     // TODO Actual check
     return id != undefined
         && id != null
-        && typeof id === 'string';
+        && typeof id === "string";
 }
 
 export function createSerializableBookInfo(book: IBook): any {

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-import { useAlert } from 'components/alertWrapper';
+import { useAlert } from "components/alertWrapper";
 
 import { IBook } from "./models/book";
 import { IUser } from "./models/user";
@@ -17,7 +17,7 @@ export function useDelayedState<T>(initialState: T, delay: number) {
         }, delay);
     }
 
-    return [delayedState, setInternalState]
+    return [delayedState, setInternalState];
 }
 
 export function useDelayedStateWithLive<T>(initialState: T, delay: number) {
@@ -31,7 +31,7 @@ export function useDelayedStateWithLive<T>(initialState: T, delay: number) {
         return () => clearTimeout(timeout);
     }, [internalState]);
 
-    return [delayedState, setInternalState, internalState]
+    return [delayedState, setInternalState, internalState];
 }
 
 export type GetBookResponse = IBook
@@ -43,15 +43,15 @@ export function useApi() {
 
     async function postCall<T, U>(endpoint: string, data: T, onSuccess?: (responseData: U) => void) {
         const response = await fetch(`/api/${endpoint}`, {
-            method: 'POST',
+            method: "POST",
             headers: {
-                'Content-Type': 'application/json'
+                "Content-Type": "application/json"
             },
             body: JSON.stringify(data),
         });
         if (response.status != 200) {
             if (response.status == 500) {
-                const json = await response.json()
+                const json = await response.json();
                 alert.error(`Server Error: '${json.message}'`);
             } else {
                 alert.error(`API Request for endpoint ${endpoint} returned ${response.status}`);
@@ -74,7 +74,7 @@ export function useApi() {
         const response = await fetch(`/api/${endpoint}?${parameters}`);
         if (response.status != 200) {
             if (response.status == 500) {
-                const json = await response.json()
+                const json = await response.json();
                 alert.error(`Server Error: '${json.message}'`);
             } else {
                 alert.error(`API Request for endpoint ${endpoint} returned ${response.status}`);
@@ -132,5 +132,5 @@ export function useApi() {
         async getUserBookInfos(onSuccess?: (responseData: void) => void) {
             return getCall("me/get_book_infos", {}, onSuccess);
         },
-    }
+    };
 }

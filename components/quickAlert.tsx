@@ -1,9 +1,9 @@
 // @ts-nocheck
-import styles from 'styles/components/QuickAlert.module.scss'
+import styles from "styles/components/QuickAlert.module.scss";
 
 const alertIcon = {
-    'information': "bx-fw bx bx-check bx-lg",
-    'error': "bx-fw bx bx-error bx-lg",
+    "information": "bx-fw bx bx-check bx-lg",
+    "error": "bx-fw bx bx-error bx-lg",
 };
 
 export default function QuickAlert({ message, severity }) {

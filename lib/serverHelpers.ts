@@ -1,4 +1,4 @@
-import { parse } from 'cookie';
+import { parse } from "cookie";
 
 import { connectDb, getUserInfo, withUserId } from "./db";
 
@@ -44,7 +44,7 @@ export async function serverSide_checkAuth(context: any, require_login: boolean,
         return [{
             redirect: {
                 permanent: false,
-                destination: '/login',
+                destination: "/login",
             },
         }, null];
     }
@@ -57,7 +57,7 @@ export async function serverSide_checkAuth(context: any, require_login: boolean,
         return [{
             redirect: {
                 permanent: false,
-                destination: '/login',
+                destination: "/login",
             },
         }, null];
     }
@@ -65,7 +65,7 @@ export async function serverSide_checkAuth(context: any, require_login: boolean,
         return [{
             redirect: {
                 permanent: false,
-                destination: '/error?reason=mod_only',
+                destination: "/error?reason=mod_only",
             },
         }, null];
     }
@@ -73,7 +73,7 @@ export async function serverSide_checkAuth(context: any, require_login: boolean,
         return [{
             redirect: {
                 permanent: false,
-                destination: '/error?reason=admin_only',
+                destination: "/error?reason=admin_only",
             },
         }, null];
     }

@@ -9,7 +9,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start -p $PORT",
-    "lint": "npx eslint '*/**/*.{js,jsx,ts,tsx}'",
+    "lint": "npx eslint \"*/**/*.{js,jsx,ts,tsx}\"",
     "lint:fix": "npm run lint -- --fix"
   },
   "dependencies": {

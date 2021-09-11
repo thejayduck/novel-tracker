@@ -1,11 +1,11 @@
 // @ts-nocheck
-import styles from 'styles/PageBase.module.scss';
+import styles from "styles/PageBase.module.scss";
 
-import { createContext , useContext } from 'react';
+import { createContext , useContext } from "react";
 
-import Footer from './footer';
+import Footer from "./footer";
 // Components
-import Navigation from './navigation';
+import Navigation from "./navigation";
 
 const UserInfoContext = createContext();
 

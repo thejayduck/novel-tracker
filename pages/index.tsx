@@ -1,18 +1,19 @@
 // @ts-nocheck
-import styles from 'styles/Home.module.scss'
+import styles from "styles/Home.module.scss";
 
-import dynamic from 'next/dynamic'
-import Head from 'next/head'
+import dynamic from "next/dynamic";
+import Head from "next/head";
 
-import React from 'react';
+import React from "react";
 
 // Components
-import PageBase from 'components/pageBase';
-import { Subtitle } from 'components/subtitle';
+import PageBase from "components/pageBase";
+import { Subtitle } from "components/subtitle";
 
-import { serverSide_checkAuth } from 'lib/serverHelpers'
+import { serverSide_checkAuth, serverSide_checkAuth } from "lib/serverHelpers";
 
-const BookCard = dynamic(() => import("../components/cards/volumeCard"))
+
+const BookCard = dynamic(() => import("../components/cards/volumeCard"));
 
 export async function getServerSideProps(context) {
   const [redirect, info] = await serverSide_checkAuth(context, true, false, false);
@@ -21,7 +22,7 @@ export async function getServerSideProps(context) {
     props: {
       user_info: info,
     },
-  }
+  };
 }
 
 export default function Home({ user_info }) {

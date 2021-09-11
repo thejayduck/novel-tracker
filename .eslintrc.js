@@ -38,6 +38,11 @@ module.exports = {
                 ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"], // Relative
             ]
         }],
+
+        "semi": ["error", "always"],
+        "quotes": ["error", "double"],
+
+        "semi-spacing": "error",
     },
     ignorePatterns: ["public/**/*.js"],
 };
