@@ -43,6 +43,9 @@ module.exports = {
         "quotes": ["error", "double"],
 
         "semi-spacing": "error",
+        "prefer-template": "error",
+        "prefer-arrow-callback": "error",
+        "object-shorthand": "error"
     },
     ignorePatterns: ["public/**/*.js"],
 };

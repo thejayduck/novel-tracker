@@ -23,7 +23,7 @@ export function useAlert() {
         setAlerts(prev => [...prev, {
             id,
             content: msg,
-            severity: severity,
+            severity,
         }]);
         setTimeout(() => {
             setAlerts(prev => prev.filter(item => item.id != id));

@@ -1,13 +1,13 @@
 import { serialize } from "cookie";
 
-import { createSession, createUserFromGoogle,findUserIdFromGoogle } from "lib/db";
+import { createSession, createUserFromGoogle, findUserIdFromGoogle } from "lib/db";
 
 function toUrlEncoded(obj: any) {
     let formBody: any = [];
     for (const property in obj) {
         const encodedKey = property;
         const encodedValue = encodeURIComponent(obj[property]);
-        formBody.push(encodedKey + "=" + encodedValue);
+        formBody.push(`${encodedKey}=${encodedValue}`);
     }
     formBody = formBody.join("&");
 
@@ -16,10 +16,10 @@ function toUrlEncoded(obj: any) {
 
 async function acessTokenRequest(code, redirect_uri) {
     const body = toUrlEncoded({
-        code: code,
+        code,
         client_id: "524679525288-o6gbij04v72f2i5ub4f83974mfocrc05.apps.googleusercontent.com",
         client_secret: process.env.GOOGLE_CLIENT_SECRET,
-        redirect_uri: redirect_uri,
+        redirect_uri,
         grant_type: "authorization_code",
     });
 
@@ -29,7 +29,7 @@ async function acessTokenRequest(code, redirect_uri) {
         headers: {
             "Content-Type": "application/x-www-form-urlencoded"
         },
-        body: body,
+        body,
     });
 
     if (response.status != 200) {
