@@ -1,3 +1,4 @@
+// @ts-nocheck
 import PageBase from "components/pageBase"
 // import { serverSide_checkAuth } from "@lib/serverHelpers";
 

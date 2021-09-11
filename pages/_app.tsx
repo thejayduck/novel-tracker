@@ -1,3 +1,4 @@
+// @ts-nocheck
 import 'styles/globals.scss'
 import Head from 'next/head'
 import { resetId } from 'react-id-generator'

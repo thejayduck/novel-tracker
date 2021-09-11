@@ -1,3 +1,4 @@
+// @ts-nocheck
 import styles from 'styles/components/Navigation.module.scss';
 
 import { UserSmall } from './userContainer';

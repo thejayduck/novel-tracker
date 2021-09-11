@@ -1,19 +1,20 @@
+// @ts-nocheck
 import styles from 'styles/Home.module.scss'
 
 // Components
 import PageBase from 'components/pageBase';
-import { Subtitle } from 'components/header';
+import { Subtitle } from 'components/subtitle';
 import { serverSide_checkAuth } from 'lib/serverHelpers'
 
 import Head from 'next/head'
 import dynamic from 'next/dynamic'
 
-const BookCard = dynamic(() => import("../components/cards/bookCard"))
+const BookCard = dynamic(() => import("../components/cards/volumeCard"))
 
 export async function getServerSideProps(context) {
   const [redirect, info] = await serverSide_checkAuth(context, true, false, false);
 
-  return redirect ? redirect : {
+  return redirect || {
     props: {
       user_info: info,
     },
@@ -37,11 +38,16 @@ export default function Home({ user_info }) {
 }
 
 function Section({ title, icon }) {
+  const book_ids = [];
   return (
     <section className={styles.section}>
       <Subtitle text={title} icon={icon} />
       <div className={`${styles.sectionContainer} flex`} >
-        <BookCard />
+        {
+          book_ids.map(book_id => (
+            <BookCard key={book_id} book_id={book_id} />
+          ))
+        }
       </div>
     </section>
   );

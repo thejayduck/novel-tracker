@@ -1,3 +1,4 @@
+// @ts-nocheck
 import styles from 'styles/components/NotificationItem.module.scss'
 
 export default function NotificationItem(data) {

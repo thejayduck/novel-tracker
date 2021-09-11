@@ -1,8 +1,9 @@
+// @ts-nocheck
 import styles from 'styles/components/OverlayMenu.module.scss'
 
 import { motion } from 'framer-motion'
 import { UserSmall } from './userContainer'
-import { Subtitle } from './header'
+import { Subtitle } from './subtitle'
 import { NavigationButton } from "components/ui/button"
 import NotificationItem from './notificationItem'
 import { useEffect, useState } from 'react'

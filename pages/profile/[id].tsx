@@ -1,6 +1,7 @@
+// @ts-nocheck
 import styles from 'styles/Profile.module.scss'
 
-import { Subtitle } from "components/header";
+import { Subtitle } from "components/subtitle";
 import PageBase from "components/pageBase";
 import { UserBig } from "components/userContainer";
 import Head from 'next/head'
@@ -8,9 +9,10 @@ import { serverSide_checkAuth } from 'lib/serverHelpers';
 import { useApi } from 'lib/clientHelpers';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import { GetUserInfoResponse } from 'lib/clientHelpers';
 
 export async function getServerSideProps(context) {
-    const [redirect, info] = await serverSide_checkAuth(context, true, false, false);
+    const [redirect, info] = await serverSide_checkAuth(context, false, false, false);
 
     return redirect ? redirect : {
         props: {
@@ -31,8 +33,11 @@ export default function Profile({ user_info }) {
         dropped_books: 20,
     }
 
-    const [userProfile, setUserProfile] = useState(null);
+    const [userProfile, setUserProfile] = useState<GetUserInfoResponse>(null);
     useEffect(async () => {
+        if (id == undefined) {
+            return;
+        }
         const userProfile = await api.getUserInfo(id);
         setUserProfile(userProfile);
     });

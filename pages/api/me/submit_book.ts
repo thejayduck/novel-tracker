@@ -11,7 +11,7 @@ export default withInfoHelperPost(["book_details"], async (_, params, user_info)
     }
 
     const badField = [
-        "title", "author", "release_status",
+        "title_native", "author", "release_status",
     ].filter(v => book_details[v] == null);
     if (badField.length > 0) {
         throw {

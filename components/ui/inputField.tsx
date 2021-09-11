@@ -1,7 +1,8 @@
+// @ts-nocheck
 import { forwardRef } from 'react';
 import styles from 'styles/components/InputField.module.scss'
 
-export const InputField = forwardRef(({ inputType, title, placeHolder, defaultValue, maxValue, maxLength, onChange, toolTip, pattern }, ref) => {
+export const InputField = forwardRef<HTMLInputElement>(({ inputType, title, placeHolder, defaultValue, maxValue, maxLength, onChange, toolTip, pattern }, ref) => {
     return (
         <div className={styles.inputFieldWrap}>
             <h3 className={styles.title} tooltip={toolTip} >{title}</h3>

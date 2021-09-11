@@ -1,3 +1,4 @@
+// @ts-nocheck
 import styles from 'styles/PageBase.module.scss';
 
 // Components

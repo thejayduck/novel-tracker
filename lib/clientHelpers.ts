@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useAlert } from 'components/alertWrapper';
+import { IBook } from "./models/book";
+import { IUser } from "./models/user";
 
 export function useDelayedState<T>(initialState: T, delay: number) {
     const [delayedState, setDelayedState] = useState(initialState);
@@ -28,6 +30,14 @@ export function useDelayedStateWithLive<T>(initialState: T, delay: number) {
     }, [internalState]);
 
     return [delayedState, setInternalState, internalState]
+}
+
+export interface GetBookResponse extends IBook {
+
+}
+
+export interface GetUserInfoResponse extends IUser {
+
 }
 
 export function useApi() {
@@ -110,10 +120,10 @@ export function useApi() {
             return getCall("search_book", { query: title }, onSuccess);
         },
         async getBook(book_id: string, onSuccess?: (responseData: void) => void) {
-            return getCall("get_book", { id: book_id }, onSuccess);
+            return getCall("get_book", { id: book_id }, onSuccess).then(data => data as GetBookResponse);
         },
         async getUserInfo(user_id: string, onSuccess?: (responseData: void) => void) {
-            return getCall(`user/${user_id}/info`, {}, onSuccess);
+            return getCall(`user/${user_id}/info`, {}, onSuccess).then(data => data as GetUserInfoResponse);
         },
         /*async getUserInfo(onSuccess?: (responseData: void) => void) {
             return getCall("me/info", {}, onSuccess);

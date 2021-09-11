@@ -1,9 +1,10 @@
+// @ts-nocheck
 import styles from 'styles/Search.module.scss'
 
 // Components
 import PageBase from "components/pageBase";
 import { InputFieldNonManaged } from 'components/ui/inputField';
-import { Subtitle } from 'components/header';
+import { Subtitle } from 'components/subtitle';
 import { useState } from 'react';
 import { DesktopOverlay, MobileOverlay } from 'components/overlayMenu';
 

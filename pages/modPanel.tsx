@@ -1,3 +1,4 @@
+// @ts-nocheck
 import styles from "styles/ModPanel.module.css"
 
 import PageBase from "components/pageBase";
@@ -41,7 +42,7 @@ export default function ModPanel({ user_info }) {
     };
 
     return (
-        <PageBase userInfo={user_info}>
+        <PageBase user_info={user_info}>
             <div className={styles.submissionList}>
                 {pendingBooks.map(pending_book => (
                     <SubmissionItem key={pending_book._id} pending_book={pending_book} acceptBook={acceptBook} denyBook={denyBook} />

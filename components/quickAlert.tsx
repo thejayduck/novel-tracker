@@ -1,3 +1,4 @@
+// @ts-nocheck
 import styles from 'styles/components/QuickAlert.module.scss'
 
 const alertIcon = {

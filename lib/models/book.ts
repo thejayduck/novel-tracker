@@ -40,7 +40,7 @@ const volumeSchema = new mongoose.Schema({
     },
     extras: {
         type: Number,
-        required: true,
+        default: 0,
     },
 });
 
@@ -51,10 +51,7 @@ const bookSchemaDef = {
         type: String,
         required: true,
     },
-    description: {
-        type: String,
-        required: true,
-    },
+    description: String,
     author: {
         type: String,
         required: true,
@@ -63,16 +60,10 @@ const bookSchemaDef = {
     banner_url: String,
     release_status: {
         type: String,
-        required: true,
+        default: "Unknown",
     },
-    start_date: {
-        type: Date,
-        required: true,
-    },
-    end_date: {
-        type: Date,
-        required: true,
-    },
+    start_date: Date,
+    end_date: Date,
     volumes: {
         type: [volumeSchema],
         required: true,

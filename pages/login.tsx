@@ -1,3 +1,4 @@
+// @ts-nocheck
 import styles from 'styles/Login.module.scss';
 
 import PageBase from 'components/pageBase';
