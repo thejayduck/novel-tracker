@@ -4,15 +4,16 @@ import styles from 'styles/SubmitPage.module.scss'
 // Components
 import Head from 'next/head'
 
+import React, { useRef, useState } from 'react';
+
+import { useAlert } from 'components/alertWrapper';
 import PageBase from 'components/pageBase';
-import { InputField, OptionSelect } from 'components/ui/inputField';
 import { Subtitle } from 'components/subtitle';
 import { NavigationButton } from "components/ui/button";
-import { useRef, useState } from 'react';
+import { InputField, OptionSelect } from 'components/ui/inputField';
+
 import { useApi } from 'lib/clientHelpers';
-import { useAlert } from 'components/alertWrapper';
 import { serverSide_checkAuth } from 'lib/serverHelpers';
-import React from 'react';
 
 interface SubmitPageProps {
     book_id?: number,

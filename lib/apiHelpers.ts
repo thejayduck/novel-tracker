@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { connectDb, getUserInfo, withUserId } from "./db";
+
 import { IUser } from "./models/user";
+import { connectDb, getUserInfo, withUserId } from "./db";
 import { isToken } from "./types";
 
 export type Params = { [key: string]: string };

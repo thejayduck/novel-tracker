@@ -1,14 +1,16 @@
 // @ts-nocheck
 import styles from 'styles/Home.module.scss'
 
+import dynamic from 'next/dynamic'
+import Head from 'next/head'
+
+import React from 'react';
+
 // Components
 import PageBase from 'components/pageBase';
 import { Subtitle } from 'components/subtitle';
-import { serverSide_checkAuth } from 'lib/serverHelpers'
-import React from 'react';
 
-import Head from 'next/head'
-import dynamic from 'next/dynamic'
+import { serverSide_checkAuth } from 'lib/serverHelpers'
 
 const BookCard = dynamic(() => import("../components/cards/volumeCard"))
 

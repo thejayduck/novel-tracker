@@ -1,4 +1,4 @@
-import mongoose, { Types, Schema } from 'mongoose'
+import mongoose, { Schema,Types } from 'mongoose'
 
 export interface ISession {
     _id: Types.ObjectId,

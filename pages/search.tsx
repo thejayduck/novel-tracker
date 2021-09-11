@@ -1,17 +1,17 @@
 // @ts-nocheck
 import styles from 'styles/Search.module.scss'
 
+import dynamic from 'next/dynamic'
+import Head from 'next/head'
+import { AnimatePresence } from 'framer-motion';
+
+import React, { useState } from 'react';
+
+import { DesktopOverlay, MobileOverlay } from 'components/overlayMenu';
 // Components
 import PageBase from "components/pageBase";
-import { InputFieldNonManaged } from 'components/ui/inputField';
 import { Subtitle } from 'components/subtitle';
-import { useState } from 'react';
-import { DesktopOverlay, MobileOverlay } from 'components/overlayMenu';
-
-import Head from 'next/head'
-import dynamic from 'next/dynamic'
-import { AnimatePresence } from 'framer-motion';
-import React from 'react';
+import { InputFieldNonManaged } from 'components/ui/inputField';
 
 const BookCard = dynamic(() => import("components/cards/bookCard"))
 

@@ -1,5 +1,6 @@
-import { connectDb, getUserInfo, withUserId } from "./db";
 import { parse } from 'cookie';
+
+import { connectDb, getUserInfo, withUserId } from "./db";
 
 async function getInfo(cookie: any) {
     if (!cookie) {

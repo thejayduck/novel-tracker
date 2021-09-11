@@ -1,6 +1,7 @@
 // @ts-nocheck
-import { forwardRef } from 'react';
 import styles from 'styles/components/InputField.module.scss'
+
+import { forwardRef } from 'react';
 
 export const InputField = forwardRef<HTMLInputElement>(({ inputType, title, placeHolder, defaultValue, maxValue, maxLength, onChange, toolTip, pattern }, ref) => {
     return (

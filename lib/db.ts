@@ -1,8 +1,9 @@
 import { randomBytes } from 'crypto';
 import mongoose, { Types } from 'mongoose';
-import User, { IUserProgress, UserProgress } from './models/user';
+
+import { Book, BookSubmission,IBook } from './models/book';
 import Session from './models/session';
-import { IBook, Book, BookSubmission } from './models/book';
+import User, { IUserProgress, UserProgress } from './models/user';
 
 export async function connectDb() {
     if (mongoose.connection.readyState == 0) {

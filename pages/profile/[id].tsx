@@ -1,16 +1,17 @@
 // @ts-nocheck
 import styles from 'styles/Profile.module.scss'
 
-import { Subtitle } from "components/subtitle";
-import PageBase from "components/pageBase";
-import { UserBig } from "components/userContainer";
 import Head from 'next/head'
-import { serverSide_checkAuth } from 'lib/serverHelpers';
-import { useApi } from 'lib/clientHelpers';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
-import { GetUserInfoResponse } from 'lib/clientHelpers';
-import React from 'react';
+
+import React, { useEffect, useState } from 'react';
+
+import PageBase from "components/pageBase";
+import { Subtitle } from "components/subtitle";
+import { UserBig } from "components/userContainer";
+
+import { GetUserInfoResponse,useApi  } from 'lib/clientHelpers';
+import { serverSide_checkAuth } from 'lib/serverHelpers';
 
 export async function getServerSideProps(context) {
     const [redirect, info] = await serverSide_checkAuth(context, false, false, false);

@@ -1,5 +1,6 @@
 // @ts-nocheck
 import styles from 'styles/components/UserContainer.module.scss'
+
 import { useUserInfoContext } from './pageBase';
 
 export function UserSmall({ onDropDownClick, data }) {

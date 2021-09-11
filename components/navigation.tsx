@@ -1,14 +1,16 @@
 // @ts-nocheck
 import styles from 'styles/components/Navigation.module.scss';
 
-import { UserSmall } from './userContainer';
-import { DesktopOverlay, MobileMenu } from './overlayMenu';
-import { NavigationButton } from "components/ui/button"
-import { useUserInfoContext } from './pageBase';
-
 import dynamic from 'next/dynamic'
-import { useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
+
+import { useState } from 'react';
+
+import { NavigationButton } from "components/ui/button"
+
+import { DesktopOverlay, MobileMenu } from './overlayMenu';
+import { useUserInfoContext } from './pageBase';
+import { UserSmall } from './userContainer';
 
 const NotificationItem = dynamic(() => import("./notificationItem"))
 

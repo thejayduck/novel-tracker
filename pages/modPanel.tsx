@@ -1,14 +1,14 @@
 // @ts-nocheck
 import styles from "styles/ModPanel.module.css"
 
+import React, { useEffect, useState } from "react";
+
+import { useAlert } from "components/alertWrapper";
 import PageBase from "components/pageBase";
 import { NavigationButton } from "components/ui/button";
 
-import { useEffect, useState } from "react";
-import { serverSide_checkAuth } from "lib/serverHelpers";
-import { useAlert } from "components/alertWrapper";
 import { useApi } from "lib/clientHelpers";
-import React from 'react';
+import { serverSide_checkAuth } from "lib/serverHelpers";
 
 export async function getServerSideProps(context) {
     const [auth, info] = await serverSide_checkAuth(context, true, true, false);

@@ -2,11 +2,14 @@
 import styles from 'styles/components/OverlayMenu.module.scss'
 
 import { motion } from 'framer-motion'
-import { UserSmall } from './userContainer'
-import { Subtitle } from './subtitle'
-import { NavigationButton } from "components/ui/button"
-import NotificationItem from './notificationItem'
+
 import { useEffect, useState } from 'react'
+
+import { NavigationButton } from "components/ui/button"
+
+import NotificationItem from './notificationItem'
+import { Subtitle } from './subtitle'
+import { UserSmall } from './userContainer'
 
 const constrains = {
     top: 0,

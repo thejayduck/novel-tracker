@@ -1,14 +1,17 @@
 // @ts-nocheck
 import styles from "styles/SetupAccount.module.css"
-import { NavigationButton } from "components/ui/button";
-import PageBase from "components/pageBase";
 
 import { useRouter } from 'next/router';
-import { useEffect, useRef } from "react";
-import { serverSide_checkAuth } from "lib/serverHelpers";
+
+import React, { useEffect, useRef } from "react";
+
+import PageBase from "components/pageBase";
+import { NavigationButton } from "components/ui/button";
+
 import { useApi } from "lib/clientHelpers";
+import { serverSide_checkAuth } from "lib/serverHelpers";
+
 import { InputField } from "../components/ui/inputField";
-import React from 'react';
 
 export async function getServerSideProps(context) {
     const [auth, info] = await serverSide_checkAuth(context, true, false, false);

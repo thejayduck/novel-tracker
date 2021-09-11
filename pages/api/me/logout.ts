@@ -1,4 +1,5 @@
 import { serialize } from "cookie";
+
 import { deleteSession } from "lib/db";
 
 export default async function Logout({ cookies, headers }, res: any) {
