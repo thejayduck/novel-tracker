@@ -3,6 +3,7 @@ import 'styles/globals.scss'
 import Head from 'next/head'
 import { resetId } from 'react-id-generator'
 import { AlertWrapper } from 'components/alertWrapper'
+import React from 'react';
 
 export default function MyApp({ Component, pageProps }) {
   resetId();

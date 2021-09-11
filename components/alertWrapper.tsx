@@ -6,7 +6,7 @@ const AlertContext = createContext();
 
 export function AlertWrapper({ children }) {
 
-    let alertState = useState([]);
+    const alertState = useState([]);
 
 
     return (

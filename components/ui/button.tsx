@@ -16,7 +16,7 @@ export function NavigationButton({ text, icon, onClick, href, newTab }: ButtonPr
             title={text}
             href={href || "#"}
             target={newTab ? "_blank" : "_self"}
-            onClick={onClick}
+            onClick={onClick} rel="noreferrer"
         >
             {icon && <i className={icon} />}
             <span>{text}</span>

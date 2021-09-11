@@ -8,10 +8,11 @@ import PageBase from 'components/pageBase';
 import { InputField, OptionSelect } from 'components/ui/inputField';
 import { Subtitle } from 'components/subtitle';
 import { NavigationButton } from "components/ui/button";
-import { Dispatch, useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { useApi } from 'lib/clientHelpers';
 import { useAlert } from 'components/alertWrapper';
 import { serverSide_checkAuth } from 'lib/serverHelpers';
+import React from 'react';
 
 interface SubmitPageProps {
     book_id?: number,
@@ -124,6 +125,7 @@ export default function SubmitPage({ book_id, user_info }: SubmitPageProps) {
                     <ul className={`${styles.sectionContainer} ${styles.volumeList} flex`}>
                         {volumes.map((volume, idx) => (
                             <VolumeItem
+                                key={idx}
                                 image={volume.cover_url}
                                 onCoverUrlChange={newCover => {
                                     setVolumes(oldVolumes => {

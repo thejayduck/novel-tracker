@@ -4,8 +4,7 @@ import styles from 'styles/PageBase.module.scss';
 // Components
 import Navigation from './navigation';
 import Footer from './footer';
-import { MobileMenu } from './overlayMenu';
-import { createContext, useState } from 'react';
+import { createContext } from 'react';
 import { useContext } from 'react';
 
 const UserInfoContext = createContext();

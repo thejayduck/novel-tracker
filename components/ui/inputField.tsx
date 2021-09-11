@@ -23,6 +23,8 @@ export const InputField = forwardRef<HTMLInputElement>(({ inputType, title, plac
     );
 });
 
+InputField.displayName = "InputField";
+
 export function InputFieldNonManaged({ inputType, title, placeHolder, defaultValue, maxValue, onChange, value }) {
     return (
         <div className={styles.inputFieldWrap}>
@@ -47,3 +49,5 @@ export const OptionSelect = forwardRef(({ title, options, onChange }, ref) => {
 
     );
 })
+
+OptionSelect.displayName = "OptionSelect";

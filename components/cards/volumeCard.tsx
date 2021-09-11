@@ -1,6 +1,4 @@
 import styles from 'styles/components/BookCard.module.scss'
-import { GetBookResponse, useApi } from 'lib/clientHelpers'
-import { useEffect, useState } from 'react';
 
 interface VolumeCardProps {
     data: {

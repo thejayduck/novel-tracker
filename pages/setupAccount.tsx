@@ -8,6 +8,7 @@ import { useEffect, useRef } from "react";
 import { serverSide_checkAuth } from "lib/serverHelpers";
 import { useApi } from "lib/clientHelpers";
 import { InputField } from "../components/ui/inputField";
+import React from 'react';
 
 export async function getServerSideProps(context) {
     const [auth, info] = await serverSide_checkAuth(context, true, false, false);
@@ -27,7 +28,6 @@ export async function getServerSideProps(context) {
         },
     };
 }
-
 
 export default function SetupAccount({ user_info }) {
     const router = useRouter();
@@ -58,7 +58,7 @@ export default function SetupAccount({ user_info }) {
         <PageBase user_info={user_info}>
             <img width="150" height="150" src='../icon.svg' />
             <div className={styles.content}>
-                <h3>Please Enter a Username to Finish Setting Up Your "Novel Tracker" Account </h3>
+                <h3>Please Enter a Username to Finish Setting Up Your &quot;Novel Tracker&quot; Account </h3>
                 <InputField ref={usernameRef} inputType="text" placeHolder="(Max 32 Characters)" maxLength="32" />
                 <NavigationButton text="Complete Account!" icon="fas fa-fw fa-user-alt" onClick={onCompleteClick} />
             </div>

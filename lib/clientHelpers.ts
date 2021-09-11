@@ -32,13 +32,9 @@ export function useDelayedStateWithLive<T>(initialState: T, delay: number) {
     return [delayedState, setInternalState, internalState]
 }
 
-export interface GetBookResponse extends IBook {
+export type GetBookResponse = IBook
 
-}
-
-export interface GetUserInfoResponse extends IUser {
-
-}
+export type GetUserInfoResponse = IUser
 
 export function useApi() {
     const alert = useAlert();
