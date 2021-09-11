@@ -3,19 +3,29 @@ import styles from "styles/Search.module.scss";
 
 import dynamic from "next/dynamic";
 import Head from "next/head";
-import { AnimatePresence, AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 
-import React, { useState, useState } from "react";
+import React, { useState } from "react";
 
-import { DesktopOverlay, DesktopOverlay, MobileOverlay, MobileOverlay } from "components/overlayMenu";
+import { DesktopOverlay, MobileOverlay } from "components/overlayMenu";
 // Components
 import PageBase from "components/pageBase";
 import { Subtitle } from "components/subtitle";
 import { InputFieldNonManaged } from "components/ui/inputField";
 
-const BookCard = dynamic(() => import("components/cards/bookCard"));
+const BookCard = dynamic(() => import("components/cards/volumeCard"));
 
-export default function Search() {
+export async function getServerSideProps(context) {
+    const [redirect, info] = await serverSide_checkAuth(context, false, false, false);
+
+    return redirect ? redirect : {
+        props: {
+            user_info: info,
+        },
+    };
+}
+
+export default function Search({ user_info }) {
     const [filterMenu, setFilterMenu] = useState(false);
 
     return (
@@ -24,7 +34,7 @@ export default function Search() {
                 <title>Search · Novel Tracker</title>
             </Head>
 
-            <PageBase>
+            <PageBase user_info={user_info}>
                 <div className={`${styles.inputWrap} flex`}>
                     <InputFieldNonManaged placeHolder="Search..." />
                     <a onClick={() => setFilterMenu(prev => !prev)} className={"fontLarge"} ><i className='bx bx-filter' /></a>

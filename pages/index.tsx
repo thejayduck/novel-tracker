@@ -10,7 +10,7 @@ import React from "react";
 import PageBase from "components/pageBase";
 import { Subtitle } from "components/subtitle";
 
-import { serverSide_checkAuth, serverSide_checkAuth } from "lib/serverHelpers";
+import { serverSide_checkAuth } from "lib/serverHelpers";
 
 
 const BookCard = dynamic(() => import("../components/cards/volumeCard"));

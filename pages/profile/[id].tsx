@@ -2,15 +2,15 @@
 import styles from "styles/Profile.module.scss";
 
 import Head from "next/head";
-import { useRouter, useRouter } from "next/router";
+import { useRouter } from "next/router";
 
-import React, { useEffect, useEffect, useState, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import PageBase from "components/pageBase";
 import { Subtitle } from "components/subtitle";
 import { UserBig } from "components/userContainer";
 
-import { GetUserInfoResponse, GetUserInfoResponse, useApi, useApi } from "lib/clientHelpers";
+import { GetUserInfoResponse, useApi } from "lib/clientHelpers";
 import { serverSide_checkAuth } from "lib/serverHelpers";
 
 export async function getServerSideProps(context) {
