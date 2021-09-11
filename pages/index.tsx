@@ -5,7 +5,6 @@ import styles from 'styles/Home.module.scss'
 import PageBase from 'components/pageBase';
 import { Subtitle } from 'components/subtitle';
 import { serverSide_checkAuth } from 'lib/serverHelpers'
-import React from 'react';
 
 import Head from 'next/head'
 import dynamic from 'next/dynamic'

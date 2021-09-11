@@ -11,7 +11,6 @@ import { DesktopOverlay, MobileOverlay } from 'components/overlayMenu';
 import Head from 'next/head'
 import dynamic from 'next/dynamic'
 import { AnimatePresence } from 'framer-motion';
-import React from 'react';
 
 const BookCard = dynamic(() => import("components/cards/bookCard"))
 

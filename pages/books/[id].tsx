@@ -11,7 +11,6 @@ import { useEffect, useState } from 'react'
 import { GetBookResponse } from 'lib/clientHelpers'
 import { useRouter } from 'next/dist/client/router'
 import { serverSide_checkAuth } from 'lib/serverHelpers'
-import React from 'react';
 
 const VolumeCard = dynamic(() => import("components/cards/volumeCard"))
 

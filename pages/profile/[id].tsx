@@ -10,7 +10,6 @@ import { useApi } from 'lib/clientHelpers';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { GetUserInfoResponse } from 'lib/clientHelpers';
-import React from 'react';
 
 export async function getServerSideProps(context) {
     const [redirect, info] = await serverSide_checkAuth(context, false, false, false);

@@ -8,7 +8,6 @@ import { useEffect, useRef } from "react";
 import { serverSide_checkAuth } from "lib/serverHelpers";
 import { useApi } from "lib/clientHelpers";
 import { InputField } from "../components/ui/inputField";
-import React from 'react';
 
 export async function getServerSideProps(context) {
     const [auth, info] = await serverSide_checkAuth(context, true, false, false);

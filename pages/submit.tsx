@@ -12,7 +12,6 @@ import { useRef, useState } from 'react';
 import { useApi } from 'lib/clientHelpers';
 import { useAlert } from 'components/alertWrapper';
 import { serverSide_checkAuth } from 'lib/serverHelpers';
-import React from 'react';
 
 interface SubmitPageProps {
     book_id?: number,

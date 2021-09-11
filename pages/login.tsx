@@ -2,13 +2,12 @@
 import styles from 'styles/Login.module.scss';
 
 import PageBase from 'components/pageBase';
-import { Subtitle } from 'components/header';
+import { Subtitle } from 'components/subtitle';
 import Head from 'next/head';
 import { useState, useEffect } from 'react';
 import { serverSide_checkIsLoggedIn } from 'lib/serverHelpers';
 import { NavigationButton } from "components/ui/button";
 import { AnimatePresence, motion } from 'framer-motion';
-import React from 'react';
 
 export async function getServerSideProps(context) {
     const isLoggedIn = await serverSide_checkIsLoggedIn(context, true, false, false);
