@@ -36,6 +36,9 @@ export default function Navigation() {
                     <LinkItem type="desktop" icon="bx bx-bell bx-tada-hover" title="Notifications" onClick={() => setNotification(prev => !prev)} />
                     <LinkItem type="desktop" icon="bx bx-chat bx-tada-hover" title="Forums" href="/" />
                     <LinkItem icon="bx bx-plus bx-tada-hover" title="Submit Book" href="/submit" />
+                    {/* {userInfo?.moderation_level > 0 && 
+                        <LinkItem type="mobile" icon="bx bx-add-to-queue bx-sm bx-tada-hover" title="Mod Panel" href="/mod" />
+                    } */}
                     <LinkItem type="desktop" icon="bx bx-cog bx-spin-hover" title="Settings" href="/" />
                 </ul>
             </div>
@@ -50,6 +53,9 @@ export default function Navigation() {
                 {userMenu &&
                     <DesktopOverlay title={"Account"} className={styles.userMenuOverlay} flexDirection="flexColumn" >
                         <NavigationButton href={`/profile/${userInfo.user_id}`} icon="bx bx-user bx-sm" text="Your Account" />
+                        {/* {userInfo?.moderation_level > 0 && 
+                            <NavigationButton icon="bx bx-add-to-queue bx-sm" text="Mod Panel" href="/mod" />
+                        } */}
                         <NavigationButton icon="bx bx-log-out bx-sm" text="Log Out" />
                     </DesktopOverlay>
                 }

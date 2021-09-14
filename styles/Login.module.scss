@@ -28,50 +28,28 @@
 
   .features {
     color: white;
-    .featureItem {
-      will-change: transform;
-      cursor: pointer;
-      padding: 10px;
-      user-select: none;
-      height: auto;
-      gap: 0;
+    flex-wrap: wrap;
+    text-align: center;
+    user-select: none;
 
+    .featureItem {
+      width: 250px;
+      height: 250px;
       background-color: var(--accent);
       border-radius: var(--border);
+      padding: var(--padding-small);
+      color: white;
 
-      .details {
-        background-color: var(--accent-dark);
-        width: 100%;
-        border-radius: var(--border);
+      h2 {
+        font-weight: var(--font-bold);
+        text-transform: capitalize;
+      }
 
-        p {
-          padding: 5px;
-          text-align: center;
-        }
+      i {
+        color: white;
       }
     }
   }
-}
-
-.googleBtn {
-  font-family: "Roboto", sans-serif;
-
-  background: white;
-  color: #444;
-  border: thin solid #888;
-  box-shadow: 1px 1px 1px grey;
-
-  /* Alignment */
-  display: inline-block;
-  width: 190px;
-  padding: 12px;
-  margin: 5px 0;
-  opacity: 0.85;
-  line-height: 20px;
-
-  text-decoration: none;
-  border-radius: 5px;
-  white-space: nowrap;
 }
 
 @media screen and (max-width: 1024px) {
