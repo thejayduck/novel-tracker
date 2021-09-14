@@ -1,6 +1,7 @@
 // @ts-nocheck
 import styles from "styles/components/UserContainer.module.scss";
 
+import convertDate from "./helper/convertData";
 import { useUserInfoContext } from "./pageBase";
 
 export function UserSmall({ onDropDownClick, data }) {
@@ -49,7 +50,7 @@ export function UserBig({ userProfile }: UserBigProps) {
                 }
                 <span className="fontLarge">{userProfile ? userProfile.username : "Loading..."}</span>
                 <span className="fontSmall">
-                    Joined {userProfile ? userProfile.createdAt : "Loading..."}
+                    Joined {userProfile ? convertDate(userProfile.createdAt) : "Loading..."}
                     <br />
                     {data.followers} Followers / {data.following} Following
                 </span>

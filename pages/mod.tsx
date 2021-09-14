@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 
 import { useAlert } from "components/alertWrapper";
 import VolumeCard from "components/cards/volumeCard";
+import convertDate from "components/helper/convertDate";
 import PageBase from "components/pageBase";
 import { Subtitle } from "components/subtitle";
 import { NavigationButton } from "components/ui/button";
@@ -56,14 +57,6 @@ export default function ModPanel({ user_info }) {
 }
 
 function SubmissionItem({ pending_book, acceptBook, denyBook }) {
-    function convertDate(date) {
-        if (date) {
-            return new Date(date).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
-        } else {
-            return "Unknown";
-        }
-    }
-
     return (
         <div className={styles.submissionItem}>
             <div className={styles.submissionDetails}>
