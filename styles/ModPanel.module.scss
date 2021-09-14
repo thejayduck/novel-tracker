@@ -1,0 +1,27 @@
+.submissionList {
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+
+  .submissionItem {
+    width: 100%;
+
+    border: 2px var(--accent) solid;
+    border-radius: var(--border);
+    padding: var(--padding-small);
+
+    .description {
+      word-break: break-all;
+    }
+
+    .volumeList {
+      overflow: auto hidden;
+    }
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .submissionItem .cover {
+    width: 120px;
+  }
+}
