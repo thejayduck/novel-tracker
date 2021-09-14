@@ -15,8 +15,8 @@ export default function VolumeCard({ data }: VolumeCardProps) {
             </div>
             < div className={styles.title} >
                 <p>{data?.title_native}</p>
-                <div className={`skeleton skeletonText`} />
-                <div className={`skeleton skeletonText`} />
+                <div className={"skeleton skeletonText"} />
+                <div className={"skeleton skeletonText"} />
             </div>
         </a>
     );
