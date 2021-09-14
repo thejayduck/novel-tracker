@@ -123,7 +123,7 @@ export default function SubmitPage({ book_id, user_info }: SubmitPageProps) {
 
                 <section className={styles.section}>
                     <Subtitle text="Volumes (5)" />
-                    <ul className={`${styles.sectionContainer} ${styles.volumeList} flex`}>
+                    <ul className={`${styles.sectionContainer} ${styles.volumeList} flex flexRight`}>
                         {volumes.map((volume, idx) => (
                             <VolumeItem
                                 key={idx}

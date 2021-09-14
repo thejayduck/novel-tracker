@@ -11,7 +11,8 @@ import { DesktopOverlay, MobileOverlay } from "components/overlayMenu";
 // Components
 import PageBase from "components/pageBase";
 import { Subtitle } from "components/subtitle";
-import { InputFieldNonManaged } from "components/ui/inputField";
+import { InputFieldNonManaged, OptionSelect } from "components/ui/inputField";
+import { serverSide_checkAuth } from "lib/serverHelpers";
 
 const BookCard = dynamic(() => import("components/cards/volumeCard"));
 
@@ -37,14 +38,65 @@ export default function Search({ user_info }) {
             <PageBase user_info={user_info}>
                 <div className={`${styles.inputWrap} flex`}>
                     <InputFieldNonManaged placeHolder="Search..." />
-                    <a onClick={() => setFilterMenu(prev => !prev)} className={"fontLarge"} ><i className='bx bx-filter' /></a>
+                    <a onClick={() => setFilterMenu(prev => !prev)} className={"fontLarge"} ><i className='bx bx-filter-alt' /></a>
 
                     <AnimatePresence>
                         {filterMenu &&
                             <DesktopOverlay title="Filter Results" className={styles.filterOverlay}>
-                                <InputFieldNonManaged title="Publishing Status" />
-                                <InputFieldNonManaged title="Genre" />
-                                <InputFieldNonManaged title="Year" />
+                                <OptionSelect
+                                    title="Release Status"
+                                    options={["All", "Finished", "Releasing", "Cancelled", "Hiatus", "Coming Soon"]}
+                                />
+                                <OptionSelect
+                                    title="Genre"
+                                    options={[
+                                        "Any",
+                                        "Action",
+                                        "Demons",
+                                        "Game",
+                                        "Horror",
+                                        "Mecha",
+                                        "Police",
+                                        "Sci-Fi",
+                                        "Shounen Ai",
+                                        "Supernatural",
+                                        "Adventure",
+                                        "Gender Bender",
+                                        "Josei",
+                                        "Military",
+                                        "Psychological",
+                                        "Seinen",
+                                        "Slice of Life",
+                                        "Thriller",
+                                        "Drama",
+                                        "Harem",
+                                        "Kids",
+                                        "Music",
+                                        "Romance",
+                                        "Shoujo",
+                                        "Space",
+                                        "Vampire",
+                                        "Comedy",
+                                        "Ecchi",
+                                        "Hentai",
+                                        "Magic",
+                                        "Mystery",
+                                        "Samurai",
+                                        "Shoujo Ai",
+                                        "Sports",
+                                        "Yaoi",
+                                        "Dementia",
+                                        "Fantasy",
+                                        "Historical",
+                                        "Martial Arts",
+                                        "Parody",
+                                        "School",
+                                        "Shounen",
+                                        "Super Power",
+                                        "Yuri",
+                                    ]}
+                                />
+                                <InputFieldNonManaged title="Year" inputType="date" />
                             </DesktopOverlay>
                         }
                     </AnimatePresence>
@@ -69,9 +121,60 @@ export default function Search({ user_info }) {
                 <AnimatePresence>
                     {filterMenu &&
                         <MobileOverlay title={"Filter Results"} onOutSideClick={() => setFilterMenu(false)} >
-                            <InputFieldNonManaged placeHolder="Publishing Status" />
-                            <InputFieldNonManaged placeHolder="Genre" />
-                            <InputFieldNonManaged placeHolder="Year" />
+                            <OptionSelect
+                                    title="Release Status"
+                                    options={["All", "Finished", "Releasing", "Cancelled", "Hiatus", "Coming Soon"]}
+                                />
+                                <OptionSelect
+                                    title="Genre"
+                                    options={[
+                                        "Any",
+                                        "Action",
+                                        "Demons",
+                                        "Game",
+                                        "Horror",
+                                        "Mecha",
+                                        "Police",
+                                        "Sci-Fi",
+                                        "Shounen Ai",
+                                        "Supernatural",
+                                        "Adventure",
+                                        "Gender Bender",
+                                        "Josei",
+                                        "Military",
+                                        "Psychological",
+                                        "Seinen",
+                                        "Slice of Life",
+                                        "Thriller",
+                                        "Drama",
+                                        "Harem",
+                                        "Kids",
+                                        "Music",
+                                        "Romance",
+                                        "Shoujo",
+                                        "Space",
+                                        "Vampire",
+                                        "Comedy",
+                                        "Ecchi",
+                                        "Hentai",
+                                        "Magic",
+                                        "Mystery",
+                                        "Samurai",
+                                        "Shoujo Ai",
+                                        "Sports",
+                                        "Yaoi",
+                                        "Dementia",
+                                        "Fantasy",
+                                        "Historical",
+                                        "Martial Arts",
+                                        "Parody",
+                                        "School",
+                                        "Shounen",
+                                        "Super Power",
+                                        "Yuri",
+                                    ]}
+                                />
+                                <InputFieldNonManaged title="Year" inputType="date" />
                         </MobileOverlay>
                     }
                 </AnimatePresence>
