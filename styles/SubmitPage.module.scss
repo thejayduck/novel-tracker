@@ -35,6 +35,23 @@
 
 .volumeItem {
   width: 200px;
+  position: relative;
+
+  &:hover > .removeBook {
+    display: initial;
+  }
+
+  .removeBook {
+    display: none;
+    background-color: hsla(0, 0%, 0%, 0.412);
+    border-radius: var(--border);
+    top: 5px;
+    left: 5px;
+    position: absolute;
+    text-align: center;
+    color: white;
+  }
+
   .book {
     img {
       border-radius: var(--border);
@@ -42,6 +59,14 @@
     }
     .volumeDetails {
       bottom: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .volumeItem {
+    .removeBook {
+      display: block;
     }
   }
 }

@@ -122,8 +122,32 @@ export default function SubmitPage({ book_id, user_info }: SubmitPageProps) {
                 </section>
 
                 <section className={styles.section}>
-                    <Subtitle text="Volumes (5)" />
+                    <Subtitle text={`Volumes ${volumes.length}`} />
                     <ul className={`${styles.sectionContainer} ${styles.volumeList} flex flexRight`}>
+                            <div>
+                                <a
+                                    title="New Volume"
+                                    className={`${styles.volumeItem} ${styles.placeholder} flex flexAround`}
+                                    onClick={() => {
+                                        setVolumes(oldVolumes => {
+                                            return [...oldVolumes, {
+                                                cover_url: null,
+                                                chapterCount: 0
+                                            }];
+                                        });
+                                    }}
+                                >
+                                    <i className="bx bx-plus bx-lg" />
+                                </a>
+                                <div className="skeleton skeletonText" />
+                                <div className="skeleton skeletonText" />
+                                <div className="skeleton skeletonText" />
+                                <div className="skeleton skeletonText" />
+                                <div className="skeleton skeletonText" />
+                                <div className="skeleton skeletonText" />
+                                <div className="skeleton skeletonText" />
+                                <div className="skeleton skeletonText" />
+                            </div>
                         {volumes.map((volume, idx) => (
                             <VolumeItem
                                 key={idx}
@@ -142,30 +166,6 @@ export default function SubmitPage({ book_id, user_info }: SubmitPageProps) {
                                 }}
                             />
                         ))}
-                        <div>
-                            <a
-                                title="New Volume"
-                                className={`${styles.volumeItem} ${styles.placeholder} flex flexAround`}
-                                onClick={() => {
-                                    setVolumes(oldVolumes => {
-                                        return [...oldVolumes, {
-                                            cover_url: null,
-                                            chapterCount: 0
-                                        }];
-                                    });
-                                }}
-                            >
-                                <i className="bx bx-plus bx-md" />
-                            </a>
-                            <div className="skeleton skeletonText" />
-                            <div className="skeleton skeletonText" />
-                            <div className="skeleton skeletonText" />
-                            <div className="skeleton skeletonText" />
-                            <div className="skeleton skeletonText" />
-                            <div className="skeleton skeletonText" />
-                            <div className="skeleton skeletonText" />
-                            <div className="skeleton skeletonText" />
-                        </div>
                     </ul>
                 </section>
                 <NavigationButton text="Submit Book" icon="bx bx-subdirectory-left bx-sm" href={null} onClick={onSubmit} />
@@ -183,6 +183,7 @@ interface VolumeItemProps {
 function VolumeItem({ image, onCoverUrlChange, onChaptersCountChange }: VolumeItemProps) {
     return (
         <li className={styles.volumeItem}>
+            <a className={styles.removeBook}> <i className="bx bx-x bx-lg" /> </a>
             <div className={`flex flexColumn ${styles.book}`}>
                 <img className="skeleton" width={200} height={300} src={image} />
                 <div className={`${styles.volumeDetails}`}>
