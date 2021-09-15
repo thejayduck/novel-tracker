@@ -1,9 +1,14 @@
-.section {
-  width: 100%;
+.sectionItem {
+  cursor: pointer;
+  padding: var(--padding-small);
 
-  .sectionContainer {
-    align-items: center;
+  border-radius: var(--border);
+  flex: 0.3;
+  overflow: hidden;
+
+  .sectionItemList {
+    padding-top: var(--padding-small);
+    gap: 10px;
     flex-wrap: wrap;
-    margin-bottom: 5rem;
   }
 }

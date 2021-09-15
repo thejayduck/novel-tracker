@@ -1,4 +1,4 @@
-// @ts-nocheck
+    // @ts-nocheck
 import styles from "styles/Profile.module.scss";
 
 import Head from "next/head";

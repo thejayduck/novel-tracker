@@ -10,6 +10,7 @@
   img {
     opacity: 1;
     border-radius: var(--border);
+    object-fit: cover;
   }
 
   .background {
@@ -27,6 +28,7 @@
 }
 
 .detailsWrap {
+  width: 100%;
   .details {
     flex-wrap: wrap;
     align-items: stretch;

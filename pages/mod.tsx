@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 
 import { useAlert } from "components/alertWrapper";
 import VolumeCard from "components/cards/volumeCard";
-import convertDate from "components/helper/convertDate";
+import convertDate from "components/helper/convertData";
 import PageBase from "components/pageBase";
 import { Subtitle } from "components/subtitle";
 import { NavigationButton } from "components/ui/button";
@@ -76,7 +76,7 @@ function SubmissionItem({ pending_book, acceptBook, denyBook }) {
             <Subtitle text="Volumes" />
             <ul className={`${styles.volumeList} flex flexRow flexRight`}>
                 {pending_book.volumes.map(volume => (
-                    <VolumeCard key={volume._id} />
+                    <VolumeCard key={volume._id} data={volume} />
                 ))}
             </ul>
             <Subtitle text="Actions" />

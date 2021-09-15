@@ -7,6 +7,7 @@ import Head from "next/head";
 
 import React, { useEffect, useState } from "react";
 
+import convertDate from "components/helper/convertData";
 import PageBase from "components/pageBase";
 import { Subtitle } from "components/subtitle";
 
@@ -38,6 +39,7 @@ export default function Book({ user_info }) {
         const api_book = await api.getBook(id);
         setBook(api_book);
     }) as any, [id]);
+
     return (
         <>
             <Head>
@@ -46,9 +48,9 @@ export default function Book({ user_info }) {
             <PageBase user_info={user_info}>
 
                 <section className={`${styles.headerWrap} flex flexColumn`}>
-                    <img className={`${styles.background} skeleton`} src="http://source.unsplash.com/200x300/?nature" />
+                    <img className={`${styles.background} skeleton`} src={book?.volumes[0].cover_url} />
                     <div>
-                        <img className="skeleton" src="https://dummyimage.com/200x300/0c92eb/fff" />
+                        <img className="skeleton" width={200} height={300} src={book?.volumes[0].cover_url} />
                     </div>
                     <h1>{book?.title_english || "Loading..."}</h1>
                     <span className="fontSmall">{book?.title_romanized || "Loading..."}</span>
@@ -66,12 +68,12 @@ export default function Book({ user_info }) {
                             }, 0)}
                         />
                         <DetailItem title="Status" value="Finished" />
-                        <DetailItem title="Start Date" value="Jan 25, 2015" />
-                        <DetailItem title="End Date" value="Jun 25, 2015" />
+                        <DetailItem title="Start Date" value={convertDate(book?.start_date)} />
+                        <DetailItem title="End Date" value={convertDate(book?.end_date)} />
                     </div>
                     {/* TODO make description constant size */}
                     <p>{book?.description || "Loading..."}</p>
-                    <Subtitle text={"Volumes (3)"} />
+                    <Subtitle text={`Volumes [${book?.volumes.length}]`} />
                     <div className={`${styles.volumeList} flex`}>
                         {book && book.volumes.map(volume => (<VolumeCard key={volume.cover_url} data={volume} />))}
                     </div>
