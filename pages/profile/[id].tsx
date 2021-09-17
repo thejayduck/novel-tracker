@@ -55,7 +55,7 @@ export default function Profile({ user_info }) {
                 <section className="flex flexRight" >
                     <UserBig userProfile={userProfile} />
                 </section>
-                <Subtitle text="Statistics" />
+                <Subtitle text="Library" />
                 <section className={`${styles.statisticWrap} flex flexBetween flexColumn`} >
                     <StatisticItem title="Reading" icon="bx bx-bookmark" stat={`${data.reading_books} Books`} />
                     <StatisticItem title="Finished" icon="bx bx-check-square" stat={`${data.finished_books} Books`} />

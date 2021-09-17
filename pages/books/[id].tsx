@@ -4,12 +4,15 @@ import styles from "styles/Book.module.scss";
 import { useRouter } from "next/dist/client/router";
 import dynamic from "next/dynamic";
 import Head from "next/head";
+import { AnimatePresence } from "framer-motion";
 
 import React, { useEffect, useState } from "react";
 
 import convertDate from "components/helper/convertData";
+import { DesktopOverlay, MobileOverlay } from "components/overlayMenu";
 import PageBase from "components/pageBase";
 import { Subtitle } from "components/subtitle";
+import { NavigationButton } from "components/ui/button";
 
 import { GetBookResponse, useApi } from "lib/clientHelpers";
 import { serverSide_checkAuth } from "lib/serverHelpers";
@@ -29,6 +32,7 @@ export async function getServerSideProps(context) {
 export default function Book({ user_info }) {
     const router = useRouter();
     const { id } = router.query;
+    const [onOverlayOpen, setOnOverlayOpen] = useState(false);
 
     const api = useApi();
     const [book, setBook] = useState<GetBookResponse | null>(null);
@@ -51,6 +55,7 @@ export default function Book({ user_info }) {
                     <img className={`${styles.background} skeleton`} src={book?.volumes[0].cover_url} />
                     <div>
                         <img className="skeleton" width={200} height={300} src={book?.volumes[0].cover_url} />
+                        <NavigationButton text="Add to Library" icon="bx bx-list-plus bx-sm" onClick={() => setOnOverlayOpen(prev => !prev)} />
                     </div>
                     <h1>{book?.title_english || "Loading..."}</h1>
                     <span className="fontSmall">{book?.title_romanized || "Loading..."}</span>
@@ -78,6 +83,29 @@ export default function Book({ user_info }) {
                         {book && book.volumes.map(volume => (<VolumeCard key={volume.cover_url} data={volume} />))}
                     </div>
                 </section>
+
+                <AnimatePresence>
+                    {onOverlayOpen && 
+                        <DesktopOverlay title={"Add Book As"} className={styles.addOverlay} flexDirection="flexColumn" >
+                            <NavigationButton icon="bx bx-bookmark bx-sm" text="Reading" />
+                            <NavigationButton icon="bx bx-calendar bx-sm" text="Planning" />
+                            <NavigationButton icon="bx bx-check-square bx-sm" text="Finished" />
+                            <NavigationButton icon="bx bx-trash-alt bx-sm" text="Dropped" />
+                        </DesktopOverlay>
+                    }
+                </AnimatePresence>
+
+                <AnimatePresence>
+                    {onOverlayOpen &&                 
+                        <MobileOverlay title={"Add Book As"} onOutSideClick={() => setOnOverlayOpen(false)}>
+                            <NavigationButton icon="bx bx-bookmark bx-sm" text="Reading" />
+                            <NavigationButton icon="bx bx-calendar bx-sm" text="Planning" />
+                            <NavigationButton icon="bx bx-check-square bx-sm" text="Finished" />
+                            <NavigationButton icon="bx bx-trash-alt bx-sm" text="Dropped" />
+                        </MobileOverlay>
+                    }
+                </AnimatePresence>
+
             </PageBase>
         </>
     );

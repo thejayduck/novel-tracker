@@ -15,8 +15,7 @@
 
   .mobileOverlay {
     position: absolute;
-    border-radius: var(--border) var(--border) 0 0;
-    padding: 1rem 1rem 2rem 1rem;
+    padding: var(--padding-small) 0 0 0;
 
     bottom: 0;
     background-color: var(--accent);
@@ -24,9 +23,12 @@
     height: auto;
 
     .children {
+      background-color: var(--accent-dark);
+      border-radius: var(--border);
+      padding: var(--padding-normal);
+      margin-top: var(--padding-small);
       max-height: 400px;
       overflow: auto;
-      padding-top: 10px;
       flex-direction: column;
       align-items: stretch;
     }
@@ -68,6 +70,7 @@
 .desktopOverlay {
   padding: var(--padding-small) 0 0 0;
   text-align: center;
+  z-index: var(--z-fixed);
 
   .children {
     text-align: initial;
