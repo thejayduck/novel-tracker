@@ -16,10 +16,11 @@
   }
 }
 
-@media screen and (max-width: 1024px) {
-  .statisticWrap {
-    flex-direction: column;
-  }
+.bookContainer {
+  overflow: hidden;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: var(--padding-small);
 }
 
 @supports (-webkit-touch-callout: none) {

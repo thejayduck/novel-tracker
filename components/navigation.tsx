@@ -23,24 +23,29 @@ export default function Navigation() {
 
     return (
         <nav className={`${styles.nav}`}>
-            <div className={`${styles.container}`}>
-                <div className={"desktop"}>
-                    {userInfo && <UserSmall onDropDownClick={() => setUserMenu(prev => !prev)} />}
-                </div>
-
+            <div className={`${styles.container} flex flexRow flexBetween`}>
                 <a className={`${"mobile"}`} onClick={() => setMobileMenu(true)} title="Hamburger Menu" ><i className={"bx bx-menu bx-sm"} /></a>
-                {/* <a className={`${"mobile"}`}>Homepage</a> */}
+                <a className={`${"mobile"}`}>Homepage</a>
                 <ul className={`${styles.links}`}>
-                    <LinkItem type="desktop" icon="bx bx-library bx-tada-hover" title="Library" href="/" />
+                    {userInfo && <LinkItem type="desktop" icon="bx bx-library bx-tada-hover" title="Library" href="/" /> }
                     <LinkItem icon="bx bx-search bx-tada-hover" title="Search" href="/search" />
-                    <LinkItem type="desktop" icon="bx bx-bell bx-tada-hover" title="Notifications" onClick={() => setNotification(prev => !prev)} />
                     <LinkItem type="desktop" icon="bx bx-chat bx-tada-hover" title="Forums" href="/" />
-                    <LinkItem icon="bx bx-plus bx-tada-hover" title="Submit Book" href="/submit" />
-                    {/* {userInfo?.moderation_level > 0 && 
-                        <LinkItem type="mobile" icon="bx bx-add-to-queue bx-sm bx-tada-hover" title="Mod Panel" href="/mod" />
-                    } */}
-                    <LinkItem type="desktop" icon="bx bx-cog bx-spin-hover" title="Settings" href="/" />
+                    {userInfo && <LinkItem icon="bx bx-plus bx-tada-hover" title="Submit Book" href="/submit" /> }
+                    {userInfo?.moderation_level > 0 && 
+                        <LinkItem icon="bx bx-add-to-queue bx-sm bx-tada-hover" title="Mod Panel" href="/mod" />
+                    }
                 </ul>
+
+                {userInfo &&
+                    <div className={`flex ${styles.rightMenu} desktop`}>
+                        <UserSmall onDropDownClick={() => setUserMenu(prev => !prev)} />
+                        <ul className={`${styles.links}`}>
+                            <LinkItem icon="bx bx-bell bx-tada-hover" title="Notifications" onClick={() => setNotification(prev => !prev)} />
+                            <LinkItem icon="bx bx-cog bx-spin-hover" title="Settings" href="/" />
+                        </ul>
+
+                    </div>
+                }
             </div>
 
             <AnimatePresence>

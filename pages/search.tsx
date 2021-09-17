@@ -97,8 +97,15 @@ export default function Search({ user_info }) {
                                         "Yuri",
                                     ]}
                                 />
-                                <InputFieldNonManaged title="Year" inputType="date" />
-                            </DesktopOverlay>
+                               <OptionSelect
+                                        title="Year"
+                                        options={[
+                                            "2022",
+                                            "2021",
+                                            "2020"
+                                        ]}
+                                    />   
+                                </DesktopOverlay>
                         }
                     </AnimatePresence>
                 </div>
@@ -175,7 +182,14 @@ export default function Search({ user_info }) {
                                         "Yuri",
                                     ]}
                                 />
-                                <InputFieldNonManaged title="Year" inputType="date" />
+                                <OptionSelect
+                                    title="Year"
+                                    options={[
+                                        "2022",
+                                        "2021",
+                                        "2020"
+                                    ]}
+                                />
                         </MobileOverlay>
                     }
                 </AnimatePresence>

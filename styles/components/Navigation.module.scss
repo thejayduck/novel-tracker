@@ -17,10 +17,13 @@
   padding: var(--padding-small);
 
   .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     height: 100%;
+    width: 100%;
+    gap: 0;
+
+    .rightMenu {
+      flex: 0;
+    }
 
     .links {
       border-radius: var(--border);
@@ -42,7 +45,7 @@
 }
 
 .notificationOverlay {
-  right: 130px;
+  right: 50px;
   top: 70px;
   width: 40rem;
   max-height: 50vh;
@@ -51,7 +54,7 @@
 }
 
 .userMenuOverlay {
-  left: 5px;
+  right: 90px;
   top: 70px;
   width: 15rem;
 }

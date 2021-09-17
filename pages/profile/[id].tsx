@@ -3,9 +3,11 @@ import styles from "styles/Profile.module.scss";
 
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { AnimatePresence, motion } from "framer-motion";
 
 import React, { useEffect, useState } from "react";
 
+import VolumeCard from "components/cards/volumeCard";
 import PageBase from "components/pageBase";
 import { Subtitle } from "components/subtitle";
 import { UserBig } from "components/userContainer";
@@ -54,7 +56,7 @@ export default function Profile({ user_info }) {
                     <UserBig userProfile={userProfile} />
                 </section>
                 <Subtitle text="Statistics" />
-                <section className={`${styles.statisticWrap} flex flexBetween`} >
+                <section className={`${styles.statisticWrap} flex flexBetween flexColumn`} >
                     <StatisticItem title="Reading" icon="bx bx-bookmark" stat={`${data.reading_books} Books`} />
                     <StatisticItem title="Finished" icon="bx bx-check-square" stat={`${data.finished_books} Books`} />
                     <StatisticItem title="Planning" icon="bx bx-calendar" stat={`${data.planned_books} Books`} />
@@ -65,18 +67,39 @@ export default function Profile({ user_info }) {
     );
 }
 
-function StatisticItem({ icon, title, stat }) {
+function StatisticItem({ icon, title, stat, children }) {
+    const [isOpen, setIsOpen] = useState(false);
+
     return (
-        <a href="#" className={`${styles.statisticItem} flex flexBetween`}>
-            <div className={"flex flexRight"}>
-                <i className={`${icon} fontLarger`} />
-                <div className={styles.statistic}>
-                    <span>{stat}</span>
-                    <br />
-                    <span className={`${styles.statName} fontMedium`} >{title}</span>
+        <>
+            <a className={`${styles.statisticItem} flex flexBetween`} onClick={() => setIsOpen(prev => !prev)}>
+                <div className={"flex flexRight"}>
+                    <i className={`${icon} fontLarger`} />
+                    <div className={styles.statistic}>
+                        <span>{stat}</span>
+                        <br />
+                        <span className={`${styles.statName} fontMedium`} >{title}</span>
+                    </div >
                 </div >
-            </div >
-            <i className='bx bxs-down-arrow' />
-        </a >
+                <motion.i
+                    initial={{ rotate: 0 }}
+                    animate={{ rotate: isOpen ? 180 : 0 }}
+                    className='bx bxs-down-arrow' 
+                />
+            </a>
+            <AnimatePresence>
+                {isOpen &&
+                    <motion.div
+                        className={`flex ${styles.bookContainer}`}
+                        initial={{opacity: 0, height: 0}}
+                        animate={{opacity: 1, height: "max-content"}}
+                        exit={{opacity: 0, height: 0}}
+                        transition={{stiffness: 100}}
+                    >
+                        { children }
+                    </motion.div>
+                }
+            </AnimatePresence>
+        </>
     );
 }

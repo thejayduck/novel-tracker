@@ -5,6 +5,7 @@ import styles from "styles/SubmitPage.module.scss";
 import Head from "next/head";
 
 import React, { useRef, useState } from "react";
+import nextId, { useId } from "react-id-generator";
 
 import { useAlert } from "components/alertWrapper";
 import PageBase from "components/pageBase";
@@ -41,7 +42,9 @@ export default function SubmitPage({ book_id, user_info }: SubmitPageProps) {
     interface VolumeState {
         cover_url: string | null,
         chapterCount: number,
+        id: string,
     }
+
     const [volumes, setVolumes] = useState<VolumeState[]>([]);
     const nativeTitleRef = useRef<HTMLInputElement>();
     const romanizedTitleRef = useRef<HTMLInputElement>();
@@ -59,9 +62,7 @@ export default function SubmitPage({ book_id, user_info }: SubmitPageProps) {
             description: descriptionRef.current.value,
             author: authorNameRef.current.value,
             // TODO
-            cover_url: null,
-            // TODO
-            banner_url: null,
+            genre: null,
             release_status: releaseStatusRef.current.value,
             start_date: startDateRef.current.value,
             end_date: endDateRef.current.value,
@@ -107,12 +108,17 @@ export default function SubmitPage({ book_id, user_info }: SubmitPageProps) {
                     <div className={styles.sectionContainer}>
                         <div className="flex">
                             <InputField title="Author Name" ref={authorNameRef} />
-                            {/* <InputField title="Status" placeHolder="TODO: option select" /> */}
                             <OptionSelect
                                 title="Release Status"
                                 options={["Finished", "Releasing", "Cancelled", "Hiatus", "Coming Soon"]}
                                 ref={releaseStatusRef}
                             />
+                            <OptionSelect
+                                    title="Genre"
+                                    options={[
+                                        "TO IMPROVE",
+                                    ]}
+                                />
                         </div>
                         <div className="flex">
                             <InputField title="Start Date" inputType="date" ref={startDateRef} />
@@ -126,31 +132,25 @@ export default function SubmitPage({ book_id, user_info }: SubmitPageProps) {
                     <ul className={`${styles.sectionContainer} ${styles.volumeList} flex flexRight`}>
                             <div>
                                 <a
-                                    title="New Volume"
+                                    title="Add Volume"
                                     className={`${styles.volumeItem} ${styles.placeholder} flex flexAround`}
                                     onClick={() => {
                                         setVolumes(oldVolumes => {
                                             return [...oldVolumes, {
                                                 cover_url: null,
-                                                chapterCount: 0
+                                                chapterCount: 0,
+                                                id: nextId("volume"),
                                             }];
                                         });
                                     }}
                                 >
                                     <i className="bx bx-plus bx-lg" />
                                 </a>
-                                <div className="skeleton skeletonText" />
-                                <div className="skeleton skeletonText" />
-                                <div className="skeleton skeletonText" />
-                                <div className="skeleton skeletonText" />
-                                <div className="skeleton skeletonText" />
-                                <div className="skeleton skeletonText" />
-                                <div className="skeleton skeletonText" />
-                                <div className="skeleton skeletonText" />
                             </div>
                         {volumes.map((volume, idx) => (
                             <VolumeItem
-                                key={idx}
+                                key={volume.id}
+                                // onRemoveClicked={}
                                 image={volume.cover_url}
                                 onCoverUrlChange={newCover => {
                                     setVolumes(oldVolumes => {
@@ -178,18 +178,19 @@ interface VolumeItemProps {
     image: string,
     onCoverUrlChange: (newImage: string) => void,
     onChaptersCountChange: (newCount: number) => void,
+    onRemoveClicked: () => void,
 }
 
-function VolumeItem({ image, onCoverUrlChange, onChaptersCountChange }: VolumeItemProps) {
+function VolumeItem({ image, onCoverUrlChange, onChaptersCountChange, onRemoveClicked }: VolumeItemProps) {
     return (
         <li className={styles.volumeItem}>
-            <a className={styles.removeBook}> <i className="bx bx-x bx-lg" /> </a>
+            <a className={styles.removeBook} title="Remove Volume" onClick={() => onRemoveClicked}> <i className="bx bx-x bx-lg" /> </a>
             <div className={`flex flexColumn ${styles.book}`}>
                 <img className="skeleton" width={200} height={300} src={image} />
                 <div className={`${styles.volumeDetails}`}>
                     <InputField placeHolder="Image URL" inputType="url" onChange={(e: any) => onCoverUrlChange(e.target.value)} />
-                    {/* <InputField placeHolder="Volume" inputType="number" maxValue="99" /> */}
-                    <InputField placeHolder="Chapters" inputType="number" maxValue="999" onChange={(e: any) => onChaptersCountChange(e.target.value)} />
+                    <InputField placeHolder="Chapters" inputType="number" maxValue="999" defaultValue="0" onChange={(e: any) => onChaptersCountChange(e.target.value)} />
+                    <InputField placeHolder="Extras" inputType="number" maxValue="999" defaultValue="0" onChange={(e: any) => onChaptersCountChange(e.target.value)} />
                 </div>
             </div>
         </li>

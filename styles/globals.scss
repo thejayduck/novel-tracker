@@ -42,6 +42,7 @@
   --blur: 10px;
 
   // Padding
+  --padding-mini: 0.1rem;
   --padding-small: 0.5rem;
   --padding-normal: 1rem;
   --padding-medium: 2rem;
@@ -262,15 +263,9 @@ li {
   .desktop {
     display: none;
   }
-  .mobile {
-    display: initial;
-  }
 }
 
 @media screen and (min-width: 1024px) {
-  .desktop {
-    display: initial;
-  }
   .mobile {
     display: none;
   }
