@@ -28,7 +28,7 @@ export default function Navigation() {
                         <a className={`${"mobile"}`} onClick={() => setUserMenu(true)} title="Hamburger Menu" >
                             <i className={"bx bx-menu bx-sm"} />
                         </a>
-                        <a className={`${"mobile"}`}>Homepage</a>
+                        {/* <a className={`${"mobile"}`}>Homepage</a> */}
                     </>
                 }
                 <ul className={`${styles.links}`}>
