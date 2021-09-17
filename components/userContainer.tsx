@@ -12,10 +12,10 @@ export function UserSmall({ onDropDownClick, data }) {
     return (
         <div className={`${styles.userWrap} ${styles.small}`}>
             <a href={`/profile/${userInfo.user_id}`} className="flex">
-                {/* <div className={styles.statusWrap}>
-                    <span>{userInfo.username}</span>
-                </div> */}
                 <img className="skeleton" alt="Profile Picture" width={48} height={48} src={data.picture} />
+                <div className={styles.statusWrap}>
+                    <span>{userInfo.username}</span>
+                </div>
             </a>
             <a onClick={onDropDownClick} className={`${"desktop"}`} ><i className='bx bxs-down-arrow'></i></a>
         </div>
