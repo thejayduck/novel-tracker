@@ -23,8 +23,14 @@ export default function Navigation() {
     return (
         <nav className={`${styles.nav}`}>
             <div className={`${styles.container} flex flexRow flexBetween`}>
-                <a className={`${"mobile"}`} onClick={() => setUserMenu(true)} title="Hamburger Menu" ><i className={"bx bx-menu bx-sm"} /></a>
-                <a className={`${"mobile"}`}>Homepage</a>
+                {userInfo && 
+                    <>
+                        <a className={`${"mobile"}`} onClick={() => setUserMenu(true)} title="Hamburger Menu" >
+                            <i className={"bx bx-menu bx-sm"} />
+                        </a>
+                        <a className={`${"mobile"}`}>Homepage</a>
+                    </>
+                }
                 <ul className={`${styles.links}`}>
                     {userInfo && <LinkItem type="desktop" icon="bx bx-library bx-tada-hover" title="Library" href="/" /> }
                     <LinkItem icon="bx bx-search bx-tada-hover" title="Search" href="/search" />
