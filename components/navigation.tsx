@@ -17,7 +17,6 @@ const NotificationItem = dynamic(() => import("./notificationItem"));
 export default function Navigation() {
     const [notification, setNotification] = useState(false);
     const [userMenu, setUserMenu] = useState(false);
-    const [mobileMenu, setMobileMenu] = useState(false);
 
     const userInfo = useUserInfoContext();
 
@@ -49,8 +48,8 @@ export default function Navigation() {
             </div>
 
             <AnimatePresence>
-                {mobileMenu &&
-                    <MobileMenu onOutSideClick={() => setMobileMenu(false)} />
+                {userMenu &&
+                    <MobileMenu onOutSideClick={() => setUserMenu(false)} />
                 }
             </AnimatePresence>
 
@@ -58,9 +57,6 @@ export default function Navigation() {
                 {userMenu &&
                     <DesktopOverlay title={"Account"} className={styles.userMenuOverlay} flexDirection="flexColumn" >
                         <NavigationButton href={`/profile/${userInfo.user_id}`} icon="bx bx-user bx-sm" text="Your Account" />
-                        {/* {userInfo?.moderation_level > 0 && 
-                            <NavigationButton icon="bx bx-add-to-queue bx-sm" text="Mod Panel" href="/mod" />
-                        } */}
                         <NavigationButton icon="bx bx-log-out bx-sm" text="Log Out" />
                     </DesktopOverlay>
                 }
