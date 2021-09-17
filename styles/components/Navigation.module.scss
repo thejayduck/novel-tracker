@@ -29,7 +29,7 @@
       border-radius: var(--border);
 
       color: white;
-      padding: var(--padding-small);
+      padding: 11px;
 
       height: 100%;
       background-color: var(--accent-dark);
@@ -44,16 +44,15 @@
 }
 
 .notificationOverlay {
-  right: 50px;
+  right: 135px;
   top: 70px;
   width: 40rem;
   max-height: 50vh;
-  overflow: hidden;
-  overflow-y: auto;
+  overflow: hidden auto;
 }
 
 .userMenuOverlay {
-  right: 90px;
+  right: 5px;
   top: 70px;
   width: 15rem;
 }

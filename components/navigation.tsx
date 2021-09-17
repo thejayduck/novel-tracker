@@ -37,11 +37,11 @@ export default function Navigation() {
 
                 {userInfo &&
                     <div className={`flex ${styles.rightMenu} desktop`}>
-                        <UserSmall onDropDownClick={() => setUserMenu(prev => !prev)} />
                         <ul className={`${styles.links}`}>
                             <LinkItem icon="bx bx-bell bx-tada-hover" title="Notifications" onClick={() => setNotification(prev => !prev)} />
                             <LinkItem icon="bx bx-cog bx-spin-hover" title="Settings" href="/" />
                         </ul>
+                        <UserSmall onDropDownClick={() => setUserMenu(prev => !prev)} />
 
                     </div>
                 }
