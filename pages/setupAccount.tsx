@@ -1,5 +1,5 @@
 // @ts-nocheck
-import styles from "styles/SetupAccount.module.css";
+import styles from "styles/SetupAccount.module.scss";
 
 import { useRouter } from "next/router";
 
