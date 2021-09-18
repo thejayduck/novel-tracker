@@ -8,16 +8,16 @@ interface VolumeCardProps {
 }
 
 export default function VolumeCard({ data }: VolumeCardProps) {
-    return (
-        <a className={styles.bookWrap}>
-            <div className={styles.book}>
-                <img className="skeleton" width={200} height={300} src={data?.cover_url} />
-            </div>
-            < div className={styles.title} >
-                <p>{data?.title_native}</p>
-                {/* <div className={"skeleton skeletonText"} />
+  return (
+    <a className={styles.bookWrap}>
+      <div className={styles.book}>
+        <img className="skeleton" width={200} height={300} src={data?.cover_url} />
+      </div>
+      < div className={styles.title} >
+        <p>{data?.title_native}</p>
+        {/* <div className={"skeleton skeletonText"} />
                 <div className={"skeleton skeletonText"} /> */}
-            </div>
-        </a>
-    );
+      </div>
+    </a>
+  );
 }

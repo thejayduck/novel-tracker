@@ -6,7 +6,7 @@ interface SubtitleProps {
 }
 
 export function Subtitle({ text, icon }: SubtitleProps) {
-    return (
-        <h2 className={styles.subtitle}>{text} <i className={`bx-pull-right ${icon}`} /></h2>
-    );
+  return (
+    <h2 className={styles.subtitle}>{text} <i className={`bx-pull-right ${icon}`} /></h2>
+  );
 }

@@ -45,7 +45,9 @@ module.exports = {
         "semi-spacing": "error",
         "prefer-template": "error",
         "prefer-arrow-callback": "error",
-        "object-shorthand": "error"
+        "object-shorthand": "error",
+
+        "indent": ["error", 2]
     },
     ignorePatterns: ["public/**/*.js"],
 };

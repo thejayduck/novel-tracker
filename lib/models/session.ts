@@ -9,15 +9,15 @@ export interface ISession {
 }
 
 const sessionSchema = new mongoose.Schema<ISession>({
-    user_id: {
-        type: Schema.Types.ObjectId,
-        required: true,
-        ref: "User"
-    },
-    session_token: {
-        type: String,
-        required: true,
-    }
+  user_id: {
+    type: Schema.Types.ObjectId,
+    required: true,
+    ref: "User"
+  },
+  session_token: {
+    type: String,
+    required: true,
+  }
 }, { timestamps: true });
 
 const Session: mongoose.Model<ISession & mongoose.Document> = mongoose.models.Session || mongoose.model("Session", sessionSchema);

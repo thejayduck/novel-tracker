@@ -30,57 +30,57 @@ export interface ISubmitBook extends IBook {
 }
 
 const volumeSchema = new mongoose.Schema({
-    cover_url: {
-        type: String,
-        required: true,
-    },
-    chapters: {
-        type: Number,
-        required: true,
-    },
-    extras: {
-        type: Number,
-        default: 0,
-    },
+  cover_url: {
+    type: String,
+    required: true,
+  },
+  chapters: {
+    type: Number,
+    required: true,
+  },
+  extras: {
+    type: Number,
+    default: 0,
+  },
 });
 
 const bookSchemaDef = {
-    title_english: String,
-    title_romanized: String,
-    title_native: {
-        type: String,
-        required: true,
-    },
-    description: String,
-    author: {
-        type: String,
-        required: true,
-    },
-    cover_url: String,
-    banner_url: String,
-    release_status: {
-        type: String,
-        default: "Unknown",
-    },
-    start_date: Date,
-    end_date: Date,
-    volumes: {
-        type: [volumeSchema],
-        required: true,
-    }
+  title_english: String,
+  title_romanized: String,
+  title_native: {
+    type: String,
+    required: true,
+  },
+  description: String,
+  author: {
+    type: String,
+    required: true,
+  },
+  cover_url: String,
+  banner_url: String,
+  release_status: {
+    type: String,
+    default: "Unknown",
+  },
+  start_date: Date,
+  end_date: Date,
+  volumes: {
+    type: [volumeSchema],
+    required: true,
+  }
 };
 const bookSchema = new mongoose.Schema<IBook>(bookSchemaDef, { timestamps: true });
 
 const submitBookSchema = new mongoose.Schema<ISubmitBook>({
-    ...bookSchemaDef,
-    submitted_by: {
-        type: mongoose.Types.ObjectId,
-        required: true,
-    },
-    denied: {
-        type: Boolean,
-        required: true,
-    }
+  ...bookSchemaDef,
+  submitted_by: {
+    type: mongoose.Types.ObjectId,
+    required: true,
+  },
+  denied: {
+    type: Boolean,
+    required: true,
+  }
 }, { timestamps: true });
 
 const Book: mongoose.Model<IBook & mongoose.Document> = mongoose.models.Book || mongoose.model("Book", bookSchema);

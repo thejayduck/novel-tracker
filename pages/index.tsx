@@ -34,10 +34,10 @@ export default function Home({ user_info }) {
       </Head>
       <PageBase user_info={user_info}>
         <div className="flex flexColumn">
-            <Section title="Reading [20]" icon="bx bx-book-open" />
-            <Section title="Planning [20]" icon="bx bx-bookmarks" />
-            <Section title="Finished [20]" icon="bx bx-check" />
-            <Section title="Dropped [20]" icon="bx bx-trash-alt" />
+          <Section title="Reading [20]" icon="bx bx-book-open" />
+          <Section title="Planning [20]" icon="bx bx-bookmarks" />
+          <Section title="Finished [20]" icon="bx bx-check" />
+          <Section title="Dropped [20]" icon="bx bx-trash-alt" />
         </div>
       </PageBase>
     </>
@@ -45,31 +45,31 @@ export default function Home({ user_info }) {
 }
 
 function Section({ icon, title }) {
-    const [isOpen, setIsOpen] = useState(false);
-    const book_ids = [];
+  const [isOpen, setIsOpen] = useState(false);
+  const book_ids = [];
 
-    return (
-        <motion.div onClick={() => setIsOpen(prev => !prev)}  className={`${styles.sectionItem} flex flexColumn`}>
-                <Subtitle text={title} icon={icon} />
-                <AnimatePresence>
-                  {isOpen && 
-                    <motion.div
-                      className={`${styles.sectionItemList} flex flexRow`}
-                      initial={{height: 0, opacity: 0}}
-                      animate={{height: "max-content", opacity: 1}}
-                      exit={{height: 0, opacity: 0}}
+  return (
+    <motion.div onClick={() => setIsOpen(prev => !prev)} className={`${styles.sectionItem} flex flexColumn`}>
+      <Subtitle text={title} icon={icon} />
+      <AnimatePresence>
+        {isOpen &&
+          <motion.div
+            className={`${styles.sectionItemList} flex flexRow`}
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "max-content", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
 
-                      transition={{duration: 0.5}}
-                    >
-                      <BookCard />
-                      {
-                        book_ids.map(book_id => (
-                          <BookCard key={book_id} book_id={book_id} />
-                        ))
-                      }
-                    </motion.div>
-                  }
-                </AnimatePresence>
-        </motion.div>
-    );
+            transition={{ duration: 0.5 }}
+          >
+            <BookCard />
+            {
+              book_ids.map(book_id => (
+                <BookCard key={book_id} book_id={book_id} />
+              ))
+            }
+          </motion.div>
+        }
+      </AnimatePresence>
+    </motion.div>
+  );
 }

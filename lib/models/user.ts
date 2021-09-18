@@ -17,28 +17,28 @@ export interface IUser {
 }
 
 const userProgressSchema = new mongoose.Schema<IUserProgress>({
-    book_id: {
-        type: Schema.Types.ObjectId,
-        ref: "Book"
-    },
-    chapters: {
-        type: Number,
-        required: true,
-    },
-    volumes: {
-        type: Number,
-        required: true,
-    }
+  book_id: {
+    type: Schema.Types.ObjectId,
+    ref: "Book"
+  },
+  chapters: {
+    type: Number,
+    required: true,
+  },
+  volumes: {
+    type: Number,
+    required: true,
+  }
 }, { timestamps: true });
 
 const userSchema = new mongoose.Schema<IUser>({
-    google_user_id: { type: Number, required: true },
-    username: { type: String, default: null },
-    moderation_level: { type: Number, default: 0 },
-    books: {
-        type: [userProgressSchema],
-        default: [],
-    }
+  google_user_id: { type: Number, required: true },
+  username: { type: String, default: null },
+  moderation_level: { type: Number, default: 0 },
+  books: {
+    type: [userProgressSchema],
+    default: [],
+  }
 }, { timestamps: true });
 
 const User: mongoose.Model<IUser & mongoose.Document> = mongoose.models.User || mongoose.model("User", userSchema);
