@@ -1,3 +1,4 @@
+//@ts-nocheck
 import styles from "styles/SubmitPage.module.scss";
 
 import Head from "next/head";

@@ -1,7 +1,7 @@
 import { randomBytes } from "crypto";
 import mongoose, { Types } from "mongoose";
 
-import { Book, BookSubmission,IBook } from "./models/book";
+import { Book, BookSubmission, IBook } from "./models/book";
 import Session from "./models/session";
 import User, { IUserProgress, UserProgress } from "./models/user";
 
