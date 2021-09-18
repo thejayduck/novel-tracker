@@ -2,11 +2,14 @@
 import styles from "styles/components/Navigation.module.scss";
 
 import dynamic from "next/dynamic";
+import { useRouter } from "next/router";
 import { AnimatePresence } from "framer-motion";
 
 import { useState } from "react";
 
 import { NavigationButton } from "components/ui/button";
+
+import { useApi } from "lib/clientHelpers";
 
 import { DesktopOverlay, MobileMenu } from "./overlayMenu";
 import { useUserInfoContext } from "./pageBase";
@@ -19,6 +22,8 @@ export default function Navigation() {
   const [userMenu, setUserMenu] = useState(false);
 
   const userInfo = useUserInfoContext();
+  const api = useApi();
+  const router = useRouter();
 
   return (
     <nav className={`${styles.nav}`}>
@@ -62,7 +67,15 @@ export default function Navigation() {
           <DesktopOverlay title={"Account"} className={styles.userMenuOverlay} flexDirection="flexColumn" >
             <NavigationButton href={`/user/${userInfo.user_id}`} icon="bx bx-user bx-sm" text="Your Account" />
             <NavigationButton icon="bx bx-cog bx-sm" text="Settings" href="/settings" />
-            <NavigationButton icon="bx bx-log-out bx-sm" text="Log Out" />
+            <NavigationButton
+              icon="bx bx-log-out bx-sm"
+              text="Log Out"
+              onClick={() => {
+                api.logout(() => {
+                  router.push("/login");
+                });
+              }}
+            />
           </DesktopOverlay>
         }
       </AnimatePresence>

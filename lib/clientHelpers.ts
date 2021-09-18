@@ -123,14 +123,14 @@ export function useApi() {
     async getUserInfo(user_id: string, onSuccess?: (responseData: unknown) => void) {
       return getCall(`user/${user_id}/info`, {}, onSuccess).then(data => data as GetUserInfoResponse);
     },
-    /*async getUserInfo(onSuccess?: (responseData: void) => void) {
-            return getCall("me/info", {}, onSuccess);
-        },*/
     async getPendingBooks(onSuccess?: (responseData: unknown) => void) {
       return getCall("mod/get_pending_books", {}, onSuccess);
     },
     async getUserBookInfos(onSuccess?: (responseData: unknown) => void) {
       return getCall("me/get_book_infos", {}, onSuccess);
+    },
+    async logout(onSuccess?: (responseData: unknown) => void) {
+      return getCall("me/logout", {}, onSuccess);
     },
   };
 }
