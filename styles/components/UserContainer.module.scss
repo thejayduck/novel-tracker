@@ -38,6 +38,10 @@
   }
 }
 
+.userBig {
+  align-items: flex-end;
+}
+
 @supports (-webkit-touch-callout: none) {
   .userWrap {
     img {

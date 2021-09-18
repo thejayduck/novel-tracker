@@ -2,6 +2,7 @@
 import styles from "styles/components/UserContainer.module.scss";
 
 import convertDate from "./helper/convertData";
+import { NavigationButton } from "./ui/button";
 import { useUserInfoContext } from "./pageBase";
 
 export function UserSmall({ onDropDownClick, data }) {
@@ -41,7 +42,7 @@ export function UserBig({ userProfile }: UserBigProps) {
     };
 
     return (
-        <div className={`${styles.userWrap}`}>
+        <div className={`${styles.userWrap} ${styles.userBig}`}>
             <img className="skeleton" alt="Profile Picture" width={96} height={96} src={data.picture} />
             <div className={styles.statusWrap}>
                 {userProfile?.moderation_level > 0 &&
