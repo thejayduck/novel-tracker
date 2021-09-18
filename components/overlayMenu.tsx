@@ -114,6 +114,8 @@ export function MobileMenu({ onOutSideClick }) {
                         <NavigationButton href="/search" icon="bx bx-search bx-sm" text="Search" />
                         <NavigationButton href="#" icon="bx bx-chat bx-sm" text="Forums" />
                         <NavigationButton href="/settings" icon="bx bx-cog bx-sm" text="Settings" />
+                        {/* TODO MAKE THIS DATA MOD ONLY */}
+                        <NavigationButton href="/mod" icon="bx bx-add-to-queue bx-sm" text="Book Submission" />
                     </section>
                     <section>
                         <Subtitle text="Notifications (1)" />

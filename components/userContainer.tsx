@@ -11,7 +11,7 @@ export function UserSmall({ onDropDownClick, data }) {
     const userInfo = useUserInfoContext();
     return (
         <div className={`${styles.userWrap} ${styles.small}`}>
-            <a href={`/profile/${userInfo.user_id}`} className="flex">
+            <a href={`/user/${userInfo.user_id}`} className="flex">
                 <img className="skeleton" alt="Profile Picture" width={48} height={48} src={data.picture} />
                 <div className={styles.statusWrap}>
                     <span>{userInfo.username}</span>
