@@ -113,7 +113,7 @@ export function MobileMenu({ onOutSideClick }) {
                         <NavigationButton href="/" icon="bx bx-library bx-sm" text="Library" />
                         <NavigationButton href="/search" icon="bx bx-search bx-sm" text="Search" />
                         <NavigationButton href="#" icon="bx bx-chat bx-sm" text="Forums" />
-                        <NavigationButton href="#" icon="bx bx-cog bx-sm" text="Settings" />
+                        <NavigationButton href="/settings" icon="bx bx-cog bx-sm" text="Settings" />
                     </section>
                     <section>
                         <Subtitle text="Notifications (1)" />

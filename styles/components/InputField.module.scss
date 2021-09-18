@@ -15,6 +15,12 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+.inputField[type="color"] {
+  height: 50px;
+  border: 0;
+  padding: 0;
+  border-radius: var(--border);
+}
 
 .inputFieldWrap {
   input {

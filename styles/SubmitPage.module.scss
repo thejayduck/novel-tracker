@@ -64,6 +64,14 @@
 }
 
 @media screen and (max-width: 1024px) {
+  .section {
+    .sectionContainer {
+      div {
+        flex-direction: column;
+        width: 100%;
+      }
+    }
+  }
   .volumeItem {
     .removeBook {
       display: block;

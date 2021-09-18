@@ -200,13 +200,14 @@ li {
 .flexBetween {
   justify-content: space-between;
 }
-
 .flexColumn {
   flex-direction: column;
 }
-
 .flexRow {
   flex-direction: row;
+}
+.flexWrap {
+  flex-wrap: wrap;
 }
 
 // Font

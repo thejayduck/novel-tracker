@@ -1,11 +1,10 @@
 // @ts-nocheck
 import styles from "styles/SubmitPage.module.scss";
 
-// Components
 import Head from "next/head";
 
 import React, { useRef, useState } from "react";
-import nextId, { useId } from "react-id-generator";
+import nextId from "react-id-generator";
 
 import { useAlert } from "components/alertWrapper";
 import PageBase from "components/pageBase";
@@ -114,11 +113,11 @@ export default function SubmitPage({ book_id, user_info }: SubmitPageProps) {
                                 ref={releaseStatusRef}
                             />
                             <OptionSelect
-                                    title="Genre"
-                                    options={[
-                                        "TO IMPROVE",
-                                    ]}
-                                />
+                                title="Genre"
+                                options={[
+                                    "TO IMPROVE",
+                                ]}
+                            />
                         </div>
                         <div className="flex">
                             <InputField title="Start Date" inputType="date" ref={startDateRef} />
@@ -150,7 +149,7 @@ export default function SubmitPage({ book_id, user_info }: SubmitPageProps) {
                         {volumes.map((volume, idx) => (
                             <VolumeItem
                                 key={volume.id}
-                                // onRemoveClicked={}
+                                onRemoveClicked={() => null}
                                 image={volume.cover_url}
                                 onCoverUrlChange={newCover => {
                                     setVolumes(oldVolumes => {

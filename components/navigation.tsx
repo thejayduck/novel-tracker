@@ -45,10 +45,8 @@ export default function Navigation() {
                     <div className={`flex ${styles.rightMenu} desktop`}>
                         <ul className={`${styles.links}`}>
                             <LinkItem icon="bx bx-bell bx-tada-hover" title="Notifications" onClick={() => setNotification(prev => !prev)} />
-                            <LinkItem icon="bx bx-cog bx-spin-hover" title="Settings" href="/" />
                         </ul>
                         <UserSmall onDropDownClick={() => setUserMenu(prev => !prev)} />
-
                     </div>
                 }
             </div>
@@ -63,6 +61,7 @@ export default function Navigation() {
                 {userMenu &&
                     <DesktopOverlay title={"Account"} className={styles.userMenuOverlay} flexDirection="flexColumn" >
                         <NavigationButton href={`/profile/${userInfo.user_id}`} icon="bx bx-user bx-sm" text="Your Account" />
+                        <NavigationButton icon="bx bx-cog bx-sm" text="Settings" href="/settings" />
                         <NavigationButton icon="bx bx-log-out bx-sm" text="Log Out" />
                     </DesktopOverlay>
                 }
@@ -77,7 +76,6 @@ export default function Navigation() {
             </AnimatePresence>
         </nav >
     );
-
 }
 
 function LinkItem({ type, icon, title, href, onClick }) {
