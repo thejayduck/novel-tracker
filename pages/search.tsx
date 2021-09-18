@@ -32,22 +32,29 @@ export default function Search({ user_info }) {
   const [filterMenu, setFilterMenu] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
   const [searchQuery, setSearchQuery] = useDelayedState<string>(null, 500);
+  const [filter, setFilter] = useState({
+    year: "Any",
+    genre: "Any",
+    releaseStatus: "Any",
+  });
 
   const api = useApi();
 
   useEffect(() => {
+    console.log(filter);
     if (searchQuery != null && searchQuery.length > 0) {
-      api.searchBook(searchQuery, books => {
+      api.searchBook(searchQuery, filter, books => {
         console.log(books);
         setSearchResults(books);
       });
     } else {
       // TODO api to list all books?
-      api.searchBook("", books => {
+      api.searchBook("", filter, books => {
+        console.log(books);
         setSearchResults(books);
       });
     }
-  }, [searchQuery]);
+  }, [searchQuery, filter]);
 
   return (
     <>
@@ -65,7 +72,8 @@ export default function Search({ user_info }) {
               <DesktopOverlay title="Filter Results" className={styles.filterOverlay}>
                 <OptionSelect
                   title="Release Status"
-                  options={["All", "Finished", "Releasing", "Cancelled", "Hiatus", "Coming Soon"]}
+                  options={["Any", "Finished", "Releasing", "Cancelled", "Hiatus", "Coming Soon"]}
+                  onChange={(e: unknown) => setFilter(oldFilter => ({ ...oldFilter, releaseStatus: e.target.value }))}
                 />
                 <OptionSelect
                   title="Genre"
@@ -115,14 +123,15 @@ export default function Search({ user_info }) {
                     "Super Power",
                     "Yuri",
                   ]}
+                  onChange={(e: unknown) => setFilter(oldFilter => ({ ...oldFilter, genre: e.target.value }))}
                 />
                 <OptionSelect
                   title="Year"
                   options={[
-                    "2022",
-                    "2021",
-                    "2020"
+                    "Any",
+                    ...[...Array(20).keys()].map((n: number) => (new Date(Date.now()).getUTCFullYear() + 1) - n)
                   ]}
+                  onChange={(e: unknown) => setFilter(oldFilter => ({ ...oldFilter, year: e.target.value }))}
                 />
               </DesktopOverlay>
             }
@@ -138,7 +147,7 @@ export default function Search({ user_info }) {
         </div>
 
         <AnimatePresence>
-          {filterMenu &&
+          {filterMenu && //TODO JayDuck, fix this to be consistent with desktop
             <MobileOverlay title={"Filter Results"} onOutSideClick={() => setFilterMenu(false)} >
               <OptionSelect
                 title="Release Status"
@@ -196,6 +205,7 @@ export default function Search({ user_info }) {
               <OptionSelect
                 title="Year"
                 options={[
+                  "Any",
                   "2022",
                   "2021",
                   "2020"

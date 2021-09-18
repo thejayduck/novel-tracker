@@ -49,9 +49,10 @@ export async function getBook(book_id: Types.ObjectId) {
   return await Book.findById(book_id);
 }
 
-export async function searchBook(query: string) {
-  return await Book.find({
-    $or: [
+export async function searchBook(query: string | null, releaseStatus: string | null, genre: string | null, year: number | null) {
+  const findQuery: any = {} as any;
+  if (query != null && query.length > 0) {
+    findQuery.$or = [
       {
         title_native: new RegExp(query, "gi"),
       },
@@ -61,8 +62,21 @@ export async function searchBook(query: string) {
       {
         title_english: new RegExp(query, "gi"),
       }
-    ]
-  });
+    ];
+  }
+  if (releaseStatus != null) {
+    findQuery.release_status = releaseStatus;
+  }
+  if (genre != null) {
+    findQuery.genre = genre;
+  }
+  if (year != null) {
+    findQuery.start_date = {
+      $gt: new Date(Date.UTC(year - 1, 11, 31, 23, 59, 59, 999)),
+      $lte: new Date(Date.UTC(year, 11, 31, 23, 59, 59, 999))
+    };
+  }
+  return await Book.find(findQuery);
 }
 
 export async function getPendingBooks() {
