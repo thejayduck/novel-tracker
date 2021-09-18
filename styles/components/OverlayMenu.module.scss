@@ -24,7 +24,7 @@
 
     .children {
       background-color: var(--accent-dark);
-      border-radius: var(--border);
+      border-radius: var(--border) var(--border) 0 0;
       padding: var(--padding-normal);
       margin-top: var(--padding-small);
       max-height: 400px;
