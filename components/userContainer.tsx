@@ -2,7 +2,6 @@
 import styles from "styles/components/UserContainer.module.scss";
 
 import convertDate from "./helper/convertData";
-import { NavigationButton } from "./ui/button";
 import { useUserInfoContext } from "./pageBase";
 
 export function UserSmall({ onDropDownClick, data }) {

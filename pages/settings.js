@@ -4,6 +4,7 @@ import Head from "next/head";
 
 import PageBase from "components/pageBase";
 import { Subtitle } from "components/subtitle";
+import { NavigationButton } from "components/ui/button";
 import { InputField, OptionSelect } from "components/ui/inputField";
 
 export default function Settings() {
@@ -33,6 +34,18 @@ export default function Settings() {
                     <Subtitle text="Customization" />
 
                     <div className={`${styles.sectionContainer}`}>
+                        <div>
+                            <OptionSelect
+                                title="Title Language"
+                                options={[
+                                    "English",
+                                    "Romanized",
+                                    "Native",
+                                ]}
+                            />
+                            <InputField title="Border Radius" inputType="number" defaultValue={5} />
+                            <InputField title="Blur Amount" inputType="number" defaultValue={10} />
+                        </div>
                         <div className="flex">
                             <InputField title="Accent" inputType="color" defaultValue="#854dff" />
                             <InputField title="Accent Dark" inputType="color" defaultValue="#570099" />
@@ -49,11 +62,8 @@ export default function Settings() {
                             <InputField title="Selection" inputType="color" defaultValue="#854dff" />
                             <InputField title="Alert" inputType="color" defaultValue="#ff1a1a" />
                         </div>
-                        <div className="flex">
-                            <InputField title="Border Radius" inputType="number" defaultValue={5} />
-                            <InputField title="Blur Amount" inputType="number" defaultValue={10} />
-                        </div>
                     </div>
+                    <NavigationButton text="Delete Account" icon="bx bxs-user-x bx-sm" />
                 </section>
             </PageBase>
         </>
