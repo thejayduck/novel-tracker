@@ -1,32 +1,32 @@
 import mongoose, { Schema, Types } from "mongoose";
 
 export interface IVolume {
-    cover_url: string,
-    chapters: number,
-    extras: number,
+  cover_url: string,
+  chapters: number,
+  extras: number,
 }
 
 export interface ISimpleBook {
-    _id: Types.ObjectId,
-    title_english?: string,
-    title_romanized?: string,
-    title_native: string,
-    description: string,
-    author: string,
-    cover_url?: string,
-    banner_url?: string,
-    release_status: string,
-    start_date: Date,
-    end_date: Date,
+  _id: Types.ObjectId,
+  title_english?: string,
+  title_romanized?: string,
+  title_native: string,
+  description: string,
+  author: string,
+  cover_url?: string,
+  banner_url?: string,
+  release_status: string,
+  start_date: Date,
+  end_date: Date,
 }
 
 export interface IBook extends ISimpleBook {
-    volumes: [IVolume]
+  volumes: [IVolume]
 }
 
 export interface ISubmitBook extends IBook {
-    submitted_by: Schema.Types.ObjectId,
-    denied: boolean,
+  submitted_by: Schema.Types.ObjectId,
+  denied: boolean,
 }
 
 const volumeSchema = new mongoose.Schema({

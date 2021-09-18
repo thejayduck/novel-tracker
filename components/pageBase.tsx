@@ -1,7 +1,7 @@
 // @ts-nocheck
 import styles from "styles/PageBase.module.scss";
 
-import { createContext , useContext } from "react";
+import { createContext, useContext } from "react";
 
 import Footer from "./footer";
 // Components

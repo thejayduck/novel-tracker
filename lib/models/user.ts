@@ -1,19 +1,19 @@
-import mongoose, { Schema,Types } from "mongoose";
+import mongoose, { Schema, Types } from "mongoose";
 
 export interface IUserProgress {
-    book_id: Types.ObjectId,
-    chapters: number,
-    volumes: number,
+  book_id: Types.ObjectId,
+  chapters: number,
+  volumes: number,
 }
 
 export interface IUser {
-    _id: Types.ObjectId,
-    google_user_id: number
-    username: string | null,
-    moderation_level: number,
-    createdAt: Date,
-    updatedAt: Date,
-    books: [IUserProgress],
+  _id: Types.ObjectId,
+  google_user_id: number
+  username: string | null,
+  moderation_level: number,
+  createdAt: Date,
+  updatedAt: Date,
+  books: [IUserProgress],
 }
 
 const userProgressSchema = new mongoose.Schema<IUserProgress>({

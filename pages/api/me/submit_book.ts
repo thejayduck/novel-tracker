@@ -1,5 +1,5 @@
 import { withInfoHelperPost } from "lib/apiHelpers";
-import { getBook,submitBook } from "lib/db";
+import { getBook, submitBook } from "lib/db";
 import { parseID } from "lib/types";
 
 export default withInfoHelperPost(["book_details"], async (_, params, user_info) => {

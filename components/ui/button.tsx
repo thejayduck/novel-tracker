@@ -1,12 +1,12 @@
 import styles from "styles/components/Button.module.scss";
 
 export interface ButtonProps {
-    title?: string,
-    text?: string,
-    icon?: string,
-    onClick?: () => void,
-    href?: string,
-    newTab?: boolean,
+  title?: string,
+  text?: string,
+  icon?: string,
+  onClick?: () => void,
+  href?: string,
+  newTab?: boolean,
 }
 
 export function NavigationButton({ text, icon, onClick, href, newTab }: ButtonProps) {

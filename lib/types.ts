@@ -1,12 +1,12 @@
-import { isValidObjectId,Types } from "mongoose";
+import { isValidObjectId, Types } from "mongoose";
 
 import { IBook } from "./models/book";
 
 export function isID(id: any): boolean {
   return id != undefined
-        && id != null
-        && typeof id === "number"
-        && Number.isInteger(id);
+    && id != null
+    && typeof id === "number"
+    && Number.isInteger(id);
 }
 
 export function parseID(id: any): Types.ObjectId {
@@ -19,8 +19,8 @@ export function parseID(id: any): Types.ObjectId {
 export function isToken(id: any): boolean {
   // TODO Actual check
   return id != undefined
-        && id != null
-        && typeof id === "string";
+    && id != null
+    && typeof id === "string";
 }
 
 export function createSerializableBookInfo(book: IBook): any {

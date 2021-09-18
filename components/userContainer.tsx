@@ -30,7 +30,7 @@ const moderationLevelNames = {
 };
 
 interface UserBigProps {
-    userProfile: GetUserInfoResponse,
+  userProfile: GetUserInfoResponse,
 }
 
 export function UserBig({ userProfile }: UserBigProps) {
@@ -45,11 +45,11 @@ export function UserBig({ userProfile }: UserBigProps) {
       <img className="skeleton" alt="Profile Picture" width={96} height={96} src={data.picture} />
       <div className={styles.statusWrap}>
         {userProfile?.moderation_level > 0 &&
-                    <span title={"Moderation Level"} className={styles.status}>{userProfile ? moderationLevelNames[userProfile.moderation_level] : "Loading..."}</span>
+          <span title={"Moderation Level"} className={styles.status}>{userProfile ? moderationLevelNames[userProfile.moderation_level] : "Loading..."}</span>
         }
         <span className="fontLarge">{userProfile ? userProfile.username : "Loading..."}</span>
         <span className="fontSmall">
-                    Joined {userProfile ? convertDate(userProfile.createdAt) : "Loading..."}
+          Joined {userProfile ? convertDate(userProfile.createdAt) : "Loading..."}
           <br />
           {data.followers} Followers / {data.following} Following
         </span>

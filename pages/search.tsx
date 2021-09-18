@@ -38,6 +38,7 @@ export default function Search({ user_info }) {
   useEffect(() => {
     if (searchQuery != null && searchQuery.length > 0) {
       api.searchBook(searchQuery, books => {
+        console.log(books);
         setSearchResults(books);
       });
     } else {

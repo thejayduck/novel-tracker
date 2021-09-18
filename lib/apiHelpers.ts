@@ -23,8 +23,8 @@ export function withHelperBareGet<T>(required_fields: string[], callback: (token
       const missing = required_fields.filter(required_field => {
         const value = req.query[required_field];
         return value == undefined
-                    || value == null
-                    || (typeof value == "string" && !value);
+          || value == null
+          || (typeof value == "string" && !value);
       });
 
       if (missing.length > 0) {
@@ -77,8 +77,8 @@ export function withHelperBarePost<T>(required_fields: string[], callback: (toke
       const missing = required_fields.filter(required_field => {
         const value = req.body[required_field];
         return value == undefined
-                    || value == null
-                    || (typeof value == "string" && !value);
+          || value == null
+          || (typeof value == "string" && !value);
       });
 
       if (missing.length > 0) {

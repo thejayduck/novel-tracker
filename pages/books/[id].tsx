@@ -85,24 +85,24 @@ export default function Book({ user_info }) {
         </section>
 
         <AnimatePresence>
-          {onOverlayOpen && 
-                        <DesktopOverlay title={"Add Book As"} className={styles.addOverlay} flexDirection="flexColumn" >
-                          <NavigationButton icon="bx bx-bookmark bx-sm" text="Reading" />
-                          <NavigationButton icon="bx bx-calendar bx-sm" text="Planning" />
-                          <NavigationButton icon="bx bx-check-square bx-sm" text="Finished" />
-                          <NavigationButton icon="bx bx-trash-alt bx-sm" text="Dropped" />
-                        </DesktopOverlay>
+          {onOverlayOpen &&
+            <DesktopOverlay title={"Add Book As"} className={styles.addOverlay} flexDirection="flexColumn" >
+              <NavigationButton icon="bx bx-bookmark bx-sm" text="Reading" />
+              <NavigationButton icon="bx bx-calendar bx-sm" text="Planning" />
+              <NavigationButton icon="bx bx-check-square bx-sm" text="Finished" />
+              <NavigationButton icon="bx bx-trash-alt bx-sm" text="Dropped" />
+            </DesktopOverlay>
           }
         </AnimatePresence>
 
         <AnimatePresence>
-          {onOverlayOpen &&                 
-                        <MobileOverlay title={"Add Book As"} onOutSideClick={() => setOnOverlayOpen(false)}>
-                          <NavigationButton icon="bx bx-bookmark bx-sm" text="Reading" />
-                          <NavigationButton icon="bx bx-calendar bx-sm" text="Planning" />
-                          <NavigationButton icon="bx bx-check-square bx-sm" text="Finished" />
-                          <NavigationButton icon="bx bx-trash-alt bx-sm" text="Dropped" />
-                        </MobileOverlay>
+          {onOverlayOpen &&
+            <MobileOverlay title={"Add Book As"} onOutSideClick={() => setOnOverlayOpen(false)}>
+              <NavigationButton icon="bx bx-bookmark bx-sm" text="Reading" />
+              <NavigationButton icon="bx bx-calendar bx-sm" text="Planning" />
+              <NavigationButton icon="bx bx-check-square bx-sm" text="Finished" />
+              <NavigationButton icon="bx bx-trash-alt bx-sm" text="Dropped" />
+            </MobileOverlay>
           }
         </AnimatePresence>
 

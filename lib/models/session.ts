@@ -1,11 +1,11 @@
-import mongoose, { Schema,Types } from "mongoose";
+import mongoose, { Schema, Types } from "mongoose";
 
 export interface ISession {
-    _id: Types.ObjectId,
-    user_id: Types.ObjectId,
-    session_token: string,
-    createdAt: Date,
-    updatedAt: Date,
+  _id: Types.ObjectId,
+  user_id: Types.ObjectId,
+  session_token: string,
+  createdAt: Date,
+  updatedAt: Date,
 }
 
 const sessionSchema = new mongoose.Schema<ISession>({

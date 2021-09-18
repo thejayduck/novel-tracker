@@ -1,8 +1,8 @@
 import styles from "styles/components/Subtitle.module.scss";
 
 interface SubtitleProps {
-    text: string,
-    icon?: string,
+  text: string,
+  icon?: string,
 }
 
 export function Subtitle({ text, icon }: SubtitleProps) {
