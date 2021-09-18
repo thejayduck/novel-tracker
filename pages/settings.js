@@ -63,7 +63,14 @@ export default function Settings() {
                             <InputField title="Alert" inputType="color" defaultValue="#ff1a1a" />
                         </div>
                     </div>
-                    <NavigationButton text="Delete Account" icon="bx bxs-user-x bx-sm" />
+                </section>
+                <section className={styles.section}>
+                    <Subtitle text="Other Actions" />
+
+                    <div className={`${styles.sectionContainer} flex`}>
+                        <NavigationButton text="Delete Library" icon="bx bx-bookmark-minus bx-sm" />
+                        <NavigationButton text="Delete Account" icon="bx bxs-user-x bx-sm" />
+                    </div>
                 </section>
             </PageBase>
         </>
