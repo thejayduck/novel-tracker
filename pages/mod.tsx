@@ -4,7 +4,7 @@ import styles from "styles/ModPanel.module.scss";
 import React, { useEffect, useState } from "react";
 
 import { useAlert } from "components/alertWrapper";
-import VolumeCard from "components/cards/volumeCard";
+import VolumeCard from "components/cards/card";
 import convertDate from "components/helper/convertData";
 import PageBase from "components/pageBase";
 import { Subtitle } from "components/subtitle";

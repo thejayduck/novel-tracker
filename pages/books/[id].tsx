@@ -17,7 +17,7 @@ import { NavigationButton } from "components/ui/button";
 import { GetBookResponse, useApi } from "lib/clientHelpers";
 import { serverSide_checkAuth } from "lib/serverHelpers";
 
-const VolumeCard = dynamic(() => import("components/cards/volumeCard"));
+const VolumeCard = dynamic(() => import("components/cards/card"));
 
 export async function getServerSideProps(context) {
   const [redirect, info] = await serverSide_checkAuth(context, false, false, false);
@@ -47,14 +47,14 @@ export default function Book({ user_info }) {
   return (
     <>
       <Head>
-        <title>Book · Novel Tracker</title>
+        <title>{book?.title_english || "Book"} · Novel Tracker</title>
       </Head>
       <PageBase user_info={user_info}>
 
         <section className={`${styles.headerWrap} flex flexColumn`}>
-          <img className={`${styles.background} skeleton`} src={book?.volumes[0].cover_url} />
+          <img className={`${styles.background} skeleton`} src={book?.banner_url} />
           <div>
-            <img className="skeleton" width={200} height={300} src={book?.volumes[0].cover_url} />
+            <img className="skeleton" width={200} height={300} src={book?.cover_url} />
             <NavigationButton text="Add to Library" icon="bx bx-list-plus bx-sm" onClick={() => setOnOverlayOpen(prev => !prev)} />
           </div>
           <h1>{book?.title_english || "Loading..."}</h1>
@@ -86,7 +86,7 @@ export default function Book({ user_info }) {
 
         <AnimatePresence>
           {onOverlayOpen &&
-            <DesktopOverlay title={"Add Book As"} className={styles.addOverlay} flexDirection="flexColumn" >
+            <DesktopOverlay title={"Add Book As"} className={styles.addOverlay}>
               <NavigationButton icon="bx bx-bookmark bx-sm" text="Reading" />
               <NavigationButton icon="bx bx-calendar bx-sm" text="Planning" />
               <NavigationButton icon="bx bx-check-square bx-sm" text="Finished" />

@@ -40,9 +40,9 @@ export default function Navigation() {
           {userInfo && <LinkItem text={true} title="Library" href="/" />}
           <LinkItem text={true} title="Search" href="/search" />
           <LinkItem text={true} title="Forums" href="/" />
-          {userInfo && <LinkItem text={true} title="Submit Book" href="/submit" />}
+          {userInfo && <LinkItem text={true} title="Submit" href="/submit" />}
           {userInfo?.moderation_level > 0 &&
-            <LinkItem text={true} title="Mod Panel" href="/mod" />
+            <LinkItem text={true} title="Submissions" href="/mod" />
           }
         </ul>
 

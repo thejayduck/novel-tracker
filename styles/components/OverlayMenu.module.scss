@@ -35,6 +35,20 @@
   }
 }
 
+.desktopOverlay {
+  padding: var(--padding-small) 0 0 0;
+  text-align: center;
+  z-index: var(--z-fixed);
+
+  .children {
+    text-align: initial;
+    background-color: var(--accent-dark);
+    padding: var(--padding-small);
+    margin-top: 10px;
+    border-radius: var(--border);
+  }
+}
+
 .mobileMenuWrap {
   position: fixed;
   width: 100%;
@@ -64,19 +78,5 @@
       border-radius: var(--border) var(--border) 0 0;
       background-color: var(--accent-dark);
     }
-  }
-}
-
-.desktopOverlay {
-  padding: var(--padding-small) 0 0 0;
-  text-align: center;
-  z-index: var(--z-fixed);
-
-  .children {
-    text-align: initial;
-    background-color: var(--accent-dark);
-    padding: var(--padding-small);
-    margin-top: 10px;
-    border-radius: var(--border);
   }
 }

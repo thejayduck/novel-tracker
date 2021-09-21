@@ -14,7 +14,7 @@ import { Subtitle } from "components/subtitle";
 import { serverSide_checkAuth } from "lib/serverHelpers";
 
 
-const BookCard = dynamic(() => import("../components/cards/volumeCard"));
+const BookCard = dynamic(() => import("../components/cards/card"));
 
 export async function getServerSideProps(context) {
   const [redirect, info] = await serverSide_checkAuth(context, true, false, false);

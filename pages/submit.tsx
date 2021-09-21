@@ -61,6 +61,7 @@ export default function SubmitPage({ book_id, user_info }: SubmitPageProps) {
       description: descriptionRef.current.value,
       author: authorNameRef.current.value,
       // TODO
+      cover_url: null,
       genre: null,
       release_status: releaseStatusRef.current.value,
       start_date: startDateRef.current.value,

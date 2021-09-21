@@ -16,7 +16,7 @@ import { InputFieldNonManaged, OptionSelect } from "components/ui/inputField";
 import { useApi, useDelayedState } from "lib/clientHelpers";
 import { serverSide_checkAuth } from "lib/serverHelpers";
 
-const VolumeCard = dynamic(() => import("components/cards/volumeCard"));
+const VolumeCard = dynamic(() => import("components/cards/card"));
 
 export async function getServerSideProps(context) {
   const [redirect, info] = await serverSide_checkAuth(context, false, false, false);
@@ -206,9 +206,7 @@ export default function Search({ user_info }) {
                 title="Year"
                 options={[
                   "Any",
-                  "2022",
-                  "2021",
-                  "2020"
+                  ...[...Array(20).keys()].map((n: number) => (new Date(Date.now()).getUTCFullYear() + 1) - n)
                 ]}
               />
             </MobileOverlay>

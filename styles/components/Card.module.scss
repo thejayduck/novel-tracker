@@ -2,12 +2,27 @@
   margin-bottom: 1rem;
   width: 200px;
   transition: transform 250ms ease-in-out;
+  position: relative;
+
+  .editButton {
+    position: absolute;
+    color: white;
+    background-color: var(--accent);
+    padding: var(--padding-small);
+    top: 10px;
+    right: 10px;
+    border-radius: var(--border);
+    z-index: var(--z-fixed);
+
+    &:hover {
+      background-color: var(--accent-dark);
+    }
+  }
 
   .book {
     background-color: var(--accent);
     border-radius: var(--border);
     height: 300px;
-    position: relative;
     overflow: hidden;
 
     img {

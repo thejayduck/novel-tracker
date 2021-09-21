@@ -18,6 +18,20 @@ const constrains = {
   bottom: 0,
 };
 
+// const mobileVariant = {
+//   initial: { y: 100 },
+//   animate: { y: 0 },
+//   exit: {y: 500},
+//   transition: {duration: 0.2},
+// };
+
+// const desktopVariant = {
+//   initial: { translateY: -20, opacity: 0 },
+//   animate: { translateY: 0, opacity: 1 },
+//   exit: { translateY: -20, opacity: 0 },
+// };
+
+
 export function MobileOverlay({ title, onOutSideClick, children }) {
   const [velocity, setVelocity] = useState();
   useEffect(() => {
@@ -60,6 +74,32 @@ export function MobileOverlay({ title, onOutSideClick, children }) {
           {children}
         </div>
       </motion.div>
+    </motion.div>
+  );
+}
+
+export function DesktopOverlay({ title, children, className, flexDirection }) {
+  return (
+    <motion.div
+      className={`floatingMenu desktop ${className} ${styles.desktopOverlay}`}
+
+      initial={{
+        translateY: -20,
+        opacity: 0
+      }}
+      animate={{
+        translateY: 0,
+        opacity: 1
+      }}
+      exit={{
+        translateY: -20,
+        opacity: 0
+      }}
+    >
+      <span>{title}</span>
+      <div className={`${styles.children} flex ${flexDirection}`}>
+        {children}
+      </div>
     </motion.div>
   );
 }
@@ -125,32 +165,6 @@ export function MobileMenu({ onOutSideClick }) {
           </section>
         </div>
       </motion.div>
-    </motion.div>
-  );
-}
-
-export function DesktopOverlay({ title, children, className, flexDirection }) {
-  return (
-    <motion.div
-      className={`floatingMenu desktop ${className} ${styles.desktopOverlay}`}
-
-      initial={{
-        translateY: -20,
-        opacity: 0
-      }}
-      animate={{
-        translateY: 0,
-        opacity: 1
-      }}
-      exit={{
-        translateY: -20,
-        opacity: 0
-      }}
-    >
-      <span>{title}</span>
-      <div className={`${styles.children} flex ${flexDirection}`}>
-        {children}
-      </div>
     </motion.div>
   );
 }
