@@ -114,20 +114,25 @@ export function useApi() {
     async updateChaptersRead(book_id: string, new_chapters_read: number, onSuccess?: (responseData: unknown) => void) {
       return postCall("me/update_chapters_read", { book_id, new_chapters_read }, onSuccess);
     },
-    async searchBook(title: string, filters: { releaseStatus: string, genre: string, year: string }, onSuccess?: (responseData: unknown) => void) {
-      const params: any = {};
+    async searchBook(title: string, filters: { releaseStatus: string, genre: string, year: string, mine: boolean, tracking_status: string }, onSuccess?: (responseData: unknown) => void) {
+      const params: any = {
+        mine: filters.mine,
+      };
       if (title.length > 0) {
         params.query = title;
       }
       // TODO map and filter instead
-      if (filters.releaseStatus != "Any") {
+      if (filters.releaseStatus && filters.releaseStatus != "Any") {
         params.releaseStatus = filters.releaseStatus;
       }
-      if (filters.genre != "Any") {
+      if (filters.genre && filters.genre != "Any") {
         params.genre = filters.genre;
       }
-      if (filters.year != "Any") {
+      if (filters.year && filters.year != "Any") {
         params.year = filters.year;
+      }
+      if (filters.mine && filters.tracking_status && filters.tracking_status != "Any") {
+        params.tracking_status = filters.tracking_status;
       }
       return getCall("search_book", params, onSuccess);
     },

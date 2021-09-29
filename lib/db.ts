@@ -49,7 +49,8 @@ export async function getBook(book_id: Types.ObjectId) {
   return await Book.findById(book_id);
 }
 
-export async function searchBook(query: string | null, releaseStatus: string | null, genre: string | null, year: number | null) {
+// TODO decouple this from parameter stuff
+export async function searchBook(user_id: Types.ObjectId, query: string | null, releaseStatus: string | null, genre: string | null, year: number | null, mine: boolean, tracking_status: string | null) {
   const findQuery: any = {} as any;
   if (query != null && query.length > 0) {
     findQuery.$or = [
@@ -74,6 +75,16 @@ export async function searchBook(query: string | null, releaseStatus: string | n
     findQuery.start_date = {
       $gt: new Date(Date.UTC(year - 1, 11, 31, 23, 59, 59, 999)),
       $lte: new Date(Date.UTC(year, 11, 31, 23, 59, 59, 999))
+    };
+  }
+  if (mine) {
+    const user = await User.findById(user_id);
+    let books: IUserProgress[] = user.books;
+    if (tracking_status != null) {
+      books = books.filter(progress => progress.tracking_status === tracking_status);
+    }
+    findQuery._id = {
+      $in: books.map(book => book.book_id),
     };
   }
   return await Book.find(findQuery);

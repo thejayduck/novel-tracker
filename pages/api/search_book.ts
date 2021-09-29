@@ -1,6 +1,7 @@
 import { withHelperBareGet } from "lib/apiHelpers";
-import { searchBook } from "lib/db";
+import { getUserId, searchBook } from "lib/db";
 
-export default withHelperBareGet([], async (_, params) => {
-  return await searchBook(params.query, params.releaseStatus, params.genre, params.year && Number.parseInt(params.year));
+export default withHelperBareGet([], async (token, params) => {
+  const user_id = await getUserId(token);
+  return await searchBook(user_id, params.query, params.releaseStatus, params.genre, params.year && Number.parseInt(params.year), params.mine == "true", params.tracking_status);
 });

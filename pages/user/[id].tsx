@@ -7,6 +7,7 @@ import { AnimatePresence, motion } from "framer-motion";
 
 import React, { useEffect, useState } from "react";
 
+import Card from "components/cards/card";
 import PageBase from "components/pageBase";
 import { Subtitle } from "components/subtitle";
 import { UserBig } from "components/userContainer";
@@ -44,6 +45,9 @@ export default function Profile({ user_info }) {
     const userProfile = await api.getUserInfo(id);
     setUserProfile(userProfile);
   });
+
+  const [readingBooks, setReadingBooks] = useState();
+
   return (
     <>
       <Head>
@@ -56,7 +60,16 @@ export default function Profile({ user_info }) {
         </section>
         <Subtitle text="Library" />
         <section className={`${styles.statisticWrap} flex flexBetween flexColumn`} >
-          <StatisticItem title="Reading" icon="bx bx-bookmark" stat={`${data.reading_books} Books`} />
+          <StatisticItem title="Reading" icon="bx bx-bookmark" stat={`${data.reading_books} Books`} onOpenChanged={async (isOpen) => {
+            if (isOpen) {
+              const books = await api.searchBook("", { mine: true, tracking_status: "Reading" });
+              setReadingBooks(books);
+            } else {
+              setReadingBooks([]);
+            }
+          }}>
+            {readingBooks && readingBooks.map((book: any) => <Card key={book._id} data={book} />)}
+          </StatisticItem>
           <StatisticItem title="Finished" icon="bx bx-check-square" stat={`${data.finished_books} Books`} />
           <StatisticItem title="Planning" icon="bx bx-calendar" stat={`${data.planned_books} Books`} />
           <StatisticItem title="Dropped" icon="bx bx-trash-alt" stat={`${data.dropped_books} Books`} />
@@ -66,8 +79,13 @@ export default function Profile({ user_info }) {
   );
 }
 
-function StatisticItem({ icon, title, stat, children }) {
+function StatisticItem({ icon, title, stat, children, onOpenChanged }) {
   const [isOpen, setIsOpen] = useState(false);
+  useEffect(() => {
+    if (onOpenChanged) {
+      onOpenChanged(isOpen);
+    }
+  }, [isOpen]);
 
   return (
     <>

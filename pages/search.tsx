@@ -7,7 +7,7 @@ import { AnimatePresence } from "framer-motion";
 
 import React, { useEffect, useState } from "react";
 
-import { DesktopOverlay, MobileOverlay } from "components/overlayMenu";
+import { Overlay } from "components/overlayMenu";
 // Components
 import PageBase from "components/pageBase";
 import { Subtitle } from "components/subtitle";
@@ -26,18 +26,6 @@ export async function getServerSideProps(context) {
       user_info: info,
     },
   };
-}
-
-// TODO TheJayDuck, detect mobile in code properly
-function Overlay({ children, onOutsideClick }) {
-  return <>
-    <DesktopOverlay title="Filter Results" className={styles.filterOverlay}>
-      {children}
-    </DesktopOverlay>
-    <MobileOverlay title="Filter Results" onOutSideClick={onOutsideClick}>
-      {children}
-    </MobileOverlay>
-  </>;
 }
 
 export default function Search({ user_info }) {

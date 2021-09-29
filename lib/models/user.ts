@@ -4,6 +4,7 @@ export interface IUserProgress {
   book_id: Types.ObjectId,
   chapters: number,
   volumes: number,
+  tracking_status: string,
 }
 
 export interface IUser {
@@ -28,6 +29,10 @@ const userProgressSchema = new mongoose.Schema<IUserProgress>({
   volumes: {
     type: Number,
     required: true,
+  },
+  tracking_status: {
+    type: String,
+    default: "Reading"
   }
 }, { timestamps: true });
 
