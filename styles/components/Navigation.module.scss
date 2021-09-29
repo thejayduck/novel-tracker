@@ -16,6 +16,12 @@
   user-select: none;
   padding: var(--padding-small);
 
+  .linkItem {
+    background-color: var(--accent-dark);
+    padding: 11px;
+    border-radius: var(--border);
+  }
+
   .container {
     height: 100%;
     width: 100%;
@@ -26,13 +32,9 @@
     }
 
     .links {
-      border-radius: var(--border);
-
       color: white;
-      padding: 11px;
 
       height: 100%;
-      background-color: var(--accent-dark);
 
       gap: 10px;
 

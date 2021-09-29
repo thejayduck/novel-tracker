@@ -11,12 +11,12 @@ export default function Card({ data }: CardProps) {
   return (
     <a className={styles.bookWrap}>
       <div className={styles.book}>
-        <img width={200} height={300} src={data?.cover_url} />
+        <img className="skeleton" width={200} height={300} src={data?.cover_url || "https://dummyimage.com/200x300/000/ffffff.png&text=+No+Cover"} />
       </div>
-      < div className={styles.title} >
+      <div className={styles.title} >
         <p>{data?.title_native}</p>
       </div>
-      {/* <a className={styles.editButton}><i className="bx bx-plus bx-sm"/></a> */}
+      <a title="Add to Library" className={styles.editButton}><i className="bx bx-plus bx-sm"/></a>
     </a>
   );
 }

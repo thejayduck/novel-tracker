@@ -76,7 +76,6 @@ export default function Book({ user_info }) {
             <DetailItem title="Start Date" value={convertDate(book?.start_date)} />
             <DetailItem title="End Date" value={convertDate(book?.end_date)} />
           </div>
-          {/* TODO make description constant size */}
           <p>{book?.description || "Loading..."}</p>
           <Subtitle text={`Volumes [${book?.volumes.length}]`} />
           <div className={`${styles.volumeList} flex`}>
@@ -86,7 +85,7 @@ export default function Book({ user_info }) {
 
         <AnimatePresence>
           {onOverlayOpen &&
-            <DesktopOverlay title={"Add Book As"} className={styles.addOverlay}>
+            <DesktopOverlay title={"Add Book As"} className={styles.addOverlay} flexDirection="flexColumn">
               <NavigationButton icon="bx bx-bookmark bx-sm" text="Reading" />
               <NavigationButton icon="bx bx-calendar bx-sm" text="Planning" />
               <NavigationButton icon="bx bx-check-square bx-sm" text="Finished" />

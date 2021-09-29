@@ -91,9 +91,9 @@ export default function Navigation() {
   );
 }
 
-function LinkItem({ type, icon, title, text, href, onClick }) {
+function LinkItem({icon, title, text, href, onClick }) {
   return (
-    <li className={type}>
+    <li className={styles.linkItem}>
       <a title={title} href={href} onClick={onClick} >
         {text && <span>{title}</span>}
         {icon && <i className={`${icon} bx-sm`} />}
