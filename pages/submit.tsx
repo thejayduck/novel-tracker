@@ -115,9 +115,9 @@ export default function SubmitPage({ book_id, user_info }: SubmitPageProps) {
               />
               <OptionSelect
                 title="Genre"
-                options={[
-                  "TO IMPROVE",
-                ]}
+                options={
+                  genres
+                }
               />
             </div>
             <div className="flex">
