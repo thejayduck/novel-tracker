@@ -41,7 +41,7 @@ module.exports = {
 
     "semi": ["error", "always"],
     "quotes": ["error", "double"],
-
+    "react/no-multi-comp": "warn",
     "semi-spacing": "error",
     "prefer-template": "error",
     "prefer-arrow-callback": "error",
