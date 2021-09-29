@@ -34,10 +34,10 @@ export default function Home({ user_info }) {
       </Head>
       <PageBase user_info={user_info}>
         <div className="flex flexColumn">
-          <Section title="Reading [20]" icon="bx bx-book-open" />
-          <Section title="Planning [20]" icon="bx bx-bookmarks" />
-          <Section title="Finished [20]" icon="bx bx-check" />
-          <Section title="Dropped [20]" icon="bx bx-trash-alt" />
+          <Section title="Reading" icon="bx bx-book-open" />
+          <Section title="Planning" icon="bx bx-bookmarks" />
+          <Section title="Finished" icon="bx bx-check" />
+          <Section title="Dropped" icon="bx bx-trash-alt" />
         </div>
       </PageBase>
     </>
@@ -50,7 +50,7 @@ function Section({ icon, title }) {
 
   return (
     <motion.div onClick={() => setIsOpen(prev => !prev)} className={`${styles.sectionItem} flex flexColumn`}>
-      <Subtitle text={title} icon={icon} />
+      <Subtitle text={`${title} [20]`} icon={icon} />
       <AnimatePresence>
         {isOpen &&
           <motion.div

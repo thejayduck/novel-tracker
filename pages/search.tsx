@@ -28,6 +28,18 @@ export async function getServerSideProps(context) {
   };
 }
 
+// TODO TheJayDuck, detect mobile in code properly
+function Overlay({ children, onOutsideClick }) {
+  return <>
+    <DesktopOverlay title="Filter Results" className={styles.filterOverlay}>
+      {children}
+    </DesktopOverlay>
+    <MobileOverlay title="Filter Results" onOutSideClick={onOutsideClick}>
+      {children}
+    </MobileOverlay>
+  </>;
+}
+
 export default function Search({ user_info }) {
   const [filterMenu, setFilterMenu] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
@@ -69,7 +81,7 @@ export default function Search({ user_info }) {
 
           <AnimatePresence>
             {filterMenu &&
-              <DesktopOverlay title="Filter Results" className={styles.filterOverlay}>
+              <Overlay title="Filter Results" onOutsideClick={() => setFilterMenu(false)} >
                 <OptionSelect
                   title="Release Status"
                   options={["Any", "Finished", "Releasing", "Cancelled", "Hiatus", "Coming Soon"]}
@@ -133,7 +145,7 @@ export default function Search({ user_info }) {
                   ]}
                   onChange={(e: unknown) => setFilter(oldFilter => ({ ...oldFilter, year: e.target.value }))}
                 />
-              </DesktopOverlay>
+              </Overlay>
             }
           </AnimatePresence>
         </div>
@@ -145,74 +157,6 @@ export default function Search({ user_info }) {
             ))
           }
         </div>
-
-        <AnimatePresence>
-          {filterMenu && //TODO JayDuck, fix this to be consistent with desktop
-            <MobileOverlay title={"Filter Results"} onOutSideClick={() => setFilterMenu(false)} >
-              <OptionSelect
-                title="Release Status"
-                options={["All", "Finished", "Releasing", "Cancelled", "Hiatus", "Coming Soon"]}
-              />
-              <OptionSelect
-                title="Genre"
-                options={[
-                  "Any",
-                  "Action",
-                  "Demons",
-                  "Game",
-                  "Horror",
-                  "Mecha",
-                  "Police",
-                  "Sci-Fi",
-                  "Shounen Ai",
-                  "Supernatural",
-                  "Adventure",
-                  "Gender Bender",
-                  "Josei",
-                  "Military",
-                  "Psychological",
-                  "Seinen",
-                  "Slice of Life",
-                  "Thriller",
-                  "Drama",
-                  "Harem",
-                  "Kids",
-                  "Music",
-                  "Romance",
-                  "Shoujo",
-                  "Space",
-                  "Vampire",
-                  "Comedy",
-                  "Ecchi",
-                  "Hentai",
-                  "Magic",
-                  "Mystery",
-                  "Samurai",
-                  "Shoujo Ai",
-                  "Sports",
-                  "Yaoi",
-                  "Dementia",
-                  "Fantasy",
-                  "Historical",
-                  "Martial Arts",
-                  "Parody",
-                  "School",
-                  "Shounen",
-                  "Super Power",
-                  "Yuri",
-                ]}
-              />
-              <OptionSelect
-                title="Year"
-                options={[
-                  "Any",
-                  ...[...Array(20).keys()].map((n: number) => (new Date(Date.now()).getUTCFullYear() + 1) - n)
-                ]}
-              />
-            </MobileOverlay>
-          }
-        </AnimatePresence>
-
       </PageBase >
     </>
   );

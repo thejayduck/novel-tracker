@@ -1,13 +1,6 @@
 // @ts-nocheck
 import styles from "styles/components/footer.module.scss";
 
-/*function flipTheme(theme) {
-    if (theme == 'light')
-        return 'dark';
-    if (theme == 'dark')
-        return 'light';
-}*/
-
 export default function Footer() {
   return (
     <footer className={styles.footer}>

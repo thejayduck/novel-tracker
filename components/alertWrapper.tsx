@@ -17,21 +17,21 @@ export function AlertWrapper({ children }) {
 }
 
 export function useAlert() {
-  const [alerts, setAlerts] = useContext(AlertContext);
-  function addItem(msg, severity) {
+  const [alerts, setAlerts] = useContext<any>(AlertContext);
+  function addItem(msg: string, severity: string) {
     const id = nextId();
-    setAlerts(prev => [...prev, {
+    setAlerts((prev: any) => [...prev, {
       id,
       content: msg,
       severity,
     }]);
     setTimeout(() => {
-      setAlerts(prev => prev.filter(item => item.id != id));
+      setAlerts((prev: any[]) => prev.filter(item => item.id != id));
     }, 5000);
   }
   return {
     alerts,
-    information: msg => addItem(msg, "information"),
-    error: msg => addItem(msg, "error"),
+    information: (msg: string) => addItem(msg, "information"),
+    error: (msg: string) => addItem(msg, "error"),
   };
 }

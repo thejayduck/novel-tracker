@@ -63,7 +63,7 @@ export function MobileOverlay({ title, onOutSideClick, children }) {
         transition={{ duration: 0.2 }}
 
         onDragEnd={
-          (event, info) => {
+          (_event, info) => {
             setVelocity(info.velocity.y);
             console.log(info);
           }
