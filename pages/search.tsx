@@ -4,6 +4,7 @@ import styles from "styles/Search.module.scss";
 import dynamic from "next/dynamic";
 import Head from "next/head";
 import { AnimatePresence } from "framer-motion";
+import genres from "genres.json";
 
 import React, { useEffect, useState } from "react";
 
@@ -77,52 +78,9 @@ export default function Search({ user_info }) {
                 />
                 <OptionSelect
                   title="Genre"
-                  options={[
-                    "Any",
-                    "Action",
-                    "Demons",
-                    "Game",
-                    "Horror",
-                    "Mecha",
-                    "Police",
-                    "Sci-Fi",
-                    "Shounen Ai",
-                    "Supernatural",
-                    "Adventure",
-                    "Gender Bender",
-                    "Josei",
-                    "Military",
-                    "Psychological",
-                    "Seinen",
-                    "Slice of Life",
-                    "Thriller",
-                    "Drama",
-                    "Harem",
-                    "Kids",
-                    "Music",
-                    "Romance",
-                    "Shoujo",
-                    "Space",
-                    "Vampire",
-                    "Comedy",
-                    "Ecchi",
-                    "Hentai",
-                    "Magic",
-                    "Mystery",
-                    "Samurai",
-                    "Shoujo Ai",
-                    "Sports",
-                    "Yaoi",
-                    "Dementia",
-                    "Fantasy",
-                    "Historical",
-                    "Martial Arts",
-                    "Parody",
-                    "School",
-                    "Shounen",
-                    "Super Power",
-                    "Yuri",
-                  ]}
+                  options={
+                    genres
+                  }
                   onChange={(e: unknown) => setFilter(oldFilter => ({ ...oldFilter, genre: e.target.value }))}
                 />
                 <OptionSelect
