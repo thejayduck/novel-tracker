@@ -1,7 +1,5 @@
 import styles from "styles/components/Card.module.scss";
 
-import { useRouter } from "next/router";
-
 import { useApi } from "lib/clientHelpers";
 
 interface CardProps {
