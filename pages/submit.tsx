@@ -15,6 +15,8 @@ import { InputField, OptionSelect } from "components/ui/inputField";
 import { useApi } from "lib/clientHelpers";
 import { serverSide_checkAuth } from "lib/serverHelpers";
 
+import { VolumeItem } from "./volumeItem";
+
 interface SubmitPageProps {
   book_id?: number,
   user_info: any,
@@ -174,25 +176,3 @@ export default function SubmitPage({ book_id, user_info }: SubmitPageProps) {
   );
 }
 
-interface VolumeItemProps {
-  image: string,
-  onCoverUrlChange: (newImage: string) => void,
-  onChaptersCountChange: (newCount: number) => void,
-  onRemoveClicked: () => void,
-}
-
-function VolumeItem({ image, onCoverUrlChange, onChaptersCountChange, onRemoveClicked }: VolumeItemProps) {
-  return (
-    <li className={styles.volumeItem}>
-      <a className={styles.removeBook} title="Remove Volume" onClick={() => onRemoveClicked}> <i className="bx bx-x bx-lg" /> </a>
-      <div className={`flex flexColumn ${styles.book}`}>
-        <img className="skeleton" width={200} height={300} src={image} />
-        <div className={`${styles.volumeDetails}`}>
-          <InputField placeHolder="Image URL" inputType="url" onChange={(e: any) => onCoverUrlChange(e.target.value)} />
-          <InputField placeHolder="Chapters" inputType="number" maxValue="999" defaultValue="0" onChange={(e: any) => onChaptersCountChange(e.target.value)} />
-          <InputField placeHolder="Extras" inputType="number" maxValue="999" defaultValue="0" onChange={(e: any) => onChaptersCountChange(e.target.value)} />
-        </div>
-      </div>
-    </li>
-  );
-}

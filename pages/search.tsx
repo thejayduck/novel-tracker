@@ -8,11 +8,12 @@ import genres from "genres.json";
 
 import React, { useEffect, useState } from "react";
 
-import { Overlay } from "components/overlayMenu";
+import { Overlay } from "components/overlay";
 // Components
 import PageBase from "components/pageBase";
 import { Subtitle } from "components/subtitle";
-import { InputFieldNonManaged, OptionSelect } from "components/ui/inputField";
+import { OptionSelect } from "components/ui/inputField";
+import { InputFieldNonManaged } from "components/ui/inputFieldNonManaged";
 
 import { useApi, useDelayedState } from "lib/clientHelpers";
 import { serverSide_checkAuth } from "lib/serverHelpers";

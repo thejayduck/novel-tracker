@@ -20,14 +20,10 @@
   }
 
   .book {
-    background-color: var(--accent);
-    border-radius: var(--border);
-    height: 300px;
-    overflow: hidden;
-
     img {
       opacity: 1;
       object-fit: cover;
+      border-radius: var(--border);
     }
   }
   p {

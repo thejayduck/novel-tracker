@@ -3,7 +3,19 @@ import styles from "styles/components/InputField.module.scss";
 
 import { forwardRef } from "react";
 
-export const InputField = forwardRef<HTMLInputElement>(({ inputType, title, placeHolder, defaultValue, maxValue, maxLength, onChange, toolTip, pattern }, ref) => {
+interface InputFieldProps {
+  title?: string,
+  inputType?: string,
+  placeHolder?: string,
+  maxLength?: number,
+  maxValue?: number, 
+  defaultValue?: string,
+  onChange?: () => void,
+  pattern?: string,
+  toolTip?: string
+}
+
+export const InputField = forwardRef<HTMLInputElement>(({ inputType, title, placeHolder, defaultValue, maxValue, maxLength, onChange, toolTip, pattern }, ref): InputFieldProps => {
   return (
     <div className={styles.inputFieldWrap}>
       <h3 className={styles.title} tooltip={toolTip} >{title}</h3>
@@ -25,15 +37,6 @@ export const InputField = forwardRef<HTMLInputElement>(({ inputType, title, plac
 });
 
 InputField.displayName = "InputField";
-
-export function InputFieldNonManaged({ inputType, title, placeHolder, defaultValue, maxValue, onChange, value }) {
-  return (
-    <div className={styles.inputFieldWrap}>
-      <h3 className={styles.title} >{title}</h3>
-      <input className={styles.inputField} type={inputType} placeholder={placeHolder} autoComplete="off" min="0" max={maxValue} defaultValue={defaultValue} onInput={onChange} value={value} />
-    </div>
-  );
-}
 
 export const OptionSelect = forwardRef(({ title, options, onChange }, ref) => {
   return (

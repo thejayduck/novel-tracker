@@ -11,7 +11,9 @@ import { NavigationButton } from "components/ui/button";
 
 import { useApi } from "lib/clientHelpers";
 
-import { DesktopOverlay, MobileMenu } from "./overlayMenu";
+import { DesktopOverlay } from "./desktopOverlay";
+import { LinkItem } from "./linkItem";
+import { MobileMenu } from "./mobileMenu";
 import { useUserInfoContext } from "./pageBase";
 import { UserSmall } from "./userContainer";
 
@@ -88,16 +90,5 @@ export default function Navigation() {
         }
       </AnimatePresence>
     </nav >
-  );
-}
-
-function LinkItem({icon, title, text, href, onClick }) {
-  return (
-    <li className={styles.linkItem}>
-      <a title={title} href={href} onClick={onClick} >
-        {text && <span>{title}</span>}
-        {icon && <i className={`${icon} bx-sm`} />}
-      </a>
-    </li>
   );
 }

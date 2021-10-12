@@ -8,14 +8,17 @@ import { AnimatePresence } from "framer-motion";
 
 import React, { useEffect, useState } from "react";
 
+import { DesktopOverlay } from "components/desktopOverlay";
 import convertDate from "components/helper/convertData";
-import { DesktopOverlay, MobileOverlay } from "components/overlayMenu";
+import { MobileOverlay } from "components/overlayMenu";
 import PageBase from "components/pageBase";
 import { Subtitle } from "components/subtitle";
 import { NavigationButton } from "components/ui/button";
 
 import { GetBookResponse, useApi } from "lib/clientHelpers";
 import { serverSide_checkAuth } from "lib/serverHelpers";
+
+import { DetailItem } from "./detailItem";
 
 const VolumeCard = dynamic(() => import("components/cards/card"));
 
@@ -107,14 +110,5 @@ export default function Book({ user_info }) {
 
       </PageBase>
     </>
-  );
-}
-
-function DetailItem({ title, value }) {
-  return (
-    <div className={`${styles.detailItem}`}>
-      <h3>{title}</h3>
-      <span>{value}</span>
-    </div>
   );
 }
