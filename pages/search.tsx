@@ -71,7 +71,7 @@ export default function Search({ user_info }) {
 
           <AnimatePresence>
             {filterMenu &&
-              <Overlay title="Filter Results" onOutsideClick={() => setFilterMenu(false)} >
+              <Overlay className={styles.filterOverlay} title="Filter Results" onOutsideClick={() => setFilterMenu(false)} >
                 <OptionSelect
                   title="Release Status"
                   options={["Any", "Finished", "Releasing", "Cancelled", "Hiatus", "Coming Soon"]}

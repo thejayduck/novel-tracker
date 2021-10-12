@@ -2,6 +2,7 @@
 import styles from "styles/SubmitPage.module.scss";
 
 import Head from "next/head";
+import genres from "genres.json";
 
 import React, { useRef, useState } from "react";
 import nextId from "react-id-generator";

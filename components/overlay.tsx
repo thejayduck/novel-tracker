@@ -1,13 +1,11 @@
-import styles from "styles/components/OverlayMenu.module.scss";
-
 import { DesktopOverlay } from "./desktopOverlay";
 import { MobileOverlay } from "./overlayMenu";
 
 // TODO TheJayDuck, detect mobile in code properly
 
-export function Overlay({ children, onOutsideClick }) {
+export function Overlay({ children, onOutsideClick, className }) {
   return <>
-    <DesktopOverlay title="Filter Results" className={styles.filterOverlay} flexDirection="flexRow">
+    <DesktopOverlay title="Filter Results" className={className} flexDirection="flexRow">
       {children}
     </DesktopOverlay>
     <MobileOverlay title="Filter Results" onOutSideClick={onOutsideClick}>

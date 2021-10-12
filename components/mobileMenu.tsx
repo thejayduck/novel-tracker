@@ -48,7 +48,7 @@ export function MobileMenu({ onOutSideClick }) {
       >
         <div className={"flex flexAround"}>
           <UserSmall />
-          <a onClick={onOutSideClick}><i className="bx bx-arrow-back bx-sm" /></a>
+          <a onClick={() => window.alert("Logged Out")  }><i className="bx bx-log-out bx-sm" /></a>
         </div>
         <div className={styles.menu}>
           <section className="flex flexColumn">
@@ -60,6 +60,7 @@ export function MobileMenu({ onOutSideClick }) {
             {/* TODO MAKE THIS DATA MOD ONLY */}
             <NavigationButton href="/mod" icon="bx bx-add-to-queue bx-sm" text="Book Submission" />
           </section>
+          <br/>
           <section>
             <Subtitle text="Notifications (1)" />
             <ul className={`flex flexColumn ${styles.notificationWrap}`}>
