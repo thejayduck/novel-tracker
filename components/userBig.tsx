@@ -21,7 +21,7 @@ export function UserBig({ userProfile }: UserBigProps) {
         <span className="fontSmall">
           Joined {userProfile ? convertDate(userProfile.createdAt) : "Loading..."}
           <br />
-          {data.followers} Followers - {data.following} Following
+          {data.followers} Followers / {data.following} Following
         </span>
       </div>
     </div>

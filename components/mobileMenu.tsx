@@ -60,10 +60,9 @@ export function MobileMenu({ onOutSideClick }) {
             {/* TODO MAKE THIS DATA MOD ONLY */}
             <NavigationButton href="/mod" icon="bx bx-add-to-queue bx-sm" text="Book Submission" />
           </section>
-          <br/>
-          <section>
+          <section className={styles.notificationWrap}>
             <Subtitle text="Notifications (1)" />
-            <ul className={`flex flexColumn ${styles.notificationWrap}`}>
+            <ul className={"flex flexColumn"}>
               <NotificationItem />
             </ul>
           </section>

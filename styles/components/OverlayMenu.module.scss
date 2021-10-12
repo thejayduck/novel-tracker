@@ -77,6 +77,10 @@
       margin-top: 1rem;
       border-radius: var(--border) var(--border) 0 0;
       background-color: var(--accent-dark);
+
+      .notificationWrap {
+        padding: var(--padding-small) 0 var(--padding-small) 0;
+      }
     }
   }
 }
