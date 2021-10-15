@@ -1,6 +1,6 @@
 import { serialize } from "cookie";
 
-import { createSession, createUserFromGoogle, findUserIdFromGoogle } from "lib/db";
+import { connectDb, createSession, createUserFromGoogle, findUserIdFromGoogle } from "lib/db";
 
 function toUrlEncoded(obj: any) {
   let formBody: any = [];
@@ -85,6 +85,8 @@ export default async function Auth(req, res) {
   const proto = req.headers["x-forwarded-proto"] == "https" || req.connection.encrypted
     ? "https:"
     : "http:";
+
+  await connectDb();
 
   return acessTokenRequest(code, `${proto}//${req.headers.host}/api/auth`) // TODO check http vs https
     .then(access_token => getUserInfo(access_token))
