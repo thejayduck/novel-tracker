@@ -15,7 +15,7 @@ import { DesktopOverlay } from "./desktopOverlay";
 import { LinkItem } from "./linkItem";
 import { MobileMenu } from "./mobileMenu";
 import { useUserInfoContext } from "./pageBase";
-import { UserSmall } from "./userContainer";
+import { UserSmall } from "./userSmall";
 
 const NotificationItem = dynamic(() => import("./notificationItem"));
 

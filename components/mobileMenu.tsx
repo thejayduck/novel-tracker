@@ -9,7 +9,7 @@ import { NavigationButton } from "components/ui/button";
 import NotificationItem from "./notificationItem";
 import { constrains } from "./overlayMenu";
 import { Subtitle } from "./subtitle";
-import { UserSmall } from "./userContainer";
+import { UserSmall } from "./userSmall";
 
 export function MobileMenu({ onOutSideClick }) {
   const [velocity, setVelocity] = useState(0);

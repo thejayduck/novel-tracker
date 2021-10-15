@@ -1,7 +1,7 @@
 import styles from "styles/components/UserContainer.module.scss";
 
 import convertDate from "./helper/convertData";
-import { moderationLevelNames,UserBigProps } from "./userContainer";
+import { moderationLevelNames,UserBigProps } from "./userSmall";
 
 
 export function UserBig({ userProfile }: UserBigProps) {
