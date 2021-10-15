@@ -1,3 +1,4 @@
+// @ts-nocheck
 import styles from "styles/components/InputField.module.scss";
 
 export function InputFieldNonManaged({ inputType, title, placeHolder, defaultValue, maxValue, onChange, value }) {

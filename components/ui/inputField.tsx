@@ -37,21 +37,3 @@ export const InputField = forwardRef<HTMLInputElement>(({ inputType, title, plac
 });
 
 InputField.displayName = "InputField";
-
-export const OptionSelect = forwardRef(({ title, options, onChange }, ref) => {
-  return (
-    <div>
-      <h3 className={styles.title}>{title}</h3>
-      <select className={styles.customSelect} ref={ref} onChange={onChange}>
-        {
-          options.map(q => (
-            <option key={q} value={q}>{q}</option>
-          ))
-        }
-      </select>
-    </div>
-
-  );
-});
-
-OptionSelect.displayName = "OptionSelect";

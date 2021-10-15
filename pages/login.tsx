@@ -11,6 +11,8 @@ import { NavigationButton } from "components/ui/button";
 
 import { serverSide_checkIsLoggedIn } from "lib/serverHelpers";
 
+import { FeatureItem } from "./featureItem";
+
 export async function getServerSideProps(context) {
   const isLoggedIn = await serverSide_checkIsLoggedIn(context, true, false, false);
 
@@ -108,14 +110,3 @@ export default function Login() {
   );
 }
 
-function FeatureItem({ title, children, icon }) {
-  return (
-    <div className={`${styles.featureItem} flex flexColumn flexRight`}>
-      <i className={`${icon}`} />
-      <h2> {title} </h2>
-      <div className={styles.details}>
-        <p> {children} </p>
-      </div>
-    </div>
-  );
-}
