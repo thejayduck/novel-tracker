@@ -1,6 +1,6 @@
 import styles from "styles/components/UserContainer.module.scss";
 
-import convertDate from "./helper/convertData";
+import convertDate from "./helper/convertDate";
 import { moderationLevelNames,UserBigProps } from "./userSmall";
 
 
