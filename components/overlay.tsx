@@ -1,15 +1,29 @@
+
+import { PropsWithChildren } from "react";
+
+import { useIsMobile } from "lib/clientHelpers";
+
 import { DesktopOverlay } from "./desktopOverlay";
 import { MobileOverlay } from "./overlayMenu";
 
-// TODO TheJayDuck, detect mobile in code properly
+export interface OverlayProps {
+  title: string,
+  flexDirection?: string,
+  onOutsideClick: () => void,
+  className?: string,
+}
 
-export function Overlay({ children, onOutsideClick, className }) {
+export default function Overlay({ children, onOutsideClick, className, title, flexDirection }: PropsWithChildren<OverlayProps>) {
+  const isMobile = useIsMobile();
+
   return <>
-    <DesktopOverlay title="Filter Results" className={className} flexDirection="flexRow">
-      {children}
-    </DesktopOverlay>
-    <MobileOverlay title="Filter Results" onOutSideClick={onOutsideClick}>
-      {children}
-    </MobileOverlay>
+    { isMobile 
+      ? (<MobileOverlay title={title} onOutSideClick={onOutsideClick}>
+        {children}
+      </MobileOverlay>) 
+      : (<DesktopOverlay title={title} className={className} flexDirection={flexDirection}>
+        {children}
+      </DesktopOverlay>)
+    }
   </>;
 }

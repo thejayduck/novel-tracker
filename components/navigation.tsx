@@ -9,7 +9,7 @@ import { useState } from "react";
 
 import { NavigationButton } from "components/ui/button";
 
-import { useApi } from "lib/clientHelpers";
+import { useApi, useIsMobile } from "lib/clientHelpers";
 
 import { DesktopOverlay } from "./desktopOverlay";
 import { LinkItem } from "./linkItem";
@@ -20,6 +20,8 @@ import { UserSmall } from "./userSmall";
 const NotificationItem = dynamic(() => import("./notificationItem"));
 
 export default function Navigation() {
+  const isMobile = useIsMobile();
+
   const [notification, setNotification] = useState(false);
   const [userMenu, setUserMenu] = useState(false);
 
@@ -59,36 +61,34 @@ export default function Navigation() {
       </div>
 
       <AnimatePresence>
-        {userMenu &&
-          <MobileMenu onOutSideClick={() => setUserMenu(false)} />
-        }
+        { userMenu && (
+          isMobile 
+            ? <MobileMenu onOutSideClick={() => setUserMenu(false)} />
+            : <DesktopOverlay title={"Account"} className={styles.userMenuOverlay} flexDirection="flexColumn" >
+              <NavigationButton href={`/user/${userInfo.user_id}`} icon="bx bx-user bx-sm" text="Your Account" />
+              <NavigationButton icon="bx bx-cog bx-sm" text="Settings" href="/settings" />
+              <NavigationButton
+                icon="bx bx-log-out bx-sm"
+                text="Log Out"
+                onClick={() => {
+                  api.logout(() => {
+                    router.push("/login");
+                  });
+                }}
+              />
+            </DesktopOverlay>
+        )}
       </AnimatePresence>
 
-      <AnimatePresence>
-        {userMenu &&
-          <DesktopOverlay title={"Account"} className={styles.userMenuOverlay} flexDirection="flexColumn" >
-            <NavigationButton href={`/user/${userInfo.user_id}`} icon="bx bx-user bx-sm" text="Your Account" />
-            <NavigationButton icon="bx bx-cog bx-sm" text="Settings" href="/settings" />
-            <NavigationButton
-              icon="bx bx-log-out bx-sm"
-              text="Log Out"
-              onClick={() => {
-                api.logout(() => {
-                  router.push("/login");
-                });
-              }}
-            />
-          </DesktopOverlay>
-        }
-      </AnimatePresence>
-
-      <AnimatePresence>
-        {notification &&
-          <DesktopOverlay title={"Notifications (1)"} className={styles.notificationOverlay} flexDirection="flexColumn" >
-            <NotificationItem />
-          </DesktopOverlay>
-        }
-      </AnimatePresence>
+      {!isMobile &&
+        <AnimatePresence>
+          {notification &&
+            <DesktopOverlay title={"Notifications (1)"} className={styles.notificationOverlay} flexDirection="flexColumn" >
+              <NotificationItem />
+            </DesktopOverlay>
+          }
+        </AnimatePresence>
+      }
     </nav >
   );
 }

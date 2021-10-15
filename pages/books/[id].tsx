@@ -8,9 +8,8 @@ import { AnimatePresence } from "framer-motion";
 
 import React, { useEffect, useState } from "react";
 
-import { DesktopOverlay } from "components/desktopOverlay";
-import convertDate from "components/helper/convertData";
-import { MobileOverlay } from "components/overlayMenu";
+import convertDate from "components/helper/convertDate";
+import Overlay from "components/overlay";
 import PageBase from "components/pageBase";
 import { Subtitle } from "components/subtitle";
 import { NavigationButton } from "components/ui/button";
@@ -88,23 +87,12 @@ export default function Book({ user_info }) {
 
         <AnimatePresence>
           {onOverlayOpen &&
-            <DesktopOverlay title={"Add Book As"} className={styles.addOverlay} flexDirection="flexColumn">
+            <Overlay title={"Add Book As"} onOutsideClick={() => setOnOverlayOpen(false)} className={styles.addOverlay} flexDirection="flexColumn">
               <NavigationButton icon="bx bx-bookmark bx-sm" text="Reading" />
               <NavigationButton icon="bx bx-calendar bx-sm" text="Planning" />
               <NavigationButton icon="bx bx-check-square bx-sm" text="Finished" />
               <NavigationButton icon="bx bx-trash-alt bx-sm" text="Dropped" />
-            </DesktopOverlay>
-          }
-        </AnimatePresence>
-
-        <AnimatePresence>
-          {onOverlayOpen &&
-            <MobileOverlay title={"Add Book As"} onOutSideClick={() => setOnOverlayOpen(false)}>
-              <NavigationButton icon="bx bx-bookmark bx-sm" text="Reading" />
-              <NavigationButton icon="bx bx-calendar bx-sm" text="Planning" />
-              <NavigationButton icon="bx bx-check-square bx-sm" text="Finished" />
-              <NavigationButton icon="bx bx-trash-alt bx-sm" text="Dropped" />
-            </MobileOverlay>
+            </Overlay>
           }
         </AnimatePresence>
 

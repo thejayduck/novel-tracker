@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 
 import { useEffect, useState } from "react";
 
-
 export const constrains = {
   top: 0,
   left: 0,

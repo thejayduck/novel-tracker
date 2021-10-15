@@ -20,6 +20,27 @@ export function useDelayedState<T>(initialState: T, delay: number) {
   return [delayedState, setInternalState];
 }
 
+function useWidth() {
+  const [width, setWidth] = useState(0); // default width, detect on server.
+  const handleResize = () => setWidth(window.innerWidth);
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [handleResize]);
+  return width;
+}
+
+export function useIsMobile(){
+  const width = useWidth();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    setIsMobile(width < 1024);
+  }, [width]);
+
+  return isMobile;
+}
+
 export function useDelayedStateWithLive<T>(initialState: T, delay: number) {
   const [delayedState, setDelayedState] = useState(initialState);
   const [internalState, setInternalState] = useState(initialState);
