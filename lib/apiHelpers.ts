@@ -33,7 +33,7 @@ export function withHelperBareGet<T>(required_fields: string[], callback: (token
       const data = await callback(token, params);
       res.status(200).json({ status: "OK", data });
     } catch (reason) {
-      console.log(reason);
+      console.error(reason);
       let err: any;
       if (reason instanceof Error) {
         err = {
@@ -87,7 +87,7 @@ export function withHelperBarePost<T>(required_fields: string[], callback: (toke
       const data = await callback(token, params);
       res.status(200).json({ status: "OK", data });
     } catch (reason) {
-      console.log(reason);
+      console.error(reason);
       let err: any;
       if (reason instanceof Error) {
         err = {

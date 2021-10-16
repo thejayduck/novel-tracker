@@ -42,16 +42,13 @@ export default function Search({ user_info }) {
   const api = useApi();
 
   useEffect(() => {
-    console.log(filter);
     if (searchQuery != null && searchQuery.length > 0) {
       api.searchBook(searchQuery, filter, books => {
-        console.log(books);
         setSearchResults(books);
       });
     } else {
       // TODO api to list all books?
       api.searchBook("", filter, books => {
-        console.log(books);
         setSearchResults(books);
       });
     }

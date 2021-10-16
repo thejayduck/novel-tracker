@@ -11,8 +11,6 @@ import { serverSide_checkAuth } from "lib/serverHelpers";
 export async function getServerSideProps(context) {
   const [redirect, info] = await serverSide_checkAuth(context, true, false, false);
 
-  console.log(info);
-
   return redirect || {
     redirect: {
       destination: `/user/${info.user_id}`,

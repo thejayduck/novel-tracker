@@ -84,6 +84,7 @@ const submitBookSchema = new mongoose.Schema<ISubmitBook>({
 }, { timestamps: true });
 
 const Book: mongoose.Model<IBook & mongoose.Document> = mongoose.models.Book || mongoose.model("Book", bookSchema);
+// Use discriminator instead.
 const BookSubmission: mongoose.Model<ISubmitBook & mongoose.Document> = mongoose.models.BookSubmission || mongoose.model("BookSubmission", submitBookSchema);
 
 export { Book, BookSubmission };

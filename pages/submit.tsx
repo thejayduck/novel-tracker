@@ -35,7 +35,7 @@ export async function getServerSideProps(context) {
 
 export default function SubmitPage({ book_id, user_info }: SubmitPageProps) {
   if (book_id != undefined) {
-    console.log("Editing existing book!");
+    console.log("Editing existing book.");
   }
 
   const api = useApi();
@@ -76,11 +76,9 @@ export default function SubmitPage({ book_id, user_info }: SubmitPageProps) {
         extras: 0,
       }))
     };
-    console.log(bookDetails);
-    const data = await api.submitBook(bookDetails, () => {
+    await api.submitBook(bookDetails, () => {
       alert.information("Submitted!");
     });
-    console.log(data);
   }
   return (
     <>
@@ -176,4 +174,3 @@ export default function SubmitPage({ book_id, user_info }: SubmitPageProps) {
     </>
   );
 }
-

@@ -32,7 +32,6 @@ export default function ModPanel({ user_info }) {
   }, []);
 
   const acceptBook = async (pending_book) => {
-    console.log(pending_book);
     await api.acceptBook(pending_book._id);
     setPendingBooks(prev => prev.filter(book => book._id != pending_book._id));
     alert.information("Book has been accepted!");

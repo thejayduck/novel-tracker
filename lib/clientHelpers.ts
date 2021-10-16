@@ -30,7 +30,7 @@ function useWidth() {
   return width;
 }
 
-export function useIsMobile(){
+export function useIsMobile() {
   const width = useWidth();
   const [isMobile, setIsMobile] = useState(false);
 
@@ -135,10 +135,8 @@ export function useApi() {
     async updateChaptersRead(book_id: string, new_chapters_read: number, onSuccess?: (responseData: unknown) => void) {
       return postCall("me/update_chapters_read", { book_id, new_chapters_read }, onSuccess);
     },
-    async searchBook(title: string, filters: { releaseStatus: string, genre: string, year: string, mine: boolean, tracking_status: string }, onSuccess?: (responseData: unknown) => void) {
-      const params: any = {
-        mine: filters.mine,
-      };
+    async searchBook(title: string, filters: { releaseStatus: string, genre: string, year: string, tracking_status: string }, onSuccess?: (responseData: unknown) => void) {
+      const params: any = {};
       if (title.length > 0) {
         params.query = title;
       }
@@ -152,8 +150,11 @@ export function useApi() {
       if (filters.year && filters.year != "Any") {
         params.year = filters.year;
       }
-      if (filters.mine && filters.tracking_status && filters.tracking_status != "Any") {
-        params.tracking_status = filters.tracking_status;
+      if (filters.tracking_status) {
+        if (filters.tracking_status != "Any") {
+          params.tracking_status = filters.tracking_status;
+        }
+        params.mine = true;
       }
       return getCall("search_book", params, onSuccess);
     },

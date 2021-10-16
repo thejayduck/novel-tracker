@@ -10,7 +10,7 @@ export default async function Logout({ cookies }, res: NextApiResponse) {
     res.setHeader("Set-Cookie", serialize("token", null, { path: "/", httpOnly: false, sameSite: "lax", expires: new Date(new Date(Date.now()).getUTCFullYear() + 1, 7, 2, 15, 11), maxAge: -1 }));
     res.status(200).json({ status: "OK" });
   } catch (error) {
-    console.log(error);
+    console.error(error);
     res.status(500).json({ status: "Error", error });
   }
 }

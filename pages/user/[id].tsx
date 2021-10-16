@@ -31,12 +31,37 @@ export default function Profile({ user_info }) {
   const router = useRouter();
   const { id } = router.query;
 
-  const data = {
-    reading_books: 20,
-    finished_books: 20,
-    planned_books: 20,
-    dropped_books: 20,
-  };
+  const [readingBooks, setReadingBooks] = useState<string[] | null>(null);
+  const [finishedBooks, setFinishedBooks] = useState<string[] | null>(null);
+  const [plannedBooks, setPlannedBooks] = useState<string[] | null>(null);
+  const [droppedBooks, setDroppedBooks] = useState<string[] | null>(null);
+
+  const [requestBooks, setRequestBooks] = useState<"Reading" | "Finished" | "Planned" | "Dropped" | null>(null);
+
+  useEffect(async () => {
+    if (!requestBooks) {
+      return;
+    }
+
+    let setter;
+    if (requestBooks == "Reading") {
+      setter = setReadingBooks;
+    } else if (requestBooks == "Finished") {
+      setter = setFinishedBooks;
+    } else if (requestBooks == "Planned") {
+      setter = setPlannedBooks;
+    } else if (requestBooks == "Dropped") {
+      setter = setDroppedBooks;
+    } else {
+      throw new Error(`Unknown request books type ${requestBooks}`);
+    }
+
+    const data: any = await api.searchBook("", {
+      tracking_status: requestBooks
+    });
+
+    setter(data);
+  }, [requestBooks]);
 
   const [userProfile, setUserProfile] = useState<GetUserInfoResponse>(null);
   useEffect(async () => {
@@ -45,10 +70,9 @@ export default function Profile({ user_info }) {
     }
     const userProfile = await api.getUserInfo(id);
     setUserProfile(userProfile);
-  });
+  }, [id]);
 
-  const [readingBooks, setReadingBooks] = useState();
-
+  // TODO add book count for each in User model
   return (
     <>
       <Head>
@@ -61,22 +85,26 @@ export default function Profile({ user_info }) {
         </section>
         <Subtitle text="Library" />
         <section className={`${styles.statisticWrap} flex flexBetween flexColumn`} >
-          <StatisticItem title="Reading" icon="bx bx-bookmark" stat={`${data.reading_books} Books`} onOpenChanged={async (isOpen) => {
-            if (isOpen) {
-              const books = await api.searchBook("", { mine: true, tracking_status: "Reading" });
-              setReadingBooks(books);
-            } else {
-              setReadingBooks([]);
-            }
-          }}>
+          {/*
+              TODO jay, can you deduplicate some of this.
+              Make a new component that takes a 'books' prop (we'd pass readingBooks, finishedBooks, etc)
+                and have it map like we do below.
+              but keep the rest of the props the same and just repass them.
+          */}
+          <StatisticItem title="Reading" icon="bx bx-bookmark" stat={"?? Books"} onOpenChanged={(isOpen: bool) => isOpen && setRequestBooks("Reading")}>
             {readingBooks && readingBooks.map((book: any) => <Card key={book._id} data={book} />)}
           </StatisticItem>
-          <StatisticItem title="Finished" icon="bx bx-check-square" stat={`${data.finished_books} Books`} />
-          <StatisticItem title="Planning" icon="bx bx-calendar" stat={`${data.planned_books} Books`} />
-          <StatisticItem title="Dropped" icon="bx bx-trash-alt" stat={`${data.dropped_books} Books`} />
+          <StatisticItem title="Finished" icon="bx bx-check-square" stat={"?? Books"} onOpenChanged={(isOpen) => isOpen && setRequestBooks("Finished")}>
+            {finishedBooks && finishedBooks.map((book: any) => <Card key={book._id} data={book} />)}
+          </StatisticItem>
+          <StatisticItem title="Planning" icon="bx bx-calendar" stat={"?? Books"} onOpenChanged={(isOpen) => isOpen && setRequestBooks("Planned")}>
+            {plannedBooks && plannedBooks.map((book: any) => <Card key={book._id} data={book} />)}
+          </StatisticItem>
+          <StatisticItem title="Dropped" icon="bx bx-trash-alt" stat={"?? Books"} onOpenChanged={(isOpen) => isOpen && setRequestBooks("Dropped")}>
+            {droppedBooks && droppedBooks.map((book: any) => <Card key={book._id} data={book} />)}
+          </StatisticItem>
         </section>
       </PageBase>
     </>
   );
 }
-
