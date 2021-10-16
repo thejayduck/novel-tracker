@@ -17,7 +17,7 @@ import { OptionSelect } from "components/ui/optionSelect";
 import { useApi, useDelayedState } from "lib/clientHelpers";
 import { serverSide_checkAuth } from "lib/serverHelpers";
 
-const VolumeCard = dynamic(() => import("components/cards/card"));
+const Card = dynamic(() => import("components/cards/card"));
 
 export async function getServerSideProps(context) {
   const [redirect, info] = await serverSide_checkAuth(context, false, false, false);
@@ -96,7 +96,7 @@ export default function Search({ user_info }) {
         <div className={`${styles.results} flex flextRight`}>
           {
             searchResults.map(searchResult => (
-              <VolumeCard key={searchResult._id} data={searchResult} />
+              <Card key={searchResult._id} data={searchResult} hasAddButton={true} />
             ))
           }
         </div>
