@@ -54,9 +54,9 @@ export default function Book({ user_info }) {
       <PageBase user_info={user_info}>
 
         <section className={`${styles.headerWrap} flex flexColumn`}>
-          <img className={`${styles.background} skeleton`} src={book?.banner_url} />
+          <img className={`${styles.background} skeleton`} src={book?.banner_url || "https://dummyimage.com/200x300/000/ffffff.png&text=+No+Banner"} />
           <div>
-            <img className="skeleton" width={200} height={300} src={book?.cover_url} />
+            <img className="skeleton" width={200} height={300} src={book?.cover_url || "https://dummyimage.com/200x300/000/ffffff.png&text=+No+Cover"} />
             <NavigationButton text="Add to Library" icon="bx bx-list-plus bx-sm" onClick={() => setOnOverlayOpen(prev => !prev)} />
           </div>
           <h1>{book?.title_english || "Loading..."}</h1>
