@@ -7,10 +7,53 @@ export default function Footer() {
       <div className={styles.container}>
         <span className={styles.title}>Novel Tracker</span>
 
-        <ul className={styles.social}>
-          <li><a aria-label="Github - TheJayDuck" target="_blank" title="Github - TheJayDuck" href="https://github.com/thejayduck" rel="noreferrer"><i className={"bx bxl-github bx-sm"} /></a></li>
-          <li><a aria-label="Trello" target="_blank" title="Trello" href="https://trello.com/b/dPv92vJW" rel="noreferrer"><i className={"bx bxl-trello bx-sm"} /></a></li>
-          <li><a aria-label="Github - nobbele" target="_blank" title="Github - nobbele" href="https://github.com/nobbele" rel="noreferrer"><i className={"bx bxl-github bx-sm"} /></a></li>
+        <ul className={`${styles.social} flexEvenly flex`}>
+          <section>
+            <h3>Developers</h3>
+            <li>
+              <a aria-label="Github - TheJayDuck" target="_blank" title="Github - TheJayDuck" href="https://github.com/thejayduck" rel="noreferrer">
+                TheJayDuck
+              </a>
+            </li>
+            <li>
+              <a aria-label="Github - nobbele" target="_blank" title="Github - nobbele" href="https://github.com/nobbele" rel="noreferrer">
+                nobbele
+              </a>
+            </li>
+          </section>
+
+          <section>
+            <h3>Navigation</h3>
+            <li>
+              <a aria-label="Search" title="Search" href="/search">
+                Search
+              </a>
+            </li>
+            <li>
+              <a aria-label="Forums" title="Forums" href="/search">
+                Forums
+              </a>
+            </li>
+            <li>
+              <a aria-label="Submit Book" title="Submit Book" href="/submit">
+                Submit Book
+              </a>
+            </li>
+          </section>
+
+          <section>
+            <h3>Other</h3>
+            <li>
+              <a aria-label="Trello" target="_blank" title="Trello" href="https://trello.com/b/dPv92vJW" rel="noreferrer">
+                Trello
+              </a>
+            </li>
+            <li>
+              <a aria-label="Source Code" target="_blank" title="Github" href="https://github.com/thejayduck/novel-tracker/" rel="noreferrer">
+                Source Code
+              </a>
+            </li>
+          </section>
         </ul>
       </div>
     </footer>

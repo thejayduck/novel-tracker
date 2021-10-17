@@ -9,7 +9,7 @@ import PageBase from "components/pageBase";
 import { useApi } from "lib/clientHelpers";
 import { serverSide_checkAuth } from "lib/serverHelpers";
 
-import { SubmissionItem } from "./submissionItem";
+import SubmissionItem from "../components/pageComponents/submissionItem";
 
 export async function getServerSideProps(context) {
   const [auth, info] = await serverSide_checkAuth(context, true, true, false);

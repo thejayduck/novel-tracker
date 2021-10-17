@@ -7,7 +7,7 @@ import convertDate from "components/helper/convertDate";
 import { Subtitle } from "components/subtitle";
 import { NavigationButton } from "components/ui/button";
 
-export function SubmissionItem({ pending_book, acceptBook, denyBook }) {
+export default function SubmissionItem({ pending_book, acceptBook, denyBook }) {
   return (
     <div className={styles.submissionItem}>
       <div className={styles.submissionDetails}>

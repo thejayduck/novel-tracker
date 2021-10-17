@@ -13,7 +13,7 @@ import { UserBig } from "components/userBig";
 import { GetUserInfoResponse, useApi } from "lib/clientHelpers";
 import { serverSide_checkAuth } from "lib/serverHelpers";
 
-import { StatisticItem } from "./statisticItem";
+import StatisticItem from "../../components/pageComponents/statisticItem";
 
 export async function getServerSideProps(context) {
   const [redirect, info] = await serverSide_checkAuth(context, false, false, false);

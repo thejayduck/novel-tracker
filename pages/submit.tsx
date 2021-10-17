@@ -11,12 +11,13 @@ import { useAlert } from "components/alertWrapper";
 import PageBase from "components/pageBase";
 import { Subtitle } from "components/subtitle";
 import { NavigationButton } from "components/ui/button";
-import { InputField, OptionSelect } from "components/ui/inputField";
+import { InputField } from "components/ui/inputField";
+import { OptionSelect } from "components/ui/optionSelect";
 
 import { useApi } from "lib/clientHelpers";
 import { serverSide_checkAuth } from "lib/serverHelpers";
 
-import { VolumeItem } from "./volumeItem";
+import VolumeItem from "../components/pageComponents/volumeItem";
 
 interface SubmitPageProps {
   book_id?: number,

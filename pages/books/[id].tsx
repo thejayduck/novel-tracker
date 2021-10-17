@@ -17,7 +17,7 @@ import { NavigationButton } from "components/ui/button";
 import { GetBookResponse, useApi } from "lib/clientHelpers";
 import { serverSide_checkAuth } from "lib/serverHelpers";
 
-import { DetailItem } from "./detailItem";
+import DetailItem from "../../components/pageComponents/detailItem";
 
 const VolumeCard = dynamic(() => import("components/cards/card"));
 

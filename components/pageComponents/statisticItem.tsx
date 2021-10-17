@@ -14,7 +14,7 @@ interface StatisticItemProps{
   data: any[],
 }
 
-export function StatisticItem({ icon, title, stat, onOpenChanged, data }: StatisticItemProps) {
+export default function StatisticItem({ icon, title, stat, onOpenChanged, data }: StatisticItemProps) {
   const [isOpen, setIsOpen] = useState(false);
   useEffect(() => {
     if (onOpenChanged) {

@@ -1,65 +1,53 @@
 {
-    "name": "Novel Tracker",
-    "short_name": "NTracker",
-    "description": "Track Your Favorite Novels and Light Novels",
-    "start_url": "/",
-    "background_color": "#854dff",
-    "theme_color": "#854dff",
-    "display": "standalone",
-    "orientation": "portrait-primary",
-    "icons": [
+  "name": "Novel Tracker",
+  "short_name": "NTracker",
+  "description": "Track Your Favorite Novels and Light Novels",
+  "start_url": "/",
+  "background_color": "#854dff",
+  "theme_color": "#854dff",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icons/192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/256x256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "shortcuts": [
+    {
+      "short_name": "Search",
+      "name": "Search Book",
+      "description": "Search for new books",
+      "url": "/search",
+      "icons": [
         {
-            "src": "/icons/192x192.png",
-            "sizes": "192x192",
-            "type": "image/png"
-        },
-        {
-            "src": "/icons/256x256.png",
-            "sizes": "256x256",
-            "type": "image/png"
-        },
-        {
-            "src": "/icons/512x512.png",
-            "sizes": "512x512",
-            "type": "image/png"
+          "src": "/icons/192x192.png",
+          "sizes": "192x192"
         }
-    ],
-    "shortcuts": [
+      ]
+    },
+    {
+      "short_name": "Forum",
+      "name": "Forums",
+      "description": "Have a chat with other novel readers",
+      "url": "/search",
+      "icons": [
         {
-            "short_name": "Profile",
-            "name": "Your Profile",
-            "description": "Check your profile",
-            "url": "/profile",
-            "icons": [
-                {
-                    "src": "/icons/192x192.png",
-                    "sizes": "192x192"
-                }
-            ]
-        },
-        {
-            "short_name": "Search",
-            "name": "Search Book",
-            "description": "Search for new books",
-            "url": "/search",
-            "icons": [
-                {
-                    "src": "/icons/192x192.png",
-                    "sizes": "192x192"
-                }
-            ]
-        },
-        {
-            "short_name": "Forum",
-            "name": "Forums",
-            "description": "Have a talk with other novel readers",
-            "url": "/search",
-            "icons": [
-                {
-                    "src": "/icons/192x192.png",
-                    "sizes": "192x192"
-                }
-            ]
+          "src": "/icons/192x192.png",
+          "sizes": "192x192"
         }
-    ]
+      ]
+    }
+  ]
 }
