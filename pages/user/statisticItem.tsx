@@ -40,6 +40,7 @@ export function StatisticItem({ icon, title, stat, onOpenChanged, data }: Statis
       </a>
       <AnimatePresence>
         {isOpen &&
+          data?.length &&
           <motion.div
             className={`flex ${styles.bookContainer}`}
             initial={{ opacity: 0, height: 0 }}

@@ -81,13 +81,13 @@ export default function Navigation() {
       </AnimatePresence>
 
       {!isMobile &&
-        <AnimatePresence>
-          {notification &&
+          <AnimatePresence>
+            {notification &&
             <DesktopOverlay title={"Notifications (1)"} className={styles.notificationOverlay} flexDirection="flexColumn" >
               <NotificationItem />
             </DesktopOverlay>
-          }
-        </AnimatePresence>
+            }
+          </AnimatePresence>
       }
     </nav >
   );

@@ -52,12 +52,13 @@ export function MobileMenu({ onOutSideClick }) {
         </div>
         <div className={styles.menu}>
           <section className="flex flexColumn">
-            <Subtitle text="Pages" />
+            <Subtitle text="Navigation" />
             <NavigationButton href="/" icon="bx bx-library bx-sm" text="Library" />
             <NavigationButton href="/search" icon="bx bx-search bx-sm" text="Search" />
             <NavigationButton href="#" icon="bx bx-chat bx-sm" text="Forums" />
             <NavigationButton href="/settings" icon="bx bx-cog bx-sm" text="Settings" />
             {/* TODO MAKE THIS DATA MOD ONLY */}
+            <a>Moderator Tools</a>
             <NavigationButton href="/mod" icon="bx bx-add-to-queue bx-sm" text="Book Submission" />
           </section>
           <section className={styles.notificationWrap}>

@@ -24,14 +24,3 @@ export function UserSmall({ onDropDownClick, data }: UserSmallProps) {
     </div>
   );
 }
-
-export const moderationLevelNames = {
-  0: "User",
-  1: "Mod",
-  2: "Admin",
-  3: "Owner",
-};
-
-export interface UserBigProps {
-  userProfile: GetUserInfoResponse,
-}
