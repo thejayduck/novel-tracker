@@ -6,7 +6,12 @@ const alertIcon = {
   "error": "bx-fw bx bx-error bx-lg",
 };
 
-export default function QuickAlert({ message, severity }) {
+export interface QuickAlertProps {
+  message: string,
+  severity: "information" | "error",
+}
+
+export default function QuickAlert({ message, severity }: QuickAlertProps) {
 
   return (
     <div className={`${styles.container} flex flexBetween`}>

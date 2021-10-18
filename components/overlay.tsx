@@ -4,7 +4,7 @@ import { PropsWithChildren } from "react";
 import { useIsMobile } from "lib/clientHelpers";
 
 import { DesktopOverlay } from "./desktopOverlay";
-import { MobileOverlay } from "./overlayMenu";
+import { MobileOverlay } from "./mobileOverlay";
 
 export interface OverlayProps {
   title: string,
@@ -17,10 +17,10 @@ export default function Overlay({ children, onOutsideClick, className, title, fl
   const isMobile = useIsMobile();
 
   return <>
-    { isMobile 
+    {isMobile
       ? (<MobileOverlay title={title} onOutSideClick={onOutsideClick}>
         {children}
-      </MobileOverlay>) 
+      </MobileOverlay>)
       : (<DesktopOverlay title={title} className={className} flexDirection={flexDirection}>
         {children}
       </DesktopOverlay>)

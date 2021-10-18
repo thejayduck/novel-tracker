@@ -1,8 +1,13 @@
 import styles from "styles/components/UserContainer.module.scss";
 
-import convertDate from "./helper/convertDate";
-import { moderationLevelNames,UserBigProps } from "./userSmall";
+import { GetUserInfoResponse } from "lib/clientHelpers";
 
+import convertDate from "./helper/convertDate";
+import { moderationLevelNames, } from "./userSmall";
+
+export interface UserBigProps {
+  userProfile: GetUserInfoResponse,
+}
 
 export function UserBig({ userProfile }: UserBigProps) {
   const data = {

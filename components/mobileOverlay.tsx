@@ -3,7 +3,7 @@ import styles from "styles/components/OverlayMenu.module.scss";
 
 import { motion } from "framer-motion";
 
-import { useEffect, useState } from "react";
+import { PropsWithChildren, useEffect, useState } from "react";
 
 export const constrains = {
   top: 0,
@@ -25,8 +25,12 @@ export const constrains = {
 //   exit: { translateY: -20, opacity: 0 },
 // };
 
+export interface MobileOverlayProps {
+  title: string,
+  onOutSideClick: () => void,
+}
 
-export function MobileOverlay({ title, onOutSideClick, children }) {
+export function MobileOverlay({ title, onOutSideClick, children }: PropsWithChildren<MobileOverlayProps>) {
   const [velocity, setVelocity] = useState();
   useEffect(() => {
 

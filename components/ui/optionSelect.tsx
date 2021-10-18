@@ -3,7 +3,13 @@ import styles from "styles/components/InputField.module.scss";
 
 import { forwardRef } from "react";
 
-export const OptionSelect = forwardRef(({ title, options, onChange }, ref) => {
+export interface OptionSelectProps {
+  title: string,
+  options: string[],
+  onChange: any, // TODO
+}
+
+export const OptionSelect = forwardRef(({ title, options, onChange }: OptionSelectProps, ref) => {
   return (
     <div>
       <h3 className={styles.title}>{title}</h3>

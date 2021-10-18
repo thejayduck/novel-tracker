@@ -1,7 +1,7 @@
 // @ts-nocheck
 import styles from "styles/PageBase.module.scss";
 
-import { createContext, useContext } from "react";
+import { createContext, PropsWithChildren, useContext } from "react";
 
 import Footer from "./footer";
 // Components
@@ -9,7 +9,11 @@ import Navigation from "./navigation";
 
 const UserInfoContext = createContext();
 
-export default function PageBase({ children, user_info }) {
+export interface PageBaseProps {
+  user_info: any,
+}
+
+export default function PageBase({ children, user_info }: PropsWithChildren<PageBaseProps>) {
   return (
     <UserInfoContext.Provider value={user_info}>
       <Navigation user_info={user_info} />

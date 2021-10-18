@@ -1,10 +1,10 @@
 // @ts-nocheck
-import { createContext, useContext, useState } from "react";
+import { createContext, PropsWithChildren, useContext, useState } from "react";
 import nextId from "react-id-generator";
 
 const AlertContext = createContext();
 
-export function AlertWrapper({ children }) {
+export function AlertWrapper({ children }: PropsWithChildren<Record<string, never>>) {
 
   const alertState = useState([]);
 

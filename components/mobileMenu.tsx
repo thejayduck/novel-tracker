@@ -6,8 +6,8 @@ import { useEffect, useState } from "react";
 
 import { NavigationButton } from "components/ui/button";
 
+import { constrains } from "./mobileOverlay";
 import NotificationItem from "./notificationItem";
-import { constrains } from "./overlayMenu";
 import { Subtitle } from "./subtitle";
 import { UserSmall } from "./userSmall";
 
@@ -48,7 +48,7 @@ export function MobileMenu({ onOutSideClick }) {
       >
         <div className={"flex flexAround"}>
           <UserSmall />
-          <a onClick={() => window.alert("Logged Out")  }><i className="bx bx-log-out bx-sm" /></a>
+          <a onClick={() => window.alert("Logged Out")}><i className="bx bx-log-out bx-sm" /></a>
         </div>
         <div className={styles.menu}>
           <section className="flex flexColumn">

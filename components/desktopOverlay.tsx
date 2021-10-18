@@ -4,13 +4,13 @@ import { motion } from "framer-motion";
 
 import { PropsWithChildren } from "react";
 
-export interface DesktopProps{
-  title:string, 
-  className?: string, 
-  flexDirection?: string 
+export interface DesktopOverlayProps {
+  title: string,
+  className?: string,
+  flexDirection?: string
 }
 
-export function DesktopOverlay({ title, children, className, flexDirection }: PropsWithChildren<DesktopProps>) {
+export function DesktopOverlay({ title, children, className, flexDirection }: PropsWithChildren<DesktopOverlayProps>) {
   return (
     <motion.div
       className={`floatingMenu desktop ${className || ""} ${styles.desktopOverlay}`}

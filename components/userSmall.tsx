@@ -3,8 +3,9 @@ import styles from "styles/components/UserContainer.module.scss";
 
 import { useUserInfoContext } from "./pageBase";
 
-interface UserSmallProps {
+export interface UserSmallProps {
   onDropDownClick?: () => void,
+  data?: any,
 }
 
 export function UserSmall({ onDropDownClick, data }: UserSmallProps) {
@@ -31,7 +32,3 @@ export const moderationLevelNames = {
   2: "Admin",
   3: "Owner",
 };
-
-export interface UserBigProps {
-  userProfile: GetUserInfoResponse,
-}
