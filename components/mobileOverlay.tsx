@@ -12,19 +12,6 @@ export const constrains = {
   bottom: 0,
 };
 
-// const mobileVariant = {
-//   initial: { y: 100 },
-//   animate: { y: 0 },
-//   exit: {y: 500},
-//   transition: {duration: 0.2},
-// };
-
-// const desktopVariant = {
-//   initial: { translateY: -20, opacity: 0 },
-//   animate: { translateY: 0, opacity: 1 },
-//   exit: { translateY: -20, opacity: 0 },
-// };
-
 export interface MobileOverlayProps {
   title: string,
   onOutSideClick: () => void,

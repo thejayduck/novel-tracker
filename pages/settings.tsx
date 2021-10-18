@@ -6,7 +6,8 @@ import Head from "next/head";
 import PageBase from "components/pageBase";
 import { Subtitle } from "components/subtitle";
 import { NavigationButton } from "components/ui/button";
-import { InputField, OptionSelect } from "components/ui/inputField";
+import { InputField } from "components/ui/inputField";
+import { OptionSelect } from "components/ui/optionSelect";
 
 export default function Settings() {
   return (

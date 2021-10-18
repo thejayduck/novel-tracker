@@ -6,7 +6,6 @@ import { useRouter } from "next/router";
 
 import React, { useEffect, useState } from "react";
 
-import Card from "components/cards/card";
 import PageBase from "components/pageBase";
 import { Subtitle } from "components/subtitle";
 import { UserBig } from "components/userBig";
@@ -14,7 +13,7 @@ import { UserBig } from "components/userBig";
 import { GetUserInfoResponse, useApi } from "lib/clientHelpers";
 import { serverSide_checkAuth } from "lib/serverHelpers";
 
-import { StatisticItem } from "./statisticItem";
+import StatisticItem from "../../components/pageComponents/statisticItem";
 
 export async function getServerSideProps(context) {
   const [redirect, info] = await serverSide_checkAuth(context, false, false, false);
@@ -85,24 +84,34 @@ export default function Profile({ user_info }) {
         </section>
         <Subtitle text="Library" />
         <section className={`${styles.statisticWrap} flex flexBetween flexColumn`} >
-          {/*
-              TODO jay, can you deduplicate some of this.
-              Make a new component that takes a 'books' prop (we'd pass readingBooks, finishedBooks, etc)
-                and have it map like we do below.
-              but keep the rest of the props the same and just repass them.
-          */}
-          <StatisticItem title="Reading" icon="bx bx-bookmark" stat={"?? Books"} onOpenChanged={(isOpen: bool) => isOpen && setRequestBooks("Reading")}>
-            {readingBooks && readingBooks.map((book: any) => <Card key={book._id} data={book} />)}
-          </StatisticItem>
-          <StatisticItem title="Finished" icon="bx bx-check-square" stat={"?? Books"} onOpenChanged={(isOpen) => isOpen && setRequestBooks("Finished")}>
-            {finishedBooks && finishedBooks.map((book: any) => <Card key={book._id} data={book} />)}
-          </StatisticItem>
-          <StatisticItem title="Planning" icon="bx bx-calendar" stat={"?? Books"} onOpenChanged={(isOpen) => isOpen && setRequestBooks("Planned")}>
-            {plannedBooks && plannedBooks.map((book: any) => <Card key={book._id} data={book} />)}
-          </StatisticItem>
-          <StatisticItem title="Dropped" icon="bx bx-trash-alt" stat={"?? Books"} onOpenChanged={(isOpen) => isOpen && setRequestBooks("Dropped")}>
-            {droppedBooks && droppedBooks.map((book: any) => <Card key={book._id} data={book} />)}
-          </StatisticItem>
+          <StatisticItem 
+            data={readingBooks} 
+            title="Reading" 
+            icon="bx bx-bookmark" 
+            stat={"?? Books"} 
+            onOpenChanged={(isOpen: bool) => isOpen && setRequestBooks("Reading")} 
+          />
+          <StatisticItem 
+            data={finishedBooks} 
+            title="Finished" 
+            icon="bx bx-check-square" 
+            stat={"?? Books"} 
+            onOpenChanged={(isOpen) => isOpen && setRequestBooks("Finished")}          
+          />          
+          <StatisticItem 
+            data={plannedBooks} 
+            title="Planning" 
+            icon="bx bx-calendar" 
+            stat={"?? Books"} 
+            onOpenChanged={(isOpen) => isOpen && setRequestBooks("Planned")}
+          />          
+          <StatisticItem 
+            data={droppedBooks} 
+            title="Dropped" 
+            icon="bx bx-trash-alt" 
+            stat={"?? Books"} 
+            onOpenChanged={(isOpen: bool) => isOpen && setRequestBooks("Dropped")} 
+          />
         </section>
       </PageBase>
     </>

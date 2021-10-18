@@ -228,7 +228,6 @@ li {
 }
 
 // Skeleton Loading
-
 .skeleton {
   opacity: 0.7;
   animation: skeletonAnim 1s linear infinite alternate;
@@ -259,7 +258,6 @@ li {
 }
 
 // Media Screen
-
 @media screen and (max-width: 1024px) {
   .desktop {
     display: none;

@@ -20,18 +20,23 @@ export function useDelayedState<T>(initialState: T, delay: number) {
   return [delayedState, setInternalState];
 }
 
-function useWidth() {
-  const [width, setWidth] = useState(0); // default width, detect on server.
-  const handleResize = () => setWidth(window.innerWidth);
-  useEffect(() => {
+interface Dimensions {
+    width: number,
+    height: number
+}
+
+function useWindowSize(): Dimensions { 
+  const [windowSize, setWindowSize] = useState({ width: 0, height: 0, }); 
+  useEffect(() => { if (typeof window !== "undefined") { 
+    const handleResize = () => setWindowSize({ width: window.innerWidth, height: window.innerHeight, }); 
     window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, [handleResize]);
-  return width;
+    handleResize(); 
+    return () => window.removeEventListener("resize", handleResize); } }, []);
+  return windowSize;
 }
 
 export function useIsMobile() {
-  const width = useWidth();
+  const {width} = useWindowSize();
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {

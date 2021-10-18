@@ -11,7 +11,7 @@ import { NavigationButton } from "components/ui/button";
 
 import { serverSide_checkIsLoggedIn } from "lib/serverHelpers";
 
-import { FeatureItem } from "./featureItem";
+import FeatureItem from "../components/pageComponents/featureItem";
 
 export async function getServerSideProps(context) {
   const isLoggedIn = await serverSide_checkIsLoggedIn(context, true, false, false);

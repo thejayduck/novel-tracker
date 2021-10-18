@@ -12,7 +12,7 @@ interface VolumeItemProps {
   onRemoveClicked: () => void,
 }
 
-export function VolumeItem({ image, onCoverUrlChange, onChaptersCountChange, onRemoveClicked }: VolumeItemProps) {
+export default function VolumeItem({ image, onCoverUrlChange, onChaptersCountChange, onRemoveClicked }: VolumeItemProps) {
   return (
     <li className={styles.volumeItem}>
       <a className={styles.removeBook} title="Remove Volume" onClick={() => onRemoveClicked}> <i className="bx bx-x bx-lg" /> </a>

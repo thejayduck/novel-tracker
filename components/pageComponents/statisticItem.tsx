@@ -4,7 +4,17 @@ import { AnimatePresence, motion } from "framer-motion";
 
 import React, { useEffect, useState } from "react";
 
-export function StatisticItem({ icon, title, stat, children, onOpenChanged }) {
+import Card from "components/cards/card";
+
+interface StatisticItemProps{
+  icon: string,
+  title: string,
+  stat: string,
+  onOpenChanged: (isOpen: boolean) => void,
+  data: any[],
+}
+
+export default function StatisticItem({ icon, title, stat, onOpenChanged, data }: StatisticItemProps) {
   const [isOpen, setIsOpen] = useState(false);
   useEffect(() => {
     if (onOpenChanged) {
@@ -30,6 +40,7 @@ export function StatisticItem({ icon, title, stat, children, onOpenChanged }) {
       </a>
       <AnimatePresence>
         {isOpen &&
+          data?.length &&
           <motion.div
             className={`flex ${styles.bookContainer}`}
             initial={{ opacity: 0, height: 0 }}
@@ -37,7 +48,9 @@ export function StatisticItem({ icon, title, stat, children, onOpenChanged }) {
             exit={{ opacity: 0, height: 0 }}
             transition={{ stiffness: 100 }}
           >
-            {children}
+            {data && 
+              data.map((book: any) => <Card key={book._id} data={book} hasAddButton={false} />)
+            }
           </motion.div>}
       </AnimatePresence>
     </>
