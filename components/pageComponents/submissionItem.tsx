@@ -2,7 +2,7 @@ import styles from "styles/ModPanel.module.scss";
 
 import React from "react";
 
-import Card from "components/cards/card";
+import Card from "components/cards/Card";
 import convertDate from "components/helper/convertDate";
 import { Subtitle } from "components/subtitle";
 import { NavigationButton } from "components/ui/button";
@@ -27,7 +27,7 @@ export default function SubmissionItem({ pending_book, acceptBook, denyBook }) {
       <Subtitle text="Volumes" />
       <ul className={`${styles.volumeList} flex flexRow flexRight`}>
         {pending_book.volumes.map(volume => (
-          <Card key={volume._id} data={volume} hasAddButton={false} />
+          <Card key={volume._id} data={volume} />
         ))}
       </ul>
       <Subtitle text="Actions" />

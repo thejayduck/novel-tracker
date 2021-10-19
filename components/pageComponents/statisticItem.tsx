@@ -4,9 +4,9 @@ import { AnimatePresence, motion } from "framer-motion";
 
 import React, { useEffect, useState } from "react";
 
-import Card from "components/cards/card";
+import Card from "components/cards/Card";
 
-interface StatisticItemProps{
+interface StatisticItemProps {
   icon: string,
   title: string,
   stat: string,
@@ -48,8 +48,8 @@ export default function StatisticItem({ icon, title, stat, onOpenChanged, data }
             exit={{ opacity: 0, height: 0 }}
             transition={{ stiffness: 100 }}
           >
-            {data && 
-              data.map((book: any) => <Card key={book._id} data={book} hasAddButton={false} />)
+            {data &&
+              data.map((book: any) => <Card key={book._id} data={book} />)
             }
           </motion.div>}
       </AnimatePresence>

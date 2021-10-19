@@ -1,18 +1,18 @@
 import styles from "styles/components/Card.module.scss";
 
-import { useApi } from "lib/clientHelpers";
+import { PropsWithChildren } from "react";
 
-interface CardProps {
+
+export interface CardProps {
   data: {
     _id: any,
     cover_url: string,
     title_native: string,
   },
-  hasAddButton: boolean,
 }
 
-export default function Card({ data, hasAddButton }: CardProps) {
-  const api = useApi();
+export default function Card({ data, children }: PropsWithChildren<CardProps>) {
+
   return (
     <div className={styles.bookWrap}>
       <a className={styles.book} href={`/books/${data._id}`}>
@@ -21,12 +21,7 @@ export default function Card({ data, hasAddButton }: CardProps) {
       <a className={styles.title} href={`/books/${data._id}`}>
         <p>{data?.title_native}</p>
       </a>
-      
-      {hasAddButton &&
-        <a title="Add to Library" className={styles.editButton} onClick={() => api.addBook(data._id)}>
-          <i className="bx bx-plus bx-sm" />
-        </a>
-      }
+      {children}
     </div>
   );
 }
