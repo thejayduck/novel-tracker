@@ -2,7 +2,7 @@ import styles from "styles/ModPanel.module.scss";
 
 import React from "react";
 
-import Card from "components/cards/Card";
+import Card from "components/cards/card";
 import convertDate from "components/helper/convertDate";
 import { Subtitle } from "components/subtitle";
 import { NavigationButton } from "components/ui/button";

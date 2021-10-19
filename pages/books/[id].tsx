@@ -19,7 +19,7 @@ import { serverSide_checkAuth } from "lib/serverHelpers";
 
 import DetailItem from "../../components/pageComponents/detailItem";
 
-const VolumeCard = dynamic(() => import("components/cards/Card"));
+const VolumeCard = dynamic(() => import("components/cards/card"));
 
 export async function getServerSideProps(context) {
   const [redirect, info] = await serverSide_checkAuth(context, false, false, false);

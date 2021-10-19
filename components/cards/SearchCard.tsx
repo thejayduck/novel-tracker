@@ -2,7 +2,7 @@ import styles from "styles/components/Card.module.scss";
 
 import { useApi } from "lib/clientHelpers";
 
-import Card, { CardProps } from "./Card";
+import Card, { CardProps } from "./card";
 
 export default function SearchCard({ data }: CardProps) {
   const api = useApi();
