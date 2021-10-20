@@ -35,7 +35,7 @@ export default function StatisticItem({ icon, title, stat, onOpenChanged, data }
         </div>
         <motion.i
           initial={{ rotate: 0 }}
-          animate={{ rotate: isOpen ? 180 : 0 }}
+          animate={{ rotate: isOpen && data?.length ? 180 : 0 }}
           className='bx bxs-down-arrow' />
       </a>
       <AnimatePresence>
