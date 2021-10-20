@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 
 import React, { useEffect, useState } from "react";
 
-import Card from "components/cards/card";
+import Card from "components/cards/LibraryCard";
 
 interface StatisticItemProps {
   icon: string,

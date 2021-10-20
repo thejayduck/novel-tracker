@@ -33,6 +33,13 @@
       align-items: stretch;
     }
   }
+
+  span {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
 }
 
 .desktopOverlay {
@@ -46,6 +53,13 @@
     padding: var(--padding-small);
     margin-top: 10px;
     border-radius: var(--border);
+  }
+
+  span {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 }
 

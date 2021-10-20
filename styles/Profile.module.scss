@@ -19,7 +19,7 @@
 .bookContainer {
   overflow: hidden;
   flex-wrap: wrap;
-  align-items: flex-start;
+  align-items: stretch;
   gap: 5px;
   padding: var(--padding-small);
 }

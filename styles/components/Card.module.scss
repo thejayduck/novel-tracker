@@ -19,6 +19,15 @@
     }
   }
 
+  .editOverlay {
+    top: 60px;
+    right: 0;
+    width: 15rem;
+    max-height: 50vh;
+    overflow: hidden;
+    overflow-y: auto;
+  }
+
   .book {
     img {
       opacity: 1;
