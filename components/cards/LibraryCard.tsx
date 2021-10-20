@@ -17,7 +17,7 @@ export default function SearchCard({ data }: CardProps) {
 
   return (
     <Card data={data}>
-      <a title="Add to Library" className={styles.editButton} onClick={() => setEditOverlay(prev => !prev)}>
+      <a title="Edit Book" className={styles.editButton} onClick={() => setEditOverlay(prev => !prev)}>
         <i className="bx bxs-pencil bx-sm" />
       </a>
 
