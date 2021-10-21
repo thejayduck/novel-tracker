@@ -5,8 +5,8 @@ import React from "react";
 export default function DetailItem({ title, value }) {
   return (
     <div className={`${styles.detailItem}`}>
-      <h3>{title}</h3>
-      <span>{value}</span>
+      <p title={title}>{title}</p>
+      <span title={value} >{value}</span>
     </div>
   );
 }

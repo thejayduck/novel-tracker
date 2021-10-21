@@ -3,7 +3,7 @@
   overflow: hidden;
   text-align: center;
   z-index: var(--z-fixed);
-  width: 100vw;
+  width: calc(100vw - 5px);
   padding: var(--padding-medium);
   color: white;
 
@@ -16,12 +16,12 @@
   .background {
     transform: scale(1.1);
     user-select: none;
-    border-radius: 0;
     width: 100%;
     height: 100%;
     position: absolute;
 
-    filter: blur(20px) brightness(50%);
+    filter: blur(10px) brightness(60%);
+    border-radius: var(--border);
     z-index: -1;
   }
 }
@@ -29,20 +29,33 @@
 .detailsWrap {
   width: 100%;
   .details {
-    flex-wrap: wrap;
-    align-items: stretch;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
   }
   .detailItem {
     color: white;
     background-color: var(--accent);
-
     border-radius: var(--border);
     padding: var(--padding-small);
     text-align: center;
-    flex: 1;
+    margin: var(--padding-mini);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+
+    p {
+      margin: 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
 
     span {
       color: var(--accent-dark);
+      margin: 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
   }
   .volumeList {
@@ -60,16 +73,13 @@
 }
 
 @media screen and (max-width: 1024px) {
-  .details {
-    flex-direction: column;
+  .headerWrap {
+    width: 100vw;
+  }
 
-    .detailItem {
-      span {
-        font-size: var(--font-small);
-      }
-      h3 {
-        font-size: var(--font-normal);
-      }
+  .detailsWrap {
+    .details {
+      grid-template-columns: repeat(1, 1fr);
     }
   }
 }

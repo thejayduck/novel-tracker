@@ -19,7 +19,7 @@ import { serverSide_checkAuth } from "lib/serverHelpers";
 
 import DetailItem from "../../components/pageComponents/detailItem";
 
-const VolumeCard = dynamic(() => import("components/cards/card"));
+const VolumeCard = dynamic(() => import("components/cards/VolumeCard"));
 
 export async function getServerSideProps(context) {
   const [redirect, info] = await serverSide_checkAuth(context, false, false, false);
@@ -65,8 +65,9 @@ export default function Book({ user_info }) {
         </section>
         <section className={`${styles.detailsWrap}`}>
           <Subtitle text="About" />
-          <div className={`${styles.details} flex`}>
+          <div className={`${styles.details}`}>
             <DetailItem title="Author" value={book?.author || "Loading..."} />
+            <DetailItem title="Genre" value={convertDate(book?.genre)} />
             <DetailItem title="Volumes" value={book?.volumes.length || "Loading..."} />
             <DetailItem
               title="Chapters"

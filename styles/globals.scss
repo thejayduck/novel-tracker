@@ -34,9 +34,13 @@
   --selection: hsl(259, 100%, 65%);
   --overlay: hsla(0, 0%, 0%, 0.5);
 
-  --owner: #ff5151;
-  --admin: #70ff75;
-  --moderator: #ffba70;
+  --owner: hsl(0, 100%, 66%);
+  --admin: hsl(122, 100%, 72%);
+  --moderator: hsl(31, 100%, 72%);
+
+  // Book Status
+  --reading: hsl(202, 100%, 72%);
+  --finished: hsl(122, 100%, 72%);
 
   // Other
   --border: 5px;

@@ -16,7 +16,7 @@ export default function SearchCard({ data }: CardProps) {
   const [editOverlay, setEditOverlay] = useState(false);
 
   return (
-    <Card data={data}>
+    <Card data={data} isClickable={true}>
       <a title="Edit Book" className={styles.editButton} onClick={() => setEditOverlay(prev => !prev)}>
         <i className="bx bxs-pencil bx-sm" />
       </a>
