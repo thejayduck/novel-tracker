@@ -1,0 +1,344 @@
+#__next {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+:root {
+  // Fonts
+  --font-larger: 2.5em;
+  --font-large: 2em;
+  --font-medium: 1.5rem;
+  --font-normal: 1rem;
+  --font-small: 0.8rem;
+  --font-smaller: 0.5rem;
+  --font-bold: 600;
+  --font-normal: 400;
+
+  // Z Index
+  --z-back: -10;
+  --z-normal: 1;
+  --z-front: 10;
+  --z-fixed: 100;
+  --z-absolute: 999;
+
+  // Colors
+  --accent: hsl(259, 100%, 65%);
+  --accent-dark: hsl(274, 100%, 30%);
+  --background: hsl(0, 0%, 100%);
+  --background-secondary: hsl(0, 0%, 95%);
+  --background-tertiary: hsl(0, 0%, 30%);
+  --scrollbar-thumb: hsl(259, 100%, 65%);
+  --scrollbar-track: #000000;
+  --alert: hsl(0, 100%, 55%);
+  --selection: hsl(259, 100%, 65%);
+  --overlay: hsla(0, 0%, 0%, 0.5);
+
+  --owner: hsl(0, 100%, 66%);
+  --admin: hsl(122, 100%, 72%);
+  --moderator: hsl(31, 100%, 72%);
+
+  // Book Status
+  --reading: hsl(202, 100%, 72%);
+  --finished: hsl(122, 100%, 72%);
+
+  // Other
+  --border: 5px;
+  --blur: 10px;
+
+  // Padding
+  --padding-mini: 0.1rem;
+  --padding-small: 0.5rem;
+  --padding-normal: 1rem;
+  --padding-medium: 2rem;
+  --padding-large: 5rem;
+}
+
+@-moz-document url-prefix() {
+  :root {
+    --blur: hsla(0, 0%, 0%, 0.7);
+  }
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+
+  font-family: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-weight: 400;
+  font-size: var(--font-normal);
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+
+  background-color: var(--background);
+}
+
+// THEMES
+.light {
+  --background-color: hsla(184, 100%, 94%, 1);
+  --border-color: black;
+  --text-color: black;
+}
+
+.light input,
+.light textarea,
+.light select {
+  background-color: white;
+  color: black;
+}
+
+.dark {
+  --background-color: hsla(0, 0%, 8%, 1);
+  --border-color: white;
+  --text-color: white;
+}
+
+.dark input,
+.dark textarea,
+.dark select {
+  background-color: hsla(0, 0%, 8%, 1);
+  color: white;
+}
+
+// OTHER
+*:not(html, body) {
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  scroll-behavior: inherit;
+  box-sizing: inherit;
+
+  vertical-align: inherit;
+}
+
+a {
+  color: inherit;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-size: var(--font-medium);
+  font-weight: 500;
+}
+
+/* Attempt to fix chrome and edge's text render bug where text becomes blurry */
+p,
+a,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+i {
+  -webkit-font-smoothing: subpixel-antialiased;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+hr {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: white;
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+}
+
+li {
+  transition: 0.2s ease-in-out;
+}
+
+//Floating Menu
+.floatingMenu {
+  color: white;
+
+  position: absolute;
+  background-color: var(--accent);
+  border-radius: var(--border);
+  padding: var(--padding-small);
+
+  z-index: var(--z-front);
+
+  filter: drop-shadow(0 1px 5px rgb(0, 0, 0, 0.5));
+}
+
+// Flex
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  gap: 10px;
+}
+.flexRight {
+  justify-content: flex-start;
+}
+.flexLeft {
+  justify-content: flex-end;
+}
+.flexAround {
+  justify-content: space-around;
+}
+.flexEvenly {
+  justify-content: space-evenly;
+}
+.flexBetween {
+  justify-content: space-between;
+}
+.flexColumn {
+  flex-direction: column;
+}
+.flexRow {
+  flex-direction: row;
+}
+.flexWrap {
+  flex-wrap: wrap;
+}
+
+// Font
+.fontSmaller {
+  font-size: var(--font-smaller);
+}
+.fontSmall {
+  font-size: var(--font-small);
+}
+.fontMedium {
+  font-size: var(--font-medium);
+}
+.fontLarge {
+  font-size: var(--font-large);
+}
+.fontLarger {
+  font-size: var(--font-larger);
+}
+
+// Skeleton Loading
+.skeleton {
+  opacity: 0.7;
+  animation: skeletonAnim 1s linear infinite alternate;
+}
+
+.skeletonText {
+  width: 100%;
+  height: 0.5rem;
+  margin-bottom: 0.25rem;
+
+  border-radius: var(--border);
+
+  &:last-child {
+    margin-bottom: 0;
+    width: 80%;
+  }
+}
+
+@keyframes skeletonAnim {
+  0% {
+    background-color: var(--accent-dark);
+    // background-color: hsl(200, 20%, 70%);
+  }
+  100% {
+    background-color: var(--accent);
+    // background-color: hsl(200, 20%, 95%);
+  }
+}
+
+// Media Screen
+@media screen and (max-width: 1024px) {
+  .desktop {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .mobile {
+    display: none;
+  }
+
+  [tooltip]::after {
+    transition: 25ms;
+  }
+
+  [tooltip]:not(:hover)::after {
+    content: "?";
+
+    display: inline-block;
+    position: absolute;
+
+    border-radius: 50%;
+    text-align: center;
+    line-height: 1em;
+
+    font-size: 12px;
+
+    height: 1em;
+    width: 1em;
+
+    transform: translateY(0em);
+
+    background-color: rgb(0, 0, 0);
+    color: white;
+  }
+
+  [tooltip]:hover::after {
+    content: attr(tooltip);
+
+    position: absolute;
+    transform: translateY(-1em);
+    line-height: 1.65em;
+    margin-left: 4px;
+    margin-right: 4px;
+    padding: 4px;
+
+    font-size: 18px;
+
+    text-align: center;
+
+    color: white;
+    background-color: rgba(0, 0, 0, 0.6);
+
+    border-radius: var(--border);
+  }
+}
+
+::selection {
+  background: var(--selection);
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb);
+}

@@ -1,0 +1,64 @@
+.nav {
+  background-color: var(--accent);
+  color: white;
+
+  position: -webkit-sticky;
+  position: -moz-sticky;
+  position: -o-sticky;
+  position: -ms-sticky;
+  position: sticky;
+
+  top: 0;
+  right: 0;
+  left: 0;
+
+  z-index: var(--z-absolute);
+  user-select: none;
+  padding: var(--padding-small);
+
+  .linkItem {
+    background-color: var(--accent-dark);
+    border-radius: var(--border);
+
+    a {
+      padding: 11px;
+      display: inline;
+    }
+  }
+
+  .container {
+    height: 100%;
+    width: 100%;
+    gap: 0;
+
+    .rightMenu {
+      flex: 0;
+    }
+
+    .links {
+      color: white;
+
+      height: 100%;
+
+      gap: 10px;
+
+      a {
+        display: inline-block;
+      }
+    }
+  }
+}
+
+.notificationOverlay {
+  right: 200px;
+  top: 70px;
+  width: 40rem;
+  max-height: 50vh;
+  overflow: hidden auto;
+}
+
+.userMenuOverlay {
+  right: 5px;
+  top: 70px;
+  width: 15rem;
+}

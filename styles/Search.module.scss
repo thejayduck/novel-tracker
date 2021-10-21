@@ -1,0 +1,29 @@
+.inputWrap {
+  align-items: flex-start;
+  position: relative;
+}
+
+.results {
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-bottom: 5rem;
+}
+
+.filterOverlay {
+  right: 0px;
+  bottom: -120px;
+}
+
+@supports (-webkit-touch-callout: none) {
+  .inputWrap {
+    display: grid;
+    grid-template-areas:
+      "left left right"
+      "left left right"
+      "bottom bottom bottom";
+  }
+  .results {
+    display: grid;
+    grid-template-columns: repeat(1, 185px);
+  }
+}

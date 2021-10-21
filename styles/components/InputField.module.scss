@@ -1,0 +1,50 @@
+.inputFieldWrap,
+.customSelect {
+  /* Alignment */
+  // width: 100%;
+  font-size: var(--font-normal);
+  flex: 1;
+}
+
+.title {
+  margin: 0;
+  font-size: var(--font-normal);
+  text-align: left;
+  user-select: none;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.inputField[type="color"] {
+  height: 50px;
+  border: 0;
+  padding: 0;
+  border-radius: var(--border);
+}
+
+.inputFieldWrap {
+  input {
+    width: 100%;
+    border-radius: var(--border);
+
+    padding: var(--padding-small) var(--padding-small);
+    margin: 0 0 8px 0;
+    box-sizing: border-box;
+    border: 2px solid var(--accent);
+  }
+
+  input:invalid {
+    border-color: var(--alert);
+  }
+}
+
+.customSelect {
+  border-radius: var(--border);
+
+  padding: var(--padding-small) var(--padding-small);
+  margin: 0 0 8px 0;
+  box-sizing: border-box;
+  border: 2px solid var(--accent);
+
+  min-width: 200px;
+}

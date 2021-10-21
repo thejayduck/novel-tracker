@@ -1,0 +1,41 @@
+.subtitle {
+  overflow-wrap: break-word;
+  text-align: center;
+  width: 100%;
+  margin: auto;
+
+  justify-self: center;
+
+  user-select: none;
+
+  display: flex;
+
+  margin-top: 6px;
+  margin-bottom: 6px;
+
+  i {
+    margin: auto;
+  }
+
+  &:after {
+    content: "";
+    flex: 1 1;
+    border: 2px solid;
+    background-color: black;
+    border-radius: 50px;
+    margin: auto;
+    margin-left: 5px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .subtitle::before {
+    content: "";
+    flex: 1 1;
+    border: 2px solid;
+    background-color: black;
+    border-radius: 50px;
+    margin: auto;
+    margin-right: 5px;
+  }
+}

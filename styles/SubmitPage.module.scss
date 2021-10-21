@@ -1,0 +1,85 @@
+.section {
+  width: 100%;
+  margin: 10px 0 10px 0;
+  h2 {
+    text-align: center;
+  }
+  .sectionContainer {
+    textarea {
+      border-radius: var(--border);
+      width: 100%;
+      resize: none;
+      border: 2px solid var(--accent);
+    }
+
+    .bannerPreview {
+      border-radius: var(--border);
+      object-fit: contain;
+    }
+  }
+}
+
+.volumeList {
+  gap: 10px;
+  flex-wrap: wrap;
+  color: black;
+  align-items: flex-start;
+}
+
+.volumeList .placeholder {
+  width: 200px;
+  height: 300px;
+  border-radius: var(--border);
+  box-sizing: border-box;
+  text-align: center;
+  background-color: var(--accent);
+  color: white;
+
+  margin-bottom: 10px;
+}
+
+.volumeItem {
+  width: 200px;
+  position: relative;
+
+  &:hover > .removeBook {
+    display: initial;
+  }
+
+  .removeBook {
+    display: none;
+    background-color: hsla(0, 0%, 0%, 0.412);
+    border-radius: var(--border);
+    top: 5px;
+    left: 5px;
+    position: absolute;
+    text-align: center;
+    color: white;
+  }
+
+  .book {
+    img {
+      border-radius: var(--border);
+      opacity: 1;
+    }
+    .volumeDetails {
+      bottom: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .section {
+    .sectionContainer {
+      div {
+        flex-direction: column;
+        width: 100%;
+      }
+    }
+  }
+  .volumeItem {
+    .removeBook {
+      display: block;
+    }
+  }
+}

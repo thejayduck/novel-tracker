@@ -1,0 +1,31 @@
+.statisticWrap {
+  flex-wrap: wrap;
+}
+
+.statisticItem {
+  background-color: var(--accent);
+  padding: var(--padding-small);
+
+  border-radius: var(--border);
+  color: white;
+
+  flex: 0.3;
+
+  .statName {
+    color: var(--accent-dark);
+  }
+}
+
+.bookContainer {
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 5px;
+  padding: var(--padding-small);
+}
+
+@supports (-webkit-touch-callout: none) {
+  .statisticItem {
+    margin: 5px;
+    overflow: hidden;
+  }
+}

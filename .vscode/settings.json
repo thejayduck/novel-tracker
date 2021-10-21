@@ -1,0 +1,14 @@
+{
+    "typescript.tsdk": "node_modules\\typescript\\lib",
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    "files.exclude": {
+        ".next": true,
+        "node_modules": true
+    },
+    "editor.tabSize": 2,
+    "editor.detectIndentation": false,
+    "editor.autoIndent": "full",
+    "editor.insertSpaces": true
+}
