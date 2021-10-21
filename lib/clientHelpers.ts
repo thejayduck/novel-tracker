@@ -21,22 +21,25 @@ export function useDelayedState<T>(initialState: T, delay: number) {
 }
 
 interface Dimensions {
-    width: number,
-    height: number
+  width: number,
+  height: number
 }
 
-function useWindowSize(): Dimensions { 
-  const [windowSize, setWindowSize] = useState({ width: 0, height: 0, }); 
-  useEffect(() => { if (typeof window !== "undefined") { 
-    const handleResize = () => setWindowSize({ width: window.innerWidth, height: window.innerHeight, }); 
-    window.addEventListener("resize", handleResize);
-    handleResize(); 
-    return () => window.removeEventListener("resize", handleResize); } }, []);
+function useWindowSize(): Dimensions {
+  const [windowSize, setWindowSize] = useState({ width: 0, height: 0, });
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const handleResize = () => setWindowSize({ width: window.innerWidth, height: window.innerHeight, });
+      window.addEventListener("resize", handleResize);
+      handleResize();
+      return () => window.removeEventListener("resize", handleResize);
+    }
+  }, []);
   return windowSize;
 }
 
 export function useIsMobile() {
-  const {width} = useWindowSize();
+  const { width } = useWindowSize();
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -58,6 +61,24 @@ export function useDelayedStateWithLive<T>(initialState: T, delay: number) {
   }, [internalState]);
 
   return [delayedState, setInternalState, internalState];
+}
+
+export function useOuterClick(callback: () => void) {
+  const callbackRef = useRef<() => void>();
+  const innerRef = useRef<any>();
+
+  useEffect(() => { callbackRef.current = callback; });
+  useEffect(() => {
+    function handleClick(e: any) {
+      if (innerRef.current && callbackRef.current &&
+        !innerRef.current.contains(e.target)
+      ) callbackRef.current();
+    }
+    document.addEventListener("click", handleClick);
+    return () => document.removeEventListener("click", handleClick);
+  }, []);
+
+  return innerRef;
 }
 
 export type GetBookResponse = IBook

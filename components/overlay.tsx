@@ -9,7 +9,7 @@ import { MobileOverlay } from "./mobileOverlay";
 export interface OverlayProps {
   title: string,
   flexDirection?: string,
-  onOutsideClick: () => void,
+  onOutsideClick?: () => void,
   className?: string,
 }
 
@@ -21,7 +21,7 @@ export default function Overlay({ children, onOutsideClick, className, title, fl
       ? (<MobileOverlay title={title} onOutSideClick={onOutsideClick}>
         {children}
       </MobileOverlay>)
-      : (<DesktopOverlay title={title} className={className} flexDirection={flexDirection}>
+      : (<DesktopOverlay title={title} className={className} flexDirection={flexDirection} onOutsideClick={onOutsideClick}>
         {children}
       </DesktopOverlay>)
     }

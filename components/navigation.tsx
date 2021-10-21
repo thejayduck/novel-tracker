@@ -61,10 +61,10 @@ export default function Navigation() {
       </div>
 
       <AnimatePresence>
-        { userMenu && (
-          isMobile 
+        {userMenu && (
+          isMobile
             ? <MobileMenu onOutSideClick={() => setUserMenu(false)} />
-            : <DesktopOverlay title={"Account"} className={styles.userMenuOverlay} flexDirection="flexColumn" >
+            : <DesktopOverlay title={"Account"} className={styles.userMenuOverlay} flexDirection="flexColumn" onOutsideClick={() => setUserMenu(false)} >
               <NavigationButton href={`/user/${userInfo.user_id}`} icon="bx bx-user bx-sm" text="Your Account" />
               <NavigationButton icon="bx bx-cog bx-sm" text="Settings" href="/settings" />
               <NavigationButton
@@ -81,13 +81,13 @@ export default function Navigation() {
       </AnimatePresence>
 
       {!isMobile &&
-          <AnimatePresence>
-            {notification &&
-            <DesktopOverlay title={"Notifications (1)"} className={styles.notificationOverlay} flexDirection="flexColumn" >
+        <AnimatePresence>
+          {notification &&
+            <DesktopOverlay title={"Notifications (1)"} className={styles.notificationOverlay} flexDirection="flexColumn" onOutsideClick={() => setNotification(false)} >
               <NotificationItem />
             </DesktopOverlay>
-            }
-          </AnimatePresence>
+          }
+        </AnimatePresence>
       }
     </nav >
   );

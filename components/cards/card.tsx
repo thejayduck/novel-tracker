@@ -9,7 +9,7 @@ export interface CardProps {
     cover_url: string,
     title_native: string,
   },
-  isClickable: boolean,
+  isClickable?: boolean,
 }
 
 export default function Card({ data, children, isClickable }: PropsWithChildren<CardProps>) {
