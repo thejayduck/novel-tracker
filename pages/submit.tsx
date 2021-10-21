@@ -55,6 +55,7 @@ export default function SubmitPage({ book_id, user_info }: SubmitPageProps) {
   const descriptionRef = useRef<HTMLTextAreaElement>();
   const authorNameRef = useRef<HTMLInputElement>();
   const releaseStatusRef = useRef<HTMLOptionElement>();
+  const genreRef = useRef<HTMLOptionElement>();
   const startDateRef = useRef<HTMLInputElement>();
   const endDateRef = useRef<HTMLInputElement>();
   async function onSubmit() {
@@ -66,7 +67,7 @@ export default function SubmitPage({ book_id, user_info }: SubmitPageProps) {
       author: authorNameRef.current.value,
       // TODO
       cover_url: null,
-      genre: null,
+      genre: genreRef.current.value,
       release_status: releaseStatusRef.current.value,
       start_date: startDateRef.current.value,
       end_date: endDateRef.current.value,
@@ -120,6 +121,7 @@ export default function SubmitPage({ book_id, user_info }: SubmitPageProps) {
                 options={
                   genres
                 }
+                ref={genreRef}
               />
             </div>
             <div className="flex">
