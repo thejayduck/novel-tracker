@@ -58,6 +58,7 @@ export default function SubmitPage({ book_id, user_info }: SubmitPageProps) {
   const genreRef = useRef<HTMLOptionElement>();
   const startDateRef = useRef<HTMLInputElement>();
   const endDateRef = useRef<HTMLInputElement>();
+  const bannerRef = useRef<HTMLInputElement>();
   async function onSubmit() {
     const bookDetails = {
       title_english: englishTitleRef.current.value,
@@ -109,6 +110,8 @@ export default function SubmitPage({ book_id, user_info }: SubmitPageProps) {
         <section className={styles.section}>
           <Subtitle text="Other" />
           <div className={styles.sectionContainer}>
+            <img className={`${styles.bannerPreview} skeleton`} width="100%" height="auto" src="https://dummyimage.com/1900x500/000/ffffff.png&text=+No+Cover" />
+            <InputField toolTip="Preferred Resolution is 1900x500" title="Banner Url" ref={bannerRef} />
             <div className="flex">
               <InputField title="Author Name" ref={authorNameRef} />
               <OptionSelect

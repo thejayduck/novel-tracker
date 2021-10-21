@@ -11,6 +11,11 @@
       resize: none;
       border: 2px solid var(--accent);
     }
+
+    .bannerPreview {
+      border-radius: var(--border);
+      object-fit: contain;
+    }
   }
 }
 
