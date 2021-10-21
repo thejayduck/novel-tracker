@@ -3,7 +3,7 @@
   overflow: hidden;
   text-align: center;
   z-index: var(--z-fixed);
-  width: calc(100vw - 5px);
+  width: 100%;
   padding: var(--padding-medium);
   color: white;
 
@@ -73,10 +73,6 @@
 }
 
 @media screen and (max-width: 1024px) {
-  .headerWrap {
-    width: 100vw;
-  }
-
   .detailsWrap {
     .details {
       grid-template-columns: repeat(1, 1fr);
