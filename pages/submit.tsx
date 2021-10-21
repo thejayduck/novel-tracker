@@ -4,7 +4,7 @@ import styles from "styles/SubmitPage.module.scss";
 import Head from "next/head";
 import genres from "genres.json";
 
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import nextId from "react-id-generator";
 
 import { useAlert } from "components/alertWrapper";
@@ -59,6 +59,11 @@ export default function SubmitPage({ book_id, user_info }: SubmitPageProps) {
   const startDateRef = useRef<HTMLInputElement>();
   const endDateRef = useRef<HTMLInputElement>();
   const bannerRef = useRef<HTMLInputElement>();
+  const [bannerUrl, setBannerUrl] = useState<string | null>(null);
+  useEffect(() => {
+    setBannerUrl(bannerRef.current?.value);
+  }, [bannerRef.current?.value]);
+  console.log("rerender");
   async function onSubmit() {
     const bookDetails = {
       title_english: englishTitleRef.current.value,
@@ -83,6 +88,7 @@ export default function SubmitPage({ book_id, user_info }: SubmitPageProps) {
       alert.information("Submitted!");
     });
   }
+
   return (
     <>
       <Head>
@@ -110,8 +116,19 @@ export default function SubmitPage({ book_id, user_info }: SubmitPageProps) {
         <section className={styles.section}>
           <Subtitle text="Other" />
           <div className={styles.sectionContainer}>
-            <img className={`${styles.bannerPreview} skeleton`} width="100%" height="auto" src="https://dummyimage.com/1450x500/000/ffffff.png&text=+No+Cover" />
-            <InputField toolTip="Preferred Resolution is 1450x500" title="Banner Url" ref={bannerRef} />
+            <img
+              className={`${styles.bannerPreview} skeleton`}
+              width="100%"
+              height="auto"
+              src={bannerUrl || "https://dummyimage.com/1600x600/000/ffffff.png&text=+No+Cover"}
+              onError={() => {
+                setBannerUrl("https://dummyimage.com/1600x600/000/ffffff.png&text=+Invalid+Cover");
+              }}
+            />
+            <InputField toolTip="Preferred Resolution is 1600x600" title="Banner Url" ref={bannerRef} onChange={() => {
+              console.log("gaminig");
+              setBannerUrl(bannerRef.current.value);
+            }} />
             <div className="flex">
               <InputField title="Author Name" ref={authorNameRef} />
               <OptionSelect
