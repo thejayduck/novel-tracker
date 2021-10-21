@@ -25,18 +25,8 @@ export default function Footer() {
           <section>
             <h3>Navigation</h3>
             <li>
-              <a aria-label="Search" title="Search" href="/search">
-                Search
-              </a>
-            </li>
-            <li>
-              <a aria-label="Forums" title="Forums" href="/search">
-                Forums
-              </a>
-            </li>
-            <li>
-              <a aria-label="Submit Book" title="Submit Book" href="/submit">
-                Submit Book
+              <a aria-label="FAQ" title="FAQ" href="/">
+                FAQ
               </a>
             </li>
           </section>
