@@ -12,7 +12,7 @@ import { OptionSelect } from "components/ui/optionSelect";
 
 import Card, { CardProps } from "./card";
 
-export default function SearchCard({ data }: CardProps) {
+export default function LibraryCard({ data }: CardProps) {
   const [editOverlay, setEditOverlay] = useState(false);
 
   return (

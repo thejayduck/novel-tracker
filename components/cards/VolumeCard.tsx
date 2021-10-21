@@ -2,7 +2,7 @@ import styles from "styles/components/Card.module.scss";
 
 import Card, { CardProps } from "./card";
 
-export default function SearchCard({ data }: CardProps) {
+export default function VolumeCard({ data }: CardProps) {
   return (
     <>
       <Card data={data} isClickable={false}>

@@ -44,8 +44,8 @@ export default function StatisticItem({ icon, title, stat, onOpenChanged, data }
           <motion.div
             className={`flex ${styles.bookContainer}`}
             initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "max-content" }}
-            exit={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "max-content", overflow: "initial" }}
+            exit={{ opacity: 0, height: 0, overflow: "hidden" }}
             transition={{ stiffness: 100 }}
           >
             {data &&
