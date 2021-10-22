@@ -1,6 +1,3 @@
-
-# The Website is going through an overall design and database change!
-
 # <img alt="logo" src="public/icon.svg" width=64 align="center" /> Novel Tracker
 
 ## Features
