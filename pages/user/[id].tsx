@@ -85,33 +85,33 @@ export default function Profile({ user_info }) {
         </section>
         <Subtitle text="Library" />
         <section className={`${styles.statisticWrap} flex flexBetween flexColumn`} >
-          <StatisticItem 
-            data={readingBooks} 
-            title="Reading" 
-            icon="bx bx-bookmark" 
-            stat={"?? Books"} 
-            onOpenChanged={(isOpen: bool) => isOpen && setRequestBooks("Reading")} 
+          <StatisticItem
+            data={readingBooks}
+            title="Reading"
+            icon="bx bx-bookmark"
+            stat={"?? Books"}
+            onOpenChanged={(isOpen: bool) => isOpen && setRequestBooks("Reading")}
           />
-          <StatisticItem 
-            data={finishedBooks} 
-            title="Finished" 
-            icon="bx bx-check-square" 
-            stat={"?? Books"} 
-            onOpenChanged={(isOpen) => isOpen && setRequestBooks("Finished")}          
-          />          
-          <StatisticItem 
-            data={plannedBooks} 
-            title="Planning" 
-            icon="bx bx-calendar" 
-            stat={"?? Books"} 
+          <StatisticItem
+            data={finishedBooks}
+            title="Finished"
+            icon="bx bx-check-square"
+            stat={"?? Books"}
+            onOpenChanged={(isOpen) => isOpen && setRequestBooks("Finished")}
+          />
+          <StatisticItem
+            data={plannedBooks}
+            title="Planning"
+            icon="bx bx-calendar"
+            stat={"?? Books"}
             onOpenChanged={(isOpen) => isOpen && setRequestBooks("Planned")}
-          />          
-          <StatisticItem 
-            data={droppedBooks} 
-            title="Dropped" 
-            icon="bx bx-trash-alt" 
-            stat={"?? Books"} 
-            onOpenChanged={(isOpen: bool) => isOpen && setRequestBooks("Dropped")} 
+          />
+          <StatisticItem
+            data={droppedBooks}
+            title="Dropped"
+            icon="bx bx-trash-alt"
+            stat={"?? Books"}
+            onOpenChanged={(isOpen: bool) => isOpen && setRequestBooks("Dropped")}
           />
         </section>
       </PageBase>
