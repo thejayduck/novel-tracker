@@ -8,7 +8,7 @@
 * Easily Track Your Favorite Novels
 
 ## Screenshots
-<img alt="mobile mockup" src="public/mockup_MOBILE.png" width=128 /> <img alt="pc mockup" src="public/mockup_PC.png" width=256 />
+<img alt="Screenshot 1" src="public/screenshot_1.jpeg" width=256 /> <img alt="Screenshot 2" src="public/screenshot_2.jpeg" width=256 />
 
 ## Links
 [WIP Version](https://novel-tracker.vercel.app/) /
