@@ -2,6 +2,8 @@
 .customSelect {
   /* Alignment */
   // width: 100%;
+  min-width: 200px;
+
   font-size: var(--font-normal);
   flex: 1;
 }
@@ -45,6 +47,4 @@
   margin: 0 0 8px 0;
   box-sizing: border-box;
   border: 2px solid var(--accent);
-
-  min-width: 200px;
 }

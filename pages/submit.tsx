@@ -73,6 +73,7 @@ export default function SubmitPage({ book_id, user_info }: SubmitPageProps) {
       author: authorNameRef.current.value,
       // TODO
       cover_url: null,
+      banner_url: bannerRef.current.value,
       genre: genreRef.current.value,
       release_status: releaseStatusRef.current.value,
       start_date: startDateRef.current.value,
@@ -115,6 +116,9 @@ export default function SubmitPage({ book_id, user_info }: SubmitPageProps) {
 
         <section className={styles.section}>
           <Subtitle text="Other" />
+          <InputField toolTip="Preferred Resolution is 1600x600" title="Banner Url" ref={bannerRef} onChange={() => {
+            setBannerUrl(bannerRef.current.value);
+          }} />
           <div className={styles.sectionContainer}>
             <img
               className={`${styles.bannerPreview} skeleton`}
@@ -125,10 +129,6 @@ export default function SubmitPage({ book_id, user_info }: SubmitPageProps) {
                 setBannerUrl("https://dummyimage.com/1600x600/000/ffffff.png&text=+Invalid+Cover");
               }}
             />
-            <InputField toolTip="Preferred Resolution is 1600x600" title="Banner Url" ref={bannerRef} onChange={() => {
-              console.log("gaminig");
-              setBannerUrl(bannerRef.current.value);
-            }} />
             <div className="flex">
               <InputField title="Author Name" ref={authorNameRef} />
               <OptionSelect

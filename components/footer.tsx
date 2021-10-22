@@ -29,6 +29,11 @@ export default function Footer() {
                 FAQ
               </a>
             </li>
+            <li>
+              <a aria-label="Report Bug" title="Report Bug" href="/">
+                Report Bug              
+              </a>
+            </li>
           </section>
 
           <section>
