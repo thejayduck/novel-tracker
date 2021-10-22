@@ -96,7 +96,7 @@ export default function Search({ user_info }) {
         <div className={`${styles.results} flex flextRight`}>
           {
             searchResults.map(searchResult => (
-              <SearchCard key={searchResult._id} data={searchResult} hasAddButton={true} />
+              <SearchCard key={searchResult._id} data={searchResult} />
             ))
           }
         </div>
