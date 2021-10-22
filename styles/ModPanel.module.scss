@@ -3,6 +3,10 @@
   gap: 10px;
   width: 100%;
 
+  img {
+    border-radius: var(--border);
+  }
+
   .submissionItem {
     width: 100%;
 

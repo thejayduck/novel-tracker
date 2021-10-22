@@ -71,6 +71,7 @@ export default function Profile({ user_info }) {
     setUserProfile(userProfile);
   }, [id]);
 
+
   // TODO add book count for each in User model
   return (
     <>

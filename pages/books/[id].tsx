@@ -58,6 +58,7 @@ export default function Book({ user_info }) {
           <div>
             <img className="skeleton" width={200} height={300} src={book?.cover_url || "https://dummyimage.com/200x300/000/ffffff.png&text=+No+Cover"} />
             <NavigationButton text="Add to Library" icon="bx bx-list-plus bx-sm" onClick={() => setOnOverlayOpen(prev => !prev)} />
+            <NavigationButton text="Edit Entry" icon="bx bxs-edit bx-sm" onClick={() => alert("Unimplemented")} />
           </div>
           <h1>{book?.title_english || "Loading..."}</h1>
           <span className="fontSmall">{book?.title_romanized || "Loading..."}</span>
