@@ -30,7 +30,7 @@ export default function Footer() {
               </a>
             </li>
             <li>
-              <a aria-label="Report Bug" title="Report Bug" href="/">
+              <a aria-label="Report Bug" title="Report Bug" target="_blank" href="https://github.com/thejayduck/novel-tracker/issues" rel="noreferrer">
                 Report Bug              
               </a>
             </li>
