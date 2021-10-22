@@ -15,7 +15,7 @@ export interface CardProps {
 export default function Card({ data, children, isClickable }: PropsWithChildren<CardProps>) {
 
   return (
-    <div className={styles.bookWrap}>
+    <div className={styles.bookWrap} title={data.title_native}>
       <a className={styles.book} href={isClickable ? `/books/${data._id}` : "#"}>
         <img className="skeleton" width={200} height={300} src={data?.cover_url || "https://dummyimage.com/200x300/000/ffffff.png&text=+No+Cover"} />
       </a>

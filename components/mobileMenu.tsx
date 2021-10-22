@@ -59,7 +59,7 @@ export function MobileMenu({ onOutSideClick }) {
             <NavigationButton href="/settings" icon="bx bx-cog bx-sm" text="Settings" />
             {/* TODO MAKE THIS DATA MOD ONLY */}
             <a>Moderator Tools</a>
-            <NavigationButton href="/mod" icon="bx bx-add-to-queue bx-sm" text="Book Submission" />
+            <NavigationButton href="/mod" icon="bx bx-add-to-queue bx-sm" text="Book Submissions" />
           </section>
           <section className={styles.notificationWrap}>
             <Subtitle text="Notifications (1)" />
