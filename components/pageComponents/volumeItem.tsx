@@ -22,8 +22,8 @@ export default function VolumeItem({ image, onCoverUrlChange, onChaptersCountCha
         <img className="skeleton" width={200} height={300} src={image || "https://dummyimage.com/200x300/000/ffffff.png&text=+No+Cover"} />
         <div className={`${styles.volumeDetails}`}>
           <InputField placeHolder="Image URL" inputType="url" onChange={(e: any) => onCoverUrlChange(e.target.value)} />
-          <InputField placeHolder="Chapters" inputType="number" maxValue="999" defaultValue="0" onChange={(e: any) => onChaptersCountChange(e.target.value)} />
-          <InputField placeHolder="Extras" inputType="number" maxValue="999" defaultValue="0" onChange={(e: any) => onChaptersCountChange(e.target.value)} />
+          <InputField title="Chapters" placeHolder="Chapters" inputType="number" maxValue="999" defaultValue="0" onChange={(e: any) => onChaptersCountChange(e.target.value)} />
+          <InputField toolTip="'Prologue', 'Interlude', 'Epilogue' and others chapters count as Extras" title="Extras" placeHolder="Extras" inputType="number" maxValue="999" defaultValue="0" onChange={(e: any) => onChaptersCountChange(e.target.value)} />
         </div>
       </div>
     </li>
