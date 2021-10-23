@@ -85,6 +85,7 @@ export type GetBookResponse = IBook
 
 export type GetUserInfoResponse = IUser
 
+// TODO properly type all the return data
 export function useApi() {
   const alert = useAlert();
 
@@ -195,6 +196,9 @@ export function useApi() {
     },
     async getUserBookInfos(onSuccess?: (responseData: unknown) => void) {
       return getCall("me/get_book_infos", {}, onSuccess);
+    },
+    async getBookStatus(book_id: string, onSuccess?: (responseData: unknown) => void) {
+      return getCall("me/get_book_status", { book_id }, onSuccess);
     },
     async logout(onSuccess?: (responseData: unknown) => void) {
       return getCall("me/logout", {}, onSuccess);

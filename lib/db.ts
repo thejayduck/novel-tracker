@@ -121,6 +121,18 @@ export async function getUserBookInfos(user_id: Types.ObjectId): Promise<(IUserP
   return await User.findById(user_id).then(async (user) => await user.execPopulate()).then(user => user.books);
 }
 
+export async function getUserBookProgress(user_id: Types.ObjectId, book_id: Types.ObjectId): Promise<IUserProgress> {
+  const user_data = await User.findOne({
+    _id: user_id,
+    books: {
+      $elemMatch: {
+        book_id
+      }
+    }
+  });
+  return user_data.books[0];
+}
+
 export async function addUserBooks(user_id: Types.ObjectId, book_id: Types.ObjectId) {
   await User.findByIdAndUpdate(user_id, {
     $push: {
