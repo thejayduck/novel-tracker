@@ -3,22 +3,24 @@
 
   background-color: var(--background-secondary);
 
-  padding: 2rem 0;
+  padding: var(--padding-medium);
+  margin-top: var(--padding-normal);
   user-select: none;
 
   .container {
-    color: black;
-
     .title {
       font-size: var(--font-medium);
     }
 
     .social {
       padding-top: var(--padding-medium);
-      color: black;
       align-items: stretch;
 
-      li {
+      a {
+        padding: var(--padding-small);
+        display: inline-block;
+        width: 100%;
+
         margin-top: 5px;
         border-radius: var(--border);
         transition: all 0.2s ease-in-out;
@@ -28,17 +30,14 @@
           background-color: var(--accent);
         }
       }
-      li a {
-        padding: var(--padding-small);
-        display: inline-block;
-        width: 100%;
-      }
     }
   }
 }
 
 @media screen and (max-width: 1024px) {
-  .social {
-    flex-direction: column;
+  .footer {
+    .social {
+      flex-direction: column;
+    }
   }
 }
