@@ -7,49 +7,38 @@ export default function Footer() {
       <div className={styles.container}>
         <span className={styles.title}>Novel Tracker</span>
 
-        <ul className={`${styles.social} flexEvenly flex`}>
-          <section>
+        <div className={`${styles.social} flexEvenly flex`}>
+          <section >
             <h3>Developers</h3>
-            <li>
-              <a aria-label="Github - TheJayDuck" target="_blank" title="Github - TheJayDuck" href="https://github.com/thejayduck" rel="noreferrer">
+            <a aria-label="Github - TheJayDuck" target="_blank" title="Github - TheJayDuck" href="https://github.com/thejayduck" rel="noreferrer">
                 TheJayDuck
-              </a>
-            </li>
-            <li>
-              <a aria-label="Github - nobbele" target="_blank" title="Github - nobbele" href="https://github.com/nobbele" rel="noreferrer">
+            </a>
+            <a aria-label="Github - nobbele" target="_blank" title="Github - nobbele" href="https://github.com/nobbele" rel="noreferrer">
                 nobbele
-              </a>
-            </li>
+            </a>
           </section>
 
           <section>
             <h3>Navigation</h3>
-            <li>
-              <a aria-label="FAQ" title="FAQ" href="/">
+            <a aria-label="FAQ" title="FAQ" href="/">
                 FAQ
-              </a>
-            </li>
-            <li>
-              <a aria-label="Report Bug" title="Report Bug" target="_blank" href="https://github.com/thejayduck/novel-tracker/issues" rel="noreferrer">
+            </a>
+            <a aria-label="Report Bug" title="Report Bug" target="_blank" href="https://github.com/thejayduck/novel-tracker/issues" rel="noreferrer">
                 Report Bug              
-              </a>
-            </li>
+            </a>
           </section>
 
           <section>
             <h3>Other</h3>
-            <li>
-              <a aria-label="Trello" target="_blank" title="Trello" href="https://trello.com/b/dPv92vJW" rel="noreferrer">
+            <a aria-label="Trello" target="_blank" title="Trello" href="https://trello.com/b/dPv92vJW" rel="noreferrer">
                 Trello
-              </a>
-            </li>
-            <li>
-              <a aria-label="Source Code" target="_blank" title="Github" href="https://github.com/thejayduck/novel-tracker/" rel="noreferrer">
+            </a>
+            <a aria-label="Source Code" target="_blank" title="Github" href="https://github.com/thejayduck/novel-tracker/" rel="noreferrer">
                 Source Code
-              </a>
-            </li>
+            </a>
           </section>
-        </ul>
+        </div>
+        
       </div>
     </footer>
   );
