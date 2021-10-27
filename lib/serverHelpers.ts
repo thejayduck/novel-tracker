@@ -78,7 +78,7 @@ export async function serverSide_checkAuth(context: any, require_login: boolean,
     }, null];
   }
 
-  return [null, {
+  return [null, info && {
     username: info.username,
     moderation_level: info.moderation_level,
     user_id: info.id
