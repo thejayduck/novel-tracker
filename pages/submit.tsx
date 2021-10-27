@@ -11,6 +11,7 @@ import { useAlert } from "components/alertWrapper";
 import PageBase from "components/pageBase";
 import { Subtitle } from "components/subtitle";
 import { NavigationButton } from "components/ui/button";
+import { CustomDropdown } from "components/ui/customDropdown";
 import { InputField } from "components/ui/inputField";
 import { OptionSelect } from "components/ui/optionSelect";
 
@@ -113,6 +114,12 @@ export default function SubmitPage({ book_id, user_info }: SubmitPageProps) {
             <textarea rows={15} wrap="soft" ref={descriptionRef} />
           </div>
         </section>
+        <section className={styles.section}>
+          <Subtitle text="Genres" />
+          <div className={styles.sectionContainer}>
+            <CustomDropdown/>
+          </div>
+        </section>
 
         <section className={styles.section}>
           <Subtitle text="Other" />
@@ -135,13 +142,6 @@ export default function SubmitPage({ book_id, user_info }: SubmitPageProps) {
                 title="Release Status"
                 options={["Finished", "Releasing", "Cancelled", "Hiatus", "Coming Soon"]}
                 ref={releaseStatusRef}
-              />
-              <OptionSelect
-                title="Genre"
-                options={
-                  genres
-                }
-                ref={genreRef}
               />
             </div>
             <div className="flex">
