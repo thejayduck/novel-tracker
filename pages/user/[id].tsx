@@ -42,7 +42,7 @@ export default function Profile({ user_info }) {
       return;
     }
 
-    let setter;
+    let setter: (data: string[]) => void;
     if (requestBooks == "Reading") {
       setter = setReadingBooks;
     } else if (requestBooks == "Finished") {
@@ -56,7 +56,8 @@ export default function Profile({ user_info }) {
     }
 
     const data: any = await api.searchBook("", {
-      tracking_status: requestBooks
+      tracking_status: requestBooks,
+      userId: id,
     });
 
     setter(data);
