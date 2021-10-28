@@ -117,7 +117,7 @@ export default function SubmitPage({ book_id, user_info }: SubmitPageProps) {
         <section className={styles.section}>
           <Subtitle text="Genres" />
           <div className={styles.sectionContainer}>
-            <CustomDropdown/>
+            <CustomDropdown options={genres} />
           </div>
         </section>
 
