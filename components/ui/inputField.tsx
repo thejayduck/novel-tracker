@@ -13,11 +13,12 @@ interface InputFieldProps {
   onChange?: () => void,
   pattern?: string,
   toolTip?: string
+  onClick?: () => void,
 }
 
-export const InputField = forwardRef<HTMLInputElement>(({ inputType, title, placeHolder, defaultValue, maxValue, maxLength, onChange, toolTip, pattern }, ref): InputFieldProps => {
+export const InputField = forwardRef<HTMLInputElement>(({ inputType, title, placeHolder, defaultValue, maxValue, maxLength, onChange, toolTip, pattern, onClick }, ref): InputFieldProps => {
   return (
-    <div className={styles.inputFieldWrap}>
+    <div className={styles.inputFieldWrap} onClick={onClick}>
       <h3 className={styles.title} tooltip={toolTip} >{title}</h3>
       <input
         className={styles.inputField}
