@@ -1,7 +1,7 @@
 // @ts-nocheck
 import styles from "styles/components/InputField.module.scss";
 
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Fuse from "fuse.js";
 
 import { forwardRef, useEffect, useRef, useState } from "react";
@@ -18,7 +18,7 @@ export interface CustomDropdownProps {
 export const CustomDropdown = forwardRef(({ title, options, onChange, placeHolder }: CustomDropdownProps, ref) => {
   const [isEnabled, setIsEnabled] = useState(false);
   const inputFieldRef = useRef<HTMLInputElement>();
-  const [dropdownInput, setDropdownInput] = useState<string | null>(null);
+  const [dropdownInput, setDropdownInput] = useState<string | null>("");
 
   
   useEffect(() => {
@@ -36,8 +36,8 @@ export const CustomDropdown = forwardRef(({ title, options, onChange, placeHolde
 
   return (
     <div className={styles.customDropdown}>
-      <div className={styles.dropdownWrap} >
-        {/* <NavigationButton text="Hey" onClick={() => setIsEnabled(prev => !prev)} /> */}
+      <h3 className={styles.title}>{title}</h3>
+      <div className={styles.dropdownInput} >
         <InputField 
           placeHolder={placeHolder}
           onClick={() => setIsEnabled(prev => !prev)} 
@@ -47,26 +47,38 @@ export const CustomDropdown = forwardRef(({ title, options, onChange, placeHolde
           }}
         />
 
-        <i className={"bx bxs-down-arrow"} />
+        <div className={styles.dropdownButton}>
+          <i 
+            className={"bx bxs-down-arrow"}
+          />
+        </div>
       </div>
 
-      {isEnabled && 
-      <ul>
-        {dropdownInput && 
-          <li>
-            <span>Add: {dropdownInput}</span>
-          </li>
-        }
-        {
-          results?.map(q => (
-            <li key={q}>
-              <span>{q}</span>
+      <AnimatePresence>
+        {isEnabled && 
+        <motion.ul
+          initial={{opacity: 0}}
+          animate={{opacity: 1}}
+          exit={{opacity: 0}}
+          transition={{duration: 0.1}}
+        >
+          <AnimatePresence>
+            {dropdownInput && 
+            <li>
+              <span>Add: {dropdownInput}</span>
             </li>
-          ))
+            }
+          </AnimatePresence>
+          {
+            results?.map(q => (
+              <li key={q}>
+                <span>{q}</span>
+              </li>
+            ))
+          }
+        </motion.ul>
         }
-      </ul>
-      }
-
+      </AnimatePresence>
     </div>
 
   );

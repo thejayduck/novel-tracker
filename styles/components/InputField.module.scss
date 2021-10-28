@@ -30,7 +30,6 @@
     border-radius: var(--border);
 
     padding: var(--padding-small) var(--padding-small);
-    margin: 0 0 8px 0;
     box-sizing: border-box;
     border: 2px solid var(--accent);
   }
@@ -54,17 +53,27 @@
   // display: none;
   max-width: 200px;
 
-  .dropdownWrap {
+  .dropdownInput {
     position: relative;
-    i {
+    .dropdownButton {
       position: absolute;
-      top: 45%;
+
+      top: 0;
       right: 0;
-
-      transform: translate(-50%, -50%);
-
-      color: black;
+      display: block;
+      // background: var(--background-secondary);
+      border-radius: 0 var(--border) var(--border) 0;
+      height: 100%;
+      width: 2rem;
       pointer-events: none;
+
+      i {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+
+        transform: translate(-50%, -50%);
+      }
     }
   }
 
