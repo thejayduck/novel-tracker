@@ -46,8 +46,8 @@ const userSchema = new mongoose.Schema<IUser>({
   }
 }, { timestamps: true });
 
-const User: mongoose.Model<IUser & mongoose.Document> = mongoose.models.User || mongoose.model("User", userSchema);
-const UserProgress: mongoose.Model<IUserProgress & mongoose.Document> = mongoose.models.UserProgress || mongoose.model("UserProgress", userProgressSchema);
+const User: mongoose.Model<IUser> = mongoose.models.User || mongoose.model("User", userSchema);
+const UserProgress: mongoose.Model<IUserProgress> = mongoose.models.UserProgress || mongoose.model("UserProgress", userProgressSchema);
 
 export default User;
 export { UserProgress };

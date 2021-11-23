@@ -15,16 +15,16 @@ export interface CustomDropdownProps {
   placeHolder?: string,
 }
 
-export const CustomDropdown = forwardRef(({ title, options, onChange, placeHolder }: CustomDropdownProps, ref) => {
+export const CustomDropdown = forwardRef(({ title, options, placeHolder }: CustomDropdownProps, ref) => {
   const [isEnabled, setIsEnabled] = useState(false);
   const inputFieldRef = useRef<HTMLInputElement>();
   const [dropdownInput, setDropdownInput] = useState<string | null>("");
 
-  
+
   useEffect(() => {
     setDropdownInput(inputFieldRef.current?.value);
   }, [inputFieldRef.current?.value]);
-  
+
 
   const fuseOptions = {
     includeScore: true
@@ -38,45 +38,45 @@ export const CustomDropdown = forwardRef(({ title, options, onChange, placeHolde
     <div className={styles.customDropdown}>
       <h3 className={styles.title}>{title}</h3>
       <div className={styles.dropdownInput} >
-        <InputField 
+        <InputField
           placeHolder={placeHolder}
-          onClick={() => setIsEnabled(prev => !prev)} 
-          ref={inputFieldRef} 
+          onClick={() => setIsEnabled(prev => !prev)}
+          ref={inputFieldRef}
           onChange={() => {
             setDropdownInput(inputFieldRef.current.value);
           }}
         />
 
         <div className={styles.dropdownButton}>
-          <i 
+          <i
             className={"bx bxs-down-arrow"}
           />
         </div>
       </div>
 
       <AnimatePresence>
-        {isEnabled && 
-        <motion.ul
-          initial={{opacity: 0}}
-          animate={{opacity: 1}}
-          exit={{opacity: 0}}
-          transition={{duration: 0.1}}
-        >
-          <AnimatePresence>
-            {dropdownInput && 
-            <li>
-              <span>Add: {dropdownInput}</span>
-            </li>
+        {isEnabled &&
+          <motion.ul
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.1 }}
+          >
+            <AnimatePresence>
+              {dropdownInput &&
+                <li>
+                  <span>Add: {dropdownInput}</span>
+                </li>
+              }
+            </AnimatePresence>
+            {
+              results?.map(q => (
+                <li key={q}>
+                  <span>{q}</span>
+                </li>
+              ))
             }
-          </AnimatePresence>
-          {
-            results?.map(q => (
-              <li key={q}>
-                <span>{q}</span>
-              </li>
-            ))
-          }
-        </motion.ul>
+          </motion.ul>
         }
       </AnimatePresence>
     </div>

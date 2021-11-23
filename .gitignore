@@ -33,7 +33,6 @@ yarn-error.log*
 # vercel
 .vercel
 .env
-public/workbox-202dc43a.js.map
-public/workbox-202dc43a.js
 public/sw.js.map
 public/sw.js
+public/workbox-*.js
