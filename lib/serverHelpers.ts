@@ -1,6 +1,8 @@
 import { parse } from "cookie";
 
+import { IUser } from "./models/user";
 import { connectDb, getUserInfo, withUserId } from "./db";
+import { UserExtension } from "./types";
 
 async function getInfo(cookie: any) {
   if (!cookie) {
@@ -78,9 +80,25 @@ export async function serverSide_checkAuth(context: any, require_login: boolean,
     }, null];
   }
 
-  return [null, info && {
-    username: info.username,
-    moderation_level: info.moderation_level,
-    user_id: info.id
-  }];
+  const extended_info = info && await getExtendedUserInfo(info);
+  delete extended_info.updatedAt;
+  delete extended_info.createdAt;
+
+  return [null, extended_info && extended_info];
+}
+
+export async function getExtendedUserInfo(user_info_doc: any) {
+  const info = user_info_doc.toObject();
+  delete info.__v;
+  delete info._id;
+  // yes this sucks
+  const new_info = {
+    ...info,
+    count_reading_books: user_info_doc.books.filter(book => book.tracking_status == "Reading").length,
+    count_finished_books: user_info_doc.books.filter(book => book.tracking_status == "Finished").length,
+    count_planning_books: user_info_doc.books.filter(book => book.tracking_status == "Planning").length,
+    count_dropped_books: user_info_doc.books.filter(book => book.tracking_status == "Dropped").length,
+  } as IUser & UserExtension;
+  delete new_info.books;
+  return new_info;
 }

@@ -2,6 +2,13 @@ import { isValidObjectId, Types } from "mongoose";
 
 import { IBook } from "./models/book";
 
+export interface UserExtension {
+  count_reading_books: number,
+  count_finished_books: number,
+  count_planning_books: number,
+  count_dropped_books: number,
+}
+
 export function isID(id: any): boolean {
   return id != undefined
     && id != null

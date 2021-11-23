@@ -1,4 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
+import mongoose from "mongoose";
 
 import { IUser } from "./models/user";
 import { connectDb, getUserInfo, withUserId } from "./db";
@@ -48,7 +49,7 @@ export function withHelperBareGet<T>(required_fields: string[], callback: (token
   };
 }
 
-export function withInfoHelperGet<T>(required_fields: string[], callback: (token: string, params: Params, user_info: IUser) => Promise<T>, user_info_required = false): (req: NextApiRequest, res: NextApiResponse) => Promise<void> {
+export function withInfoHelperGet<T>(required_fields: string[], callback: (token: string, params: Params, user_info: IUser & mongoose.Document<any, any, any>) => Promise<T>, user_info_required = false): (req: NextApiRequest, res: NextApiResponse) => Promise<void> {
   return withHelperBareGet(required_fields, async (token, params) => {
     const user_info = await withUserId(token, getUserInfo);
     if (user_info_required && !user_info) {

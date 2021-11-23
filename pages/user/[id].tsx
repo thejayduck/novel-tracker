@@ -72,8 +72,6 @@ export default function Profile({ user_info }) {
     setUserProfile(userProfile);
   }, [id]);
 
-
-  // TODO add book count for each in User model
   return (
     <>
       <Head>
@@ -90,28 +88,28 @@ export default function Profile({ user_info }) {
             data={readingBooks}
             title="Reading"
             icon="bx bx-bookmark"
-            stat={"?? Books"}
+            stat={`${user_info.count_reading_books} Books`}
             onOpenChanged={(isOpen: bool) => isOpen && setRequestBooks("Reading")}
           />
           <StatisticItem
             data={finishedBooks}
             title="Finished"
             icon="bx bx-check-square"
-            stat={"?? Books"}
+            stat={`${user_info.count_finished_books} Books`}
             onOpenChanged={(isOpen) => isOpen && setRequestBooks("Finished")}
           />
           <StatisticItem
             data={plannedBooks}
             title="Planning"
             icon="bx bx-calendar"
-            stat={"?? Books"}
+            stat={`${user_info.count_planning_books} Books`}
             onOpenChanged={(isOpen) => isOpen && setRequestBooks("Planned")}
           />
           <StatisticItem
             data={droppedBooks}
             title="Dropped"
             icon="bx bx-trash-alt"
-            stat={"?? Books"}
+            stat={`${user_info.count_dropped_books} Books`}
             onOpenChanged={(isOpen: bool) => isOpen && setRequestBooks("Dropped")}
           />
         </section>
