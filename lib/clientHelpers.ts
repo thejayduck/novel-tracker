@@ -177,10 +177,10 @@ export function useApi() {
       if (filters.year && filters.year != "Any") {
         params.year = filters.year;
       }
-      if (filters.tracking_status != "Any") {
+      if (filters.tracking_status && filters.tracking_status != "Any") {
         params.tracking_status = filters.tracking_status;
       }
-      if (filters.userId != "Any") {
+      if (filters.userId && filters.userId != "Any") {
         params.user_id = filters.userId;
       }
       return getCall("search_book", params, onSuccess);
