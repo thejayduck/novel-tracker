@@ -25,10 +25,19 @@ export async function getServerSideProps(context) {
   };
 }
 
-export default function Profile({ user_info }) {
+export default function Profile({ user_info: current_user_info }) {
   const api = useApi();
   const router = useRouter();
   const { id } = router.query;
+
+  const [user_info, setUser_info] = useState(null);
+  const updateUserInfo = async () => {
+    const new_user_info_response = await fetch(`/api/user/${id}/info`);
+    const new_user_info_body = await new_user_info_response.json();
+    console.log(new_user_info_body.data);
+    setUser_info(new_user_info_body.data);
+  };
+  useEffect(updateUserInfo, []);
 
   const [readingBooks, setReadingBooks] = useState<string[] | null>(null);
   const [finishedBooks, setFinishedBooks] = useState<string[] | null>(null);
@@ -78,7 +87,7 @@ export default function Profile({ user_info }) {
         <title>{userProfile ? userProfile.username : "Loading..."} · Novel Tracker</title>
       </Head>
 
-      <PageBase user_info={user_info}>
+      <PageBase user_info={current_user_info}>
         <section className="flex flexRight" >
           <UserBig userProfile={userProfile} />
         </section>
@@ -88,28 +97,32 @@ export default function Profile({ user_info }) {
             data={readingBooks}
             title="Reading"
             icon="bx bx-bookmark"
-            stat={`${user_info.count_reading_books} Books`}
+            stat={`${user_info?.count_reading_books} Books`}
             onOpenChanged={(isOpen: bool) => isOpen && setRequestBooks("Reading")}
+            onRemove={(removedBook: any) => {
+              setReadingBooks(oldReadingBooks => oldReadingBooks.filter(book => book != removedBook));
+              updateUserInfo();
+            }}
           />
           <StatisticItem
             data={finishedBooks}
             title="Finished"
             icon="bx bx-check-square"
-            stat={`${user_info.count_finished_books} Books`}
+            stat={`${user_info?.count_finished_books} Books`}
             onOpenChanged={(isOpen) => isOpen && setRequestBooks("Finished")}
           />
           <StatisticItem
             data={plannedBooks}
             title="Planning"
             icon="bx bx-calendar"
-            stat={`${user_info.count_planning_books} Books`}
+            stat={`${user_info?.count_planning_books} Books`}
             onOpenChanged={(isOpen) => isOpen && setRequestBooks("Planned")}
           />
           <StatisticItem
             data={droppedBooks}
             title="Dropped"
             icon="bx bx-trash-alt"
-            stat={`${user_info.count_dropped_books} Books`}
+            stat={`${user_info?.count_dropped_books} Books`}
             onOpenChanged={(isOpen: bool) => isOpen && setRequestBooks("Dropped")}
           />
         </section>

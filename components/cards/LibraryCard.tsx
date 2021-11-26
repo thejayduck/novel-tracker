@@ -10,10 +10,13 @@ import { NavigationButton } from "components/ui/button";
 import { InputField } from "components/ui/inputField";
 import { OptionSelect } from "components/ui/optionSelect";
 
+import { useApi } from "lib/clientHelpers";
+
 import Card, { CardProps } from "./card";
 
-export default function LibraryCard({ data }: CardProps) {
+export default function LibraryCard({ data, onRemove }: CardProps | { onRemove: () => void, }) {
   const [editOverlay, setEditOverlay] = useState(false);
+  const api = useApi();
 
   return (
     <Card data={data} isClickable={true}>
@@ -29,7 +32,10 @@ export default function LibraryCard({ data }: CardProps) {
             title="Set As"
             options={["Reading", "Finished", "Planning", "Dropped"]}
           />
-          <NavigationButton icon="bx bxs-trash-alt bx-sm" text="Remove Book" onClick={() => acceptBook(pending_book)} />
+          <NavigationButton icon="bx bxs-trash-alt bx-sm" text="Remove Book" onClick={async () => {
+            await api.deleteBook(data._id);
+            onRemove();
+          }} />
         </Overlay>}
       </AnimatePresence>
     </Card>

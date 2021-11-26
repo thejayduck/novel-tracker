@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 
 import React, { useEffect, useState } from "react";
 
-import Card from "components/cards/LibraryCard";
+import LibraryCard from "components/cards/LibraryCard";
 
 interface StatisticItemProps {
   icon: string,
@@ -12,9 +12,10 @@ interface StatisticItemProps {
   stat: string,
   onOpenChanged: (isOpen: boolean) => void,
   data: any[],
+  onRemove: (book: any) => void,
 }
 
-export default function StatisticItem({ icon, title, stat, onOpenChanged, data }: StatisticItemProps) {
+export default function StatisticItem({ icon, title, stat, onOpenChanged, data, onRemove }: StatisticItemProps) {
   const [isOpen, setIsOpen] = useState(false);
   useEffect(() => {
     if (onOpenChanged) {
@@ -49,7 +50,7 @@ export default function StatisticItem({ icon, title, stat, onOpenChanged, data }
             transition={{ stiffness: 100 }}
           >
             {data &&
-              data.map((book: any) => <Card key={book._id} data={book} />)
+              data.map((book: any) => <LibraryCard key={book._id} data={book} onRemove={() => onRemove(book)} />)
             }
           </motion.div>}
       </AnimatePresence>
