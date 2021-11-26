@@ -89,6 +89,7 @@ export async function serverSide_checkAuth(context: any, require_login: boolean,
 
 export async function getExtendedUserInfo(user_info_doc: any) {
   const info = user_info_doc.toObject();
+  info.user_id = info._id.toString();
   delete info.__v;
   delete info._id;
   // yes this sucks
