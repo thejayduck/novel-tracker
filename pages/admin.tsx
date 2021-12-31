@@ -9,8 +9,8 @@ import PageBase from "components/pageBase";
 import { useApi } from "lib/clientHelpers";
 import { serverSide_checkAuth } from "lib/serverHelpers";
 
-import SubmissionItem from "../components/pageComponents/submissionItem";
 import convertDate from "../components/helper/convertDate";
+import SubmissionItem from "../components/pageComponents/submissionItem";
 
 export async function getServerSideProps(context) {
   const [auth, info] = await serverSide_checkAuth(context, true, true, true);
@@ -44,5 +44,5 @@ export default function AdminPanel({ user_info }) {
         ))}
       </div>
     </PageBase>
-  )
+  );
 }
