@@ -45,8 +45,11 @@ export default function Navigation() {
           <LinkItem text={true} title="Search" href="/search" />
           <LinkItem text={true} title="Forums" href="/" />
           {userInfo && <LinkItem text={true} title="Submit" href="/submit" />}
-          {userInfo?.moderation_level > 0 &&
+          {userInfo?.moderation_level >= 2 &&
             <LinkItem text={true} title="Submissions" href="/mod" />
+          }
+          {userInfo?.moderation_level >= 3 &&
+            <LinkItem text={true} title="Administration" href="/admin" />
           }
         </ul>
 

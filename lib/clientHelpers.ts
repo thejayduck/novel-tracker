@@ -203,5 +203,8 @@ export function useApi() {
     async logout(onSuccess?: (responseData: unknown) => void) {
       return getCall("me/logout", {}, onSuccess);
     },
+    async listUsers(onSuccess?: (responseData: unknown) => void) {
+      return getCall("admin/list_users", {}, onSuccess);
+    },
   };
 }

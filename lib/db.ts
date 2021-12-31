@@ -3,7 +3,7 @@ import mongoose, { Types } from "mongoose";
 
 import { Book, BookSubmission, IBook } from "./models/book";
 import Session from "./models/session";
-import User, { IUserProgress, UserProgress } from "./models/user";
+import User, {IUser, IUserProgress, UserProgress} from "./models/user";
 
 export async function connectDb() {
   if (mongoose.connection.readyState == 0) {
@@ -18,6 +18,10 @@ export async function createUserFromGoogle(gui: number): Promise<null | Types.Ob
 
 export async function findUserIdFromGoogle(gui: number): Promise<null | Types.ObjectId> {
   return await User.findOne({ google_user_id: gui }).then(user => user && user._id);
+}
+
+export async function listUsers(): Promise<IUser[]> {
+  return await User.find().then(user => user);
 }
 
 export async function createSession(user_id: Types.ObjectId) {
