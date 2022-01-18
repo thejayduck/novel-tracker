@@ -16,7 +16,7 @@ export default function MyApp({ Component, pageProps }) {
       <Head>
         <title>Novel Tracker</title>
         <link rel="icon" href="/favicon.ico" />
-        <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet' />
+        <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'/>
 
 
         <meta name="mobile-web-app-capable" content="yes" />

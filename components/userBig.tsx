@@ -3,6 +3,7 @@ import styles from "styles/components/UserContainer.module.scss";
 import { GetUserInfoResponse } from "lib/clientHelpers";
 
 import convertDate from "./helper/convertDate";
+import { Skeleton } from "./skeleton";
 
 export interface UserBigProps {
   userProfile: GetUserInfoResponse,
@@ -32,12 +33,12 @@ export function UserBig({ userProfile }: UserBigProps) {
       <div className={styles.statusWrap}>
         {userProfile?.moderation_level > 0 &&
           <span title={"Moderation Level"} className={styles.status}>
-            {userProfile ? moderationLevelNames[userProfile.moderation_level] : "Loading..."}
+            {userProfile ? moderationLevelNames[userProfile.moderation_level] : <Skeleton/>}
           </span>
         }
-        <span className="fontLarge">{userProfile ? userProfile.username : "Loading..."}</span>
+        <span className="fontLarge">{userProfile ? userProfile.username : <Skeleton/>}</span>
         <span className="fontSmall">
-          Joined {userProfile ? convertDate(userProfile.createdAt) : "Loading..."}
+          Joined {userProfile ? convertDate(userProfile.createdAt) : <Skeleton/>}
           <br />
           {data.followers} Followers / {data.following} Following
         </span>

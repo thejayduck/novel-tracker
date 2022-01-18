@@ -2,7 +2,7 @@
 import styles from "styles/SubmitPage.module.scss";
 
 import Head from "next/head";
-import genres from "genres.json";
+import genreList from "genres.json";
 
 import React, { useEffect, useRef, useState } from "react";
 import nextId from "react-id-generator";
@@ -13,7 +13,6 @@ import { Subtitle } from "components/subtitle";
 import { NavigationButton } from "components/ui/button";
 import { CustomDropdown } from "components/ui/customDropdown";
 import { InputField } from "components/ui/inputField";
-import { OptionSelect } from "components/ui/optionSelect";
 
 import { useApi } from "lib/clientHelpers";
 import { serverSide_checkAuth } from "lib/serverHelpers";
@@ -56,7 +55,7 @@ export default function SubmitPage({ book_id, user_info }: SubmitPageProps) {
   const descriptionRef = useRef<HTMLTextAreaElement>();
   const authorNameRef = useRef<HTMLInputElement>();
   const releaseStatusRef = useRef<HTMLOptionElement>();
-  const genreRef = useRef<HTMLOptionElement>();
+  const [genres, setGenres] = useState<string[]>([null]);
   const startDateRef = useRef<HTMLInputElement>();
   const endDateRef = useRef<HTMLInputElement>();
   const bannerRef = useRef<HTMLInputElement>();
@@ -64,7 +63,7 @@ export default function SubmitPage({ book_id, user_info }: SubmitPageProps) {
   useEffect(() => {
     setBannerUrl(bannerRef.current?.value);
   }, [bannerRef.current?.value]);
-  console.log("rerender");
+  console.log("re-render");
   async function onSubmit() {
     const bookDetails = {
       title_english: englishTitleRef.current.value,
@@ -75,7 +74,7 @@ export default function SubmitPage({ book_id, user_info }: SubmitPageProps) {
       // TODO
       cover_url: null,
       banner_url: bannerRef.current.value,
-      genre: genreRef.current.value,
+      genres: genres[0],
       release_status: releaseStatusRef.current.value,
       start_date: startDateRef.current.value,
       end_date: endDateRef.current.value,
@@ -116,8 +115,25 @@ export default function SubmitPage({ book_id, user_info }: SubmitPageProps) {
         </section>
         <section className={styles.section}>
           <Subtitle text="Genres" />
-          <div className={styles.sectionContainer}>
-            <CustomDropdown options={genres} />
+          <div className={`${styles.sectionContainer} flex flexRight`}>
+            {
+              genres.map((ref, idx) => (
+                <CustomDropdown 
+                  key={idx} 
+                  ref={el => ref = el} 
+                  options={genreList} 
+
+                  onSelect={() => {
+                    if(idx == genres.length - 1) {
+                      setGenres(oldGenres => {
+                        return [...oldGenres, null];
+                      });
+                    }
+                  }}
+                />
+              ))
+            }
+            {/* <CustomDropdown placeHolder="Genre" ref={el => genresRef.current[0] = el} options={genreList} /> */}
           </div>
         </section>
 
@@ -137,12 +153,13 @@ export default function SubmitPage({ book_id, user_info }: SubmitPageProps) {
               }}
             />
             <div className="flex">
-              <InputField title="Author Name" ref={authorNameRef} />
-              <OptionSelect
+              <InputField placeHolder="First Name - Last Name" title="Author Name" ref={authorNameRef} />
+              <CustomDropdown
                 title="Release Status"
-                options={["Finished", "Releasing", "Cancelled", "Hiatus", "Coming Soon"]}
+                options={["Finished", "Releasing", "Cancelled", "Hiatus", "Coming Soon"]} 
                 ref={releaseStatusRef}
               />
+
             </div>
             <div className="flex">
               <InputField title="Start Date" inputType="date" ref={startDateRef} />

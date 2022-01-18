@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
 import PageBase from "components/pageBase";
+import { Skeleton } from "components/skeleton";
 import { Subtitle } from "components/subtitle";
 import { UserBig } from "components/userBig";
 

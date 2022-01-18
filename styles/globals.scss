@@ -237,19 +237,6 @@ li {
   animation: skeletonAnim 1s linear infinite alternate;
 }
 
-.skeletonText {
-  width: 100%;
-  height: 0.5rem;
-  margin-bottom: 0.25rem;
-
-  border-radius: var(--border);
-
-  &:last-child {
-    margin-bottom: 0;
-    width: 80%;
-  }
-}
-
 @keyframes skeletonAnim {
   0% {
     background-color: var(--accent-dark);
