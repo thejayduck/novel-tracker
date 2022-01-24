@@ -17,6 +17,7 @@ export interface CustomDropdownProps {
 }
 
 export const CustomDropdown = ({ title, options, placeHolder, onSelect, onClear }: CustomDropdownProps) => {
+
   const [isEnabled, setIsEnabled] = useState(false);
   const [input, setInput] = useState<string | null>("");
   const [isSelected, setIsSelected] = useState(false);
@@ -63,6 +64,8 @@ export const CustomDropdown = ({ title, options, placeHolder, onSelect, onClear 
             {  
               if (isSelected) {
                 setIsSelected(false);
+                inputFieldRef.current.value = null;
+                setInput("");
                 onClear();
               }
               else {

@@ -77,6 +77,23 @@ export default function Search({ user_info }) {
                 <CustomDropdown
                   title="Release Status"
                   options={["Any", "Finished", "Releasing", "Cancelled", "Hiatus", "Coming Soon"]}
+                  onSelect={(s) => setFilter(oldFilter => ({ ...oldFilter, releaseStatus: s }))}
+                  onClear={() => null}
+                />
+                <CustomDropdown
+                  title="Genre"
+                  options={
+                    genres
+                  }
+                  onSelect={(s) => setFilter(oldFilter => ({ ...oldFilter, genre: s }))}
+                  onClear={() => setFilter(oldFilter => ({ ...oldFilter, genre: null }))}
+                />
+                <CustomDropdown
+                  title="Year"
+                  options={[
+                    "Any",
+                    // ...[...Array(20).keys()].map((n: number) => (new Date(Date.now()).getUTCFullYear() + 1) - n)
+                  ]}
                   onSelect={() => null}
                   onClear={() => null}
                 />
