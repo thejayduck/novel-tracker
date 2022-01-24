@@ -48,6 +48,11 @@ export default function SubmitPage({ book_id, user_info }: SubmitPageProps) {
     id: string,
   }
 
+  interface GenreState {
+    name: string | null,
+    id: string,
+  }
+
   const [volumes, setVolumes] = useState<VolumeState[]>([]);
   const nativeTitleRef = useRef<HTMLInputElement>();
   const romanizedTitleRef = useRef<HTMLInputElement>();
@@ -55,7 +60,7 @@ export default function SubmitPage({ book_id, user_info }: SubmitPageProps) {
   const descriptionRef = useRef<HTMLTextAreaElement>();
   const authorNameRef = useRef<HTMLInputElement>();
   const releaseStatusRef = useRef<HTMLOptionElement>();
-  const [genres, setGenres] = useState<string[]>([null]);
+  const [genres, setGenres] = useState<GenreState[]>(() => [{name: null, id: nextId("genre")}]);
   const startDateRef = useRef<HTMLInputElement>();
   const endDateRef = useRef<HTMLInputElement>();
   const bannerRef = useRef<HTMLInputElement>();
@@ -101,9 +106,21 @@ export default function SubmitPage({ book_id, user_info }: SubmitPageProps) {
           <Subtitle text="Titles" />
 
           <div className={styles.sectionContainer}>
-            <InputField title="Native" ref={nativeTitleRef} />
-            <InputField title="Romanized" ref={romanizedTitleRef} />
-            <InputField toolTip="Licensed only! Fan translated titles are NOT allowed." title="English" ref={englishTitleRef} />
+            <InputField 
+              title="Native" 
+              ref={nativeTitleRef} 
+              placeHolder="本好きの下剋上 ~司書になるためには手段を選んでいられません~ 第一部「兵士の娘」"
+            />
+            <InputField 
+              title="Romanized" 
+              ref={romanizedTitleRef} 
+              placeHolder="Honzuki no Gekokujou: Shisho ni Naru Tame ni wa Shudan wo Erandeiraremasen Dai 1-bu - Heishi no Musume"
+            />
+            <InputField
+              toolTip="Licensed only! Fan translated titles are NOT allowed."
+              title="English" ref={englishTitleRef}
+              placeHolder="Ascendance of a Bookworm ~I'll do anything to become a librarian~ Part 1 Daughter of a Soldier"
+            />
           </div>
         </section>
 
@@ -115,25 +132,26 @@ export default function SubmitPage({ book_id, user_info }: SubmitPageProps) {
         </section>
         <section className={styles.section}>
           <Subtitle text="Genres" />
-          <div className={`${styles.sectionContainer} flex flexRight`}>
+          <div className={`${styles.sectionContainer} flex flexRight flexWrap`}>
             {
-              genres.map((ref, idx) => (
+              genres.map((genre, idx) => (
                 <CustomDropdown 
-                  key={idx} 
-                  ref={el => ref = el} 
+                  key={genre.id} 
                   options={genreList} 
+                  placeHolder="Genre"
 
-                  onSelect={() => {
+                  onSelect={(s) => {
                     if(idx == genres.length - 1) {
                       setGenres(oldGenres => {
-                        return [...oldGenres, null];
+                        oldGenres[idx].name = s;
+                        return [...oldGenres, {name: null, id: nextId("genre")}];
                       });
                     }
                   }}
+                  onClear={() => setGenres([...genres.filter((_, i) => i != idx)])}
                 />
               ))
             }
-            {/* <CustomDropdown placeHolder="Genre" ref={el => genresRef.current[0] = el} options={genreList} /> */}
           </div>
         </section>
 
@@ -157,7 +175,8 @@ export default function SubmitPage({ book_id, user_info }: SubmitPageProps) {
               <CustomDropdown
                 title="Release Status"
                 options={["Finished", "Releasing", "Cancelled", "Hiatus", "Coming Soon"]} 
-                ref={releaseStatusRef}
+                onSelect={() => null}
+                onClear={() => null}
               />
 
             </div>
@@ -191,7 +210,7 @@ export default function SubmitPage({ book_id, user_info }: SubmitPageProps) {
             {volumes.map((volume, idx) => (
               <VolumeItem
                 key={volume.id}
-                onRemoveClicked={() => null}
+                onRemoveClicked={() => setVolumes([...volumes.filter((item, i) => i != idx)])}
                 image={volume.cover_url}
                 onCoverUrlChange={newCover => {
                   setVolumes(oldVolumes => {

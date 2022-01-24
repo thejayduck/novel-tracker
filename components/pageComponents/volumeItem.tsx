@@ -15,7 +15,7 @@ interface VolumeItemProps {
 export default function VolumeItem({ image, onCoverUrlChange, onChaptersCountChange, onRemoveClicked }: VolumeItemProps) {
   return (
     <li className={styles.volumeItem}>
-      <a className={styles.removeBook} title="Remove Volume" onClick={() => onRemoveClicked}>
+      <a className={styles.removeBook} title="Remove Volume" onClick={() => onRemoveClicked()}>
         <i className="bx bx-x bx-sm" /> 
       </a>
       <div className={`flex flexColumn ${styles.book}`}>

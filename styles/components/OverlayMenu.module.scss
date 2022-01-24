@@ -55,14 +55,14 @@
     border-radius: var(--border);
   }
 
-  span {
-    padding: var(--padding-mini);
+  // span {
+  //   padding: var(--padding-mini);
 
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
+  //   display: -webkit-box;
+  //   -webkit-line-clamp: 1;
+  //   -webkit-box-orient: vertical;
+  //   overflow: hidden;
+  // }
 }
 
 .mobileMenuWrap {

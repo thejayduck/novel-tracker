@@ -11,6 +11,7 @@ import React, { useEffect, useState } from "react";
 import Overlay from "components/overlay";
 import PageBase from "components/pageBase";
 import { Subtitle } from "components/subtitle";
+import { CustomDropdown } from "components/ui/customDropdown";
 import { InputFieldNonManaged } from "components/ui/inputFieldNonManaged";
 import { OptionSelect } from "components/ui/optionSelect";
 
@@ -68,12 +69,18 @@ export default function Search({ user_info }) {
           <AnimatePresence>
             {filterMenu &&
               <Overlay className={styles.filterOverlay} title="Filter Results" onOutsideClick={() => setFilterMenu(false)} >
-                <OptionSelect
+                {/* <OptionSelect
                   title="Release Status"
                   options={["Any", "Finished", "Releasing", "Cancelled", "Hiatus", "Coming Soon"]}
                   onChange={(e: unknown) => setFilter(oldFilter => ({ ...oldFilter, releaseStatus: e.target.value }))}
+                /> */}
+                <CustomDropdown
+                  title="Release Status"
+                  options={["Any", "Finished", "Releasing", "Cancelled", "Hiatus", "Coming Soon"]}
+                  onSelect={() => null}
+                  onClear={() => null}
                 />
-                <OptionSelect
+                {/* <OptionSelect
                   title="Genre"
                   options={
                     genres
@@ -87,7 +94,7 @@ export default function Search({ user_info }) {
                     ...[...Array(20).keys()].map((n: number) => (new Date(Date.now()).getUTCFullYear() + 1) - n)
                   ]}
                   onChange={(e: unknown) => setFilter(oldFilter => ({ ...oldFilter, year: e.target.value }))}
-                />
+                /> */}
               </Overlay>
             }
           </AnimatePresence>

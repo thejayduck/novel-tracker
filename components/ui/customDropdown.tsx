@@ -4,7 +4,7 @@ import styles from "styles/components/InputField.module.scss";
 import { AnimatePresence, motion } from "framer-motion";
 import Fuse from "fuse.js";
 
-import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { InputField } from "./inputField";
 
@@ -12,37 +12,47 @@ export interface CustomDropdownProps {
   title?: string,
   options: string[],
   placeHolder?: string,
-  onSelect?: () => void,
+  onSelect?: (s: string) => void,
   onClear?: () => void,
 }
 
-export const CustomDropdown = forwardRef(({ title, options, placeHolder, onSelect }: CustomDropdownProps, inRef) => {
+export const CustomDropdown = ({ title, options, placeHolder, onSelect, onClear }: CustomDropdownProps) => {
   const [isEnabled, setIsEnabled] = useState(false);
-  // const [dropdownInput, setDropdownInput] = useState<string | null>("");
+  const [input, setInput] = useState<string | null>("");
   const [isSelected, setIsSelected] = useState(false);
   const [results, setResults] = useState(options);
-
-  const ref = useRef<HTMLInputElement>(null);
-  useImperativeHandle(inRef, () => ref.current, [ref]);
+  const inputFieldRef = useRef<HTMLInputElement>();
 
   useEffect(() => {
     const fuseOptions = { includeScore: true };
 
     const fuse = new Fuse(options, fuseOptions);
-    const fuseResults = fuse.search(ref.current?.value);
+    const fuseResults = fuse.search(input);
 
-    setResults(ref.current?.value ? fuseResults.map(result => result.item) : options);
-  }, [ref.current?.value]);
+    setResults(input ? fuseResults.map(result => result.item) : options);
+  }, [input]);
 
   return (
     <div className={styles.customDropdown}>
       <h3 className={styles.title}>{title}</h3>
-      <div className={styles.dropdownInput} >
+      <div className={`${styles.customSelect} mobile`}>
+        <select onChange={e => onSelect(e.target.value)}>
+          {
+            options.map(q => (
+              <option key={q} value={q}>{q}</option>
+            ))
+          }
+        </select>
+        <a onClick={() => onClear()} ><i className="bx bxs-x-circle" /></a>
+      </div>
 
+      {/* Desktop */}
+      <div className={`${styles.dropdownInput} desktop`} >
         <InputField
+          ref={inputFieldRef}
           placeHolder={placeHolder}
           onClick={() => setIsEnabled(true)}
-          ref={ref}
+          onChange={e => setInput(e.target.value)}
         />
 
         <div 
@@ -52,8 +62,8 @@ export const CustomDropdown = forwardRef(({ title, options, placeHolder, onSelec
             onClick={() => 
             {  
               if (isSelected) {
-                ref.current.value = "";
                 setIsSelected(false);
+                onClear();
               }
               else {
                 setIsEnabled(prev => !prev);                
@@ -76,7 +86,6 @@ export const CustomDropdown = forwardRef(({ title, options, placeHolder, onSelec
               {dropdownInput &&
                 <li onClick={() => {
                   setIsEnabled(false);
-                  ref.current.value = dropdownInput;
                 }}>
                   <span>Add: {dropdownInput}</span>
                 </li>
@@ -84,15 +93,16 @@ export const CustomDropdown = forwardRef(({ title, options, placeHolder, onSelec
             </AnimatePresence> */}
             {
               results?.map(q => (
-                <li 
+                <li
+                  key={q}
                   onClick={() => 
                   {
+                    onSelect(q);
+                    setInput(q);
                     setIsEnabled(false);
-                    ref.current.value = q;
                     setIsSelected(true);
-                    onSelect();
+                    inputFieldRef.current.value = q;
                   }} 
-                  key={q}
                 >
                   <span>{q}</span>
                 </li>
@@ -104,6 +114,6 @@ export const CustomDropdown = forwardRef(({ title, options, placeHolder, onSelec
     </div>
 
   );
-});
+};
 
 CustomDropdown.displayName = "CustomDropdown";

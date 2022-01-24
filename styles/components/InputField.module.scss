@@ -42,12 +42,32 @@
 }
 
 .customSelect {
-  border-radius: var(--border);
+  position: relative;
+  select {
+    border-radius: var(--border);
+    width: 100%;
+    padding: var(--padding-small) var(--padding-small);
+    box-sizing: border-box;
 
-  padding: var(--padding-small) var(--padding-small);
-  margin: 0 0 8px 0;
-  box-sizing: border-box;
-  border: 2px solid var(--accent);
+    border: 2px solid var(--accent);
+  }
+
+  a {
+    position: absolute;
+    background: var(--accent);
+    right: 0;
+    height: 100%;
+    width: 3em;
+    border-radius: var(--border);
+
+    i {
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, 50%);
+      font-size: 20px;
+      color: white;
+    }
+  }
 }
 
 //CUSTOM
