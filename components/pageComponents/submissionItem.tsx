@@ -28,7 +28,7 @@ export default function SubmissionItem({ pending_book, acceptBook, denyBook }) {
       <img width="100%" height={600} src={pending_book.banner_url || "https://dummyimage.com/1600x600/000/ffffff.png&text=+No+Cover"} />
 
       <Subtitle text="Volumes" />
-      <ul className={`${styles.volumeList} flex flexRow flexRight`}>
+      <ul className={`${styles.volumeList} flex flexRow flexRight unorderedList`}>
         {pending_book.volumes.map(volume => (
           <Card key={volume._id} data={volume} />
         ))}

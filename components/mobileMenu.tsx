@@ -63,7 +63,7 @@ export function MobileMenu({ onOutSideClick }) {
           </section>
           <section className={styles.notificationWrap}>
             <Subtitle text="Notifications (1)" />
-            <ul className={"flex flexColumn"}>
+            <ul className={"flex flexColumn unorderedList"}>
               <NotificationItem />
             </ul>
           </section>

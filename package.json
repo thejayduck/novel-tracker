@@ -17,12 +17,14 @@
     "framer-motion": "^4.1.17",
     "fuse.js": "^6.4.6",
     "mongoose": "^5.13.4",
-    "next": "^11.1.2",
+    "next": "^12.0.8",
     "next-pwa": "^5.2.24",
     "react": "17.0.2",
     "react-cool-inview": "^2.0.7",
     "react-dom": "17.0.2",
     "react-id-generator": "^3.0.1",
+    "react-markdown": "^8.0.0",
+    "remark-gfm": "^3.0.1",
     "sass": "^1.35.1"
   },
   "devDependencies": {

@@ -1,21 +1,47 @@
 .section {
   width: 100%;
   margin: 10px 0 10px 0;
-  h2 {
-    text-align: center;
-  }
+  // h2 {
+  //   text-align: center;
+  // }
   .sectionContainer {
-    textarea {
-      border-radius: var(--border);
-      width: 100%;
-      resize: none;
-      border: 2px solid var(--accent);
-    }
-
     .bannerPreview {
       opacity: 1;
       border-radius: var(--border);
       object-fit: contain;
+    }
+  }
+  .descriptionSection {
+    align-items: stretch;
+
+    display: flex;
+    height: 230px;
+    align-items: stretch;
+    width: 100%;
+
+    textarea {
+      border-radius: var(--border);
+      border: 2px solid var(--accent);
+
+      width: 100%;
+      resize: none;
+    }
+
+    div {
+      border-radius: var(--border);
+      border: 2px solid var(--accent);
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+
+      p {
+        margin: 0;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        word-break: break-all;
+        white-space: normal;
+      }
     }
   }
 }

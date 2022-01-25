@@ -105,8 +105,8 @@ body {
 // OTHER
 *:not(html, body) {
   font-family: inherit;
-  font-weight: inherit;
-  font-size: inherit;
+  // font-weight: inherit;
+  // font-size: inherit;
   scroll-behavior: inherit;
   box-sizing: inherit;
 
@@ -126,7 +126,7 @@ h4,
 h5,
 h6 {
   margin: 0;
-  font-size: var(--font-medium);
+  // font-size: var(--font-medium);
   font-weight: 500;
 }
 
@@ -151,7 +151,7 @@ hr {
   margin-right: 0;
 }
 
-ul {
+.unorderedList {
   list-style: none;
   padding: 0;
   margin: 0;

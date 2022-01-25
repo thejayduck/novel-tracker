@@ -40,7 +40,7 @@ export default function Navigation() {
             {/* <a className={`${"mobile"}`}>Homepage</a> */}
           </>
         }
-        <ul className={`${styles.links} desktop`}>
+        <ul className={`${styles.links} unorderedList desktop`}>
           {userInfo && <LinkItem text={true} title="Library" href="/" />}
           <LinkItem text={true} title="Search" href="/search" />
           <LinkItem text={true} title="Forums" href="/" />
@@ -55,7 +55,7 @@ export default function Navigation() {
 
         {userInfo &&
           <div className={`flex ${styles.rightMenu} desktop`}>
-            <ul className={`${styles.links}`}>
+            <ul className={`${styles.links} unorderedList`}>
               <LinkItem text={false} icon="bx bx-bell bx-tada-hover" title="Notifications" onClick={() => setNotification(prev => !prev)} />
             </ul>
             <UserSmall onDropDownClick={() => setUserMenu(prev => !prev)} />

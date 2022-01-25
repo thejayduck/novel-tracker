@@ -84,6 +84,7 @@ export const CustomDropdown = ({ title, options, placeHolder, onSelect, onClear 
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.1 }}
+            className={"unorderedList"}
           >
             {/* <AnimatePresence>
               {dropdownInput &&

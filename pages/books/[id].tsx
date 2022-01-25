@@ -5,8 +5,10 @@ import { useRouter } from "next/dist/client/router";
 import dynamic from "next/dynamic";
 import Head from "next/head";
 import { AnimatePresence } from "framer-motion";
+import remarkGfm from "remark-gfm";
 
 import React, { useEffect, useState } from "react";
+import ReactMarkdown from "react-markdown";
 
 import convertDate from "components/helper/convertDate";
 import Overlay from "components/overlay";
@@ -20,6 +22,7 @@ import { serverSide_checkAuth } from "lib/serverHelpers";
 import DetailItem from "../../components/pageComponents/detailItem";
 
 const VolumeCard = dynamic(() => import("components/cards/VolumeCard"));
+
 
 export async function getServerSideProps(context) {
   const [redirect, info] = await serverSide_checkAuth(context, false, false, false);
@@ -80,7 +83,7 @@ export default function Book({ user_info }) {
             <DetailItem title="Start Date" value={convertDate(book?.start_date)} />
             <DetailItem title="End Date" value={convertDate(book?.end_date)} />
           </div>
-          <p>{book?.description || "Loading..."}</p>
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>{book?.description || "Loading..."}</ReactMarkdown>
           <Subtitle text={`Volumes [${book?.volumes.length}]`} />
           <div className={`${styles.volumeList} flex`}>
             {book && book.volumes.map(volume => (<VolumeCard key={volume.cover_url} data={volume} />))}

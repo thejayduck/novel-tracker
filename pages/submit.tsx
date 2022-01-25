@@ -3,9 +3,11 @@ import styles from "styles/SubmitPage.module.scss";
 
 import Head from "next/head";
 import genreList from "genres.json";
+import remarkGfm from "remark-gfm";
 
 import React, { useEffect, useRef, useState } from "react";
 import nextId from "react-id-generator";
+import ReactMarkdown from "react-markdown";
 
 import { useAlert } from "components/alertWrapper";
 import PageBase from "components/pageBase";
@@ -53,11 +55,13 @@ export default function SubmitPage({ book_id, user_info }: SubmitPageProps) {
     id: string,
   }
 
+  // References
   const [volumes, setVolumes] = useState<VolumeState[]>([]);
   const nativeTitleRef = useRef<HTMLInputElement>();
   const romanizedTitleRef = useRef<HTMLInputElement>();
   const englishTitleRef = useRef<HTMLInputElement>();
   const descriptionRef = useRef<HTMLTextAreaElement>();
+  const [description, setDescription] = useState<string | null>(null);
   const authorNameRef = useRef<HTMLInputElement>();
   const releaseStatusRef = useRef<HTMLOptionElement>();
   const [genres, setGenres] = useState<GenreState[]>(() => [{name: null, id: nextId("genre")}]);
@@ -68,6 +72,11 @@ export default function SubmitPage({ book_id, user_info }: SubmitPageProps) {
   useEffect(() => {
     setBannerUrl(bannerRef.current?.value);
   }, [bannerRef.current?.value]);
+
+  useEffect(() => {
+    setDescription(descriptionRef.current?.value);
+  }, [descriptionRef.current?.value]);
+
   console.log("re-render");
   async function onSubmit() {
     const bookDetails = {
@@ -126,8 +135,11 @@ export default function SubmitPage({ book_id, user_info }: SubmitPageProps) {
 
         <section className={styles.section}>
           <Subtitle text="Description" />
-          <div className={styles.sectionContainer}>
-            <textarea rows={15} wrap="soft" ref={descriptionRef} />
+          <div className={`${styles.sectionContainer} ${styles.descriptionSection} flex flexAround`}>
+            <textarea rows={15} wrap="soft" ref={descriptionRef} onChange={() => setDescription(descriptionRef.current.value)} />
+            <div className={"desktop"}>
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>{description}</ReactMarkdown>
+            </div>
           </div>
         </section>
         <section className={styles.section}>
@@ -189,7 +201,7 @@ export default function SubmitPage({ book_id, user_info }: SubmitPageProps) {
 
         <section className={styles.section}>
           <Subtitle text={`Volumes ${volumes.length}`} />
-          <ul className={`${styles.sectionContainer} ${styles.volumeList} flex flexRight`}>
+          <ul className={`${styles.sectionContainer} ${styles.volumeList} unorderedList flex flexRight`}>
             <div>
               <a
                 title="Add Volume"
