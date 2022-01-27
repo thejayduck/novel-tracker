@@ -1,5 +1,7 @@
 # <img alt="logo" src="public/icon.svg" width=64 align="center" /> Novel Tracker
 
+We are currently switching our database from MongoDB to Postgresql
+
 ## Features
 * PWA (Progressive Web App) Support
 * Community Based Book Submissions
